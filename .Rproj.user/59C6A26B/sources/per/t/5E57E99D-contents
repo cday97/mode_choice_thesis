@@ -1,0 +1,98 @@
+---
+title: |
+  | Building a Thesis in `Bookdown` and LaTeX, which can have a  
+  | Wrapped Title if Long
+# Your thesis title should be inverted pyramid-shaped, with the longest
+# line on top and shorter lines below. Add a new line as tab-|-space-Words
+author: 'Cosmo Cougar'
+year: '20XX'
+department: 'Department of Civil and Construction Engineering'
+degree: 'Master of Science'
+doctype: 'thesis' # thesis or dissertation
+committeeMembers: |
+  Brigham Young, Chair 
+  
+  Karl G. Maeser 
+  
+  Harvey Fletcher
+keywords: 'engineering, optimization, document creation'
+layout: '12pt, oneside, openright' 
+# use option 'oneside' for ETD
+# change this to option 'twoside' for printing
+
+# Remove the hashtag to specify which version of output you would like.
+# Can only choose one at a time.
+site: bookdown::bookdown_site
+
+# Note that a tab is needed on the line after the `|`.
+abstract: |
+  This document describes the use of a new \LaTeX \ template for writing masters
+  theses at Brigham Young University. This was made necessary by the relative age
+  and complication of prior templates. Additionally, the new `cosmodown` R package
+  contains an implementation of this thesis in R markdown, with the help of the 
+  [`thesisdown`](https://github.com/ismayc/thesisdown) package.
+
+  The abstract of a thesis should describe the
+  motivation, objective, overall results, and central findings of the thesis.
+  It may have multiple paragraphs if necessary.
+
+  
+acknowledgments: |
+  Students should acknowledge funding sources. They may also use the
+  acknowledgment page to express appreciation for the committee members, friends
+  or family who provided assistance in research, writing or technical aspects of
+  the dissertation, thesis or selected project. Acknowledgements should be simple
+  and in good taste.
+
+  
+# Specify the location of the bibliography below
+bibliography: [book.bib, packages.bib]
+# Download your specific csl file and refer to it in the line below.
+#csl: csl/apa.csl
+lot: true
+lof: true
+---
+
+# About
+
+This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+
+## Usage 
+
+Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
+
+Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
+
+The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
+
+## Render book
+
+You can render the HTML version of this example book without changing anything:
+
+1. Find the **Build** pane in the RStudio IDE, and
+
+1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
+
+Or build the book from the R console:
+
+```{r, eval=FALSE}
+bookdown::render_book()
+```
+
+To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
+
+## Preview book
+
+As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
+
+```{r eval=FALSE}
+bookdown::serve_book()
+```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

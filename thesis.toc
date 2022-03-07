@@ -1,0 +1,27 @@
+\contentsline {chapter}{Title Page}{i}{section*.1}%
+\contentsline {chapter}{Abstract}{ii}{section*.2}%
+\contentsline {chapter}{Table of Contents}{iii}{section*.3}%
+\contentsline {chapter}{List of Tables}{v}{section*.5}%
+\contentsline {chapter}{List of Figures}{vi}{section*.7}%
+\contentsline {chapter}{\numberline {1}About}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Usage}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Render book}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Preview book}{2}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Hello bookdown}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}A section}{3}{section.2.1}%
+\contentsline {subsection}{An unnumbered section}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Cross-references}{4}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Chapters and sub-chapters}{4}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Captioned figures and tables}{4}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Parts}{7}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Footnotes and citations}{8}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Footnotes}{8}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Citations}{8}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Blocks}{9}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Equations}{9}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Callout blocks}{9}{section.6.2}%
+\contentsline {chapter}{\numberline {7}Sharing your book}{10}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Publishing}{10}{section.7.1}%
+\contentsline {section}{\numberline {7.2}404 pages}{10}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Metadata for sharing}{10}{section.7.3}%
+\contentsline {chapter}{References}{12}{section*.11}%
