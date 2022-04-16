@@ -1,11 +1,10 @@
 ---
 title: |
-  | Building a Thesis in `Bookdown` and LaTeX, which can have a  
-  | Wrapped Title if Long
+  | Determining the significance of a consistent mode choice between activity-based models and agent-based microsimulation tools
 # Your thesis title should be inverted pyramid-shaped, with the longest
 # line on top and shorter lines below. Add a new line as tab-|-space-Words
-author: 'Cosmo Cougar'
-year: '20XX'
+author: 'Christopher Day'
+year: '2022'
 department: 'Department of Civil and Construction Engineering'
 degree: 'Master of Science'
 doctype: 'thesis' # thesis or dissertation
