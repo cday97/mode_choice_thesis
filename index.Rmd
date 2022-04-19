@@ -14,7 +14,7 @@ committeeMembers: |
   Karl G. Maeser 
   
   Harvey Fletcher
-keywords: 'engineering, optimization, document creation'
+keywords: 'Four Step Model, Discrete Choice Model, Activity-based Model'
 layout: '12pt, oneside, openright' 
 # use option 'oneside' for ETD
 # change this to option 'twoside' for printing
