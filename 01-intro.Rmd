@@ -42,6 +42,17 @@ Here is my outline for the entire thesis. Hopefully this will give me a rough id
 
 # Introduction 
 
+The basic outline for the literature review is as follows: 
+
+  a. Mode choice in the Four step model
+  b. Mode Choice in Discrete Choice Modeling
+  g. Mode choice in Activity-based models
+  h. Mode choice in Activity-Sim
+  i. Mode choice in MATSim
+  j. Mode choice in BEAM
+  k. Mode choice difference between activity-based models and microsimulation tools
+  l. Importance of multiple variables in mode choice calculation
+  
 
 
 

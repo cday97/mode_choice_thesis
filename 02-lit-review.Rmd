@@ -1,1 +1,58 @@
 # Literature Review
+Mode choice models are essential components in the transportation planning process. Key investment decisions along with other transportation decisions rely on the determination of individual mode choices within a population. Whether mode choice is estimated in a four step model, activity-based model, or an agent based model, its level of significance remains the same. 
+
+## Mode Choice in the Four Step Model {#lit1}
+The four step model (FSM) has been the primary tool in person travel demand modeling since its development [@mcnally2000four]. Although travel is theorized to be derived from activity participation, the FSM focuses on modeling with trip-based not activity-based travel methods. The methodology presented in the FSM is mostly universal. The FSM can be divided up into two stages. The first defining the traveler and land use characteristics and the second where demand is loaded onto a transportation network and travel characteristics are determined [@mcnally2000four].
+
+As its name suggests, the FSM includes four different steps: trip generation, trip distribution, mode choice, and route choice. In trip generation the magnitude of total trips is estimated and in trip distribution those trips are disbursed along different directions of travel. In mode and route choice, a multitude of variables are used to determine specifically how travel occurs. 
+
+Of the four steps in the FSM, mode choice in particular is a diverse, variable, and disaggregate step among different modeling applications. According to @mcnally2000four, mode choice is almost exclusively modeled on a disaggregate level within separate choice-based sampling. Choice probabilities are calculated on the individual trip level. @mcnally2000four also mentions that with transit, carpooling vehicles, automobile tolls, and other new factors the mode choice algorithm can become extensive and difficult to determine. One common method used to estimate mode choice probabilities is a nested logit model (see Section \@ref(lit3)). These mode choice models can reflect trip-maker characteristics as well as multiple performance variables [@ortuzar94;@mcnally2000four]. Most applications of the FSM require multiple iterations of the mode choice and trip distribution steps in order to approximate formal convergence. Like with the nested logit model, discrete choice modeling has historically been the perferred method in estimating mode choice in the FSM as well as in other modeling applications.
+
+## A Brief History of Mode Choice in Discrete Choice Models {#lit2}
+Various choice modeling systems have been used to accurately determine mode choices. The beginning of such analyses started with the developments of @mcfadden1973, who outlined a general procedure for modeling population choice behavior from distributions of individual decision rules. Before then, discrete choices were simply modeled using a random utility model (RUM) framework. The interpretation assumed that each individual carried their own utility function distribution and selected one randomly; according to @manski2001, McFadden reinterpreted the random assignment of the utility functions across the population itself rather than the individual. This yielded an entirely new view of discrete choice modeling, and a more general version of the multinomial logit model (MNL) was introduced. This new MNL model, also called the conditional logit analysis, was the beginning of modern mode choice analysis. @bhat20 describe that McFadden’s MNL model, the nested logit model, and the multinomial probit model (MNP) were the main engines in mode choice and most discrete choice analyses up through the 1990s. 
+	
+Although the developments of McFadden are still in effect today, mode choice analysis has evolved greatly in the last few decades. @bhat20 explain that up through 2010, mixed multinomial logit (MMNL) models and multiple discrete-continuous (MDC) choice models were the main models in practice. In addition, @bhat95 estimated a disaggregate mode choice model to explain how new and updated services affected ridership and mode choice on intercity travel. His heteroscedastic extreme value model overcame the independence of irrelevant alternatives (IIA) property and allowed more flexibility among the alternatives than the nested logit model. @ben02 developed a hybrid choice model (HCM) that went beyond the standard RUM as it included latent variables, latent classes, and a flexible error structure. It implemented multiple facets of discrete choice modeling and more accurately represented the behaviors of the individuals. @pinjari07 used a simultaneous mixed logit model to understand how commuters' mode choice is affected by the surrounding build environment. 
+
+According to @bhat20, from 2010 to 2015 joint models of data with mixed dependent variables arrived. @vij13, for example, used a behavioral mixtures model, composed of a latent class choice model (LCCM) and a continuous logit mixture model, to extrapolate unobserved modality styles and their effects on travel decisions. @paulssen14 focused on improving the integrated choice and latent variable (ICLV) model of @mcfadden86 and @ben02num2 by including a value system among the individuals. Overall, the general advancement within mode choice and discrete choice modeling is comprehensive across recent years. Similarly, the variability among mode choice analysis can specifically be seen within activity-based modeling. 
+
+
+## An Extensive Look into Mode Choice in Activity-Based Models {#lit3}
+A significant part of activity-based modeling is the mode choice decision within the model. @bhat99 stated that originally travel demand models used individual trips as the primary unit of analysis. In recent years though, there has been a shift toward activity-based travel demand modeling. According to @eluru10, this shift has occurred due to improved understanding of activity-based travel, global climate concerns, and advances in microsimulation techniques. With this shift to activity-based travel modeling, FSMs have evolved immensely, and especially within the last decade [@hasnine21]. A major maturing in activity scheduling, activity duration, activity generation, and location choice has occurred and resulted in advanced activity-based modeling. Although these components have evolved significantly, the mode choice decision has remained relatively simple and constant. 
+
+In general, the two types of mode choice models commonly applied in travel demand modeling are trip-based and tour-based models. Trip-based mode choice models select modes based on the characteristics of individual trips, independent of other existing trips. A tour is defined as a chain of trips that end in the same location as they start [@bowman99]. Tour-based models are based on the characteristics of the trips' overarching tour, meaning trip modes are not independently calculated. Most activity-based models commonly implement the tour-based mode choice structure [@hasnine21].
+
+In reality, the most common use of the tour-based mode choice model is the "simplified tour-based" mode choice model. The simplified tour-based model has been used in a variety of studies [@arentze00;@bowman01;@pendyala97]. This simplified model hinges on trip-based mode choice where a single mode is used to define the entire tour opposed to a string of possible mode option combinations. For example, a simplified tour-based mode choice would define the tour-mode as "public transit" whereas a true tour-based model would define the tour-mode as "public transit - ride hail - public transit". Simplified tour-based models overlooks mobility attributes as well as the dynamics that exist between trips on a tour [@hasnine21]. 
+
+There have been many attempts during the last few decades to include trip and tour based mode choice models into activity-based models.As a way to better understand the diversity that exists with tour-based mode choice in activity-based models, @hasnine21 conducted research on a variety of activity-based models from the years 1995 to 2020 and found that seven specific mode choice analyses have been used. All seven techniques are framed about the tour-based methodology further reinforcing the knowledge that "the tour-based approach is the most relevant to the activity-based modelling framework" [@hasnine21].  These seven categories are further discussed in the following subsections.
+
+### Simplified main tour model
+The simplified main tour model is another name for the simplified tour-based model previously discussed and implemented in most activity-based modeling applications [@arentze00;@bowman01;@pendyala97]. In the A Learning-Based Transportation Oriented Simulation System (ALBATROSS) developed by @arentze00, for example, when individuals had a work activity in their daily plan, a transport mode was determined for the work travel purpose. A singular tour mode value was selected and given to that individual. In cases where households had less cars than people, a car tour mode assigned to one individual in a household may prevent a car mode being given to another individual in that same household. In this way, the simplified main tour model keeps track of car ownership and availability in a logical way. The ALBATROSS system selected the tour mode based on a subset of rules and decision trees programmed into the model. This means that the ALBATROSS system only allowed each trip within a tour to have the same mode as the tour mode [@arentze00].
+
+Since a singular mode value is assigned to the tour in the simplified main tour model method, no flexibility exists for trip mode selection. Once a tour mode is determined, that same mode is held constant for each trip within that tour. Although not entirely realistic, many modelers prefer this method as it is a computationally easier task than a tour-based mode choice that permits trip modes to be different than their overarching tour mode. Realistically, however, individuals often vary their modes on different trips within a tour. For example, those who walk or bike or drive to transit are unable to do so in a simplified main tour model. Using the simplified main tour mode choice model may be popular and computationally simple, but it is not dynamic or realistic in representing travel behavior [@hasnine21].
+
+### Two-tier nested logit model
+
+
+### Simplified main tour mode and conditional trip-level mode
+
+### An activity-based model with exogenous mode choice
+
+### Simulation-based tour-based mode choice
+
+### Combinatorial tour-based mode choice
+
+### Dynamic tour-based mode choice 
+
+
+
+
+
+
+In addition to the seven categories of tour-based mode choice modeling summarized by @hasnine21, other techniques do exists. For example, @eluru10 developed a joint multiple discrete continuous extreme value (MDCEV) framework to model the individual’s choices across five dimensions: activity type, time of day, mode, destination, and time use. The MDCEV framework aimed to model activity travel choices simultaneously. In addition to the MDCEV technique, countless other mode choice models within activity-based model exists, but will not be discussed. one that will be discussed further, however, will be the mode choice modeling framework used in ActivitySim.
+
+## The Mode Choice Models used in ActivitySim
+
+
+
+
+
