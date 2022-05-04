@@ -42,6 +42,9 @@ Harvey Fletcher}
 
 
 
+	\usepackage{algorithm}
+	\usepackage{algpseudocode}
+	\usepackage{dsfont}
 % End of CII addition
 %%
 %% End Preamble
@@ -231,8 +234,22 @@ c. climate change lol
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
 
+In the intro talk about the tscore setup, along with the desire to understand on-demand transit vehicles. Talk about how a consistent mc will help better model these on demand transit vehicles.
+
+\hypertarget{problem-statement}{%
+\section{Problem Statement}\label{problem-statement}}
+
+\hypertarget{purpose-of-research}{%
+\section{Purpose of Research}\label{purpose-of-research}}
+
+\hypertarget{outline-of-research}{%
+\section{Outline of Research}\label{outline-of-research}}
+
 \hypertarget{literature-review}{%
 \chapter{Literature Review}\label{literature-review}}
+
+\hypertarget{overview}{%
+\section{Overview}\label{overview}}
 
 Mode choice models are essential components in the transportation planning process. Key investment decisions along with other transportation decisions rely on the determination of individual mode choices within a population. Whether mode choice is estimated in a four step model, activity-based model, or an agent based model, its level of significance remains the same.
 
@@ -667,6 +684,120 @@ We aim to better understand the effects of a consistent mode choice model betwee
 \hypertarget{methods}{%
 \chapter{Methods}\label{methods}}
 
+\hypertarget{overview-1}{%
+\section{Overview}\label{overview-1}}
+
+A systematic approach to determine the effects of a consistent mode choice model between an activity-based model and a microsimulation tool requires two main steps. The first step involves creating a test scenario that runs within the activity-based model ActivitySim and the microsimulation tool BEAM. Section \ref{mscen} explains this step including how the test scenario was created and how ActivitySim and BEAM were configured. The second step involves adjusting the internal code of BEAM to align the mode choice model with that of ActivitySim's. Section \ref{mbeam} explains the details behind the changes made to BEAM's default mode choice model to align more closely with that of ActivitySim's.
+
+\hypertarget{mscen}{%
+\section{Creating the Scenario}\label{mscen}}
+
+Designing a test scenario to use within ActivitySim and BEAM was essential to understanding and testing mode choice between models. This section explains the region that was used to model the test scenario. This section also explains how the input files needed to run both ActivitySim and BEAM were generated for the test scenario.
+
+\hypertarget{test-scenario-region}{%
+\subsection{Test Scenario Region}\label{test-scenario-region}}
+
+The test scenario used in this research includes the approximate 2.5 million agents of the Salt Lake City, Utah, USA region. This region includes the Box Elder, Davis, Salt Lake, Utah, and Weber counties. Figure \ref{figregion} shows the 2881 Traffic Analysis Zones (TAZs) along with the five counties that make up the region of study.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/figregion-1} 
+
+}
+
+\caption{The TAZs of the region of study.}\label{fig:figregion}
+\end{figure}
+
+This extensive region was selected for the following reasons:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  There is substantial data that exists for this region. Having sufficient data points for each of the TAZs was essential to creating the inputs to ActivitySim and BEAM. The majority of the data used for this research was gathered and shared by Wasatch Front Regional Council (WFRC), the Metropolitan Planning Organization (MPO) of Salt Lake county.
+\item
+  There currently exists a need to analyze this region with a microsimulation tool, such as BEAM. Specifically, the Utah Transit Authority (UTA) wishes to understand what specific sub regions in the Salk Lake area will best serve new on-demand transit vehicles. In some future research, this specific question will be answered. Along this this question, having a microsimulation model of a region will prove to be an effective method to answering multiple transportation service questions in the future. To date, only one previous analysis of this region has been conducted with the BEAM software (Lant 2021).
+\item
+  The project researches live in this region, and therefore have real life knowledge of how transportation works in the region. This allows the researchers to compare the the results of the models with their own experiences, hopefully providing extra verification.
+\end{enumerate}
+
+Specifically, the the region used to create the population of agents
+
+\hypertarget{activitysim-setup}{%
+\subsection{ActivitySim Setup}\label{activitysim-setup}}
+
+\hypertarget{beam-setup}{%
+\subsection{BEAM Setup}\label{beam-setup}}
+
+\hypertarget{mbeam}{%
+\section{Additions to BEAM}\label{mbeam}}
+
+\hypertarget{purpose-based-decisions}{%
+\subsection{Purpose-based Decisions}\label{purpose-based-decisions}}
+
+\hypertarget{additional-attributes-in-utility-equation}{%
+\subsection{Additional Attributes in Utility Equation}\label{additional-attributes-in-utility-equation}}
+
+\hypertarget{carpool-alternatives}{%
+\subsection{Carpool Alternatives}\label{carpool-alternatives}}
+
+\hypertarget{mode-choice-algorithms}{%
+\section{Mode Choice Algorithms}\label{mode-choice-algorithms}}
+
+\begin{algorithm}
+\caption{Algorithm for Selecting Final Modal Alternative in BEAM}
+\begin{algorithmic}[1]
+\Require
+\State $i : origin$
+\State $j : destination$
+\State $n: agent$
+\State $N: population$
+\State $t : trip $
+\State $P : plan$
+\State $\vec{A}: attributes\:of\:agent$
+\State $a: attribute\:value$
+\State $\vec{M}(i,j) : Modal\:alternatives$
+\State $m : alternative \in M(i,j)$
+\State $\vec{U}(\vec{M}(i,j),\vec{A}):Utilities\:for\:alternatives$
+\State $u: utility \in \vec{U}(\vec{M}(i,j),\vec{A})$
+\State $\vec{c}: attribute\:coefficients$
+\State $\mathds{P}: probability$
+\State $Mode: chosen\:mode\:for\:agent\:(n)\:on\:trip\:(t)$
+\State $f(\vec{X}):$
+This function takes a vector of modes and  their probabilities of being chosen. With those probabilities it builds them into a cumulative distribution function, generates a random number and then drops the mode with the closest probability. This process continues until only one mode is left.
+\vspace{4pt}\hrule\vspace{5pt}
+
+\State $\vec{M} \equiv \vec{M}(i,j)$
+\State $\vec{U} \equiv \vec{U}(\vec{M},\vec{A})$
+\For {$n \in N$}
+\For {$t \in P$}
+\Procedure {DetermineFinalModalAlternative}{$\vec{M}$, $\vec{A}$, $\vec{c}$}
+\For {$m \in \vec{M}$}
+  \State $u \gets \sum_{a\in \vec{A}} a \times c_a$
+  \State $\vec{U} += [m,u]$
+\EndFor
+\State $S \gets \sum_{u\in \vec{U}}e^u$
+\For {$u \in \vec{U}$}
+    \State $\mathds{P}(u)\gets e^u / S$
+    \State $\vec{B} +=[m, \mathds{P}(u)]$
+\EndFor 
+
+\State $Mode \gets f(\vec{B})$
+
+\EndProcedure
+
+\EndFor
+\EndFor
+\Statex
+\end{algorithmic}
+\end{algorithm}
+
+\hypertarget{data-and-calibration}{%
+\section{Data and Calibration}\label{data-and-calibration}}
+
+\hypertarget{path-person-and-location-analysis}{%
+\section{Path, Person, and Location Analysis}\label{path-person-and-location-analysis}}
+
 \hypertarget{results}{%
 \chapter{Results}\label{results}}
 
@@ -961,6 +1092,9 @@ Hörl, Sebastian, Milos Balac, and Kay W Axhausen. 2018. {``A First Look at Brid
 
 \leavevmode\vadjust pre{\hypertarget{ref-horl19}{}}%
 Hörl, Sebastian, Miloš Balać, and Kay W Axhausen. 2019. {``Pairing Discrete Mode Choice Models and Agent-Based Transport Simulation with MATSim.''} In \emph{2019 TRB Annual Meeting Online}, 19--02409. Transportation Research Board.
+
+\leavevmode\vadjust pre{\hypertarget{ref-nate}{}}%
+Lant, Nathan John. 2021. {``Estimation and Simulation of Daily Activity Patterns for Individuals Using Wheelchairs.''} PhD thesis, Brigham Young University.
 
 \leavevmode\vadjust pre{\hypertarget{ref-manski2001}{}}%
 Manski, Charles F. 2001. {``Daniel McFadden and the Econometric Analysis of Discrete Choice.''} \emph{The Scandinavian Journal of Economics} 103 (2): 217--29.

@@ -1,1 +1,137 @@
+---
+header-includes:
+  - \usepackage{algorithm}
+  - \usepackage{algpseudocode}
+  - \usepackage{dsfont}
+---
+
 # Methods
+
+## Overview
+A systematic approach to determine the effects of a consistent mode choice model between an activity-based model and a microsimulation tool requires two main steps. The first step involves creating a test scenario that runs within the activity-based model ActivitySim and the microsimulation tool BEAM. Section \@ref(mscen) explains this step including how the test scenario was created and how ActivitySim and BEAM were configured. The second step involves adjusting the internal code of BEAM to align the mode choice model with that of ActivitySim's. Section \@ref(mbeam) explains the details behind the changes made to BEAM's default mode choice model to align more closely with that of ActivitySim's.
+
+## Creating the Scenario  {#mscen}
+Designing a test scenario to use within ActivitySim and BEAM was essential to understanding and testing mode choice between models. This section explains the region that was used to model the test scenario. This section also explains how the input files needed to run both ActivitySim and BEAM were generated for the test scenario.
+
+### Test Scenario Region
+The test scenario used in this research includes the approximate 2.5 million agents of the Salt Lake City, Utah, USA region. This region includes the Box Elder, Davis, Salt Lake, Utah, and Weber counties. Figure \@ref(figregion) shows the 2881 Traffic Analysis Zones (TAZs) along with the five counties that make up the region of study. 
+```{r, include = FALSE}
+library(sf)
+library(tidyverse)
+library(cowplot)
+sf_use_s2(FALSE)
+
+geo <- st_read('https://raw.githubusercontent.com/byu-transpolab/populationsim_wfrc/master/inputs/taz.geojson') %>%
+  st_transform(crs = 4326) %>%
+  filter(CO_FIPS != 0)
+utah <- st_read("data/Utah_State_Boundary-shp/Utah.shp") %>%
+  st_transform(crs = 4326) %>%
+  head(1)
+
+map1 <- ggplot() + 
+  geom_sf(data = geo, mapping = aes(color = factor(CO_FIPS))) +
+  scale_color_brewer(labels = c("Box Elder", "Davis", "Salt Lake", "Utah", "Weber"), palette = "Dark2") +
+  theme_bw() +
+  guides(color=guide_legend("County")) + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+map2 <- ggplot() +
+  geom_sf(data = utah, fill = "white") +
+  coord_sf(xlim = c(-115, -108.25), ylim = c(36.4, 42.5), expand = FALSE) +
+  theme_void() + 
+  annotate(geom = "rect", ymax = 41.4, ymin = 39.9, xmax = -112.3, xmin = -111.4, colour = "red", fill = NA)
+
+#library(leaflet)
+#leaflet(geo, options = leafletOptions(zoomControl = FALSE, zoomSnap = 0.1, #zoomDelta = 0.1)) %>%
+#  addProviderTiles(providers$OpenStreetMap) %>%
+#  setView(lng = -112.3, lat = 40.7, zoom = 7.5) %>%
+#  addPolylines(weight = .35, color = "blue")
+```
+
+```{r figregion, fig.cap='The TAZs of the region of study.', out.width = '80%', echo = FALSE, warning = FALSE, message = FALSE, results = 'hide', fig.align='center'}
+ggdraw() + 
+  draw_plot(map1) + 
+  draw_plot(map2, x = 0.025, y = 0.65, width = 0.3, height = 0.3) + 
+  theme_bw()
+```
+
+This extensive region was selected for the following reasons:
+
+  1. There is substantial data that exists for this region. Having sufficient data points for each of the TAZs was essential to creating the inputs to ActivitySim and BEAM. The majority of the data used for this research was gathered and shared by Wasatch Front Regional Council (WFRC), the Metropolitan Planning Organization (MPO) of Salt Lake county. 
+  2. There currently exists a need to analyze this region with a microsimulation tool, such as BEAM. Specifically, the Utah Transit Authority (UTA) wishes to understand what specific sub regions in the Salk Lake area will best serve new on-demand transit vehicles. In some future research, this specific question will be answered. Along this this question, having a microsimulation model of a region will prove to be an effective method to answering multiple transportation service questions in the future. To date, only one previous analysis of this region has been conducted with the BEAM software [@nate].
+  3. The project researches live in this region, and therefore have real life knowledge of how transportation works in the region. This allows the researchers to compare the the results of the models with their own experiences, hopefully providing extra verification.
+  
+Specifically, the the region used to create the population of agents 
+ 
+### ActivitySim Setup
+
+### BEAM Setup
+
+
+## Additions to BEAM {#mbeam}
+
+### Purpose-based Decisions
+
+### Additional Attributes in Utility Equation
+
+### Carpool Alternatives 
+
+## Mode Choice Algorithms
+
+\begin{algorithm}
+\caption{Algorithm for Selecting Final Modal Alternative in BEAM}
+\begin{algorithmic}[1]
+\Require
+\State $i : origin$
+\State $j : destination$
+\State $n: agent$
+\State $N: population$
+\State $t : trip $
+\State $P : plan$
+\State $\vec{A}: attributes\:of\:agent$
+\State $a: attribute\:value$
+\State $\vec{M}(i,j) : Modal\:alternatives$
+\State $m : alternative \in M(i,j)$
+\State $\vec{U}(\vec{M}(i,j),\vec{A}):Utilities\:for\:alternatives$
+\State $u: utility \in \vec{U}(\vec{M}(i,j),\vec{A})$
+\State $\vec{c}: attribute\:coefficients$
+\State $\mathds{P}: probability$
+\State $Mode: chosen\:mode\:for\:agent\:(n)\:on\:trip\:(t)$
+\State $f(\vec{X}):$
+This function takes a vector of modes and  their probabilities of being chosen. With those probabilities it builds them into a cumulative distribution function, generates a random number and then drops the mode with the closest probability. This process continues until only one mode is left.
+\vspace{4pt}\hrule\vspace{5pt}
+
+\State $\vec{M} \equiv \vec{M}(i,j)$
+\State $\vec{U} \equiv \vec{U}(\vec{M},\vec{A})$
+\For {$n \in N$}
+\For {$t \in P$}
+\Procedure {DetermineFinalModalAlternative}{$\vec{M}$, $\vec{A}$, $\vec{c}$}
+\For {$m \in \vec{M}$}
+  \State $u \gets \sum_{a\in \vec{A}} a \times c_a$
+  \State $\vec{U} += [m,u]$
+\EndFor
+\State $S \gets \sum_{u\in \vec{U}}e^u$
+\For {$u \in \vec{U}$}
+    \State $\mathds{P}(u)\gets e^u / S$
+    \State $\vec{B} +=[m, \mathds{P}(u)]$
+\EndFor 
+
+\State $Mode \gets f(\vec{B})$
+
+\EndProcedure
+
+\EndFor
+\EndFor
+\Statex
+\end{algorithmic}
+\end{algorithm}
+
+## Data and Calibration
+
+## Path, Person, and Location Analysis
+
+
+
+
+
+

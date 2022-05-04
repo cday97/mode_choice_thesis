@@ -1,51 +1,67 @@
 \contentsline {chapter}{Title Page}{i}{section*.1}%
 \contentsline {chapter}{Abstract}{ii}{section*.2}%
 \contentsline {chapter}{Table of Contents}{iii}{section*.3}%
-\contentsline {chapter}{List of Tables}{v}{section*.5}%
-\contentsline {chapter}{List of Figures}{vi}{section*.7}%
+\contentsline {chapter}{List of Tables}{vi}{section*.5}%
+\contentsline {chapter}{List of Figures}{vii}{section*.7}%
 \contentsline {chapter}{\numberline {1}Outline}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Introduction}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Problem Statement}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Purpose of Research}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Outline of Research}{3}{section.2.3}%
 \contentsline {chapter}{\numberline {3}Literature Review}{4}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Mode Choice in the Four Step Model}{4}{section.3.1}%
-\contentsline {section}{\numberline {3.2}A Brief History of Mode Choice in Discrete Choice Models}{5}{section.3.2}%
-\contentsline {section}{\numberline {3.3}An Extensive Look into Mode Choice in Activity-Based Models}{6}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Simplified main tour model}{8}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Two-tier nested logit model}{8}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Simplified main tour mode and conditional trip-level mode}{9}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}An activity-based model with exogenous mode choice}{10}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Simulation-based tour-based mode choice}{10}{subsection.3.3.5}%
-\contentsline {subsection}{\numberline {3.3.6}Combinatorial tour-based mode choice}{11}{subsection.3.3.6}%
-\contentsline {subsection}{\numberline {3.3.7}Dynamic tour-based mode choice}{11}{subsection.3.3.7}%
-\contentsline {section}{\numberline {3.4}The Mode Choice Models used in ActivitySim}{12}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}ActivitySim's Tour Mode Choice Model}{13}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}ActivitySim's Tour Mode Choice Utility Functions}{14}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}ActivitySim's Trip Mode Choice Model}{17}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}ActivitySim's Trip Mode Choice Utility Functions}{18}{subsection.3.4.4}%
-\contentsline {section}{\numberline {3.5}The Mode Choice Models used in Agent-based Models}{21}{section.3.5}%
-\contentsline {section}{\numberline {3.6}The Mode Choice Model used in MATSim}{21}{section.3.6}%
-\contentsline {section}{\numberline {3.7}The Mode Choice Model used in BEAM}{22}{section.3.7}%
-\contentsline {section}{\numberline {3.8}Previous Attempts to Enhance Mode Choice in Agent-based Models}{24}{section.3.8}%
-\contentsline {section}{\numberline {3.9}Mode Choice Consistency between ActivitySim and BEAM}{26}{section.3.9}%
+\contentsline {section}{\numberline {3.1}Overview}{4}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Mode Choice in the Four Step Model}{4}{section.3.2}%
+\contentsline {section}{\numberline {3.3}A Brief History of Mode Choice in Discrete Choice Models}{5}{section.3.3}%
+\contentsline {section}{\numberline {3.4}An Extensive Look into Mode Choice in Activity-Based Models}{6}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Simplified main tour model}{8}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Two-tier nested logit model}{9}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Simplified main tour mode and conditional trip-level mode}{9}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}An activity-based model with exogenous mode choice}{10}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Simulation-based tour-based mode choice}{10}{subsection.3.4.5}%
+\contentsline {subsection}{\numberline {3.4.6}Combinatorial tour-based mode choice}{11}{subsection.3.4.6}%
+\contentsline {subsection}{\numberline {3.4.7}Dynamic tour-based mode choice}{11}{subsection.3.4.7}%
+\contentsline {section}{\numberline {3.5}The Mode Choice Models used in ActivitySim}{12}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}ActivitySim's Tour Mode Choice Model}{13}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}ActivitySim's Tour Mode Choice Utility Functions}{14}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}ActivitySim's Trip Mode Choice Model}{17}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}ActivitySim's Trip Mode Choice Utility Functions}{18}{subsection.3.5.4}%
+\contentsline {section}{\numberline {3.6}The Mode Choice Models used in Agent-based Models}{21}{section.3.6}%
+\contentsline {section}{\numberline {3.7}The Mode Choice Model used in MATSim}{21}{section.3.7}%
+\contentsline {section}{\numberline {3.8}The Mode Choice Model used in BEAM}{22}{section.3.8}%
+\contentsline {section}{\numberline {3.9}Previous Attempts to Enhance Mode Choice in Agent-based Models}{24}{section.3.9}%
+\contentsline {section}{\numberline {3.10}Mode Choice Consistency between ActivitySim and BEAM}{26}{section.3.10}%
 \contentsline {chapter}{\numberline {4}Methods}{28}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Results}{29}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Discussion}{30}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusions}{31}{chapter.7}%
-\contentsline {chapter}{\numberline {8}About}{32}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Usage}{32}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Render book}{32}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Preview book}{33}{section.8.3}%
-\contentsline {chapter}{\numberline {9}Cross-references}{34}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Chapters and sub-chapters}{34}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Captioned figures and tables}{34}{section.9.2}%
-\contentsline {chapter}{\numberline {10}Parts}{37}{chapter.10}%
-\contentsline {chapter}{\numberline {11}Footnotes and citations}{38}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Footnotes}{38}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Citations}{38}{section.11.2}%
-\contentsline {chapter}{\numberline {12}Blocks}{39}{chapter.12}%
-\contentsline {section}{\numberline {12.1}Equations}{39}{section.12.1}%
-\contentsline {section}{\numberline {12.2}Callout blocks}{39}{section.12.2}%
-\contentsline {chapter}{\numberline {13}Sharing your book}{40}{chapter.13}%
-\contentsline {section}{\numberline {13.1}Publishing}{40}{section.13.1}%
-\contentsline {section}{\numberline {13.2}404 pages}{40}{section.13.2}%
-\contentsline {section}{\numberline {13.3}Metadata for sharing}{40}{section.13.3}%
-\contentsline {chapter}{References}{42}{section*.14}%
+\contentsline {section}{\numberline {4.1}Overview}{28}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Creating the Scenario}{28}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Test Scenario Region}{29}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}ActivitySim Setup}{30}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}BEAM Setup}{30}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Additions to BEAM}{30}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Purpose-based Decisions}{30}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Additional Attributes in Utility Equation}{30}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Carpool Alternatives}{30}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Mode Choice Algorithms}{30}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Data and Calibration}{30}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Path, Person, and Location Analysis}{30}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Results}{32}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Discussion}{33}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusions}{34}{chapter.7}%
+\contentsline {chapter}{\numberline {8}About}{35}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Usage}{35}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Render book}{35}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Preview book}{36}{section.8.3}%
+\contentsline {chapter}{\numberline {9}Cross-references}{37}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Chapters and sub-chapters}{37}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Captioned figures and tables}{37}{section.9.2}%
+\contentsline {chapter}{\numberline {10}Parts}{40}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Footnotes and citations}{41}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Footnotes}{41}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Citations}{41}{section.11.2}%
+\contentsline {chapter}{\numberline {12}Blocks}{42}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Equations}{42}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Callout blocks}{42}{section.12.2}%
+\contentsline {chapter}{\numberline {13}Sharing your book}{43}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Publishing}{43}{section.13.1}%
+\contentsline {section}{\numberline {13.2}404 pages}{43}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Metadata for sharing}{43}{section.13.3}%
+\contentsline {chapter}{References}{45}{section*.15}%

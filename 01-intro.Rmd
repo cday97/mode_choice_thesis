@@ -42,6 +42,13 @@ Here is my outline for the entire thesis. Hopefully this will give me a rough id
 
 # Introduction 
 
+In the intro talk about the tscore setup, along with the desire to understand on-demand transit vehicles. Talk about how a consistent mc will help better model these on demand transit vehicles.
+
+## Problem Statement
+
+## Purpose of Research
+
+## Outline of Research
 
 
 

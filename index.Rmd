@@ -1,4 +1,5 @@
 ---
+always_allow_html: yes
 title: |
   | Determining the significance of a consistent mode choice between activity-based models and agent-based microsimulation tools
 # Your thesis title should be inverted pyramid-shaped, with the longest
