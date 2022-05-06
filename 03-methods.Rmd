@@ -5,20 +5,27 @@ header-includes:
   - \usepackage{dsfont}
 ---
 
+```{r, include = FALSE}
+library(tidyverse)
+```
+
 # Methods
 
 ## Overview
-A systematic approach to determine the effects of a consistent mode choice model between an activity-based model and a microsimulation tool requires two main steps. The first step involves creating a test scenario that runs within the activity-based model ActivitySim and the microsimulation tool BEAM. Section \@ref(mscen) explains this step including how the test scenario was created and how ActivitySim and BEAM were configured. The second step involves adjusting the internal code of BEAM to align the mode choice model with that of ActivitySim's. Section \@ref(mbeam) explains the details behind the changes made to BEAM's default mode choice model to align more closely with that of ActivitySim's.
+A systematic approach to determine the effects of a consistent mode choice model between an activity-based model and a microsimulation tool requires [*4*] two main steps. The first step involves creating a test scenario that runs within the activity-based model ActivitySim and the microsimulation tool BEAM. Section \@ref(mscen) explains this step including how the test scenario was created and how ActivitySim and BEAM were configured. The second step involves adjusting the internal code of BEAM to align the mode choice model with that of ActivitySim's. Section \@ref(mbeam) explains the details behind the changes made to BEAM's default mode choice model to align more closely with that of ActivitySim's.
+*third step is calibrate. 4th is compare*
 
-## Creating the Scenario  {#mscen}
+## Creating and Setting up the Test Scenario  {#mscen}
 Designing a test scenario to use within ActivitySim and BEAM was essential to understanding and testing mode choice between models. This section explains the region that was used to model the test scenario. This section also explains how the input files needed to run both ActivitySim and BEAM were generated for the test scenario.
 
 ### Test Scenario Region
-The test scenario used in this research includes the approximate 2.5 million agents of the Salt Lake City, Utah, USA region. This region includes the Box Elder, Davis, Salt Lake, Utah, and Weber counties. Figure \@ref(figregion) shows the 2881 Traffic Analysis Zones (TAZs) along with the five counties that make up the region of study. 
-```{r, include = FALSE}
+The test scenario used in this research includes the approximate 2.5 million agents of the Salt Lake City, Utah, USA region. This region includes the Box Elder, Davis, Salt Lake, Utah, and Weber counties. Figure \@ref(fig:figregion) shows the 2881 Traffic Analysis Zones (TAZs) along with the five counties that make up the region of study. 
+
+```{r, include = FALSE, eval = FALSE}
 library(sf)
 library(tidyverse)
 library(cowplot)
+library(ggspatial)
 sf_use_s2(FALSE)
 
 geo <- st_read('https://raw.githubusercontent.com/byu-transpolab/populationsim_wfrc/master/inputs/taz.geojson') %>%
@@ -29,6 +36,7 @@ utah <- st_read("data/Utah_State_Boundary-shp/Utah.shp") %>%
   head(1)
 
 map1 <- ggplot() + 
+  annotation_map_tile() +
   geom_sf(data = geo, mapping = aes(color = factor(CO_FIPS))) +
   scale_color_brewer(labels = c("Box Elder", "Davis", "Salt Lake", "Utah", "Weber"), palette = "Dark2") +
   theme_bw() +
@@ -40,15 +48,9 @@ map2 <- ggplot() +
   coord_sf(xlim = c(-115, -108.25), ylim = c(36.4, 42.5), expand = FALSE) +
   theme_void() + 
   annotate(geom = "rect", ymax = 41.4, ymin = 39.9, xmax = -112.3, xmin = -111.4, colour = "red", fill = NA)
-
-#library(leaflet)
-#leaflet(geo, options = leafletOptions(zoomControl = FALSE, zoomSnap = 0.1, #zoomDelta = 0.1)) %>%
-#  addProviderTiles(providers$OpenStreetMap) %>%
-#  setView(lng = -112.3, lat = 40.7, zoom = 7.5) %>%
-#  addPolylines(weight = .35, color = "blue")
 ```
 
-```{r figregion, fig.cap='The TAZs of the region of study.', out.width = '80%', echo = FALSE, warning = FALSE, message = FALSE, results = 'hide', fig.align='center'}
+```{r figregion, fig.cap='The TAZs of the region of study.', out.width = '100%', echo = FALSE, warning = FALSE, message = FALSE, results = 'hide', fig.align='center', eval=FALSE}
 ggdraw() + 
   draw_plot(map1) + 
   draw_plot(map2, x = 0.025, y = 0.65, width = 0.3, height = 0.3) + 
@@ -59,14 +61,118 @@ This extensive region was selected for the following reasons:
 
   1. There is substantial data that exists for this region. Having sufficient data points for each of the TAZs was essential to creating the inputs to ActivitySim and BEAM. The majority of the data used for this research was gathered and shared by Wasatch Front Regional Council (WFRC), the Metropolitan Planning Organization (MPO) of Salt Lake county. 
   2. There currently exists a need to analyze this region with a microsimulation tool, such as BEAM. Specifically, the Utah Transit Authority (UTA) wishes to understand what specific sub regions in the Salk Lake area will best serve new on-demand transit vehicles. In some future research, this specific question will be answered. Along this this question, having a microsimulation model of a region will prove to be an effective method to answering multiple transportation service questions in the future. To date, only one previous analysis of this region has been conducted with the BEAM software [@nate].
-  3. The project researches live in this region, and therefore have real life knowledge of how transportation works in the region. This allows the researchers to compare the the results of the models with their own experiences, hopefully providing extra verification.
+  3. The size and population within the study area are comparable to other regions around the United States. This means that the work completed in this research may be useful to other cities besides Salt Lake City.
+  4. The project researchers live in this region, and therefore have real life knowledge of how transportation works in the region. This allows the researchers to compare the the results of the models with their own experiences, hopefully providing extra verification.
   
-Specifically, the the region used to create the population of agents 
+Overall, the Salt Lake City, Utah region proved to be an effective location for this mode choice analysis research. After selecting the region of study, the next steps involved seting up and running ActivitySim. 
  
-### ActivitySim Setup
+### Setting up and Running ActivitySim
+Setting up and running ActivitySim for the Salt Lake region was an arduous task. The entire process for setting up the activity-based model for this region is explained in the research done by @nate. The research done by @nate was the basis to the work completed in this project.
 
-### BEAM Setup
+However, a brief explanation of the setup of the activity-based model is explained in Section \@ref(asiminput). The two main steps behind creating an activity-based mode for the Salt Lake region was creating corresponding input files and calibrating and validating the results.
 
+#### Creating Input Files {#asiminput}
+ActivitySim requires the following three input files in order to run:
+
+  - A synthetic population of the agents within the study area.
+  - A zonal socioeconomic data file describing the characteristics of each zone.
+  - A set of skims that describe the cost and travel times of all modes between all zones.
+
+The synthetic population is used to generate an entire population with specific individual details for each agent (like gender, age, income, vehicle ownership). Gathering individual information for all the agents in the region may be considered an invasion of privacy. So instead a synthetic population is used. The synthetic population is a generated population with specific individual attributes that add up to the regional characteristics as a whole. The synthetic population was generated using a software called PopulationSim [@popsim]. To run PopulationSim a "seed" table and a set of "targets" were used. The "seed" table represented information about a subset of the population and the set of "targets" represented demographic data for smaller areas within the region [@nate]. Together, PopulationSim was able to simulate individual attributes for the approximate 2.5 million agents in the Salt Lake region.
+
+The zonal socioeconomic data file stores zonal characteristics regarding household information, worker information, and other activity type information. This file specifically gives information on what types and how many types of activities may be found within a certain zonal region. This file was created using data from WFRC, Utah Automated Geographic Reference Center [@agrc], and the synthetic population when necessary.
+
+The third input to ActivitySim is detailed travel skims. Skims are large matrices showing travel times and costs between every set of zones within the area of study. Included in these skims were further details regarding differences in modes, distances, wait times, etc. [@nate]. The existing skims from WFRC were used along with some slight adjustments to fit the ActivitySim model. 
+
+#### Calibration and Validation {#asimcal}
+The calibration and validation of ActivitySim was conducted by @nate. The purpose of the calibration and validation was to ensure the outputs generated by ActivitySim matched target regional values. Specifically trip productions, trip distributions, and mode choices were tested to match the given target values from WFRC's four-step model. 
+
+To validate the trip productions, total trips per county were compared between ActivitySim and WFRC target values. These trips were close to identical, with only a variation of 1.0 percent. The trip distributions were compared as well, with about a 4.0 percent margin of error. Overall, @nate shows that the trip productions and distributions of the ActivitySim model were a good representation of travel behavior, requiring no calibration.
+
+The mode choice validation was difficult as the mode choice categories between WFRC and ActivitySim are vastly different. ActivitySim considers five trip mode choice alternatives whereas the WFRC model considers 10 trip mode choice alternatives. However, ActivitySim does include 10 tour mode choice alternatives. When comparing mode choice distributions, both the trip and tour distributions from ActivitySim were compared with the trip distributions of WFRC. @nate performs an in depth comparison between these values and found that ActivitySim underrepresents non-motorized university trips and overrepresents non-motorized work trips. In addition ActivitySim underrepresents shared ride trips for all tour purposes and  does not accurately represent commuter rail and local bus trips for all tour purposes. overall, the mode choice model did not match closely with the WFRC targets, and required further calibration. 
+
+@nate performed an in depth calibration across ActivitySim modes to minimize error with the WFRC target shares. The calibration process will not be explained in this research paper however. Upon calibration, trip productions and distributions remained relatively unchanged, and therefore needed no calibration. Mode choice distributions were closer to target values as well. Overall, after some calibration the results of ActivitySim produced sufficiently accurate information to move forward with the research.
+
+### Setting up BEAM
+After setting up, calibrating, and running the ActivitySim scenario for the Salt Lake region, the next step was setting up BEAM using the results of the ActivitySim model. BEAM requires a variety of input files, most of which are as follows:
+
+  - A person population and corresponding person attributes files.
+  - A household population with household attributes file and a vehicle fleet file.
+  - Vehicle types files explaining different person vehicle types, public transit vehicle types, and ride hailing vehicle information.
+  - Transportation services including a mapable street network and a file including General Transit Feed Specification (GTFS) transit information.
+  - Other minor input files.
+  
+The BEAM input files were directly creating using the generate_beam_plans.py python script ActivitySim add on. This script was developed by the developers at Lawrence Berkeley National Lab, and allows easy csv formatted input files to BEAM. The details behind these input files along with example tables of these files are discussed and shown in the following subsections.
+
+#### Population File
+The population file was created from the ActivitySim generated data. ActivitySim's main purpose is to generate daily activity patterns (DAPs) for each agent from the synthetic population. The DAPs generated by ActivitySim consists of all the activities that each agent within the population embark on during the day. Using the activity types, activity locations, activity durations, mode choices, departure and arrival times, and overall activity data, BEAM generated a population file along with a person attributes file. 
+
+The population file generated by the BEAM ActivitySim add-on code created a csv file describing all the events and choices each agent embarks on during the plan. For example, the plans file defines each agents home location, their activity locations, their travel and activity times, their mode choices for each trip, etc. A subsection of this file is shown in Table \@ref(tab:plans) to provide an example of some of its contents.
+
+```{r plans, echo = FALSE, warning = FALSE, message = FALSE}
+plans <- read_csv("data/plans_new.csv")%>% head(15) %>%
+  select(-planIndex,-planElementType, -planElementIndex) %>%
+  rename(ID = personId, Mode = legMode, Type = activityType, "End Time" = activityEndTime, Purpose = primaryPurpose, "Household ID" = householdId, LocaitonX = activityLocationX, LocaitonY = activityLocationY)
+  
+knitr::kable(plans, caption = 'A Subset of the Population Plans', booktabs = TRUE)
+```
+
+The person attributes file describes individual characteristics such as income, gender, age, vehicle ownership, etc. A subsection of this file is shown in Table \@ref(tab:peratt) to provide an example of some of its contents.
+
+```{r peratt, echo = FALSE, warning = FALSE, message = FALSE}
+personatt <- read_csv("data/persons.csv")%>% head(15) %>%
+  select(-isFemale,-auto_ownership,-locationX,-locationY,-num_workers) %>%
+  rename(ID = personId,"Household ID"=householdId,Age=age,Sex=sex,VOT=valueOfTime,Income=income,"Household Size" = hhsize, "Auto Work Ratio" = autoWorkRatio)
+
+knitr::kable(personatt, caption = 'A Subset of the Person Attributes File', booktabs = TRUE)
+```
+
+#### Household and Vehicle Files
+The household and vehicle files were generated using the same code to generate the population files. ActivitySim generates three specific files: a households, persons, and trips file. The persons and trips files were used to construct the population plans file. The households file, however, was used to generate both the household and vehicle BEAM input files. 
+
+Within the BEAM households file, information such as household income, vehicle ownership, and the IDs of the agents and vehicles that correspond to each household ID is provided. Unfortunately, ActivitySim does not generate household coordinate locations, but does provide the TAZ in which the house presides. Therefore, the generate_beam_plans.py code designed by the BEAM developers assigns a random coordinate within the TAZ to each house. This household coordinate is then used to simulate starting and ending locations for each agent within their population plans file. An example of a subset of the households file that is used as an input to BEAM is shown in Table \@ref(tab:house).
+
+```{r house, echo = FALSE, warning = FALSE, message = FALSE}
+house <- read_csv("data/households.csv") %>% head(15) %>% filter(incomeValue != -8) %>%
+  select(-auto_ownership,-num_workers) %>%
+  rename("Household ID"= householdId, Income=incomeValue,"Household Size" = hhsize, "Auto Work Ratio" = autoWorkRatio, LocationX = locationX, LocationY=locationY)
+
+knitr::kable(house, caption = 'A Subset of the Households File', booktabs = TRUE)
+```
+
+The vehicles file is quite simple in that it only includes information on the vehicle ID, vehicle type, and the household the vehicle belongs to. An example of a subset of the vehicles file that is used as an input to BEAM is shown in Table \@ref(tab:veh).
+
+```{r veh, echo = FALSE, warning = FALSE, message = FALSE}
+vehicles <- read_csv("data/vehicles.csv")%>% head(8) %>%
+  rename("Vehicle ID" = vehicleId, "Vehicle Type" = vehicleTypeId, "Household ID" = householdId)
+
+knitr::kable(vehicles, caption = 'A Subset of the Vehicles File', booktabs = TRUE)
+```
+
+#### Vechile Types Files
+In addition to the household and vehicle files, two vehicle type files are also needed to run BEAM. The first describes attributes that relate to each vehicle type. For example, some attributes that are included in the vehicle types file is the fuel efficiency, seating capacity, vehicle length, etc. An example of a subset of the vehicle types file that is used as an input to BEAM is shown in Table \@ref(tab:vehtypes).
+
+```{r vehtypes, echo = FALSE, warning = FALSE, message = FALSE}
+vehicleTypes <- read_csv("data/vehicleTypes_full.csv") %>%
+  select(vehicleTypeId,seatingCapacity,standingRoomCapacity,lengthInMeter,primaryFuelType,vehicleCategory) %>% 
+  rename(ID = vehicleTypeId, Seats = seatingCapacity, "Standing Room" = standingRoomCapacity,"Length (m)" = lengthInMeter, Fuel = primaryFuelType, "Vehicle Type" = vehicleCategory)
+  
+knitr::kable(head(vehicleTypes,16), caption = 'A Subset of the Vehicle Types Input File',booktabs = TRUE)
+```
+
+A secondary vehicle types file exists that describes the nature of the ride hail fleet. One particular advantage to the microsimulation tool BEAM is its ability to model on-demand transit vehicles in a realistic manner. Part of creating realistic ride-hailing services is using an input file describing the nature of the fleet of ride-hail vehicles. An example of a subset of the ride-hail vehicle attributes file that is used as an input to BEAM is shown in Table \@ref(tab:rhveh). For this research project, the ride-hail file used was taken from an example BEAM scenario. In the future however, a ride hailing fleet file that accurately depicts the nature of ride hail vehicles in the Salt Lake region will be used. For this research it was not necessary to include, and so a default file was used instead.
+
+```{r rhveh, echo = FALSE, warning = FALSE, message = FALSE}
+rhveh <- read_csv("data/rideHailFleet.csv") %>% filter(vehicleType != "WAV") %>%  head(15) %>% mutate(id = substring(id,1,22)) %>%
+  select(-rideHailManagerId,-geofenceX,-geofenceY,-geofenceRadius) %>%  rename(ID = id, "Vehicle Type" = vehicleType, "Starting Point X" = initialLocationX, "Starting Point Y" = initialLocationY, "Shift Times" = shifts)
+  
+knitr::kable(rhveh, caption = 'A Subset of the Vehicle Types Input File',booktabs = TRUE)
+```
+
+#### Transportation Services
+
+
+#### Other Input Files
 
 ## Additions to BEAM {#mbeam}
 
@@ -130,7 +236,7 @@ This function takes a vector of modes and  their probabilities of being chosen. 
 
 ## Path, Person, and Location Analysis
 
-
+## Summary
 
 
 

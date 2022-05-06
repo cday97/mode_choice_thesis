@@ -32,36 +32,43 @@
 \contentsline {section}{\numberline {3.10}Mode Choice Consistency between ActivitySim and BEAM}{26}{section.3.10}%
 \contentsline {chapter}{\numberline {4}Methods}{28}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Overview}{28}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Creating the Scenario}{28}{section.4.2}%
+\contentsline {section}{\numberline {4.2}Creating and Setting up the Test Scenario}{28}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Test Scenario Region}{29}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}ActivitySim Setup}{30}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}BEAM Setup}{30}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Additions to BEAM}{30}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Purpose-based Decisions}{30}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Additional Attributes in Utility Equation}{30}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Carpool Alternatives}{30}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Mode Choice Algorithms}{30}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Data and Calibration}{30}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Path, Person, and Location Analysis}{30}{section.4.6}%
-\contentsline {chapter}{\numberline {5}Results}{32}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Discussion}{33}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusions}{34}{chapter.7}%
-\contentsline {chapter}{\numberline {8}About}{35}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Usage}{35}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Render book}{35}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Preview book}{36}{section.8.3}%
-\contentsline {chapter}{\numberline {9}Cross-references}{37}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Chapters and sub-chapters}{37}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Captioned figures and tables}{37}{section.9.2}%
-\contentsline {chapter}{\numberline {10}Parts}{40}{chapter.10}%
-\contentsline {chapter}{\numberline {11}Footnotes and citations}{41}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Footnotes}{41}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Citations}{41}{section.11.2}%
-\contentsline {chapter}{\numberline {12}Blocks}{42}{chapter.12}%
-\contentsline {section}{\numberline {12.1}Equations}{42}{section.12.1}%
-\contentsline {section}{\numberline {12.2}Callout blocks}{42}{section.12.2}%
-\contentsline {chapter}{\numberline {13}Sharing your book}{43}{chapter.13}%
-\contentsline {section}{\numberline {13.1}Publishing}{43}{section.13.1}%
-\contentsline {section}{\numberline {13.2}404 pages}{43}{section.13.2}%
-\contentsline {section}{\numberline {13.3}Metadata for sharing}{43}{section.13.3}%
-\contentsline {chapter}{References}{45}{section*.15}%
+\contentsline {subsection}{\numberline {4.2.2}Setting up and Running ActivitySim}{30}{subsection.4.2.2}%
+\contentsline {subsubsection}{Creating Input Files}{30}{subsubsection*.12}%
+\contentsline {subsubsection}{Calibration and Validation}{31}{subsubsection*.13}%
+\contentsline {subsection}{\numberline {4.2.3}Setting up BEAM}{32}{subsection.4.2.3}%
+\contentsline {subsubsection}{Population File}{32}{subsubsection*.14}%
+\contentsline {subsubsection}{Household and Vehicle Files}{34}{subsubsection*.17}%
+\contentsline {subsubsection}{Vechile Types Files}{35}{subsubsection*.20}%
+\contentsline {subsubsection}{Transportation Services}{37}{subsubsection*.23}%
+\contentsline {subsubsection}{Other Input Files}{37}{subsubsection*.24}%
+\contentsline {section}{\numberline {4.3}Additions to BEAM}{37}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Purpose-based Decisions}{37}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Additional Attributes in Utility Equation}{37}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Carpool Alternatives}{37}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Mode Choice Algorithms}{37}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Data and Calibration}{37}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Path, Person, and Location Analysis}{37}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Results}{39}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Discussion}{40}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusions}{41}{chapter.7}%
+\contentsline {chapter}{\numberline {8}About}{42}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Usage}{42}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Render book}{42}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Preview book}{43}{section.8.3}%
+\contentsline {chapter}{\numberline {9}Cross-references}{44}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Chapters and sub-chapters}{44}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Captioned figures and tables}{44}{section.9.2}%
+\contentsline {chapter}{\numberline {10}Parts}{47}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Footnotes and citations}{48}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Footnotes}{48}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Citations}{48}{section.11.2}%
+\contentsline {chapter}{\numberline {12}Blocks}{49}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Equations}{49}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Callout blocks}{49}{section.12.2}%
+\contentsline {chapter}{\numberline {13}Sharing your book}{50}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Publishing}{50}{section.13.1}%
+\contentsline {section}{\numberline {13.2}404 pages}{50}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Metadata for sharing}{50}{section.13.3}%
+\contentsline {chapter}{References}{52}{section*.27}%

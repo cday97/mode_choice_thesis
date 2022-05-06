@@ -236,7 +236,7 @@ During each iteration, a new plan for the agent is calculated, resulting in diff
 MATSim's mode choice program contrasts greatly from ActivitySim's mode choice model. Various efforts have been proposed to create a more advanced mode choice model system in MATSim. These efforts will be further explained in Section \@ref(lit8). First, Section \@ref(lit7) explores the mode choice model of a different microsimulation tool named BEAM.
 
 ## The Mode Choice Model used in BEAM {#lit7}
-Another microsimulation tool, similar to MATSim, is BEAM. According to @zarwi17, BEAM’s framework is designed to model and forecast the adoption and diffusion of new transportation services. Originally, BEAM implemented a Latent Class Choice Model (LCCM) as the mode choice structure to more accurately model early adopters, imitators, and non-adopters of the new transportation services. BEAM’s user guide, however, explains that the LCCM model is not currently being used, and instead something similar to a nested multinomial logit model is in effect. The observed utility function for the multinomial logit model includes parameters relating to travel time, cost, and a constant term. 
+Another microsimulation tool, similar to MATSim, is BEAM. BEAM stands for Beahvior, Energy, Autonomy, and Mobility and is being developed at the Lawrence Berkely National Laboratory. According to @zarwi17, BEAM’s framework is designed to model and forecast the adoption and diffusion of new transportation services. Originally, BEAM implemented a Latent Class Choice Model (LCCM) as the mode choice structure to more accurately model early adopters, imitators, and non-adopters of the new transportation services. BEAM’s user guide, however, explains that the LCCM model is not currently being used, and instead something similar to a nested multinomial logit model is in effect. The observed utility function for the multinomial logit model includes parameters relating to travel time, cost, and a constant term. 
 
 BEAM's mutlinomial logit model takes in certain parameters and inputs and uses them to probabilistically estimate the likely mode choice for each user in their repsective situation. Mathematically, the observerable utility equation for the simple multinomial logit model in BEAM is shown in Equation \@ref(eq:beammnl). 
 
@@ -291,7 +291,7 @@ We propose to make a consistent mode choice model between an activity-based mode
 
 We aim to better understand the effects of a consistent mode choice model between an activity-based model and a microsimulation tool. We will do this by upgrading the mode choice model in BEAM to be more closely aligned with that of ActivitySim. We will then explore the outputs and compare the effects of the new mode choice model and the original mode choice model. Chapter 4 explains the methodology of how we accomplished this task. 
 
-
+## Summary
 
 
 
