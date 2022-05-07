@@ -248,7 +248,7 @@ BEAM's mutlinomial logit model takes in certain parameters and inputs and uses t
 where
 
   - $j$ is the modal alternative,
-  - $V_j$ is the obervable portion of the utility equation,
+  - $V_j$ is the observable portion of the utility equation,
   - $ASC_j$ is the alternative specific constant, and
   - $\beta_{cost}$, $\beta_{time}$, and $\beta_{xfer}$ are generic coefficients for the cost, time, and number of transfer parameters.
   

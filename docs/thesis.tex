@@ -626,7 +626,7 @@ where
 \item
   \(j\) is the modal alternative,
 \item
-  \(V_j\) is the obervable portion of the utility equation,
+  \(V_j\) is the observable portion of the utility equation,
 \item
   \(ASC_j\) is the alternative specific constant, and
 \item
@@ -681,13 +681,16 @@ We propose to make a consistent mode choice model between an activity-based mode
 
 We aim to better understand the effects of a consistent mode choice model between an activity-based model and a microsimulation tool. We will do this by upgrading the mode choice model in BEAM to be more closely aligned with that of ActivitySim. We will then explore the outputs and compare the effects of the new mode choice model and the original mode choice model. Chapter 4 explains the methodology of how we accomplished this task.
 
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
 \hypertarget{methods}{%
 \chapter{Methods}\label{methods}}
 
 \hypertarget{overview-1}{%
 \section{Overview}\label{overview-1}}
 
-A systematic approach to determine the effects of a consistent mode choice model between an activity-based model and a microsimulation tool requires two main steps. The first step involves creating a test scenario that runs within the activity-based model ActivitySim and the microsimulation tool BEAM. Section \ref{mscen} explains this step including how the test scenario was created and how ActivitySim and BEAM were configured. The second step involves adjusting the internal code of BEAM to align the mode choice model with that of ActivitySim's. Section \ref{mbeam} explains the details behind the changes made to BEAM's default mode choice model to align more closely with that of ActivitySim's.
+A systematic approach to determine the effects of a consistent mode choice model between an activity-based model and a microsimulation tool requires four two main steps. The first step involves creating a test scenario that runs within the activity-based model ActivitySim and the microsimulation tool BEAM. Section \ref{mscen} explains this step including how the test scenario was created and how ActivitySim and BEAM were configured. The second step involves adjusting the internal code of BEAM to align the mode choice model with that of ActivitySim's. Section \ref{mbeam} explains the details behind the changes made to BEAM's default mode choice model to align more closely with that of ActivitySim's. The third step is to calibrate the mode choice utility values within BEAM. Section \ref{mcalib} explains the details behind the calibration of the mode choice parameters. The last step is to compare the modal distributions between different mode choice models, which is explained in Section \ref{mcomp}.
 
 \hypertarget{mscen}{%
 \section{Creating and Setting up the Test Scenario}\label{mscen}}
@@ -698,6 +701,15 @@ Designing a test scenario to use within ActivitySim and BEAM was essential to un
 \subsection{Test Scenario Region}\label{test-scenario-region}}
 
 The test scenario used in this research includes the approximate 2.5 million agents of the Salt Lake City, Utah, USA region. This region includes the Box Elder, Davis, Salt Lake, Utah, and Weber counties. Figure \ref{fig:figregion} shows the 2881 Traffic Analysis Zones (TAZs) along with the five counties that make up the region of study.
+
+\begin{figure}
+
+{\centering \includegraphics[width=480px]{pics/taz} 
+
+}
+
+\caption{The TAZs of each county in the region of study.}\label{fig:figregion}
+\end{figure}
 
 This extensive region was selected for the following reasons:
 
@@ -942,23 +954,23 @@ A secondary vehicle types file exists that describes the nature of the ride hail
 \toprule
 ID & Vehicle Type & Starting Point X & Starting Point Y & Shift Times\\
 \midrule
-rideHailVehicle-033000 & Car & 414692.0 & 4498566 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-012301 & Car & 418969.2 & 4495377 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-035201 & Car & 422864.0 & 4527397 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-031400 & Car & 430458.0 & 4508789 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-030800 & Car & 417063.9 & 4568028 & \{10:25200\};\{25300:80000\}\\
+rideHailVehicle-033000 & Car & 414692.0 & 4498566 & \{10:25200\}\\
+rideHailVehicle-012301 & Car & 418969.2 & 4495377 & \{10:25200\}\\
+rideHailVehicle-035201 & Car & 422864.0 & 4527397 & \{10:25200\}\\
+rideHailVehicle-031400 & Car & 430458.0 & 4508789 & \{10:25200\}\\
+rideHailVehicle-030800 & Car & 417063.9 & 4568028 & \{10:25200\}\\
 \addlinespace
-rideHailVehicle-016300 & Car & 415844.3 & 4544000 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-033100 & Car & 408380.1 & 4550982 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-061500 & Car & 436159.1 & 4474228 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-032601 & Car & 420785.5 & 4484536 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-015500 & Car & 444235.6 & 4452609 & \{10:25200\};\{25300:80000\}\\
+rideHailVehicle-016300 & Car & 415844.3 & 4544000 & \{10:25200\}\\
+rideHailVehicle-033100 & Car & 408380.1 & 4550982 & \{10:25200\}\\
+rideHailVehicle-061500 & Car & 436159.1 & 4474228 & \{10:25200\}\\
+rideHailVehicle-032601 & Car & 420785.5 & 4484536 & \{10:25200\}\\
+rideHailVehicle-015500 & Car & 444235.6 & 4452609 & \{10:25200\}\\
 \addlinespace
-rideHailVehicle-016400 & Car & 410876.3 & 4506167 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-061400 & Car & 414579.1 & 4485811 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-017601 & Car & 411338.4 & 4548806 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-020700 & Car & 446697.0 & 4437390 & \{10:25200\};\{25300:80000\}\\
-rideHailVehicle-010500 & Car & 425560.0 & 4483818 & \{10:25200\};\{25300:80000\}\\
+rideHailVehicle-016400 & Car & 410876.3 & 4506167 & \{10:25200\}\\
+rideHailVehicle-061400 & Car & 414579.1 & 4485811 & \{10:25200\}\\
+rideHailVehicle-017601 & Car & 411338.4 & 4548806 & \{10:25200\}\\
+rideHailVehicle-020700 & Car & 446697.0 & 4437390 & \{10:25200\}\\
+rideHailVehicle-010500 & Car & 425560.0 & 4483818 & \{10:25200\}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -966,23 +978,302 @@ rideHailVehicle-010500 & Car & 425560.0 & 4483818 & \{10:25200\};\{25300:80000\}
 \hypertarget{transportation-services}{%
 \subsubsection{Transportation Services}\label{transportation-services}}
 
+BEAM requires two main files in order to provide transportation services to agents within the simulation. These two files are a GTFS file and a routeable transportation network.
+
+GTFS data is a common format that houses information relating to transportation schedules and transportation locations. Many public agencies publish transportation data in the GTFS format. The GTFS data used as the input to BEAM was obtained from UTA's mobility data feed from 2019 (UTA 2021). BEAM maps the GTFS data onto the highway network allowing agents to use both transportation and highway services interchangeably (Lant 2021).
+
+A detailed routeable road network for the study area was obtained from WFRC's travel demand model. After some manipulation, the network was cleaned of misconnections and filtered to include the correct attributes. Within the network, various attributes such as capacity, free flow speed, number of lanes, functional classification, direction, whether it is a one-way street, etc. were included. The network was constructed from a series of link and node combinations. The nodes represent intersections and activity locations whereas the links represent the roadways that connect each node. The links include the attributes of the network whereas the nodes include the coordinates. A detailed highway network of links and nodes allows BEAM to simulate traffic conditions in a more realistic manner.
+
+Figure \ref{fig:network} displays the roadway network of the region of study. Figure \ref{fig:closent} displays a close up of roadway network system within Salt Lake City, Utah to show significant detail.
+
+\begin{figure}
+
+{\centering \includegraphics[width=480px]{pics/network} 
+
+}
+
+\caption{Transportation network for area of study.}\label{fig:network}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=480px]{pics/smallnetwork} 
+
+}
+
+\caption{Close up of the transportation network of Salt Lake City.}\label{fig:closent}
+\end{figure}
+
 \hypertarget{other-input-files}{%
 \subsubsection{Other Input Files}\label{other-input-files}}
 
+A variety of additional input files can be included to run the BEAM simulation. Not all the files will be mentioned, but a few of them include a configuration file, a parking file, a toll prices file, TAZ specific files, and mode choice utility parameter files. Besides for the mode choice utility parameter files, details about these additional files will not be provided. The details behind the mode choice utility parameter file will be discussed in Section \ref{mbeam}.
+
 \hypertarget{mbeam}{%
-\section{Additions to BEAM}\label{mbeam}}
+\section{Improved Mode Choice in BEAM}\label{mbeam}}
 
-\hypertarget{purpose-based-decisions}{%
-\subsection{Purpose-based Decisions}\label{purpose-based-decisions}}
+After creating the basic input files in order to run BEAM for the Salt Lake region, the next step was adjusting the mode choice model within BEAM itself. As discussed in Section \ref{lit7} BEAM's default mode choice model is a simple multinomial logit model calculated with minimal travel attributes. In Section \ref{lit4} it is discussed that ActivitySim's mode choice model is comprehensive.
 
-\hypertarget{additional-attributes-in-utility-equation}{%
-\subsection{Additional Attributes in Utility Equation}\label{additional-attributes-in-utility-equation}}
+Changing the mode choice model within BEAM to become more consistent with that of ActivitySim's required some major adjustments to BEAM's internal code. Specifically, in this research BEAM's code was changed in three significant ways. Section \ref{purp} describes how choices were changed to be made using activity purpose values, Section \ref{ute} describes how additional attributes were inserted to the utility equation, and Section \ref{pool} describes how new modal alternatives were added to BEAM. Then, in Section\ref{algo} algorithms explaining BEAM's improved mode choice model is presented.
 
-\hypertarget{carpool-alternatives}{%
-\subsection{Carpool Alternatives}\label{carpool-alternatives}}
+\hypertarget{purp}{%
+\subsection{Purpose-based Decisions}\label{purp}}
 
-\hypertarget{mode-choice-algorithms}{%
-\section{Mode Choice Algorithms}\label{mode-choice-algorithms}}
+The first major addition to BEAM's mode choice model to improve consistency with ActivitySim was to base mode choice decisions off of activity purposes. An activity purpose describes the primary activity of trips on a tour. Primary purposes are selected on a tour-based level. For this reason, the primary purpose is also referred to as the tour purpose. For example, if an agent were to go to the gym, then to work, and then return home, each trip on the work tour would have a primary purpose of ``work''. In this paper, tour purpose, primary purpose, activity purpose, and tour type are all used interchangeable to mean the same thing.
+
+ActivitySim's mode choice coefficients vary between ten different tour purposes. These tour purposes are as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  Work
+\item
+  University
+\item
+  School
+\item
+  Escort
+\item
+  Shopping
+\item
+  Eating Out
+\item
+  Social
+\item
+  Other Maintenance
+\item
+  Other Discretionary
+\item
+  At Work
+\end{itemize}
+
+To ensure the ability to distinguish between tour purpose values, it was necessary to adjust the population plans file to include a tour purpose trip-level attribute. Since ActivitySim bases decisions on activity purpose, it was simple to attach the attribute to the BEAM input plans file. As shown in Table \ref{tab:plans} a purpose attribute exists. After assigning this attribute to the plans, the next step was adjusting the BEAM code to read in a new attribute. By adjusting BEAM's CSV scenario reader script, along with other scripts relating to reading inputs, the primary purpose was able to be read into the BEAM software.
+
+Once primary purpose values were present in the population plans, the next step was to design a new mode choice model within BEAM. In order to better understand the new code that was inserted into BEAM, three flow charts were constructed (See Figure \ref{fig:mnlflow}, Figure \ref{fig:lccmflow}, and Figure \ref{fig:tpcmflow}). In these flow charts inputs are displayed as folder icons, Java classes and methods are displayed as rectangles, and the result is displayed as an oval. These flow charts help display the code behind the BEAM's mode choice models. Understanding BEAM's default mode choice model and its obsolete Latent Class Choice Model (LCCM) are useful toward understanding how the new Tour Purpose Choice Model (TPCM) was constructed in the BEAM code.
+
+\hypertarget{multinomial-logit-choice-model}{%
+\subsubsection{Multinomial Logit Choice Model}\label{multinomial-logit-choice-model}}
+
+Figure \ref{fig:mnlflow} shows the process behind BEAM's default mode choice model. As described in Section \ref{lit7}, by default BEAM calculates mode choices using a multinomial logit function with only a few attribute variables. In Figure \ref{fig:mnlflow} the flow of inputs and BEAM functions are shown. As shown, the inputs to the Mode Choice Calculator are the alternatives, person and household attributes, and the destination activity data.
+
+\begin{figure}
+
+{\centering \includegraphics[width=600px]{thesis_files/figure-latex/mnlflow-1} 
+
+}
+
+\caption{BEAM code flow chart behind the default multinomial logit choice model.}\label{fig:mnlflow}
+\end{figure}
+
+The alternatives input represents a set of detailed travel itineraries that the agent can choose from. Within the alternatives variable, travel statistics, travel paths, travel modes, travel times, etc. are included. So as a result, the alternatives variable represents the modes in which the agent can choose from, while also including all the travel statistics needed to calculate the probability of selecting such mode. The next input is the person and household attributes variable. This variable includes all the information from the person attributes input file (See Table \ref{tab:peratt}) and the household attributes file (See Table \ref{tab:house}). Within the household attributes file some information from the vehicle inputs file is also included. The person and household attributes variable is also needed to calculate the probability of selecting such a mode. The last input is the destination activity data. This data simply includes addition information relating to the current trip and the destination activity. It is also useful to calculating the final mode choice.
+
+The alternatives, person and household attributes, and destination activity are fed into the Mode Choice Calculator Java class. The purpose of this class is to organize the mode choice input data and organize it into a manner in which the choice model can process it efficiently. The Mode Choice Calculator class also houses some useful functions in the code used to calculate generalized travel time and the all day utility value.
+
+The organized data from the Mode Choice Calculator along with the multinomial logit utility parameters are then sent to the multinomial logit choice model. The utility parameters in the default BEAM code are simply expressed in the configuration file. For each mode, an intercept, transit occupancy level, and transfer intercept/multiplier is specified. Then, within the multinomial logit choice model the utility value is calculated for each modal alternative. Those utility values are then sampled and one final mode is chosen!
+
+\hypertarget{latent-class-choice-model}{%
+\subsubsection{Latent Class Choice Model}\label{latent-class-choice-model}}
+
+BEAM has an obsolete LCCM within its code structure. When BEAM was first being developed, the LCCM was how modal decisions were made. Part of creating the new Tour Purpose Choice Model was first to recreate and reboot the LCCM and second to change its structure slightly to base decisions off of tour purpose. For this reason, the structure behind the LCCM is presented. Figure \ref{fig:lccmflow} shows the flow of code for the LCCM.
+
+\begin{figure}
+
+{\centering \includegraphics[width=650px]{thesis_files/figure-latex/lccmflow-1} 
+
+}
+
+\caption{BEAM code flow chart behind the latent class choice model.}\label{fig:lccmflow}
+\end{figure}
+
+Just like with the multinomial logit choice model, the same alternatives, person and household attributes, and destination activity inputs are fed into the mode choice calculator. The mode choice calculator then acts in a similar way to organize the data for further analysis. However, an additional step is taken where the information is sent to a Latent Class Choice Model Java class before it is sent to the Multinomial Logit Java class. Within the Latent Class Choice Model Java class, a few things happen. First, the LCCM Utility Parameters data file is read into the code and parsed. After parsing the data, the utility parameters are attached to each alternative and stored.
+
+The LCCM Utility Parameters file includes mode choice coefficients relating to number of cars, household size, income, cost, time, and also alternative specific constants. The interesting part to the LCCM is that it calculates modes based off of which \emph{modality style} a particular agent is a part of. The \emph{modality style} represents the travel behavior of the individual. The LCCM code divides individuals up into one of the six groups or classes based on their \emph{modality style} travel behavior. The LCCM BEAM code provides two incredibly useful structures that are directly related to creating the TPCM. First, it provides a code structure that reads in a csv file storing specific and attribute related utility parameters. Second, it provides a code structure for storing these utility parameters into each alternative based on person/household attributes, travel statistics, and destination activity.
+
+Interestingly enough, after the Latent Class Choice Model Java class reads in the utility information and stores it accordingly, it is sent to the same Multinomial Logit Java class. The overall utility value is calculated for each alternative and then are sampled down to a final mode choice!
+
+\hypertarget{tour-purpose-choice-model}{%
+\subsubsection{Tour Purpose Choice Model}\label{tour-purpose-choice-model}}
+
+As mentioned previously, the TPCM was constructed off of the LCCM within BEAM. This means the first step to creating this model was fixing the LCCM and making the LCCM run correctly. With a few minal code adjustments, and a lot of debugging, the LCCM was brought back to life. The final flow of code for the TPCM is presented in Figure \ref{fig:tpcmflow}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=650px]{thesis_files/figure-latex/tpcmflow-1} 
+
+}
+
+\caption{BEAM code flow chart behind the tour purpose choice model.}\label{fig:tpcmflow}
+\end{figure}
+
+The flow chart shows a very similar choice process as the LCCM, except that an additional input is sent to the Mode Choice Calculator. Obviously, the tour purpose value is necessary for the choice model and is therefore also sent to the Mode Choice Calculator. This input is only available, however, because it was attached to the population plans as explained previously.
+
+In order to create the TPCM, two main steps were taken. First, a Tour Purpose Choice Model Java class was developed, mimicking how the code worked within the Latent Class Choice Model Java class. The TPCM was much more advanced than the LCCM, however, because instead of six classes to choose from there were 10 activity purposes to choose from. In addition, instead of only needing a few travel statistics to do the mode choice, the TPCM included 25 different path, person, and location type variables. The second step toward creating the TPCM was to develop an input csv file that included all the utility parameter values from ActivitySim. These additional attributes used in the utility equation are discussed in Section \ref{ute}.
+
+Overall, the Tour Purpose Choice Model Java class performed similarly to the Latent Class Choice Model Java class. It was able to parse the input utility parameters, attach those values to the alternatives, as well as calculate the travel statistics for all 25 travel variables. To do this, an additional class was built to calculate each of the travel variables. The final mode choice was determined in the same manner as well. These alternatives were sent to the Multinomial Logit Java class where their modal utilities were calculated and sampled. The sampling then determined a final mode choice for each individual.
+
+\hypertarget{ute}{%
+\subsection{Additional Attributes in Utility Equation}\label{ute}}
+
+Equally important to developing the tour purpose choice model code structure within BEAM was to develop a consistent mode choice utility function. As explained in Section \ref{lit4} ActivitySim bases its mode choice off of an abundance of path, person, and location type variables. Therefore, most of these path, person, and location type variables were inserted into the BEAM structure and used to calculate mode choice. The travel statistics for each variable were calculated within the TPCM code and the coefficient and intercept values were included using a csv input file.
+
+The specific values for the coefficients used in the csv input file were taken from MTC (2012). Below, a list of the path, person, and location variables used to calculate the modal utility is shown.
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Path Variables}: Number of Transfers, Vehicle Time, Egress Time, Wait Time, Origin to Transit Proximity, Destination to Transit Proximity, Walking Distance, Biking Distance, and Driving Distance
+\item
+  \emph{Person Variables}: Cost, Age, Household Size, and Vehicle to Worker Ratio
+\item
+  \emph{Location Variables}: Zonal Destination Index and Central Business District
+\end{itemize}
+
+In addition, Table \ref{tab:asimvals} shows a subsection of this input file with only the cost variable coefficients provided. The purpose of showing this table is to help understand how extensive the choice model was. Within the table is is clear to see that variation exists between tour purpose, modal alternative, and variable type. Only three modal alternatives are provided in the table.
+
+\begin{table}
+
+\caption{\label{tab:asimvals}Cost coefficient values for some modes from the utility parameters csv file}
+\centering
+\begin{tabular}[t]{lllllr}
+\toprule
+Variable Type & Variable & Alternative & Units & Tour Purpose & Value\\
+\midrule
+Person & cost & car & util/min & work & -0.026\\
+Person & cost & car & util/min & univ & -0.044\\
+Person & cost & car & util/min & school & -0.044\\
+Person & cost & car & util/min & escort & -0.036\\
+Person & cost & car & util/min & shopping & -0.036\\
+\addlinespace
+Person & cost & car & util/min & eatout & -0.036\\
+Person & cost & car & util/min & othmaint & -0.036\\
+Person & cost & car & util/min & social & -0.036\\
+Person & cost & car & util/min & othdiscr & -0.036\\
+Person & cost & car & util/min & atwork & -0.038\\
+\addlinespace
+Person & cost & ride\_hail & util/min & work & -0.026\\
+Person & cost & ride\_hail & util/min & univ & -0.044\\
+Person & cost & ride\_hail & util/min & school & -0.044\\
+Person & cost & ride\_hail & util/min & escort & -0.036\\
+Person & cost & ride\_hail & util/min & shopping & -0.036\\
+\addlinespace
+Person & cost & ride\_hail & util/min & eatout & -0.036\\
+Person & cost & ride\_hail & util/min & othmaint & -0.036\\
+Person & cost & ride\_hail & util/min & social & -0.036\\
+Person & cost & ride\_hail & util/min & othdiscr & -0.036\\
+Person & cost & ride\_hail & util/min & atwork & -0.038\\
+\addlinespace
+Person & cost & walk\_transit & util/min & work & -0.026\\
+Person & cost & walk\_transit & util/min & univ & -0.044\\
+Person & cost & walk\_transit & util/min & school & -0.044\\
+Person & cost & walk\_transit & util/min & escort & -0.036\\
+Person & cost & walk\_transit & util/min & shopping & -0.036\\
+\addlinespace
+Person & cost & walk\_transit & util/min & eatout & -0.036\\
+Person & cost & walk\_transit & util/min & othmaint & -0.036\\
+Person & cost & walk\_transit & util/min & social & -0.036\\
+Person & cost & walk\_transit & util/min & othdiscr & -0.036\\
+Person & cost & walk\_transit & util/min & atwork & -0.038\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The observable utility equation for the new tour purpose choice model can be divided up into three sub-equations. Equation \eqref{eq:tpcmpath} shows the Path type variable part of the TPCM utility equation. Equation \eqref{eq:tpcmperson} shows the Person type variable part of the TPCM utility equation. Equation \eqref{eq:tpcmloc} shows the Location type variable part of the the TPCM utility equation. The full TPCM utility equation, however, is the combination of path, person, and location type variables, as displayed in Equation \eqref{eq:tpcmall}.
+
+\begin{equation}
+  V_j = \beta_{t_v}(t_v) + \beta_{t_w}(t_w) + \beta_{t_e}(t_e) + \beta_{tr_p}(tr_p) + \beta_{xfer}(xfer) + \beta_{w_{dis}}(w_{dis}) + \\ \beta_{b_{dis}}(b_{dis}) + \beta_{d_{dis}}(d_{dis}) \label{eq:tpcmpath}
+\end{equation}
+
+where
+
+\begin{itemize}
+\tightlist
+\item
+  \(j\) is the modal alternative,
+\item
+  \(t_v\) is the in vehicle travel time (mins),
+\item
+  \(t_w\) is the wait time (mins),
+\item
+  \(t_e\) is the egress time (mins),
+\item
+  \(tr_p\) is the proximity to transit (miles),
+\item
+  \(xfer\) is the number of transfers,
+\item
+  \(w_{dis}\) is the walk distance (miles),
+\item
+  \(b_{dis}\) is the bike distance (miles),
+\item
+  \(d_{dis}\) is the drive distance (miles),
+\item
+  \(\beta_{tr_p}\) differs between origin/destination and length, and
+\item
+  \(\beta_{w_{dis}}\), \(\beta_{b_{dis}}\), and \(\beta_{d_{dis}}\) differ between lengths.
+\item
+  \emph{Note:} All \(\beta\) values differ between mode and tour purpose.
+\end{itemize}
+
+\begin{equation}
+  V_j = ASC_{auto} +  \beta_{c}(c) + \beta_{ag}(ag) \label{eq:tpcmperson}
+\end{equation}
+
+where
+
+\begin{itemize}
+\tightlist
+\item
+  \(j\) is the modal alternative,
+\item
+  \(ASC_{auto}\) is the alternative specific constant that differs between modal alternative and auto ownership dependency,
+\item
+  \(c\) is the cost, and
+\item
+  \(ag\) is the age grouping (if the person is between 0-10 or 16-19 years old).
+\item
+  \emph{Note:} All \(\beta\) values differ between mode and tour purpose.
+\end{itemize}
+
+\begin{equation}
+  V_j = \beta_{zdi}(zdi) + \beta_{cbd}(cbd) \label{eq:tpcmloc}
+\end{equation}
+
+where
+
+\begin{itemize}
+\tightlist
+\item
+  \(j\) is the modal alternative
+\item
+  \(zdi\) is the zonal density index,
+\item
+  \(cbd\) is a classifier for zones labeled as central business district, and
+\item
+  \(\beta_{zdi}\) differs between origin/destination.
+\item
+  \emph{Note:} All \(\beta\) values differ between mode and tour purpose.
+\end{itemize}
+
+\begin{equation}  
+  V_j = Eq:2 + Eq:3 + Eq:4 \label{eq:tpcmall}
+\end{equation}
+
+where
+
+\begin{itemize}
+\tightlist
+\item
+  \(j\) is the modal alternative.
+\end{itemize}
+
+When comparing Equation \eqref{eq:tpcmall} with BEAM's default equation in Equation \eqref{eq:bmnl}, it is clear that multiple more travel variables are used to calculate the utility value. When comparing this Equation \eqref{eq:tpcmall} with the ActivitySim equations in Section \ref{lit4}, most of the same variable are used. By using most of the path, person, and location type variables to calculate the mode choice, the TPCM calculates utility in a consistent manner with ActivitySim. In addition, all utility values differ by tour purpose, making it almost identical to ActivitySim's trip-based mode choice.
+
+It is important to note that BEAM's TPCM was based heavily on ActivitySim's \emph{trip-based} mode choice model. BEAM's internal code is built on a trip-based level. It would have been outside the scope of this project to adjust BEAM's structure to include a tour mode choice model. As a result, the mode choice consistency only exists on the trip-based mode choice level. Hopefully, in the future a consistent tour-based mode choice can be inserted into BEAM as well.
+
+\hypertarget{pool}{%
+\subsection{Carpool Alternatives}\label{pool}}
+
+\hypertarget{algo}{%
+\subsection{Mode Choice Algorithms}\label{algo}}
 
 \begin{algorithm}
 \caption{Algorithm for Selecting Final Modal Alternative in BEAM}
@@ -1032,11 +1323,22 @@ This function takes a vector of modes and  their probabilities of being chosen. 
 \end{algorithmic}
 \end{algorithm}
 
-\hypertarget{data-and-calibration}{%
-\section{Data and Calibration}\label{data-and-calibration}}
+\hypertarget{mcalib}{%
+\section{Data Validation and Calibration}\label{mcalib}}
 
-\hypertarget{path-person-and-location-analysis}{%
-\section{Path, Person, and Location Analysis}\label{path-person-and-location-analysis}}
+\hypertarget{activitysim-path-variable-validation}{%
+\subsection{ActivitySim Path Variable Validation}\label{activitysim-path-variable-validation}}
+
+{[}graphs that compare asim, utah statewide, wfrc, and nchrp{]}
+
+\hypertarget{mode-choice-calibration}{%
+\subsection{Mode Choice Calibration}\label{mode-choice-calibration}}
+
+\hypertarget{mcomp}{%
+\section{Path, Person, and Location Analysis}\label{mcomp}}
+
+\hypertarget{summary-1}{%
+\section{Summary}\label{summary-1}}
 
 \hypertarget{results}{%
 \chapter{Results}\label{results}}
@@ -1380,6 +1682,9 @@ PopulationSim. 2021. \emph{An Open Platform for Population Synthesis} (version V
 
 \leavevmode\vadjust pre{\hypertarget{ref-saleem18}{}}%
 Saleem, Mohammad, Oskar Blom Västberg, and Anders Karlström. 2018. {``An Activity Based Demand Model for Large Scale Simulations.''} \emph{Procedia Computer Science} 130: 920--25.
+
+\leavevmode\vadjust pre{\hypertarget{ref-gtfs}{}}%
+UTA. 2021. {``OpenMobilityData - GTFS.''} Utah Transit Authority. \url{https://transitfeeds.com/p/utah-transportation-authority/59}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-vij13}{}}%
 Vij, Akshay, André Carrel, and Joan L. Walker. 2013. {``Incorporating the Influence of Latent Modal Preferences on Travel Mode Choice Behavior.''} \emph{Transportation Research Part A: Policy and Practice} 54: 164--78. \url{https://doi.org/10.1016/j.tra.2013.07.008}.
