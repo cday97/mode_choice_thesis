@@ -4,26 +4,6 @@ header-includes:
   - \usepackage{algpseudocode}
   - \usepackage{dsfont}
 ---
-\makeatletter
-\newenvironment{breakablealgorithm}
-  {% \begin{breakablealgorithm}
-   \begin{center}
-     \refstepcounter{algorithm}% New algorithm
-     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
-     \renewcommand{\caption}[2][\relax]{% Make a new \caption
-       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
-       \ifx\relax##1\relax % #1 is \relax
-         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
-       \else % #1 is not \relax
-         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
-       \fi
-       \kern2pt\hrule\kern2pt
-     }
-  }{% \end{breakablealgorithm}
-     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
-   \end{center}
-  }
-\makeatother
 
 ```{r, include = FALSE}
 library(tidyverse)
@@ -345,15 +325,17 @@ In order to create the TPCM, two main steps were taken. First, a Tour Purpose Ch
 Overall, the Tour Purpose Choice Model Java class performed similarly to the Latent Class Choice Model Java class. It was able to parse the input utility parameters, attach those values to the alternatives, as well as calculate the travel statistics for all 25 travel variables. To do this, an additional class was built to calculate each of the travel variables. The final mode choice was determined in the same manner as well. These alternatives were sent to the Multinomial Logit Java class where their modal utilities were calculated and sampled. The sampling then determined a final mode choice for each individual.
 
 ### Additional Attributes in Utility Equation {#ute}
-Equally important to developing the tour purpose choice model code structure within BEAM was to develop a consistent mode choice utility function. As explained in Section \@ref(lit4) ActivitySim bases its mode choice off of an abundance of path, person, and location type variables. Therefore, most of these path, person, and location type variables were inserted into the BEAM structure and used to calculate mode choice. The travel statistics for each variable were calculated within the TPCM code and the coefficient and intercept values were included using a csv input file.
+Equally important to developing the tour purpose choice model code structure within BEAM was to develop a consistent mode choice utility function. As explained in Section \@ref(lit4) ActivitySim bases its mode choice off of an abundance of path, person, and location type variables. Therefore, most of these path, person, and location type variables were inserted into the BEAM structure and used to calculate mode choice. The travel statistics for each variable were calculated within the TPCM code and the coefficient and intercept parameter values were included using a csv input file.
 
-The specific values for the coefficients used in the csv input file were taken from @mtc12. [*explain if tour or trip values and if you multiplied by 2?*] Below, a list of the path, person, and location variables used to calculate the modal utility is shown.
+The input csv file for the utility calculation included every combination of variable, mode, and purpose. For example, what is the cost coefficient for a drive transit trip on a school tour? With 25 different variables,  11 different modes, and 10 different tour purposes, a total of 3251 parameter values existed! Of course, a large portion of these combinations were left blank. (For example, the walk distance variable was only applied to walk type modes.) These parameter values were obtained from a variety of sources.
+
+The alternate specific constants were obtained from the tour_mode_choice_coefficients.csv from the example_mtc scenario from the ActivitySim software [@asim]. These constants were used in the initial stages of modeling, but were then updated and calibrated to the Salt Lake Region in Section \@ref(clib). The majority of the coefficient values were obtained from the tour mode choice coefficients from @mtc12. Since BEAM's mode choice is trip-based however, all these tour-based coefficients were multiplied by two and then used as trip-based coefficients. The trip-based coefficients from @mtc12 were not used because they did not provide the same level of precision and thoroughness as the tour-based coefficients. Tour values were hence doubled as to better represent trip characteristics. In places where coefficients and constants did not exist for certain modes, the values of its most similar mode were used instead, sometimes with slight adjustments. For example, the bike transit constants did not exist so the walk transit values were used instead of leaving its values empty. Below, a list of the path, person, and location variables used to calculate the modal utility is shown. Not all 25 variables are listed since some of the variables describe a group of variables. 
 
   - *Path Variables*: Number of Transfers, Vehicle Time, Egress Time, Wait Time, Origin to Transit Proximity, Destination to Transit Proximity, Walking Distance, Biking Distance, and Driving Distance
   - *Person Variables*: Cost, Age, Household Size, and Vehicle to Worker Ratio
   - *Location Variables*: Zonal Destination Index and Central Business District
 
-In addition, Table \@ref(tab:asimvals) shows a subsection of this input file with only the cost variable coefficients provided. The purpose of showing this table is to help understand how extensive the choice model was. Within the table is is clear to see that variation exists between tour purpose, modal alternative, and variable type. Only three modal alternatives are provided in the table.
+In addition, Table \@ref(tab:asimvals) shows a subsection of the csv input file with only the cost variable coefficients provided. The purpose of showing this table is to help understand how extensive the choice model was. Within the table is is clear to see that variation exists between tour purpose, modal alternative, and variable type. Only three modal alternatives are provided in the table.
 
 ```{r asimvals, echo = FALSE, warning = FALSE, message = FALSE}
 asimvals <- read_csv("data/asim-long-R-blank.csv")%>%
@@ -427,7 +409,7 @@ where
 
 When comparing Equation \@ref(eq:tpcmall) with BEAM's default equation in Equation \@ref(eq:beammnl), it is clear that multiple more travel variables are used to calculate the utility value. When comparing this Equation \@ref(eq:tpcmall) with the ActivitySim equations in Section \@ref(lit4), most of the same variable are used. By using most of the path, person, and location type variables to calculate the mode choice, the TPCM calculates utility in a consistent manner with ActivitySim. In addition, all utility values differ by tour purpose, making it almost identical to ActivitySim's trip-based mode choice. 
 
-It is important to note that BEAM's TPCM was based heavily on ActivitySim's *trip-based* mode choice model. BEAM's internal code is built on a trip-based level. It would have been outside the scope of this project to adjust BEAM's structure to include a tour mode choice model. As a result, the mode choice consistency only exists on the trip-based mode choice level. Hopefully, in the future a consistent tour-based mode choice can be inserted into BEAM as well.
+It is important to note that BEAM's internal code is built on a trip-based level, and so no overarching tour mode choice was determined before trip mode choice. It would have been outside the scope of this project to adjust BEAM's structure to include a tour mode choice model. As a result, the mode choice consistency only exists on the trip-based mode choice level. Hopefully, in the future a consistent tour-based mode choice can be inserted into BEAM as well.
 
 ### Carpool Alternatives {#pool}
 After designing a tour purpose choice model within BEAM and extending the mode choice utility equation, more consistency with ActivitySim was achieved by adding additional modal alternatives. BEAM by default includes nine modal alternatives. ActivitySim, however has seven upper level mode choices and 18 total mode choices. The lower level mode choices include distinctions between car and carpool modes being paid or not, and five different types of transit modes. For simplicity, BEAM's modes will be compared to ActivitySims upper level mode choice categories. Figure \@ref(fig:venn) shows a venn diagram of how the modes compare between BEAM and ActivitySim.
@@ -590,7 +572,7 @@ This function takes a vector of modes and  their probabilities of being chosen. 
 
 
 ## Data Validation and Calibration {#mcalib}
-After coding a consistent mode choice model within BEAM, further validation and calibration were essential. First, BEAM's new mode choice model is basing decisions off of utility parameter values copied from ActivitySim. We need to understand if these parameter values are consistent with values from other mode choice models. After validating the mode choice utility coefficient values, the alternative specific constants within the mode choice utility function need to be calibrated. With calibration, the modal distributions should align more closely with the target values within the region. 
+After coding a consistent mode choice model within BEAM, further validation and calibration were essential. First, BEAM's new mode choice model is basing decisions off of utility parameter values the MTC example from ActivitySim. We need to understand if these parameter values are consistent with values from other mode choice models. After validating the mode choice utility coefficient values, the alternative specific constants within the mode choice utility function need to be calibrated. With calibration, the modal distributions should align more closely with the target values within the region. 
 
 
 ### ActivitySim Path Variable Validation
@@ -598,31 +580,43 @@ The utility parameter values used in BEAM's new mode choice model were copied di
 
 The first model used to compare path utility coefficients is the Utah Statewide model [@utahstate]. This model is useful as it provides a rough idea of the influence of path variables in Utah as a whole. The second model used in this comparison comes from the WFRC regional model [@wfrc]. This model is a useful comparison as it predicts travel behavior for same region of study used in this research project. The last model used in this comparison is not exactly a model but a report. The NCHRP Report 716 provides a rough idea of what parameter values should look like for a generalized modeling point of view [@nchrp]. Overall, comparing these three sets of path parameter values with the MTC ActivitySim parameter values used in BEAM should help validate the values used in this research.
 
+Although ActivitySim has 10 primary purpose values, the other models only had three categories: home-based work, home-based school, and home-based other. Fortunately, most of the purpose values that fit into the home-based other group are identical. Therefore, three charts were created to validate the ActivitySim's path utility parameter values. In addition, in all the graphs ActivitySim does not have a cost variable value because it is based soley on each person's value of time. The coefficients for the other models are shown though. Lastly, only ActivitySim has coefficient values for the biking distances, but those are also shown in the graphs.
+
+Figure \@ref(fig:hbw) shows the comparison of the path utility parameter values between all four models for home-based work trips. For the egress time, in vehicle travel time (ivtt), the number of transfers, transfer time, and the wait times, ActivitySim seems to use a very similar coefficient value as the other three models. The largest discrepancy exists with short and long walking distances. ActivitySim seems to use a value almost ten fold that of the other models. This occurs because in the WFRC and Utah Statewide mode, there is a limit to walking distance. ActivitySim however does not cap walking distances and therefore there is a high penalty for long walking distances. With this clarification, it is clear to see that ActivitySim's path coefficient values do not require calibration and were left as is.
+
 ```{r, include = FALSE}
 hbw_graph <- ivtt_ratio_grapher("Home-Based Work",get_asim_hbw(),get_utah_hbw(),get_wfrc_hbw(),get_nchrp_hbw())
 hbs_graph <- ivtt_ratio_grapher("Home-Based School",get_asim_hbs(),get_utah_hbs(),get_wfrc_hbs(),get_nchrp_hbs())
 hbo_graph <- ivtt_ratio_grapher("Home-Based Other",get_asim_hbo(),get_utah_hbo(),get_wfrc_hbo(),get_nchrp_hbo())
 ```
 
-```{r hbw, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based work mode choice path coefficients model comparison.", fig.align='center'}
+```{r hbw, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based work mode choice path coefficients model comparison.", fig.align='center', out.width = "400px"}
 hbw_graph
 ```
 
-```{r hbs, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based school mode choice path coefficients model comparison.", fig.align='center'}
+
+Figure \@ref(fig:hbs) shows the comparison of the path utility parameter values between all four models for home-based school trips. Similar to the home-based work analysis, for the egress time, ivtt, transfer time, and the wait times, ActivitySim seems to use a very similar coefficient value as the other three models. Again, the largest discrepancy exists with short and long walking distances. Since this is simply a difference between how walk distance is modeled, the discrepancy is ignored. In addition, the other three models did not have information on number of transfers. As a result, there is no comparison done with number of transfers. ActivitySim's path coefficient values do not require calibration for the home-based school parameters.
+
+```{r hbs, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based school mode choice path coefficients model comparison.", fig.align='center', out.width = "400px"}
 hbs_graph
 ```
 
-```{r hbo, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based other mode choice path coefficients model comparison.", fig.align='center'}
+Lastly, Figure \@ref(fig:hbo) shows the comparison of path utility parameter values between all four models for home-based other trips. Again, besides for walk distance all variables seem to be similar between all four models. An interesting point is that for models other than ActivitySim, the cost coefficient varies greatly. Fortunately, ActivitySim bases the cost coefficient on each individual's value of time so this is not a concern. Overall, for all purpose types the coefficients used by ActivitySim are similar enough to other models that exist, and therefore do not require calibration. The ActivitySim alternative specific constants do, however, require calibration (See Section \@ref(clib)).
+
+```{r hbo, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based other mode choice path coefficients model comparison.", fig.align='center', out.width = "400px"}
 hbo_graph
 ```
 
+### Mode Choice Calibration {#clib}
 
+## Mode Choice Consistency Testing {#mcomp}
 
+### Total Modal Distribution
 
+### Path, Person, and Location Analysis
 
-### Mode Choice Calibration
+### Subtour Trip Analysis
 
-## Path, Person, and Location Analysis {#mcomp}
 
 ## Summary
 

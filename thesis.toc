@@ -50,16 +50,19 @@
 \contentsline {subsubsection}{Latent Class Choice Model}{44}{subsubsection*.30}%
 \contentsline {subsubsection}{Tour Purpose Choice Model}{46}{subsubsection*.32}%
 \contentsline {subsection}{\numberline {4.3.2}Additional Attributes in Utility Equation}{48}{subsection.4.3.2}%
-\contentsline {subsubsection}{Path Type Utility Equation}{49}{subsubsection*.35}%
-\contentsline {subsubsection}{Person Type Utility Equation}{51}{subsubsection*.36}%
-\contentsline {subsubsection}{Location Type Utility Equation}{51}{subsubsection*.37}%
+\contentsline {subsubsection}{Path Type Utility Equation}{51}{subsubsection*.35}%
+\contentsline {subsubsection}{Person Type Utility Equation}{52}{subsubsection*.36}%
+\contentsline {subsubsection}{Location Type Utility Equation}{52}{subsubsection*.37}%
 \contentsline {subsubsection}{BEAM's New Consistent Utility Equation}{52}{subsubsection*.38}%
-\contentsline {subsection}{\numberline {4.3.3}Carpool Alternatives}{52}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Mode Choice Algorithms}{55}{subsection.4.3.4}%
-\contentsline {section}{\numberline {4.4}Data Validation and Calibration}{59}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}ActivitySim Path Variable Validation}{59}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.3.3}Carpool Alternatives}{53}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Mode Choice Algorithms}{56}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Data Validation and Calibration}{60}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}ActivitySim Path Variable Validation}{60}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Mode Choice Calibration}{63}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Path, Person, and Location Analysis}{63}{section.4.5}%
+\contentsline {section}{\numberline {4.5}Tests}{63}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Total Modal Distribution}{63}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Path, Person, and Location Analysis}{63}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Subtour Trip Analysis}{63}{subsection.4.5.3}%
 \contentsline {section}{\numberline {4.6}Summary}{63}{section.4.6}%
 \contentsline {chapter}{\numberline {5}Results}{64}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Discussion}{65}{chapter.6}%
