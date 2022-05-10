@@ -50,32 +50,36 @@
 \contentsline {subsubsection}{Latent Class Choice Model}{44}{subsubsection*.30}%
 \contentsline {subsubsection}{Tour Purpose Choice Model}{46}{subsubsection*.32}%
 \contentsline {subsection}{\numberline {4.3.2}Additional Attributes in Utility Equation}{48}{subsection.4.3.2}%
+\contentsline {subsubsection}{Path Type Utility Equation}{49}{subsubsection*.35}%
+\contentsline {subsubsection}{Person Type Utility Equation}{51}{subsubsection*.36}%
+\contentsline {subsubsection}{Location Type Utility Equation}{51}{subsubsection*.37}%
+\contentsline {subsubsection}{BEAM's New Consistent Utility Equation}{52}{subsubsection*.38}%
 \contentsline {subsection}{\numberline {4.3.3}Carpool Alternatives}{52}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Mode Choice Algorithms}{52}{subsection.4.3.4}%
-\contentsline {section}{\numberline {4.4}Data Validation and Calibration}{52}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}ActivitySim Path Variable Validation}{52}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Mode Choice Calibration}{52}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Path, Person, and Location Analysis}{52}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Summary}{52}{section.4.6}%
-\contentsline {chapter}{\numberline {5}Results}{54}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Discussion}{55}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusions}{56}{chapter.7}%
-\contentsline {chapter}{\numberline {8}About}{57}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Usage}{57}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Render book}{57}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Preview book}{58}{section.8.3}%
-\contentsline {chapter}{\numberline {9}Cross-references}{59}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Chapters and sub-chapters}{59}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Captioned figures and tables}{59}{section.9.2}%
-\contentsline {chapter}{\numberline {10}Parts}{62}{chapter.10}%
-\contentsline {chapter}{\numberline {11}Footnotes and citations}{63}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Footnotes}{63}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Citations}{63}{section.11.2}%
-\contentsline {chapter}{\numberline {12}Blocks}{64}{chapter.12}%
-\contentsline {section}{\numberline {12.1}Equations}{64}{section.12.1}%
-\contentsline {section}{\numberline {12.2}Callout blocks}{64}{section.12.2}%
-\contentsline {chapter}{\numberline {13}Sharing your book}{65}{chapter.13}%
-\contentsline {section}{\numberline {13.1}Publishing}{65}{section.13.1}%
-\contentsline {section}{\numberline {13.2}404 pages}{65}{section.13.2}%
-\contentsline {section}{\numberline {13.3}Metadata for sharing}{65}{section.13.3}%
-\contentsline {chapter}{References}{67}{section*.37}%
+\contentsline {subsection}{\numberline {4.3.4}Mode Choice Algorithms}{55}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Data Validation and Calibration}{59}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}ActivitySim Path Variable Validation}{59}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Mode Choice Calibration}{63}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Path, Person, and Location Analysis}{63}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Summary}{63}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Results}{64}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Discussion}{65}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusions}{66}{chapter.7}%
+\contentsline {chapter}{\numberline {8}About}{67}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Usage}{67}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Render book}{67}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Preview book}{68}{section.8.3}%
+\contentsline {chapter}{\numberline {9}Cross-references}{69}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Chapters and sub-chapters}{69}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Captioned figures and tables}{69}{section.9.2}%
+\contentsline {chapter}{\numberline {10}Parts}{72}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Footnotes and citations}{73}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Footnotes}{73}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Citations}{73}{section.11.2}%
+\contentsline {chapter}{\numberline {12}Blocks}{74}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Equations}{74}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Callout blocks}{74}{section.12.2}%
+\contentsline {chapter}{\numberline {13}Sharing your book}{75}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Publishing}{75}{section.13.1}%
+\contentsline {section}{\numberline {13.2}404 pages}{75}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Metadata for sharing}{75}{section.13.3}%
+\contentsline {chapter}{References}{77}{section*.45}%

@@ -63,6 +63,10 @@ div.abstract{
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 
 
 
@@ -139,25 +143,31 @@ div.csl-indent {
 <li class="chapter" data-level="3.8" data-path="literature-review.html"><a href="literature-review.html#lit7"><i class="fa fa-check"></i><b>3.8</b> The Mode Choice Model used in BEAM<span></span></a></li>
 <li class="chapter" data-level="3.9" data-path="literature-review.html"><a href="literature-review.html#lit8"><i class="fa fa-check"></i><b>3.9</b> Previous Attempts to Enhance Mode Choice in Agent-based Models<span></span></a></li>
 <li class="chapter" data-level="3.10" data-path="literature-review.html"><a href="literature-review.html#lit9"><i class="fa fa-check"></i><b>3.10</b> Mode Choice Consistency between ActivitySim and BEAM<span></span></a></li>
+<li class="chapter" data-level="3.11" data-path="literature-review.html"><a href="literature-review.html#summary"><i class="fa fa-check"></i><b>3.11</b> Summary<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods<span></span></a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="methods.html"><a href="methods.html#overview-1"><i class="fa fa-check"></i><b>4.1</b> Overview<span></span></a></li>
-<li class="chapter" data-level="4.2" data-path="methods.html"><a href="methods.html#mscen"><i class="fa fa-check"></i><b>4.2</b> Creating the Scenario<span></span></a>
+<li class="chapter" data-level="4.2" data-path="methods.html"><a href="methods.html#mscen"><i class="fa fa-check"></i><b>4.2</b> Creating and Setting up the Test Scenario<span></span></a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="methods.html"><a href="methods.html#test-scenario-region"><i class="fa fa-check"></i><b>4.2.1</b> Test Scenario Region<span></span></a></li>
-<li class="chapter" data-level="4.2.2" data-path="methods.html"><a href="methods.html#activitysim-setup"><i class="fa fa-check"></i><b>4.2.2</b> ActivitySim Setup<span></span></a></li>
-<li class="chapter" data-level="4.2.3" data-path="methods.html"><a href="methods.html#beam-setup"><i class="fa fa-check"></i><b>4.2.3</b> BEAM Setup<span></span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="methods.html"><a href="methods.html#setting-up-and-running-activitysim"><i class="fa fa-check"></i><b>4.2.2</b> Setting up and Running ActivitySim<span></span></a></li>
+<li class="chapter" data-level="4.2.3" data-path="methods.html"><a href="methods.html#setting-up-beam"><i class="fa fa-check"></i><b>4.2.3</b> Setting up BEAM<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="methods.html"><a href="methods.html#mbeam"><i class="fa fa-check"></i><b>4.3</b> Additions to BEAM<span></span></a>
+<li class="chapter" data-level="4.3" data-path="methods.html"><a href="methods.html#mbeam"><i class="fa fa-check"></i><b>4.3</b> Improved Mode Choice in BEAM<span></span></a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="methods.html"><a href="methods.html#purpose-based-decisions"><i class="fa fa-check"></i><b>4.3.1</b> Purpose-based Decisions<span></span></a></li>
-<li class="chapter" data-level="4.3.2" data-path="methods.html"><a href="methods.html#additional-attributes-in-utility-equation"><i class="fa fa-check"></i><b>4.3.2</b> Additional Attributes in Utility Equation<span></span></a></li>
-<li class="chapter" data-level="4.3.3" data-path="methods.html"><a href="methods.html#carpool-alternatives"><i class="fa fa-check"></i><b>4.3.3</b> Carpool Alternatives<span></span></a></li>
+<li class="chapter" data-level="4.3.1" data-path="methods.html"><a href="methods.html#purp"><i class="fa fa-check"></i><b>4.3.1</b> Purpose-based Decisions<span></span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="methods.html"><a href="methods.html#ute"><i class="fa fa-check"></i><b>4.3.2</b> Additional Attributes in Utility Equation<span></span></a></li>
+<li class="chapter" data-level="4.3.3" data-path="methods.html"><a href="methods.html#pool"><i class="fa fa-check"></i><b>4.3.3</b> Carpool Alternatives<span></span></a></li>
+<li class="chapter" data-level="4.3.4" data-path="methods.html"><a href="methods.html#algo"><i class="fa fa-check"></i><b>4.3.4</b> Mode Choice Algorithms<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="methods.html"><a href="methods.html#mode-choice-algorithms"><i class="fa fa-check"></i><b>4.4</b> Mode Choice Algorithms<span></span></a></li>
-<li class="chapter" data-level="4.5" data-path="methods.html"><a href="methods.html#data-and-calibration"><i class="fa fa-check"></i><b>4.5</b> Data and Calibration<span></span></a></li>
-<li class="chapter" data-level="4.6" data-path="methods.html"><a href="methods.html#path-person-and-location-analysis"><i class="fa fa-check"></i><b>4.6</b> Path, Person, and Location Analysis<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="methods.html"><a href="methods.html#mcalib"><i class="fa fa-check"></i><b>4.4</b> Data Validation and Calibration<span></span></a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="methods.html"><a href="methods.html#activitysim-path-variable-validation"><i class="fa fa-check"></i><b>4.4.1</b> ActivitySim Path Variable Validation<span></span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="methods.html"><a href="methods.html#mode-choice-calibration"><i class="fa fa-check"></i><b>4.4.2</b> Mode Choice Calibration<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="methods.html"><a href="methods.html#mcomp"><i class="fa fa-check"></i><b>4.5</b> Path, Person, and Location Analysis<span></span></a></li>
+<li class="chapter" data-level="4.6" data-path="methods.html"><a href="methods.html#summary-1"><i class="fa fa-check"></i><b>4.6</b> Summary<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results<span></span></a></li>
 <li class="chapter" data-level="6" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>6</b> Discussion<span></span></a></li>
@@ -264,6 +274,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

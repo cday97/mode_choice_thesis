@@ -63,6 +63,10 @@ div.abstract{
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 
 
 
@@ -139,25 +143,31 @@ div.csl-indent {
 <li class="chapter" data-level="3.8" data-path="literature-review.html"><a href="literature-review.html#lit7"><i class="fa fa-check"></i><b>3.8</b> The Mode Choice Model used in BEAM<span></span></a></li>
 <li class="chapter" data-level="3.9" data-path="literature-review.html"><a href="literature-review.html#lit8"><i class="fa fa-check"></i><b>3.9</b> Previous Attempts to Enhance Mode Choice in Agent-based Models<span></span></a></li>
 <li class="chapter" data-level="3.10" data-path="literature-review.html"><a href="literature-review.html#lit9"><i class="fa fa-check"></i><b>3.10</b> Mode Choice Consistency between ActivitySim and BEAM<span></span></a></li>
+<li class="chapter" data-level="3.11" data-path="literature-review.html"><a href="literature-review.html#summary"><i class="fa fa-check"></i><b>3.11</b> Summary<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods<span></span></a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="methods.html"><a href="methods.html#overview-1"><i class="fa fa-check"></i><b>4.1</b> Overview<span></span></a></li>
-<li class="chapter" data-level="4.2" data-path="methods.html"><a href="methods.html#mscen"><i class="fa fa-check"></i><b>4.2</b> Creating the Scenario<span></span></a>
+<li class="chapter" data-level="4.2" data-path="methods.html"><a href="methods.html#mscen"><i class="fa fa-check"></i><b>4.2</b> Creating and Setting up the Test Scenario<span></span></a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="methods.html"><a href="methods.html#test-scenario-region"><i class="fa fa-check"></i><b>4.2.1</b> Test Scenario Region<span></span></a></li>
-<li class="chapter" data-level="4.2.2" data-path="methods.html"><a href="methods.html#activitysim-setup"><i class="fa fa-check"></i><b>4.2.2</b> ActivitySim Setup<span></span></a></li>
-<li class="chapter" data-level="4.2.3" data-path="methods.html"><a href="methods.html#beam-setup"><i class="fa fa-check"></i><b>4.2.3</b> BEAM Setup<span></span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="methods.html"><a href="methods.html#setting-up-and-running-activitysim"><i class="fa fa-check"></i><b>4.2.2</b> Setting up and Running ActivitySim<span></span></a></li>
+<li class="chapter" data-level="4.2.3" data-path="methods.html"><a href="methods.html#setting-up-beam"><i class="fa fa-check"></i><b>4.2.3</b> Setting up BEAM<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="methods.html"><a href="methods.html#mbeam"><i class="fa fa-check"></i><b>4.3</b> Additions to BEAM<span></span></a>
+<li class="chapter" data-level="4.3" data-path="methods.html"><a href="methods.html#mbeam"><i class="fa fa-check"></i><b>4.3</b> Improved Mode Choice in BEAM<span></span></a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="methods.html"><a href="methods.html#purpose-based-decisions"><i class="fa fa-check"></i><b>4.3.1</b> Purpose-based Decisions<span></span></a></li>
-<li class="chapter" data-level="4.3.2" data-path="methods.html"><a href="methods.html#additional-attributes-in-utility-equation"><i class="fa fa-check"></i><b>4.3.2</b> Additional Attributes in Utility Equation<span></span></a></li>
-<li class="chapter" data-level="4.3.3" data-path="methods.html"><a href="methods.html#carpool-alternatives"><i class="fa fa-check"></i><b>4.3.3</b> Carpool Alternatives<span></span></a></li>
+<li class="chapter" data-level="4.3.1" data-path="methods.html"><a href="methods.html#purp"><i class="fa fa-check"></i><b>4.3.1</b> Purpose-based Decisions<span></span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="methods.html"><a href="methods.html#ute"><i class="fa fa-check"></i><b>4.3.2</b> Additional Attributes in Utility Equation<span></span></a></li>
+<li class="chapter" data-level="4.3.3" data-path="methods.html"><a href="methods.html#pool"><i class="fa fa-check"></i><b>4.3.3</b> Carpool Alternatives<span></span></a></li>
+<li class="chapter" data-level="4.3.4" data-path="methods.html"><a href="methods.html#algo"><i class="fa fa-check"></i><b>4.3.4</b> Mode Choice Algorithms<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="methods.html"><a href="methods.html#mode-choice-algorithms"><i class="fa fa-check"></i><b>4.4</b> Mode Choice Algorithms<span></span></a></li>
-<li class="chapter" data-level="4.5" data-path="methods.html"><a href="methods.html#data-and-calibration"><i class="fa fa-check"></i><b>4.5</b> Data and Calibration<span></span></a></li>
-<li class="chapter" data-level="4.6" data-path="methods.html"><a href="methods.html#path-person-and-location-analysis"><i class="fa fa-check"></i><b>4.6</b> Path, Person, and Location Analysis<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="methods.html"><a href="methods.html#mcalib"><i class="fa fa-check"></i><b>4.4</b> Data Validation and Calibration<span></span></a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="methods.html"><a href="methods.html#activitysim-path-variable-validation"><i class="fa fa-check"></i><b>4.4.1</b> ActivitySim Path Variable Validation<span></span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="methods.html"><a href="methods.html#mode-choice-calibration"><i class="fa fa-check"></i><b>4.4.2</b> Mode Choice Calibration<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="methods.html"><a href="methods.html#mcomp"><i class="fa fa-check"></i><b>4.5</b> Path, Person, and Location Analysis<span></span></a></li>
+<li class="chapter" data-level="4.6" data-path="methods.html"><a href="methods.html#summary-1"><i class="fa fa-check"></i><b>4.6</b> Summary<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results<span></span></a></li>
 <li class="chapter" data-level="6" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>6</b> Discussion<span></span></a></li>
@@ -202,50 +212,1337 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 4</span> Methods<a href="methods.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="overview-1" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Overview<a href="methods.html#overview-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A systematic approach to determine the effects of a consistent mode choice model between an activity-based model and a microsimulation tool requires two main steps. The first step involves creating a test scenario that runs within the activity-based model ActivitySim and the microsimulation tool BEAM. Section <a href="methods.html#mscen">4.2</a> explains this step including how the test scenario was created and how ActivitySim and BEAM were configured. The second step involves adjusting the internal code of BEAM to align the mode choice model with that of ActivitySim’s. Section <a href="methods.html#mbeam">4.3</a> explains the details behind the changes made to BEAM’s default mode choice model to align more closely with that of ActivitySim’s.</p>
+<p>A systematic approach to determine the effects of a consistent mode choice model between an activity-based model and a microsimulation tool requires four two main steps. The first step involves creating a test scenario that runs within the activity-based model ActivitySim and the microsimulation tool BEAM. Section <a href="methods.html#mscen">4.2</a> explains this step including how the test scenario was created and how ActivitySim and BEAM were configured. The second step involves adjusting the internal code of BEAM to align the mode choice model with that of ActivitySim’s. Section <a href="methods.html#mbeam">4.3</a> explains the details behind the changes made to BEAM’s default mode choice model to align more closely with that of ActivitySim’s. The third step is to calibrate the mode choice utility values within BEAM. Section <a href="methods.html#mcalib">4.4</a> explains the details behind the calibration of the mode choice parameters. The last step is to compare the modal distributions between different mode choice models, which is explained in Section <a href="methods.html#mcomp">4.5</a>.</p>
 </div>
 <div id="mscen" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Creating the Scenario<a href="methods.html#mscen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.2</span> Creating and Setting up the Test Scenario<a href="methods.html#mscen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Designing a test scenario to use within ActivitySim and BEAM was essential to understanding and testing mode choice between models. This section explains the region that was used to model the test scenario. This section also explains how the input files needed to run both ActivitySim and BEAM were generated for the test scenario.</p>
 <div id="test-scenario-region" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Test Scenario Region<a href="methods.html#test-scenario-region" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The test scenario used in this research includes the approximate 2.5 million agents of the Salt Lake City, Utah, USA region. This region includes the Box Elder, Davis, Salt Lake, Utah, and Weber counties. Figure <a href="#figregion"><strong>??</strong></a> shows the 2881 Traffic Analysis Zones (TAZs) that make up the region of study.</p>
+<p>The test scenario used in this research includes the approximate 2.5 million agents of the Salt Lake City, Utah, USA region. This region includes the Box Elder, Davis, Salt Lake, Utah, and Weber counties. Figure <a href="methods.html#fig:figregion">4.1</a> shows the 2881 Traffic Analysis Zones (TAZs) along with the five counties that make up the region of study.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:figregion"></span>
+<img src="pics/taz.png" alt="The TAZs of each county in the region of study." width="480px" />
+<p class="caption">
+Figure 4.1: The TAZs of each county in the region of study.
+</p>
+</div>
 <p>This extensive region was selected for the following reasons:</p>
 <ol style="list-style-type: decimal">
 <li>There is substantial data that exists for this region. Having sufficient data points for each of the TAZs was essential to creating the inputs to ActivitySim and BEAM. The majority of the data used for this research was gathered and shared by Wasatch Front Regional Council (WFRC), the Metropolitan Planning Organization (MPO) of Salt Lake county.</li>
-<li>There currently exists a need to analyze this region with a microsimulation tool, such as BEAM. Specifically, the Utah Transit Authority (UTA) wishes to understand what specific sub regions in the Salk Lake area will best serve new on-demand transit vehicles. In some future research, this specific question will be answered. Along this this question, having a microsimulation model of a region will prove to be an effective method to answering multiple transportation service questions in the future. To date, only one previous analysis of this region has been conducted with the BEAM software (NATE LANT REFERENCE).</li>
-<li>The project researches live in this region, and therefore have real life knowledge of how transportation works in the region. This allows further verification on the outcome of the research.</li>
+<li>There currently exists a need to analyze this region with a microsimulation tool, such as BEAM. Specifically, the Utah Transit Authority (UTA) wishes to understand what specific sub regions in the Salk Lake area will best serve new on-demand transit vehicles. In some future research, this specific question will be answered. Along this this question, having a microsimulation model of a region will prove to be an effective method to answering multiple transportation service questions in the future. To date, only one previous analysis of this region has been conducted with the BEAM software <span class="citation">(Lant 2021)</span>.</li>
+<li>The size and population within the study area are comparable to other regions around the United States. This means that the work completed in this research may be useful to other cities besides Salt Lake City.</li>
+<li>The project researchers live in this region, and therefore have real life knowledge of how transportation works in the region. This allows the researchers to compare the the results of the models with their own experiences, hopefully providing extra verification.</li>
 </ol>
-<p>Specifically, the the region used to create the population of agents</p>
+<p>Overall, the Salt Lake City, Utah region proved to be an effective location for this mode choice analysis research. After selecting the region of study, the next steps involved seting up and running ActivitySim.</p>
 </div>
-<div id="activitysim-setup" class="section level3 hasAnchor" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> ActivitySim Setup<a href="methods.html#activitysim-setup" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="setting-up-and-running-activitysim" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Setting up and Running ActivitySim<a href="methods.html#setting-up-and-running-activitysim" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Setting up and running ActivitySim for the Salt Lake region was an arduous task. The entire process for setting up the activity-based model for this region is explained in the research done by <span class="citation">Lant (2021)</span>. The research done by <span class="citation">Lant (2021)</span> was the basis to the work completed in this project.</p>
+<p>However, a brief explanation of the setup of the activity-based model is explained in Section <a href="methods.html#asiminput">4.2.2.1</a>. The two main steps behind creating an activity-based mode for the Salt Lake region was creating corresponding input files and calibrating and validating the results.</p>
+<div id="asiminput" class="section level4 hasAnchor" number="4.2.2.1">
+<h4><span class="header-section-number">4.2.2.1</span> Creating Input Files<a href="methods.html#asiminput" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>ActivitySim requires the following three input files in order to run:</p>
+<ul>
+<li>A synthetic population of the agents within the study area.</li>
+<li>A zonal socioeconomic data file describing the characteristics of each zone.</li>
+<li>A set of skims that describe the cost and travel times of all modes between all zones.</li>
+</ul>
+<p>The synthetic population is used to generate an entire population with specific individual details for each agent (like gender, age, income, vehicle ownership). Gathering individual information for all the agents in the region may be considered an invasion of privacy. So instead a synthetic population is used. The synthetic population is a generated population with specific individual attributes that add up to the regional characteristics as a whole. The synthetic population was generated using a software called PopulationSim <span class="citation">(PopulationSim 2021)</span>. To run PopulationSim a “seed” table and a set of “targets” were used. The “seed” table represented information about a subset of the population and the set of “targets” represented demographic data for smaller areas within the region <span class="citation">(Lant 2021)</span>. Together, PopulationSim was able to simulate individual attributes for the approximate 2.5 million agents in the Salt Lake region.</p>
+<p>The zonal socioeconomic data file stores zonal characteristics regarding household information, worker information, and other activity type information. This file specifically gives information on what types and how many types of activities may be found within a certain zonal region. This file was created using data from WFRC, Utah Automated Geographic Reference Center <span class="citation">(AGRC 2021)</span>, and the synthetic population when necessary.</p>
+<p>The third input to ActivitySim is detailed travel skims. Skims are large matrices showing travel times and costs between every set of zones within the area of study. Included in these skims were further details regarding differences in modes, distances, wait times, etc. <span class="citation">(Lant 2021)</span>. The existing skims from WFRC were used along with some slight adjustments to fit the ActivitySim model.</p>
 </div>
-<div id="beam-setup" class="section level3 hasAnchor" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> BEAM Setup<a href="methods.html#beam-setup" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="asimcal" class="section level4 hasAnchor" number="4.2.2.2">
+<h4><span class="header-section-number">4.2.2.2</span> Calibration and Validation<a href="methods.html#asimcal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The calibration and validation of ActivitySim was conducted by <span class="citation">Lant (2021)</span>. The purpose of the calibration and validation was to ensure the outputs generated by ActivitySim matched target regional values. Specifically trip productions, trip distributions, and mode choices were tested to match the given target values from WFRC’s four-step model.</p>
+<p>To validate the trip productions, total trips per county were compared between ActivitySim and WFRC target values. These trips were close to identical, with only a variation of 1.0 percent. The trip distributions were compared as well, with about a 4.0 percent margin of error. Overall, <span class="citation">Lant (2021)</span> shows that the trip productions and distributions of the ActivitySim model were a good representation of travel behavior, requiring no calibration.</p>
+<p>The mode choice validation was difficult as the mode choice categories between WFRC and ActivitySim are vastly different. ActivitySim considers five trip mode choice alternatives whereas the WFRC model considers 10 trip mode choice alternatives. However, ActivitySim does include 10 tour mode choice alternatives. When comparing mode choice distributions, both the trip and tour distributions from ActivitySim were compared with the trip distributions of WFRC. <span class="citation">Lant (2021)</span> performs an in depth comparison between these values and found that ActivitySim underrepresents non-motorized university trips and overrepresents non-motorized work trips. In addition ActivitySim underrepresents shared ride trips for all tour purposes and does not accurately represent commuter rail and local bus trips for all tour purposes. overall, the mode choice model did not match closely with the WFRC targets, and required further calibration.</p>
+<p><span class="citation">Lant (2021)</span> performed an in depth calibration across ActivitySim modes to minimize error with the WFRC target shares. The calibration process will not be explained in this research paper however. Upon calibration, trip productions and distributions remained relatively unchanged, and therefore needed no calibration. Mode choice distributions were closer to target values as well. Overall, after some calibration the results of ActivitySim produced sufficiently accurate information to move forward with the research.</p>
+</div>
+</div>
+<div id="setting-up-beam" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Setting up BEAM<a href="methods.html#setting-up-beam" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After setting up, calibrating, and running the ActivitySim scenario for the Salt Lake region, the next step was setting up BEAM using the results of the ActivitySim model. BEAM requires a variety of input files, most of which are as follows:</p>
+<ul>
+<li>A person population and corresponding person attributes files.</li>
+<li>A household population with household attributes file and a vehicle fleet file.</li>
+<li>Vehicle types files explaining different person vehicle types, public transit vehicle types, and ride hailing vehicle information.</li>
+<li>Transportation services including a mapable street network and a file including General Transit Feed Specification (GTFS) transit information.</li>
+<li>Other minor input files.</li>
+</ul>
+<p>The BEAM input files were directly creating using the generate_beam_plans.py python script ActivitySim add on. This script was developed by the developers at Lawrence Berkeley National Lab, and allows easy csv formatted input files to BEAM. The details behind these input files along with example tables of these files are discussed and shown in the following subsections.</p>
+<div id="population-file" class="section level4 hasAnchor" number="4.2.3.1">
+<h4><span class="header-section-number">4.2.3.1</span> Population File<a href="methods.html#population-file" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The population file was created from the ActivitySim generated data. ActivitySim’s main purpose is to generate daily activity patterns (DAPs) for each agent from the synthetic population. The DAPs generated by ActivitySim consists of all the activities that each agent within the population embark on during the day. Using the activity types, activity locations, activity durations, mode choices, departure and arrival times, and overall activity data, BEAM generated a population file along with a person attributes file.</p>
+<p>The population file generated by the BEAM ActivitySim add-on code created a csv file describing all the events and choices each agent embarks on during the plan. For example, the plans file defines each agents home location, their activity locations, their travel and activity times, their mode choices for each trip, etc. A subsection of this file is shown in Table <a href="methods.html#tab:plans">4.1</a> to provide an example of some of its contents.</p>
+<table>
+<caption><span id="tab:plans">Table 4.1: </span>A Subset of the Population Plans</caption>
+<colgroup>
+<col width="4%" />
+<col width="7%" />
+<col width="10%" />
+<col width="13%" />
+<col width="13%" />
+<col width="19%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">ID</th>
+<th align="left">Mode</th>
+<th align="left">Type</th>
+<th align="right">End Time</th>
+<th align="left">Purpose</th>
+<th align="right">Household ID</th>
+<th align="right">LocaitonX</th>
+<th align="right">LocaitonY</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">50</td>
+<td align="left">NA</td>
+<td align="left">Home</td>
+<td align="right">25668.0</td>
+<td align="left">escort</td>
+<td align="right">6</td>
+<td align="right">412577.3</td>
+<td align="right">4606340</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="left">hov3</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">escort</td>
+<td align="right">6</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="left">NA</td>
+<td align="left">escort</td>
+<td align="right">28170.0</td>
+<td align="left">escort</td>
+<td align="right">6</td>
+<td align="right">413589.0</td>
+<td align="right">4593487</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="left">hov3</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">escort</td>
+<td align="right">6</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="left">NA</td>
+<td align="left">home</td>
+<td align="right">NA</td>
+<td align="left">escort</td>
+<td align="right">6</td>
+<td align="right">412577.3</td>
+<td align="right">4606340</td>
+</tr>
+<tr class="even">
+<td align="right">51</td>
+<td align="left">NA</td>
+<td align="left">Home</td>
+<td align="right">36079.2</td>
+<td align="left">work</td>
+<td align="right">6</td>
+<td align="right">412092.6</td>
+<td align="right">4606274</td>
+</tr>
+<tr class="odd">
+<td align="right">51</td>
+<td align="left">car</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">work</td>
+<td align="right">6</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">51</td>
+<td align="left">NA</td>
+<td align="left">escort</td>
+<td align="right">38109.6</td>
+<td align="left">work</td>
+<td align="right">6</td>
+<td align="right">418892.5</td>
+<td align="right">4567448</td>
+</tr>
+<tr class="odd">
+<td align="right">51</td>
+<td align="left">car</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">work</td>
+<td align="right">6</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">51</td>
+<td align="left">NA</td>
+<td align="left">work</td>
+<td align="right">64998.0</td>
+<td align="left">work</td>
+<td align="right">6</td>
+<td align="right">424344.6</td>
+<td align="right">4537656</td>
+</tr>
+<tr class="odd">
+<td align="right">51</td>
+<td align="left">car</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">work</td>
+<td align="right">6</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">51</td>
+<td align="left">NA</td>
+<td align="left">escort</td>
+<td align="right">70578.0</td>
+<td align="left">work</td>
+<td align="right">6</td>
+<td align="right">409491.7</td>
+<td align="right">4552587</td>
+</tr>
+<tr class="odd">
+<td align="right">51</td>
+<td align="left">car</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">work</td>
+<td align="right">6</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">51</td>
+<td align="left">NA</td>
+<td align="left">home</td>
+<td align="right">NA</td>
+<td align="left">work</td>
+<td align="right">6</td>
+<td align="right">412092.6</td>
+<td align="right">4606274</td>
+</tr>
+<tr class="odd">
+<td align="right">52</td>
+<td align="left">NA</td>
+<td align="left">Home</td>
+<td align="right">67010.4</td>
+<td align="left">othdiscr</td>
+<td align="right">6</td>
+<td align="right">412437.5</td>
+<td align="right">4606445</td>
+</tr>
+</tbody>
+</table>
+<p>The person attributes file describes individual characteristics such as income, gender, age, vehicle ownership, etc. A subsection of this file is shown in Table <a href="methods.html#tab:peratt">4.2</a> to provide an example of some of its contents.</p>
+<table style="width:100%;">
+<caption><span id="tab:peratt">Table 4.2: </span>A Subset of the Person Attributes File</caption>
+<colgroup>
+<col width="5%" />
+<col width="16%" />
+<col width="5%" />
+<col width="5%" />
+<col width="11%" />
+<col width="5%" />
+<col width="12%" />
+<col width="18%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">ID</th>
+<th align="right">Household ID</th>
+<th align="right">Age</th>
+<th align="right">Sex</th>
+<th align="right">VOT</th>
+<th align="right">TAZ</th>
+<th align="right">Income</th>
+<th align="right">Household Size</th>
+<th align="left">Auto Work Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">6</td>
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">9.518956</td>
+<td align="right">9</td>
+<td align="right">103337.40</td>
+<td align="right">10</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="even">
+<td align="right">51</td>
+<td align="right">6</td>
+<td align="right">56</td>
+<td align="right">1</td>
+<td align="right">9.518956</td>
+<td align="right">9</td>
+<td align="right">103337.40</td>
+<td align="right">10</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="odd">
+<td align="right">52</td>
+<td align="right">6</td>
+<td align="right">35</td>
+<td align="right">2</td>
+<td align="right">9.518956</td>
+<td align="right">9</td>
+<td align="right">103337.40</td>
+<td align="right">10</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="even">
+<td align="right">53</td>
+<td align="right">6</td>
+<td align="right">23</td>
+<td align="right">2</td>
+<td align="right">9.518956</td>
+<td align="right">9</td>
+<td align="right">103337.40</td>
+<td align="right">10</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="odd">
+<td align="right">54</td>
+<td align="right">6</td>
+<td align="right">15</td>
+<td align="right">2</td>
+<td align="right">6.349144</td>
+<td align="right">9</td>
+<td align="right">103337.40</td>
+<td align="right">10</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="even">
+<td align="right">55</td>
+<td align="right">6</td>
+<td align="right">11</td>
+<td align="right">1</td>
+<td align="right">6.349144</td>
+<td align="right">9</td>
+<td align="right">103337.40</td>
+<td align="right">10</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="odd">
+<td align="right">56</td>
+<td align="right">6</td>
+<td align="right">5</td>
+<td align="right">1</td>
+<td align="right">6.349144</td>
+<td align="right">9</td>
+<td align="right">103337.40</td>
+<td align="right">10</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="even">
+<td align="right">57</td>
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">6.349144</td>
+<td align="right">9</td>
+<td align="right">103337.40</td>
+<td align="right">10</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="odd">
+<td align="right">58</td>
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">6.349144</td>
+<td align="right">9</td>
+<td align="right">103337.40</td>
+<td align="right">10</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="even">
+<td align="right">59</td>
+<td align="right">6</td>
+<td align="right">43</td>
+<td align="right">1</td>
+<td align="right">9.518956</td>
+<td align="right">9</td>
+<td align="right">103337.40</td>
+<td align="right">10</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="odd">
+<td align="right">599</td>
+<td align="right">58</td>
+<td align="right">71</td>
+<td align="right">1</td>
+<td align="right">8.431196</td>
+<td align="right">5</td>
+<td align="right">52461.37</td>
+<td align="right">9</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="even">
+<td align="right">600</td>
+<td align="right">58</td>
+<td align="right">63</td>
+<td align="right">2</td>
+<td align="right">8.431196</td>
+<td align="right">5</td>
+<td align="right">52461.37</td>
+<td align="right">9</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="odd">
+<td align="right">601</td>
+<td align="right">58</td>
+<td align="right">35</td>
+<td align="right">2</td>
+<td align="right">8.431196</td>
+<td align="right">5</td>
+<td align="right">52461.37</td>
+<td align="right">9</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="even">
+<td align="right">602</td>
+<td align="right">58</td>
+<td align="right">23</td>
+<td align="right">2</td>
+<td align="right">8.431196</td>
+<td align="right">5</td>
+<td align="right">52461.37</td>
+<td align="right">9</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="odd">
+<td align="right">603</td>
+<td align="right">58</td>
+<td align="right">16</td>
+<td align="right">1</td>
+<td align="right">5.623608</td>
+<td align="right">5</td>
+<td align="right">52461.37</td>
+<td align="right">9</td>
+<td align="left">auto_sufficient</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="household-and-vehicle-files" class="section level4 hasAnchor" number="4.2.3.2">
+<h4><span class="header-section-number">4.2.3.2</span> Household and Vehicle Files<a href="methods.html#household-and-vehicle-files" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The household and vehicle files were generated using the same code to generate the population files. ActivitySim generates three specific files: a households, persons, and trips file. The persons and trips files were used to construct the population plans file. The households file, however, was used to generate both the household and vehicle BEAM input files.</p>
+<p>Within the BEAM households file, information such as household income, vehicle ownership, and the IDs of the agents and vehicles that correspond to each household ID is provided. Unfortunately, ActivitySim does not generate household coordinate locations, but does provide the TAZ in which the house presides. Therefore, the generate_beam_plans.py code designed by the BEAM developers assigns a random coordinate within the TAZ to each house. This household coordinate is then used to simulate starting and ending locations for each agent within their population plans file. An example of a subset of the households file that is used as an input to BEAM is shown in Table <a href="methods.html#tab:house">4.3</a>.</p>
+<table>
+<caption><span id="tab:house">Table 4.3: </span>A Subset of the Households File</caption>
+<colgroup>
+<col width="16%" />
+<col width="6%" />
+<col width="13%" />
+<col width="18%" />
+<col width="12%" />
+<col width="12%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Household ID</th>
+<th align="right">TAZ</th>
+<th align="right">Income</th>
+<th align="right">Household Size</th>
+<th align="right">LocationX</th>
+<th align="right">LocationY</th>
+<th align="left">Auto Work Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">304379</td>
+<td align="right">1281</td>
+<td align="right">37362.029</td>
+<td align="right">8</td>
+<td align="right">419080.7</td>
+<td align="right">4498686</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="even">
+<td align="right">270209</td>
+<td align="right">1104</td>
+<td align="right">163050.420</td>
+<td align="right">4</td>
+<td align="right">426367.4</td>
+<td align="right">4506262</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="odd">
+<td align="right">68811</td>
+<td align="right">555</td>
+<td align="right">17291.518</td>
+<td align="right">3</td>
+<td align="right">428645.4</td>
+<td align="right">4524432</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="even">
+<td align="right">83245</td>
+<td align="right">553</td>
+<td align="right">35756.388</td>
+<td align="right">2</td>
+<td align="right">426902.8</td>
+<td align="right">4523207</td>
+<td align="left">no_auto</td>
+</tr>
+<tr class="odd">
+<td align="right">373813</td>
+<td align="right">1516</td>
+<td align="right">54036.582</td>
+<td align="right">2</td>
+<td align="right">430560.8</td>
+<td align="right">4491969</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="even">
+<td align="right">574302</td>
+<td align="right">341</td>
+<td align="right">68375.208</td>
+<td align="right">4</td>
+<td align="right">418986.0</td>
+<td align="right">4559249</td>
+<td align="left">no_auto</td>
+</tr>
+<tr class="odd">
+<td align="right">253735</td>
+<td align="right">1197</td>
+<td align="right">192125.910</td>
+<td align="right">2</td>
+<td align="right">431933.2</td>
+<td align="right">4504105</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="even">
+<td align="right">53111</td>
+<td align="right">473</td>
+<td align="right">21239.420</td>
+<td align="right">2</td>
+<td align="right">420837.4</td>
+<td align="right">4542079</td>
+<td align="left">auto_sufficient</td>
+</tr>
+<tr class="odd">
+<td align="right">366644</td>
+<td align="right">1481</td>
+<td align="right">13778.640</td>
+<td align="right">2</td>
+<td align="right">429353.8</td>
+<td align="right">4494406</td>
+<td align="left">no_auto</td>
+</tr>
+<tr class="even">
+<td align="right">101334</td>
+<td align="right">666</td>
+<td align="right">9777.942</td>
+<td align="right">2</td>
+<td align="right">422532.8</td>
+<td align="right">4514347</td>
+<td align="left">auto_sufficient</td>
+</tr>
+</tbody>
+</table>
+<p>The vehicles file is quite simple in that it only includes information on the vehicle ID, vehicle type, and the household the vehicle belongs to. An example of a subset of the vehicles file that is used as an input to BEAM is shown in Table <a href="methods.html#tab:veh">4.4</a>.</p>
+<table>
+<caption><span id="tab:veh">Table 4.4: </span>A Subset of the Vehicles File</caption>
+<thead>
+<tr class="header">
+<th align="right">Vehicle ID</th>
+<th align="left">Vehicle Type</th>
+<th align="right">Household ID</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">CAR</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">CAR</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">CAR</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">CAR</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">CAR</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">CAR</td>
+<td align="right">30</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">CAR</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="left">CAR</td>
+<td align="right">30</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="vechile-types-files" class="section level4 hasAnchor" number="4.2.3.3">
+<h4><span class="header-section-number">4.2.3.3</span> Vechile Types Files<a href="methods.html#vechile-types-files" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In addition to the household and vehicle files, two vehicle type files are also needed to run BEAM. The first describes attributes that relate to each vehicle type. For example, some attributes that are included in the vehicle types file is the fuel efficiency, seating capacity, vehicle length, etc. An example of a subset of the vehicle types file that is used as an input to BEAM is shown in Table <a href="methods.html#tab:vehtypes">4.5</a>.</p>
+<table>
+<caption><span id="tab:vehtypes">Table 4.5: </span>A Subset of the Vehicle Types Input File</caption>
+<colgroup>
+<col width="22%" />
+<col width="7%" />
+<col width="17%" />
+<col width="13%" />
+<col width="14%" />
+<col width="24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">ID</th>
+<th align="right">Seats</th>
+<th align="right">Standing Room</th>
+<th align="right">Length (m)</th>
+<th align="left">Fuel</th>
+<th align="left">Vehicle Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BODY-TYPE-DEFAULT</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.5</td>
+<td align="left">Food</td>
+<td align="left">Body</td>
+</tr>
+<tr class="even">
+<td align="left">BIKE-DEFAULT</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">1.5</td>
+<td align="left">gasoline</td>
+<td align="left">Bike</td>
+</tr>
+<tr class="odd">
+<td align="left">FAST-BIKE</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">1.5</td>
+<td align="left">gasoline</td>
+<td align="left">Bike</td>
+</tr>
+<tr class="even">
+<td align="left">Car</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">4.5</td>
+<td align="left">gasoline</td>
+<td align="left">Car</td>
+</tr>
+<tr class="odd">
+<td align="left">CAR</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">4.5</td>
+<td align="left">gasoline</td>
+<td align="left">Car</td>
+</tr>
+<tr class="even">
+<td align="left">Car-rh-only</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">4.5</td>
+<td align="left">gasoline</td>
+<td align="left">Car</td>
+</tr>
+<tr class="odd">
+<td align="left">WAV</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">4.5</td>
+<td align="left">gasoline</td>
+<td align="left">Car</td>
+</tr>
+<tr class="even">
+<td align="left">CAV</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">4.5</td>
+<td align="left">gasoline</td>
+<td align="left">Car</td>
+</tr>
+<tr class="odd">
+<td align="left">BEV</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">4.5</td>
+<td align="left">electricity</td>
+<td align="left">Car</td>
+</tr>
+<tr class="even">
+<td align="left">PHEV</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">4.5</td>
+<td align="left">electricity</td>
+<td align="left">Car</td>
+</tr>
+<tr class="odd">
+<td align="left">BUS-DEFAULT</td>
+<td align="right">37</td>
+<td align="right">20</td>
+<td align="right">12.1</td>
+<td align="left">diesel</td>
+<td align="left">MediumDutyPassenger</td>
+</tr>
+<tr class="even">
+<td align="left">RAIL-DEFAULT</td>
+<td align="right">801</td>
+<td align="right">2052</td>
+<td align="right">129.6</td>
+<td align="left">diesel</td>
+<td align="left">MediumDutyPassenger</td>
+</tr>
+<tr class="odd">
+<td align="left">FERRY-DEFAULT</td>
+<td align="right">149</td>
+<td align="right">0</td>
+<td align="right">26.0</td>
+<td align="left">diesel</td>
+<td align="left">MediumDutyPassenger</td>
+</tr>
+<tr class="even">
+<td align="left">SUBWAY-DEFAULT</td>
+<td align="right">336</td>
+<td align="right">864</td>
+<td align="right">129.6</td>
+<td align="left">electricity</td>
+<td align="left">MediumDutyPassenger</td>
+</tr>
+<tr class="odd">
+<td align="left">CABLE_CAR-DEFAULT</td>
+<td align="right">29</td>
+<td align="right">31</td>
+<td align="right">8.4</td>
+<td align="left">electricity</td>
+<td align="left">MediumDutyPassenger</td>
+</tr>
+<tr class="even">
+<td align="left">TRAM-DEFAULT</td>
+<td align="right">58</td>
+<td align="right">19</td>
+<td align="right">14.0</td>
+<td align="left">electricity</td>
+<td align="left">MediumDutyPassenger</td>
+</tr>
+</tbody>
+</table>
+<p>A secondary vehicle types file exists that describes the nature of the ride hail fleet. One particular advantage to the microsimulation tool BEAM is its ability to model on-demand transit vehicles in a realistic manner. Part of creating realistic ride-hailing services is using an input file describing the nature of the fleet of ride-hail vehicles. An example of a subset of the ride-hail vehicle attributes file that is used as an input to BEAM is shown in Table <a href="methods.html#tab:rhveh">4.6</a>. For this research project, the ride-hail file used was taken from an example BEAM scenario. In the future however, a ride hailing fleet file that accurately depicts the nature of ride hail vehicles in the Salt Lake region will be used. For this research it was not necessary to include, and so a default file was used instead.</p>
+<table>
+<caption><span id="tab:rhveh">Table 4.6: </span>A Subset of the Vehicle Types Input File</caption>
+<colgroup>
+<col width="28%" />
+<col width="15%" />
+<col width="20%" />
+<col width="20%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">ID</th>
+<th align="left">Vehicle Type</th>
+<th align="right">Starting Point X</th>
+<th align="right">Starting Point Y</th>
+<th align="left">Shift Times</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">rideHailVehicle-033000</td>
+<td align="left">Car</td>
+<td align="right">414692.0</td>
+<td align="right">4498566</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="even">
+<td align="left">rideHailVehicle-012301</td>
+<td align="left">Car</td>
+<td align="right">418969.2</td>
+<td align="right">4495377</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="odd">
+<td align="left">rideHailVehicle-035201</td>
+<td align="left">Car</td>
+<td align="right">422864.0</td>
+<td align="right">4527397</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="even">
+<td align="left">rideHailVehicle-031400</td>
+<td align="left">Car</td>
+<td align="right">430458.0</td>
+<td align="right">4508789</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="odd">
+<td align="left">rideHailVehicle-030800</td>
+<td align="left">Car</td>
+<td align="right">417063.9</td>
+<td align="right">4568028</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="even">
+<td align="left">rideHailVehicle-016300</td>
+<td align="left">Car</td>
+<td align="right">415844.3</td>
+<td align="right">4544000</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="odd">
+<td align="left">rideHailVehicle-033100</td>
+<td align="left">Car</td>
+<td align="right">408380.1</td>
+<td align="right">4550982</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="even">
+<td align="left">rideHailVehicle-061500</td>
+<td align="left">Car</td>
+<td align="right">436159.1</td>
+<td align="right">4474228</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="odd">
+<td align="left">rideHailVehicle-032601</td>
+<td align="left">Car</td>
+<td align="right">420785.5</td>
+<td align="right">4484536</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="even">
+<td align="left">rideHailVehicle-015500</td>
+<td align="left">Car</td>
+<td align="right">444235.6</td>
+<td align="right">4452609</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="odd">
+<td align="left">rideHailVehicle-016400</td>
+<td align="left">Car</td>
+<td align="right">410876.3</td>
+<td align="right">4506167</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="even">
+<td align="left">rideHailVehicle-061400</td>
+<td align="left">Car</td>
+<td align="right">414579.1</td>
+<td align="right">4485811</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="odd">
+<td align="left">rideHailVehicle-017601</td>
+<td align="left">Car</td>
+<td align="right">411338.4</td>
+<td align="right">4548806</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="even">
+<td align="left">rideHailVehicle-020700</td>
+<td align="left">Car</td>
+<td align="right">446697.0</td>
+<td align="right">4437390</td>
+<td align="left">{10:25200}</td>
+</tr>
+<tr class="odd">
+<td align="left">rideHailVehicle-010500</td>
+<td align="left">Car</td>
+<td align="right">425560.0</td>
+<td align="right">4483818</td>
+<td align="left">{10:25200}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="transportation-services" class="section level4 hasAnchor" number="4.2.3.4">
+<h4><span class="header-section-number">4.2.3.4</span> Transportation Services<a href="methods.html#transportation-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>BEAM requires two main files in order to provide transportation services to agents within the simulation. These two files are a GTFS file and a routeable transportation network.</p>
+<p>GTFS data is a common format that houses information relating to transportation schedules and transportation locations. Many public agencies publish transportation data in the GTFS format. The GTFS data used as the input to BEAM was obtained from UTA’s mobility data feed from 2019 <span class="citation">(UTA 2021)</span>. BEAM maps the GTFS data onto the highway network allowing agents to use both transportation and highway services interchangeably <span class="citation">(Lant 2021)</span>.</p>
+<p>A detailed routeable road network for the study area was obtained from WFRC’s travel demand model. After some manipulation, the network was cleaned of misconnections and filtered to include the correct attributes. Within the network, various attributes such as capacity, free flow speed, number of lanes, functional classification, direction, whether it is a one-way street, etc. were included. The network was constructed from a series of link and node combinations. The nodes represent intersections and activity locations whereas the links represent the roadways that connect each node. The links include the attributes of the network whereas the nodes include the coordinates. A detailed highway network of links and nodes allows BEAM to simulate traffic conditions in a more realistic manner.</p>
+<p>Figure <a href="methods.html#fig:network">4.2</a> displays the roadway network of the region of study. Figure <a href="methods.html#fig:closent">4.3</a> displays a close up of roadway network system within Salt Lake City, Utah to show significant detail.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:network"></span>
+<img src="pics/network.png" alt="Transportation network for area of study." width="480px" />
+<p class="caption">
+Figure 4.2: Transportation network for area of study.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:closent"></span>
+<img src="pics/smallnetwork.png" alt="Close up of the transportation network of Salt Lake City." width="480px" />
+<p class="caption">
+Figure 4.3: Close up of the transportation network of Salt Lake City.
+</p>
+</div>
+</div>
+<div id="other-input-files" class="section level4 hasAnchor" number="4.2.3.5">
+<h4><span class="header-section-number">4.2.3.5</span> Other Input Files<a href="methods.html#other-input-files" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A variety of additional input files can be included to run the BEAM simulation. Not all the files will be mentioned, but a few of them include a configuration file, a parking file, a toll prices file, TAZ specific files, and mode choice utility parameter files. Besides for the mode choice utility parameter files, details about these additional files will not be provided. The details behind the mode choice utility parameter file will be discussed in Section <a href="methods.html#mbeam">4.3</a>.</p>
+</div>
 </div>
 </div>
 <div id="mbeam" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Additions to BEAM<a href="methods.html#mbeam" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="purpose-based-decisions" class="section level3 hasAnchor" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Purpose-based Decisions<a href="methods.html#purpose-based-decisions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h2><span class="header-section-number">4.3</span> Improved Mode Choice in BEAM<a href="methods.html#mbeam" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>After creating the basic input files in order to run BEAM for the Salt Lake region, the next step was adjusting the mode choice model within BEAM itself. As discussed in Section <a href="literature-review.html#lit7">3.8</a> BEAM’s default mode choice model is a simple multinomial logit model calculated with minimal travel attributes. In Section <a href="literature-review.html#lit4">3.5</a> it is discussed that ActivitySim’s mode choice model is comprehensive.</p>
+<p>Changing the mode choice model within BEAM to become more consistent with that of ActivitySim’s required some major adjustments to BEAM’s internal code. Specifically, in this research BEAM’s code was changed in three significant ways. Section <a href="methods.html#purp">4.3.1</a> describes how choices were changed to be made using activity purpose values, Section <a href="methods.html#ute">4.3.2</a> describes how additional attributes were inserted to the utility equation, and Section <a href="methods.html#pool">4.3.3</a> describes how new modal alternatives were added to BEAM. Then, in Section<a href="methods.html#algo">4.3.4</a> algorithms explaining BEAM’s improved mode choice model is presented.</p>
+<div id="purp" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Purpose-based Decisions<a href="methods.html#purp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The first major addition to BEAM’s mode choice model to improve consistency with ActivitySim was to base mode choice decisions off of activity purposes. An activity purpose describes the primary activity of trips on a tour. Primary purposes are selected on a tour-based level. For this reason, the primary purpose is also referred to as the tour purpose. For example, if an agent were to go to the gym, then to work, and then return home, each trip on the work tour would have a primary purpose of “work”. In this paper, tour purpose, primary purpose, activity purpose, and tour type are all used interchangeable to mean the same thing.</p>
+<p>ActivitySim’s mode choice coefficients vary between ten different tour purposes. These tour purposes are as follows:</p>
+<ul>
+<li>Work</li>
+<li>University</li>
+<li>School</li>
+<li>Escort</li>
+<li>Shopping</li>
+<li>Eating Out</li>
+<li>Social</li>
+<li>Other Maintenance</li>
+<li>Other Discretionary</li>
+<li>At Work</li>
+</ul>
+<p>To ensure the ability to distinguish between tour purpose values, it was necessary to adjust the population plans file to include a tour purpose trip-level attribute. Since ActivitySim bases decisions on activity purpose, it was simple to attach the attribute to the BEAM input plans file. As shown in Table <a href="methods.html#tab:plans">4.1</a> a purpose attribute exists. After assigning this attribute to the plans, the next step was adjusting the BEAM code to read in a new attribute. By adjusting BEAM’s CSV scenario reader script, along with other scripts relating to reading inputs, the primary purpose was able to be read into the BEAM software.</p>
+<p>Once primary purpose values were present in the population plans, the next step was to design a new mode choice model within BEAM. In order to better understand the new code that was inserted into BEAM, three flow charts were constructed (See Figure <a href="methods.html#fig:mnlflow">4.4</a>, Figure <a href="methods.html#fig:lccmflow">4.5</a>, and Figure <a href="methods.html#fig:tpcmflow">4.6</a>). In these flow charts inputs are displayed as folder icons, Java classes and methods are displayed as rectangles, and the result is displayed as an oval. These flow charts help display the code behind the BEAM’s mode choice models. Understanding BEAM’s default mode choice model and its obsolete Latent Class Choice Model (LCCM) are useful toward understanding how the new Tour Purpose Choice Model (TPCM) was constructed in the BEAM code.</p>
+<div id="multinomial-logit-choice-model" class="section level4 hasAnchor" number="4.3.1.1">
+<h4><span class="header-section-number">4.3.1.1</span> Multinomial Logit Choice Model<a href="methods.html#multinomial-logit-choice-model" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Figure <a href="methods.html#fig:mnlflow">4.4</a> shows the process behind BEAM’s default mode choice model. As described in Section <a href="literature-review.html#lit7">3.8</a>, by default BEAM calculates mode choices using a multinomial logit function with only a few attribute variables. In Figure <a href="methods.html#fig:mnlflow">4.4</a> the flow of inputs and BEAM functions are shown. As shown, the inputs to the Mode Choice Calculator are the alternatives, person and household attributes, and the destination activity data.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mnlflow"></span>
+<div id="htmlwidget-4eff446dcd298d696bcb" style="width:600px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4eff446dcd298d696bcb">{"x":{"diagram":"digraph {\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\ninput1 [label = \"Alternatives\", shape = folder, fillcolor = Beige]\ninput2 [label = \"Person & \n Household \n Attributes\", shape = folder, fillcolor = Beige]\ninput3 [label = \"Destination \n Activity\", shape = folder, fillcolor = Beige]\ninput4 [label = \"MNL Utility \n Parameters\", shape = folder, fillcolor = Beige]\ncalculator [label =  \"Mode Choice \n Calculator\"]\nlogit [label = \"Multinomial \n Logit\"]\nmode [label= \"Trip Mode\", shape = oval, fillcolor = Moccasin]\n\n{input1 input2 input3}  -> calculator -> logit -> mode\ninput4 -> logit}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 4.4: BEAM code flow chart behind the default multinomial logit choice model.
+</p>
 </div>
-<div id="additional-attributes-in-utility-equation" class="section level3 hasAnchor" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Additional Attributes in Utility Equation<a href="methods.html#additional-attributes-in-utility-equation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The alternatives input represents a set of detailed travel itineraries that the agent can choose from. Within the alternatives variable, travel statistics, travel paths, travel modes, travel times, etc. are included. So as a result, the alternatives variable represents the modes in which the agent can choose from, while also including all the travel statistics needed to calculate the probability of selecting such mode. The next input is the person and household attributes variable. This variable includes all the information from the person attributes input file (See Table <a href="methods.html#tab:peratt">4.2</a>) and the household attributes file (See Table <a href="methods.html#tab:house">4.3</a>). Within the household attributes file some information from the vehicle inputs file is also included. The person and household attributes variable is also needed to calculate the probability of selecting such a mode. The last input is the destination activity data. This data simply includes addition information relating to the current trip and the destination activity. It is also useful to calculating the final mode choice.</p>
+<p>The alternatives, person and household attributes, and destination activity are fed into the Mode Choice Calculator Java class. The purpose of this class is to organize the mode choice input data and organize it into a manner in which the choice model can process it efficiently. The Mode Choice Calculator class also houses some useful functions in the code used to calculate generalized travel time and the all day utility value.</p>
+<p>The organized data from the Mode Choice Calculator along with the multinomial logit utility parameters are then sent to the multinomial logit choice model. The utility parameters in the default BEAM code are simply expressed in the configuration file. For each mode, an intercept, transit occupancy level, and transfer intercept/multiplier is specified. Then, within the multinomial logit choice model the utility value is calculated for each modal alternative. Those utility values are then sampled and one final mode is chosen!</p>
 </div>
-<div id="carpool-alternatives" class="section level3 hasAnchor" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Carpool Alternatives<a href="methods.html#carpool-alternatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="latent-class-choice-model" class="section level4 hasAnchor" number="4.3.1.2">
+<h4><span class="header-section-number">4.3.1.2</span> Latent Class Choice Model<a href="methods.html#latent-class-choice-model" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>BEAM has an obsolete LCCM within its code structure. When BEAM was first being developed, the LCCM was how modal decisions were made. Part of creating the new Tour Purpose Choice Model was first to recreate and reboot the LCCM and second to change its structure slightly to base decisions off of tour purpose. For this reason, the structure behind the LCCM is presented. Figure <a href="methods.html#fig:lccmflow">4.5</a> shows the flow of code for the LCCM.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:lccmflow"></span>
+<div id="htmlwidget-69f5304021b5fba564be" style="width:650px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-69f5304021b5fba564be">{"x":{"diagram":"digraph {\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\ninput1 [label = \"Alternatives\", shape = folder, fillcolor = Beige]\ninput2 [label = \"Person & \n Household \n Attributes\", shape = folder, fillcolor = Beige]\ninput3 [label = \"Destination \n Activity\", shape = folder, fillcolor = Beige]\ninput4 [label = \"LCCM Utility \n Parameters\", shape = folder, fillcolor = Beige]\ncalculator [label =  \"Mode Choice \n Calculator\"]\nlccm [label = \"Latent Class \n Choice Model\"]\nlogit [label = \"Multinomial \n Logit\"]\nmode [label= \"Trip Mode\", shape = oval, fillcolor = Moccasin]\n\n{input1 input2 input3}  -> calculator -> lccm -> logit -> mode\ninput4 -> lccm}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 4.5: BEAM code flow chart behind the latent class choice model.
+</p>
+</div>
+<p>Just like with the multinomial logit choice model, the same alternatives, person and household attributes, and destination activity inputs are fed into the mode choice calculator. The mode choice calculator then acts in a similar way to organize the data for further analysis. However, an additional step is taken where the information is sent to a Latent Class Choice Model Java class before it is sent to the Multinomial Logit Java class. Within the Latent Class Choice Model Java class, a few things happen. First, the LCCM Utility Parameters data file is read into the code and parsed. After parsing the data, the utility parameters are attached to each alternative and stored.</p>
+<p>The LCCM Utility Parameters file includes mode choice coefficients relating to number of cars, household size, income, cost, time, and also alternative specific constants. The interesting part to the LCCM is that it calculates modes based off of which <em>modality style</em> a particular agent is a part of. The <em>modality style</em> represents the travel behavior of the individual. The LCCM code divides individuals up into one of the six groups or classes based on their <em>modality style</em> travel behavior. The LCCM BEAM code provides two incredibly useful structures that are directly related to creating the TPCM. First, it provides a code structure that reads in a csv file storing specific and attribute related utility parameters. Second, it provides a code structure for storing these utility parameters into each alternative based on person/household attributes, travel statistics, and destination activity.</p>
+<p>Interestingly enough, after the Latent Class Choice Model Java class reads in the utility information and stores it accordingly, it is sent to the same Multinomial Logit Java class. The overall utility value is calculated for each alternative and then are sampled down to a final mode choice!</p>
+</div>
+<div id="tour-purpose-choice-model" class="section level4 hasAnchor" number="4.3.1.3">
+<h4><span class="header-section-number">4.3.1.3</span> Tour Purpose Choice Model<a href="methods.html#tour-purpose-choice-model" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>As mentioned previously, the TPCM was constructed off of the LCCM within BEAM. This means the first step to creating this model was fixing the LCCM and making the LCCM run correctly. With a few minal code adjustments, and a lot of debugging, the LCCM was brought back to life. The final flow of code for the TPCM is presented in Figure <a href="methods.html#fig:tpcmflow">4.6</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tpcmflow"></span>
+<div id="htmlwidget-8d3199ee4f58f97be933" style="width:650px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8d3199ee4f58f97be933">{"x":{"diagram":"digraph {\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\ninput1 [label = \"Alternatives\", shape = folder, fillcolor = Beige]\ninput2 [label = \"Person & \n Household \n Attributes\", shape = folder, fillcolor = Beige]\ninput3 [label = \"Destination \n Activity\", shape = folder, fillcolor = Beige]\ninput4 [label = \"Tour Purpose\", shape = folder, fillcolor = Beige]\ninput5 [label = \"ActivitySim \n Utility \n Parameters\", shape = folder, fillcolor = Beige]\ncalculator [label =  \"Mode Choice \n Calculator\"]\ntpcm [label = \"Tour Purpose \n Choice Model\"]\nlogit [label = \"Multinomial \n Logit\"]\nmode [label= \"Trip Mode\", shape = oval, fillcolor = Moccasin]\n\n{input1 input2 input3 input4}  -> calculator -> tpcm -> logit -> mode\ninput5 -> tpcm}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 4.6: BEAM code flow chart behind the tour purpose choice model.
+</p>
+</div>
+<p>The flow chart shows a very similar choice process as the LCCM, except that an additional input is sent to the Mode Choice Calculator. Obviously, the tour purpose value is necessary for the choice model and is therefore also sent to the Mode Choice Calculator. This input is only available, however, because it was attached to the population plans as explained previously.</p>
+<p>In order to create the TPCM, two main steps were taken. First, a Tour Purpose Choice Model Java class was developed, mimicking how the code worked within the Latent Class Choice Model Java class. The TPCM was much more advanced than the LCCM, however, because instead of six classes to choose from there were 10 activity purposes to choose from. In addition, instead of only needing a few travel statistics to do the mode choice, the TPCM included 25 different path, person, and location type variables. The second step toward creating the TPCM was to develop an input csv file that included all the utility parameter values from ActivitySim. These additional attributes used in the utility equation are discussed in Section <a href="methods.html#ute">4.3.2</a>.</p>
+<p>Overall, the Tour Purpose Choice Model Java class performed similarly to the Latent Class Choice Model Java class. It was able to parse the input utility parameters, attach those values to the alternatives, as well as calculate the travel statistics for all 25 travel variables. To do this, an additional class was built to calculate each of the travel variables. The final mode choice was determined in the same manner as well. These alternatives were sent to the Multinomial Logit Java class where their modal utilities were calculated and sampled. The sampling then determined a final mode choice for each individual.</p>
 </div>
 </div>
-<div id="mode-choice-algorithms" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Mode Choice Algorithms<a href="methods.html#mode-choice-algorithms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ute" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Additional Attributes in Utility Equation<a href="methods.html#ute" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Equally important to developing the tour purpose choice model code structure within BEAM was to develop a consistent mode choice utility function. As explained in Section <a href="literature-review.html#lit4">3.5</a> ActivitySim bases its mode choice off of an abundance of path, person, and location type variables. Therefore, most of these path, person, and location type variables were inserted into the BEAM structure and used to calculate mode choice. The travel statistics for each variable were calculated within the TPCM code and the coefficient and intercept values were included using a csv input file.</p>
+<p>The specific values for the coefficients used in the csv input file were taken from <span class="citation">MTC (2012)</span>. Below, a list of the path, person, and location variables used to calculate the modal utility is shown.</p>
+<ul>
+<li><em>Path Variables</em>: Number of Transfers, Vehicle Time, Egress Time, Wait Time, Origin to Transit Proximity, Destination to Transit Proximity, Walking Distance, Biking Distance, and Driving Distance</li>
+<li><em>Person Variables</em>: Cost, Age, Household Size, and Vehicle to Worker Ratio</li>
+<li><em>Location Variables</em>: Zonal Destination Index and Central Business District</li>
+</ul>
+<p>In addition, Table <a href="methods.html#tab:asimvals">4.7</a> shows a subsection of this input file with only the cost variable coefficients provided. The purpose of showing this table is to help understand how extensive the choice model was. Within the table is is clear to see that variation exists between tour purpose, modal alternative, and variable type. Only three modal alternatives are provided in the table.</p>
+<table>
+<caption><span id="tab:asimvals">Table 4.7: </span>Cost coefficient values for some modes from the utility parameters csv file</caption>
+<thead>
+<tr class="header">
+<th align="left">Variable Type</th>
+<th align="left">Variable</th>
+<th align="left">Alternative</th>
+<th align="left">Units</th>
+<th align="left">Tour Purpose</th>
+<th align="right">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">car</td>
+<td align="left">util/min</td>
+<td align="left">work</td>
+<td align="right">-0.026</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">car</td>
+<td align="left">util/min</td>
+<td align="left">univ</td>
+<td align="right">-0.044</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">car</td>
+<td align="left">util/min</td>
+<td align="left">school</td>
+<td align="right">-0.044</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">car</td>
+<td align="left">util/min</td>
+<td align="left">escort</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">car</td>
+<td align="left">util/min</td>
+<td align="left">shopping</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">car</td>
+<td align="left">util/min</td>
+<td align="left">eatout</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">car</td>
+<td align="left">util/min</td>
+<td align="left">othmaint</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">car</td>
+<td align="left">util/min</td>
+<td align="left">social</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">car</td>
+<td align="left">util/min</td>
+<td align="left">othdiscr</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">car</td>
+<td align="left">util/min</td>
+<td align="left">atwork</td>
+<td align="right">-0.038</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">ride_hail</td>
+<td align="left">util/min</td>
+<td align="left">work</td>
+<td align="right">-0.026</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">ride_hail</td>
+<td align="left">util/min</td>
+<td align="left">univ</td>
+<td align="right">-0.044</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">ride_hail</td>
+<td align="left">util/min</td>
+<td align="left">school</td>
+<td align="right">-0.044</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">ride_hail</td>
+<td align="left">util/min</td>
+<td align="left">escort</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">ride_hail</td>
+<td align="left">util/min</td>
+<td align="left">shopping</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">ride_hail</td>
+<td align="left">util/min</td>
+<td align="left">eatout</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">ride_hail</td>
+<td align="left">util/min</td>
+<td align="left">othmaint</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">ride_hail</td>
+<td align="left">util/min</td>
+<td align="left">social</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">ride_hail</td>
+<td align="left">util/min</td>
+<td align="left">othdiscr</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">ride_hail</td>
+<td align="left">util/min</td>
+<td align="left">atwork</td>
+<td align="right">-0.038</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">walk_transit</td>
+<td align="left">util/min</td>
+<td align="left">work</td>
+<td align="right">-0.026</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">walk_transit</td>
+<td align="left">util/min</td>
+<td align="left">univ</td>
+<td align="right">-0.044</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">walk_transit</td>
+<td align="left">util/min</td>
+<td align="left">school</td>
+<td align="right">-0.044</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">walk_transit</td>
+<td align="left">util/min</td>
+<td align="left">escort</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">walk_transit</td>
+<td align="left">util/min</td>
+<td align="left">shopping</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">walk_transit</td>
+<td align="left">util/min</td>
+<td align="left">eatout</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">walk_transit</td>
+<td align="left">util/min</td>
+<td align="left">othmaint</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">walk_transit</td>
+<td align="left">util/min</td>
+<td align="left">social</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="odd">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">walk_transit</td>
+<td align="left">util/min</td>
+<td align="left">othdiscr</td>
+<td align="right">-0.036</td>
+</tr>
+<tr class="even">
+<td align="left">Person</td>
+<td align="left">cost</td>
+<td align="left">walk_transit</td>
+<td align="left">util/min</td>
+<td align="left">atwork</td>
+<td align="right">-0.038</td>
+</tr>
+</tbody>
+</table>
+<p>The observable utility equation for the new tour purpose choice model can be divided up into three sub-equations. Equation <a href="methods.html#eq:tpcmpath">(4.1)</a> shows the Path type variable part of the TPCM utility equation. Equation <a href="methods.html#eq:tpcmperson">(4.2)</a> shows the Person type variable part of the TPCM utility equation. Equation <a href="methods.html#eq:tpcmloc">(4.3)</a> shows the Location type variable part of the the TPCM utility equation. The full TPCM utility equation, however, is the combination of path, person, and location type variables, as displayed in Equation <a href="methods.html#eq:tpcmall">(4.4)</a>.</p>
+<div id="path-type-utility-equation" class="section level4 hasAnchor" number="4.3.2.1">
+<h4><span class="header-section-number">4.3.2.1</span> Path Type Utility Equation<a href="methods.html#path-type-utility-equation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math display" id="eq:tpcmpath">\[\begin{equation}
+  V_j = \beta_{t_v}(t_v) + \beta_{t_w}(t_w) + \beta_{t_e}(t_e) + \beta_{tr_p}(tr_p) + \beta_{xfer}(xfer) + \beta_{w_{dis}}(w_{dis}) + \\ \beta_{b_{dis}}(b_{dis}) + \beta_{d_{dis}}(d_{dis}) \tag{4.1}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(j\)</span> is the modal alternative,</li>
+<li><span class="math inline">\(t_v\)</span> is the in vehicle travel time (mins),</li>
+<li><span class="math inline">\(t_w\)</span> is the wait time (mins),</li>
+<li><span class="math inline">\(t_e\)</span> is the egress time (mins),</li>
+<li><span class="math inline">\(tr_p\)</span> is the proximity to transit (miles),</li>
+<li><span class="math inline">\(xfer\)</span> is the number of transfers,</li>
+<li><span class="math inline">\(w_{dis}\)</span> is the walk distance (miles),</li>
+<li><span class="math inline">\(b_{dis}\)</span> is the bike distance (miles),</li>
+<li><span class="math inline">\(d_{dis}\)</span> is the drive distance (miles),</li>
+<li><span class="math inline">\(\beta_{tr_p}\)</span> differs between origin/destination and length, and</li>
+<li><span class="math inline">\(\beta_{w_{dis}}\)</span>, <span class="math inline">\(\beta_{b_{dis}}\)</span>, and <span class="math inline">\(\beta_{d_{dis}}\)</span> differ between lengths.</li>
+<li><em>Note:</em> All <span class="math inline">\(\beta\)</span> values differ between mode and tour purpose.</li>
+</ul>
+</div>
+<div id="person-type-utility-equation" class="section level4 hasAnchor" number="4.3.2.2">
+<h4><span class="header-section-number">4.3.2.2</span> Person Type Utility Equation<a href="methods.html#person-type-utility-equation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math display" id="eq:tpcmperson">\[\begin{equation}
+  V_j = ASC_{auto} +  \beta_{c}(c) + \beta_{ag}(ag) \tag{4.2}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(j\)</span> is the modal alternative,</li>
+<li><span class="math inline">\(ASC_{auto}\)</span> is the alternative specific constant that differs between modal alternative and auto ownership dependency,</li>
+<li><span class="math inline">\(c\)</span> is the cost, and</li>
+<li><span class="math inline">\(ag\)</span> is the age grouping (if the person is between 0-10 or 16-19 years old).</li>
+<li><em>Note:</em> All <span class="math inline">\(\beta\)</span> values differ between mode and tour purpose.</li>
+</ul>
+</div>
+<div id="location-type-utility-equation" class="section level4 hasAnchor" number="4.3.2.3">
+<h4><span class="header-section-number">4.3.2.3</span> Location Type Utility Equation<a href="methods.html#location-type-utility-equation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math display" id="eq:tpcmloc">\[\begin{equation}
+  V_j = \beta_{zdi}(zdi) + \beta_{cbd}(cbd) \tag{4.3}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(j\)</span> is the modal alternative</li>
+<li><span class="math inline">\(zdi\)</span> is the zonal density index,</li>
+<li><span class="math inline">\(cbd\)</span> is a classifier for zones labeled as central business district, and</li>
+<li><span class="math inline">\(\beta_{zdi}\)</span> differs between origin/destination.</li>
+<li><em>Note:</em> All <span class="math inline">\(\beta\)</span> values differ between mode and tour purpose.</li>
+</ul>
+</div>
+<div id="beams-new-consistent-utility-equation" class="section level4 hasAnchor" number="4.3.2.4">
+<h4><span class="header-section-number">4.3.2.4</span> BEAM’s New Consistent Utility Equation<a href="methods.html#beams-new-consistent-utility-equation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math display" id="eq:tpcmall">\[\begin{equation}  
+  V_j = Eq:2 + Eq:3 + Eq:4 \tag{4.4}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(j\)</span> is the modal alternative.</li>
+</ul>
+<p>When comparing Equation <a href="methods.html#eq:tpcmall">(4.4)</a> with BEAM’s default equation in Equation <a href="#eq:beammnl">(<strong>??</strong>)</a>, it is clear that multiple more travel variables are used to calculate the utility value. When comparing this Equation <a href="methods.html#eq:tpcmall">(4.4)</a> with the ActivitySim equations in Section <a href="literature-review.html#lit4">3.5</a>, most of the same variable are used. By using most of the path, person, and location type variables to calculate the mode choice, the TPCM calculates utility in a consistent manner with ActivitySim. In addition, all utility values differ by tour purpose, making it almost identical to ActivitySim’s trip-based mode choice.</p>
+<p>It is important to note that BEAM’s TPCM was based heavily on ActivitySim’s <em>trip-based</em> mode choice model. BEAM’s internal code is built on a trip-based level. It would have been outside the scope of this project to adjust BEAM’s structure to include a tour mode choice model. As a result, the mode choice consistency only exists on the trip-based mode choice level. Hopefully, in the future a consistent tour-based mode choice can be inserted into BEAM as well.</p>
+</div>
+</div>
+<div id="pool" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Carpool Alternatives<a href="methods.html#pool" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="algo" class="section level3 hasAnchor" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Mode Choice Algorithms<a href="methods.html#algo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
 </div>
-<div id="data-and-calibration" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Data and Calibration<a href="methods.html#data-and-calibration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="path-person-and-location-analysis" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> Path, Person, and Location Analysis<a href="methods.html#path-person-and-location-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mcalib" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Data Validation and Calibration<a href="methods.html#mcalib" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="activitysim-path-variable-validation" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> ActivitySim Path Variable Validation<a href="methods.html#activitysim-path-variable-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>[graphs that compare asim, utah statewide, wfrc, and nchrp]</p>
+</div>
+<div id="mode-choice-calibration" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Mode Choice Calibration<a href="methods.html#mode-choice-calibration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="mcomp" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Path, Person, and Location Analysis<a href="methods.html#mcomp" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="summary-1" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Summary<a href="methods.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
@@ -309,6 +1606,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

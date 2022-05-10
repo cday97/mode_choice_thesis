@@ -684,6 +684,27 @@ We aim to better understand the effects of a consistent mode choice model betwee
 \hypertarget{summary}{%
 \section{Summary}\label{summary}}
 
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+\makeatother
+
 \hypertarget{methods}{%
 \chapter{Methods}\label{methods}}
 
@@ -1116,7 +1137,7 @@ Overall, the Tour Purpose Choice Model Java class performed similarly to the Lat
 
 Equally important to developing the tour purpose choice model code structure within BEAM was to develop a consistent mode choice utility function. As explained in Section \ref{lit4} ActivitySim bases its mode choice off of an abundance of path, person, and location type variables. Therefore, most of these path, person, and location type variables were inserted into the BEAM structure and used to calculate mode choice. The travel statistics for each variable were calculated within the TPCM code and the coefficient and intercept values were included using a csv input file.
 
-The specific values for the coefficients used in the csv input file were taken from MTC (2012). Below, a list of the path, person, and location variables used to calculate the modal utility is shown.
+The specific values for the coefficients used in the csv input file were taken from MTC (2012). {[}\emph{explain if tour or trip values and if you multiplied by 2?}{]} Below, a list of the path, person, and location variables used to calculate the modal utility is shown.
 
 \begin{itemize}
 \tightlist
@@ -1179,6 +1200,9 @@ Person & cost & walk\_transit & util/min & atwork & -0.038\\
 
 The observable utility equation for the new tour purpose choice model can be divided up into three sub-equations. Equation \eqref{eq:tpcmpath} shows the Path type variable part of the TPCM utility equation. Equation \eqref{eq:tpcmperson} shows the Person type variable part of the TPCM utility equation. Equation \eqref{eq:tpcmloc} shows the Location type variable part of the the TPCM utility equation. The full TPCM utility equation, however, is the combination of path, person, and location type variables, as displayed in Equation \eqref{eq:tpcmall}.
 
+\hypertarget{path-type-utility-equation}{%
+\subsubsection{Path Type Utility Equation}\label{path-type-utility-equation}}
+
 \begin{equation}
   V_j = \beta_{t_v}(t_v) + \beta_{t_w}(t_w) + \beta_{t_e}(t_e) + \beta_{tr_p}(tr_p) + \beta_{xfer}(xfer) + \beta_{w_{dis}}(w_{dis}) + \\ \beta_{b_{dis}}(b_{dis}) + \beta_{d_{dis}}(d_{dis}) \label{eq:tpcmpath}
 \end{equation}
@@ -1213,6 +1237,9 @@ where
   \emph{Note:} All \(\beta\) values differ between mode and tour purpose.
 \end{itemize}
 
+\hypertarget{person-type-utility-equation}{%
+\subsubsection{Person Type Utility Equation}\label{person-type-utility-equation}}
+
 \begin{equation}
   V_j = ASC_{auto} +  \beta_{c}(c) + \beta_{ag}(ag) \label{eq:tpcmperson}
 \end{equation}
@@ -1232,6 +1259,9 @@ where
 \item
   \emph{Note:} All \(\beta\) values differ between mode and tour purpose.
 \end{itemize}
+
+\hypertarget{location-type-utility-equation}{%
+\subsubsection{Location Type Utility Equation}\label{location-type-utility-equation}}
 
 \begin{equation}
   V_j = \beta_{zdi}(zdi) + \beta_{cbd}(cbd) \label{eq:tpcmloc}
@@ -1253,8 +1283,11 @@ where
   \emph{Note:} All \(\beta\) values differ between mode and tour purpose.
 \end{itemize}
 
+\hypertarget{beams-new-consistent-utility-equation}{%
+\subsubsection{BEAM's New Consistent Utility Equation}\label{beams-new-consistent-utility-equation}}
+
 \begin{equation}  
-  V_j = Eq:2 + Eq:3 + Eq:4 \label{eq:tpcmall}
+  V_j = Eq:4.1 + Eq:4.2 + Eq:4.3 \label{eq:tpcmall}
 \end{equation}
 
 where
@@ -1265,15 +1298,125 @@ where
   \(j\) is the modal alternative.
 \end{itemize}
 
-When comparing Equation \eqref{eq:tpcmall} with BEAM's default equation in Equation \eqref{eq:bmnl}, it is clear that multiple more travel variables are used to calculate the utility value. When comparing this Equation \eqref{eq:tpcmall} with the ActivitySim equations in Section \ref{lit4}, most of the same variable are used. By using most of the path, person, and location type variables to calculate the mode choice, the TPCM calculates utility in a consistent manner with ActivitySim. In addition, all utility values differ by tour purpose, making it almost identical to ActivitySim's trip-based mode choice.
+When comparing Equation \eqref{eq:tpcmall} with BEAM's default equation in Equation \eqref{eq:beammnl}, it is clear that multiple more travel variables are used to calculate the utility value. When comparing this Equation \eqref{eq:tpcmall} with the ActivitySim equations in Section \ref{lit4}, most of the same variable are used. By using most of the path, person, and location type variables to calculate the mode choice, the TPCM calculates utility in a consistent manner with ActivitySim. In addition, all utility values differ by tour purpose, making it almost identical to ActivitySim's trip-based mode choice.
 
 It is important to note that BEAM's TPCM was based heavily on ActivitySim's \emph{trip-based} mode choice model. BEAM's internal code is built on a trip-based level. It would have been outside the scope of this project to adjust BEAM's structure to include a tour mode choice model. As a result, the mode choice consistency only exists on the trip-based mode choice level. Hopefully, in the future a consistent tour-based mode choice can be inserted into BEAM as well.
 
 \hypertarget{pool}{%
 \subsection{Carpool Alternatives}\label{pool}}
 
+After designing a tour purpose choice model within BEAM and extending the mode choice utility equation, more consistency with ActivitySim was achieved by adding additional modal alternatives. BEAM by default includes nine modal alternatives. ActivitySim, however has seven upper level mode choices and 18 total mode choices. The lower level mode choices include distinctions between car and carpool modes being paid or not, and five different types of transit modes. For simplicity, BEAM's modes will be compared to ActivitySims upper level mode choice categories. Figure \ref{fig:venn} shows a venn diagram of how the modes compare between BEAM and ActivitySim.
+
+\begin{figure}
+
+{\centering \includegraphics{thesis_files/figure-latex/venn-1} 
+
+}
+
+\caption{A comparison between BEAM and ActivitySim's modal alternatives.}\label{fig:venn}
+\end{figure}
+
+As seen in Figure \ref{fig:venn}, both BEAM and ActivitySim include car, bike, walk, and various types of transit modes. BEAM includes ride hailing modal alternatives whereas ActivitySim includes carpooling alternatives (HOV2 and HOV3). HOV2 means High Occupancy Vehicle with 1 passenger (2 people in the vehicle) and HOV3 means High Occupancy Vehicle with 2 or more passengers (at least 3 people in the vehicle). Both HOV2 and HOV3 simply represent the option to carpool. Therefore, to create more consistency with ActivitySim, carpooling/HOV alternatives were added into the BEAM mode choice model.
+
+Four new carpooling alternatives were added to BEAM: HOV2, HOV2\_TELEPORTATION, HOV3, and HOV3\_TELEPORTATION. HOV2 and HOV3 were coded to act identical to car modes. They were mapped to the network and thus could add to congestion Their travel statistics were also calculated in the same way as for car modes. Agents who selected HOV2 or HOV3 were represented as the drivers of the carpooling cars. HOV2\_TELEPORTATION and HOV3\_TELEPORTATION modes were added to the modal alternative options as to represent non driving carpooling agents / passengers. These agents would simply teleport to their destination as to not add extra congestion to the network. Their travel statistics, however, were still calculated to represent a car traveling from the origin to the destination. Adding both car and teleporting HOV modes allowed carpooling alternatives to be represented as accurately as possible within the BEAM code.
+
+Within the code, HOV2 and HOV3 modes were provided as modal options by transforming an existing car option into an HOV option. By doing this, HOV modes did not have to be added to the R5 routing engine (Conveyal 2022). The R5 routing engine helps BEAM accomplish multi-modal routing. For the default modes with BEAM, agents make a request to the router and then the routing system calculates a distinct route through the system for all possible modal options (BEAM 2022). Car alternatives from the router were copied and changed into HOV2 and HOV3 options for agents to choose from. This allows car travel statistics to be transferred over to the carpooling modes.
+
+In cases where car routes were not provided from the router, HOV2 and HOV3 options could not be created. Often times this occurred for agents that did not have access to a car. This birthed the question of how to provide carpooling vehicles to agents without their own vehicle? In the real world, plenty of people without vehicles get rides from their friends. Therefore, as a way to surpass this problem, teleportation HOV vehicles were provided to these agents. In these cases, walk routes from the router were transformed into teleportation routes. Car travel statistics like travel time were calculated using the input skim data. In addition, costs for all teleportation modes were set to \$0, as oftentimes in the real world when picking up a friend that friend does not contribute to drive costs. Overall, by transforming existing routes from the router into carpooling alternatives, the ability to carpool became possible within BEAM. The carpooling addition thus made BEAM more consistent with the ActivitySim mode choice model.
+
 \hypertarget{algo}{%
 \subsection{Mode Choice Algorithms}\label{algo}}
+
+As a way to better understand the complexity behind the code changes within BEAM, two pseudocode algorithms are provided. Specifically, the algorithms are meant to provide clarification on how BEAM's new mode choice model works.
+
+Algorithm 1 describes the process behind determining the mode choice alternatives for each agent. This process occurs for every agent for every trip. Two procedures are presented within the first algorithm. The first procedure is called DetermineHOVAlternatives. This procedure was added to the BEAM code as a way to include carpooling options. In this procedure the process explained in Section \ref{pool} is shown where HOV alternatives are created from already existing options created by the router. Basically if a car, HOV2, or HOV3 mode is already created from the router, then both HOV2 and HOV3 options are provided. If car is not provided by the router, then teleporting HOV options are provided. The second procedure within Algorithm 1 describes the process behind determining the final modal alternatives. It essential states that if the current mode is already chosen, then that mode remains as the only alternative to choose from. However, if no mode is currently chosen for the trip, the router, ride hailing, and HOV alternatives are combined and presented as the final alternatives to choose from.
+
+\begin{algorithm} [tph]
+\caption{Algorithm for Determining Mode Choice Alternatives in BEAM}
+\begin{algorithmic}[1]
+\Require
+\State $i : origin$
+\State $j : destination$
+\State $n: agent$
+\State $N: population$
+\State $t : trip $
+\State $P : plan$
+\State $\vec{R}(i,j) : Router\: alternatives$
+\State $\vec{RH}(i,j) : Ridehail\:alternatives$
+\State $\vec{H}(i,j) : HOV\:alternatives$
+\State $\vec{M}(i,j) : Final\:modal\:alternatives$
+\State $C : Current\:Mode$
+\State $I : Trip\:Index$
+\vspace{4pt}\hrule\vspace{5pt}
+
+\State $\vec{R} \equiv \vec{R}(i,j)$
+\State $\vec{RH} \equiv \vec{RH}(i,j)$
+\State $\vec{H} \equiv \vec{H}(i,j)$
+\State $\vec{M} \equiv \vec{M}(i,j)$
+\For {$n \in N$}
+\For {$t \in P$}
+
+\Procedure {DetermineHOVAlternatives}{$\vec{R}$, $C$}
+\If {$C=None$}
+  \If {$\vec{R} \ni CAR$}
+    \State $\vec{H} \gets (HOV2,HOV3)$
+  \ElsIf {$\vec{R} \ni HOV2$}
+    \State $\vec{H} \gets (HOV3)$
+  \ElsIf {$\vec{R} \ni HOV3$}
+    \State $\vec{H} \gets (HOV2)$
+  \ElsIf {$\vec{R} \ni WALK$}
+    \State $\vec{H} \gets (HOV2\_TELEPORT, HOV3\_TELEPORT)$
+  \EndIf
+\Else
+  \State $\vec{H} \gets None$
+\EndIf
+\EndProcedure
+\Statex
+\algstore{myalg}
+\end{algorithmic}
+\end{algorithm}
+
+\addtocounter{algorithm}{-1}
+\begin{algorithm}
+\caption{continued}
+\begin{algorithmic} [1]
+\algrestore{myalg}
+\Procedure {DetermineFinalModalAlternatives}{$\vec{R}$, $\vec{RH}$, $\vec{H}$, $C$, $I$}
+\If {$C = DRIVE\_TRANSIT \lor BIKE\_TRANSIT$}
+  \If {$I = 0$}
+    \If {$C = DRIVE\_TRANSIT$}
+      \State $\vec{M} \gets (DRIVE\_TRANSIT)$
+    \Else
+      \State $\vec{M} \gets (BIKE\_TRANSIT)$
+    \EndIf  
+  \Else
+    \State $\vec{M} \gets (WALK\_TRANSIT, RIDEHAIL\_TRANSIT)$
+  \EndIf
+\ElsIf {$C = WALK\_TRANSIT \lor RIDEHAIL\_TRANSIT$}  
+  \If {$C = WALK\_TRANSIT$}
+    \State $\vec{M} \gets (WALK\_TRANSIT)$
+  \Else
+    \State $\vec{M} \gets (RIDEHAIL\_TRANSIT)$
+  \EndIf
+\ElsIf {$C = HOV2\_TELEPORT \lor HOV3\_TELEPORT$}  
+  \If {$C = HOV2\_TELEPORT$}
+    \State $\vec{M} \gets (HOV2\_TELEPORT)$
+  \Else
+    \State $\vec{M} \gets (HOV3\_TELEPORT)$
+  \EndIf
+\ElsIf {$C = CAR$}
+  \State $\vec{M} \gets (CAR)$
+\Else
+  \State $\vec{M} \gets \vec{R} + \vec{RH} + \vec{H}$  
+\EndIf  
+\EndProcedure
+\EndFor
+\EndFor
+\Statex
+\end{algorithmic}
+\end{algorithm}
+
+Algorithm 2 describes the process within BEAM for how one modal alternative is selected among all the mode choice options. Algorithm 2 is basically the pseudocode behind the process that occurs within the Multinomial Logit Java class presented in Figure \ref{fig:mnlflow}, Figure \ref{fig:lccmflow}, and Figure \ref{fig:tpcmflow}. Within this class, as shown in Algorithm 2, the math behind the mulitnomial logit formula is shown. Then, after using the multinomial logit formula, the probabilities that were calculated are sampled and one final mode choice alternative is selected!
 
 \begin{algorithm}
 \caption{Algorithm for Selecting Final Modal Alternative in BEAM}
@@ -1301,8 +1444,7 @@ This function takes a vector of modes and  their probabilities of being chosen. 
 \State $\vec{M} \equiv \vec{M}(i,j)$
 \State $\vec{U} \equiv \vec{U}(\vec{M},\vec{A})$
 \For {$n \in N$}
-\For {$t \in P$}
-\Procedure {DetermineFinalModalAlternative}{$\vec{M}$, $\vec{A}$, $\vec{c}$}
+\For {$t \in P$}\Procedure {DetermineFinalModalAlternative}{$\vec{M}$, $\vec{A}$, $\vec{c}$}
 \For {$m \in \vec{M}$}
   \State $u \gets \sum_{a\in \vec{A}} a \times c_a$
   \State $\vec{U} += [m,u]$
@@ -1326,10 +1468,41 @@ This function takes a vector of modes and  their probabilities of being chosen. 
 \hypertarget{mcalib}{%
 \section{Data Validation and Calibration}\label{mcalib}}
 
+After coding a consistent mode choice model within BEAM, further validation and calibration were essential. First, BEAM's new mode choice model is basing decisions off of utility parameter values copied from ActivitySim. We need to understand if these parameter values are consistent with values from other mode choice models. After validating the mode choice utility coefficient values, the alternative specific constants within the mode choice utility function need to be calibrated. With calibration, the modal distributions should align more closely with the target values within the region.
+
 \hypertarget{activitysim-path-variable-validation}{%
 \subsection{ActivitySim Path Variable Validation}\label{activitysim-path-variable-validation}}
 
-{[}graphs that compare asim, utah statewide, wfrc, and nchrp{]}
+The utility parameter values used in BEAM's new mode choice model were copied directly from MTC's implementation of ActivitySim (MTC 2012). MTC's implementation of ActivitySim was designed for the San Francisco, California region. Ideally, travel behaviors such as travel time, travel distance, and number of transfers should affect a person in different regions in a similar way. However, as a way to validate the use of ActivitySim's path utility coefficients in the Salt Lake region, these values are compared to values from other models. Specifically, these coefficient values are compared with three different models.
+
+The first model used to compare path utility coefficients is the Utah Statewide model (\textbf{utahstate?}). This model is useful as it provides a rough idea of the influence of path variables in Utah as a whole. The second model used in this comparison comes from the WFRC regional model (\textbf{wfrc?}). This model is a useful comparison as it predicts travel behavior for same region of study used in this research project. The last model used in this comparison is not exactly a model but a report. The NCHRP Report 716 provides a rough idea of what parameter values should look like for a generalized modeling point of view (\textbf{nchrp?}). Overall, comparing these three sets of path parameter values with the MTC ActivitySim parameter values used in BEAM should help validate the values used in this research.
+
+\begin{figure}
+
+{\centering \includegraphics{thesis_files/figure-latex/hbw-1} 
+
+}
+
+\caption{Home-based work mode choice path coefficients model comparison.}\label{fig:hbw}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{thesis_files/figure-latex/hbs-1} 
+
+}
+
+\caption{Home-based school mode choice path coefficients model comparison.}\label{fig:hbs}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{thesis_files/figure-latex/hbo-1} 
+
+}
+
+\caption{Home-based other mode choice path coefficients model comparison.}\label{fig:hbo}
+\end{figure}
 
 \hypertarget{mode-choice-calibration}{%
 \subsection{Mode Choice Calibration}\label{mode-choice-calibration}}
@@ -1596,6 +1769,9 @@ Axhausen, K, M Balmer, and F Ciari. 2008. {``A New Mode Choice Model for a Multi
 \leavevmode\vadjust pre{\hypertarget{ref-barth20}{}}%
 Barth, Matthew, Peng Hao, Guoyuan Wu, Shams Tanvir, Chao Wang, Jeff Gonder, Jacob Holden, Andrew Devall, and Bingrong Sun. 2020. {``Evaluating Energy Efficiency Opportunities from Connected and Automated Vehicle Deployments Coupled with Shared Mobility in California.''} University of California-Riverside.
 
+\leavevmode\vadjust pre{\hypertarget{ref-beam}{}}%
+BEAM. 2022. \emph{BEAM User's Guide}. \url{https://beam.readthedocs.io/en/develop/users.html}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-ben02}{}}%
 Ben-Akiva, Moshe, Daniel Mcfadden, Kenneth Train, Joan Walker, Chandra Bhat, Michel Bierlaire, Denis Bolduc, et al. 2002. {``Hybrid Choice Models: Progress and Challenges.''} \emph{Marketing Letters} 13 (3): 163--75. \url{https://doi.org/10.1023/a:1020254301302}.
 
@@ -1616,6 +1792,9 @@ Bowman, John L., Mark A. Bradley, and John Gibbs. 2006. {``The Sacramento Activi
 
 \leavevmode\vadjust pre{\hypertarget{ref-bowman99}{}}%
 Bowman, John L, Mark Bradley, Yoram Shiftan, T Keith Lawton, and Moshe Ben-Akiva. 1999. {``Demonstration of an Activity-Based Model for Portland.''} In \emph{World Transport Research: Selected Proceedings of the 8th World Conference on Transport ResearchWorld Conference on Transport Research Society}. Volume 3.
+
+\leavevmode\vadjust pre{\hypertarget{ref-r5}{}}%
+Conveyal. 2022. \emph{R5: Rapid Realistic Routing on Real-World and Reimagined Networks}. \url{https://github.com/conveyal/r5}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-zarwi17}{}}%
 El Zarwi, Feras, Akshay Vij, and Joan L Walker. 2017. {``A Discrete Choice Framework for Modeling and Forecasting the Adoption and Diffusion of New Transportation Services.''} \emph{Transportation Research Part C: Emerging Technologies} 79: 207--23.
