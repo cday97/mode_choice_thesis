@@ -617,7 +617,6 @@ hbo_graph
 
 ### Subtour Trip Analysis
 
-
 ## Summary
 
 

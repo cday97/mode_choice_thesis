@@ -1,50 +1,53 @@
+```{r, include = FALSE}
 # Outline
+#Here is my outline for the entire thesis. Hopefully this will give me a rough idea of what to write about.
 
-Here is my outline for the entire thesis. Hopefully this will give me a rough idea of what to write about.
-
-  1. Introduction *(5pg)*
-  
-    a. First/Last mile transit
-    
-  2. Literature Review *(20-30pg)*
-  
-    a. Discus Mode Choice (4-step model, ABMs, microsimulations)
-    b. Discuss ActivitySim (modechoice)
-    c. Discuss MATSim (modechoice)
-    d. Discuss BEAM (modechoice)
-    e. Figure explaining tour type and first trip difference?
-    f. Variables showing path,person,location?
-    
-  3. Methods
-  
-    a. What did we add to BEAM?
-    b. Algorithms
-    c. How did we make scenario?
-    d. What scenarios did we run? SLC + SL / Data & Calibration
-    e. What tests did we run? (path, person, location effects)
-    
-  4. Results
-  
-    a. Describe tests and findings
-    
-  5. Discussion
-  
-    a. What does it mean?
-    b. Limitations --> Future research recommendation
-    
-  6. Conclusions
-  
-    a. Wider implications
-    b. First mile last mile
-    c. climate change lol
-  
-    
+#  1. Introduction *(5pg)*
+#    a. First/Last mile transit
+#  2. Literature Review *(20-30pg)*
+#    a. Discus Mode Choice (4-step model, ABMs, microsimulations)
+#    b. Discuss ActivitySim (modechoice)
+#    c. Discuss MATSim (modechoice)
+#    d. Discuss BEAM (modechoice)
+#    e. Figure explaining tour type and first trip difference?
+#    f. Variables showing path,person,location?
+#  3. Methods
+#    a. What did we add to BEAM?
+#    b. Algorithms
+#    c. How did we make scenario?
+#    d. What scenarios did we run? SLC + SL / Data & Calibration
+#    e. What tests did we run? (path, person, location effects)
+#  4. Results
+#    a. Describe tests and findings
+#  5. Discussion
+#    a. What does it mean?
+#    b. Limitations --> Future research recommendation
+#  6. Conclusions
+#    a. Wider implications
+#    b. First mile last mile
+#    c. climate change lol
+```
 
 # Introduction 
 
 In the intro talk about the tscore setup, along with the desire to understand on-demand transit vehicles. Talk about how a consistent mc will help better model these on demand transit vehicles.
 
 ## Problem Statement
+In 2020, a project from the Transit - Serving Communities Optimally, Responsively, and Efficiently (T-SCORE) Center was proposed with the goal of keeping transit sustainable and resilient into the future. This project included multiple tracts involving both community analysis and multi-modal optimization and simulation (MMOS) analysis. The goal of the MMOS tract was to be able to quantitatively evaluate some big picture transit visions. By creating a multi-modal optimization and simulation model that can operate at the planning level, new transit strategies could be analyzed. One particular new transit strategy the MMOS analyzed was the introduction of new microtransit services. Furthermore, the MMOS had a goal of understanding if introducing on-demand transit vehicle services could help minimize the first-mile/last-mile transit problem.
+
+Figure \@ref(mmos) displays the entire overview of the MMOS part of the project. It displays the necessary steps that were taken to analyze the introduction of on demand transit vehicles.  The inputs are represented in green whereas the outputs are represented in yellow (with the expection of the mode choice model). 
+
+```{r}
+put picture here
+```
+
+talk about mode choice
+
+```{r}
+put mode choice tscore picture here
+```
+
+
 
 ## Purpose of Research
 

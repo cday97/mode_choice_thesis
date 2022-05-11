@@ -1,7 +1,9 @@
 ---
 always_allow_html: yes
 title: |
-  | Determining the significance of a consistent mode choice between activity-based models and agent-based microsimulation tools
+  | A Consistent Mode Choice Model between an 
+  | Activity-based Model and an Agent-
+  | based Microsimulation Tool
 # Your thesis title should be inverted pyramid-shaped, with the longest
 # line on top and shorter lines below. Add a new line as tab-|-space-Words
 author: 'Christopher Day'
@@ -10,12 +12,12 @@ department: 'Department of Civil and Construction Engineering'
 degree: 'Master of Science'
 doctype: 'thesis' # thesis or dissertation
 committeeMembers: |
-  Brigham Young, Chair 
+  Gregory S. Macfarlane, Chair 
   
-  Karl G. Maeser 
+  Grant G. Schultz
   
-  Harvey Fletcher
-keywords: 'Four Step Model, Discrete Choice Model, Activity-based Model'
+  Gustavious P. Williams
+keywords: 'four step model, discrete choice model, activity-based model, microsimulation tool, mode choice model, tour purpose, multinomial logit, latent class choice model'
 layout: '12pt, oneside, openright' 
 # use option 'oneside' for ETD
 # change this to option 'twoside' for printing
@@ -26,15 +28,7 @@ site: bookdown::bookdown_site
 
 # Note that a tab is needed on the line after the `|`.
 abstract: |
-  This document describes the use of a new \LaTeX \ template for writing masters
-  theses at Brigham Young University. This was made necessary by the relative age
-  and complication of prior templates. Additionally, the new `cosmodown` R package
-  contains an implementation of this thesis in R markdown, with the help of the 
-  [`thesisdown`](https://github.com/ismayc/thesisdown) package.
-
-  The abstract of a thesis should describe the
-  motivation, objective, overall results, and central findings of the thesis.
-  It may have multiple paragraphs if necessary.
+  | Every day individuals make a decision about which modes of transportation they should use. Predicting this behavior perfectly is impossible, however, there are countless ways to appoximating mode choice in transportation modeling. In this research we aim to increase the accuracy in predicting mode choice using transportation modeling software. Specifically we determine the significance of creating a consistent mode choice model between an activity-based model and a microsimulation tool. Oftentimes, the outputs of an activity-based model serve as the inputs to a microsimulation tool. Yet, the mode choice models betweeen these two software often vary significantly. Using ActivitySim as the activity-based model and BEAM as the microsimulation tool, we establish a consistent mode choice model within BEAM. We then model the mode choice decisions for agents in the Salt Lake City, Utah region. Their modal distributions and mode choice structures are compared to determine the effect of mode choice consistency. Interestingly, we find that a model that uses a consistent mode choice creates a modal distribution that aligns more closely with target shares. We also find that the introduction of path, person, and location variables in the mode choice utility equation helps better predict mode choice decisions. Further research is necessary in order to understand the effects of identical mode choice models between activity-based models and microsimulation tools.
 
   
 acknowledgments: |
