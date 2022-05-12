@@ -292,7 +292,7 @@ We propose to make a consistent mode choice model between an activity-based mode
 We aim to better understand the effects of a consistent mode choice model between an activity-based model and a microsimulation tool. We will do this by upgrading the mode choice model in BEAM to be more closely aligned with that of ActivitySim. We will then explore the outputs and compare the effects of the new mode choice model and the original mode choice model. Chapter 4 explains the methodology of how we accomplished this task. 
 
 ## Summary
-
+Do I need a summary, or does the previous paragraph work?
 
 
 
