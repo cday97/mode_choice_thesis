@@ -28,42 +28,40 @@
 \contentsline {section}{\numberline {2.7}The Mode Choice Model used in MATSim}{22}{section.2.7}%
 \contentsline {section}{\numberline {2.8}The Mode Choice Model used in BEAM}{23}{section.2.8}%
 \contentsline {section}{\numberline {2.9}Previous Attempts to Enhance Mode Choice in Agent-based Models}{25}{section.2.9}%
-\contentsline {section}{\numberline {2.10}Mode Choice Consistency between ActivitySim and BEAM}{27}{section.2.10}%
-\contentsline {section}{\numberline {2.11}Summary}{29}{section.2.11}%
-\contentsline {chapter}{\numberline {3}Methods}{30}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Overview}{30}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Creating and Setting up the Test Scenario}{30}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Test Scenario Region}{31}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Setting up and Running ActivitySim}{33}{subsection.3.2.2}%
-\contentsline {subsubsection}{Creating Input Files}{33}{subsubsection*.14}%
-\contentsline {subsubsection}{Calibration and Validation}{34}{subsubsection*.15}%
-\contentsline {subsection}{\numberline {3.2.3}Setting up BEAM}{35}{subsection.3.2.3}%
-\contentsline {subsubsection}{Population File}{35}{subsubsection*.16}%
-\contentsline {subsubsection}{Household and Vehicle Files}{37}{subsubsection*.19}%
-\contentsline {subsubsection}{Vechile Types Files}{38}{subsubsection*.22}%
-\contentsline {subsubsection}{Transportation Services}{39}{subsubsection*.25}%
-\contentsline {subsubsection}{Other Input Files}{43}{subsubsection*.28}%
-\contentsline {section}{\numberline {3.3}Improved Mode Choice in BEAM}{43}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Purpose-based Decisions}{43}{subsection.3.3.1}%
-\contentsline {subsubsection}{Multinomial Logit Choice Model}{45}{subsubsection*.29}%
-\contentsline {subsubsection}{Latent Class Choice Model}{46}{subsubsection*.31}%
-\contentsline {subsubsection}{Tour Purpose Choice Model}{48}{subsubsection*.33}%
-\contentsline {subsection}{\numberline {3.3.2}Additional Attributes in Utility Equation}{50}{subsection.3.3.2}%
-\contentsline {subsubsection}{Path Type Utility Equation}{53}{subsubsection*.36}%
-\contentsline {subsubsection}{Person Type Utility Equation}{54}{subsubsection*.37}%
-\contentsline {subsubsection}{Location Type Utility Equation}{54}{subsubsection*.38}%
-\contentsline {subsubsection}{BEAM's New Consistent Utility Equation}{54}{subsubsection*.39}%
-\contentsline {subsection}{\numberline {3.3.3}Carpool Alternatives}{55}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Mode Choice Algorithms}{58}{subsection.3.3.4}%
-\contentsline {section}{\numberline {3.4}Data Validation and Calibration}{62}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}ActivitySim Path Variable Validation}{62}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Mode Choice Calibration}{65}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Mode Choice Consistency Testing}{65}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Total Modal Distribution}{65}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Path, Person, and Location Analysis}{65}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Subtour Trip Analysis}{65}{subsection.3.5.3}%
-\contentsline {section}{\numberline {3.6}Summary}{65}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Results}{66}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Discussion}{67}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusions}{68}{chapter.6}%
-\contentsline {chapter}{References}{69}{section*.44}%
+\contentsline {section}{\numberline {2.10}Summary}{27}{section.2.10}%
+\contentsline {chapter}{\numberline {3}Methods}{29}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Overview}{29}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Creating and Setting up the Test Scenario}{29}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Test Scenario Region}{30}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Setting up and Running ActivitySim}{32}{subsection.3.2.2}%
+\contentsline {subsubsection}{Creating Input Files}{32}{subsubsection*.14}%
+\contentsline {subsubsection}{Calibration and Validation}{33}{subsubsection*.15}%
+\contentsline {subsection}{\numberline {3.2.3}Setting up BEAM}{34}{subsection.3.2.3}%
+\contentsline {subsubsection}{Population File}{34}{subsubsection*.16}%
+\contentsline {subsubsection}{Household and Vehicle Files}{35}{subsubsection*.19}%
+\contentsline {subsubsection}{Vechile Types Files}{36}{subsubsection*.22}%
+\contentsline {subsubsection}{Transportation Services}{38}{subsubsection*.25}%
+\contentsline {subsubsection}{Other Input Files}{40}{subsubsection*.28}%
+\contentsline {section}{\numberline {3.3}Improved Mode Choice in BEAM}{40}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Purpose-based Decisions}{40}{subsection.3.3.1}%
+\contentsline {subsubsection}{Multinomial Logit Choice Model}{44}{subsubsection*.29}%
+\contentsline {subsubsection}{Latent Class Choice Model}{45}{subsubsection*.31}%
+\contentsline {subsubsection}{Tour Purpose Choice Model}{47}{subsubsection*.33}%
+\contentsline {subsection}{\numberline {3.3.2}Additional Attributes in Utility Equation}{49}{subsection.3.3.2}%
+\contentsline {subsubsection}{Path Type Utility Equation}{52}{subsubsection*.36}%
+\contentsline {subsubsection}{Person Type Utility Equation}{52}{subsubsection*.37}%
+\contentsline {subsubsection}{Location Type Utility Equation}{53}{subsubsection*.38}%
+\contentsline {subsubsection}{BEAM's New Consistent Utility Equation}{53}{subsubsection*.39}%
+\contentsline {subsection}{\numberline {3.3.3}Carpool Alternatives}{54}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Mode Choice Algorithms}{56}{subsection.3.3.4}%
+\contentsline {section}{\numberline {3.4}Data Validation and Calibration}{57}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}ActivitySim Path Variable Validation}{61}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Mode Choice Calibration}{64}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Summary}{64}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Results}{65}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Total Modal Distribution}{65}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Path, Person, and Location Analysis}{65}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Subtour Trip Analysis}{65}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Discussion}{66}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusions}{67}{chapter.6}%
+\contentsline {chapter}{References}{68}{section*.44}%
