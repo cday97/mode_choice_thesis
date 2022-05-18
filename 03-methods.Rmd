@@ -6,19 +6,11 @@ header-includes:
 ---
 
 ```{r, include = FALSE}
+library(targets)
+library(tarchetypes)
 library(tidyverse)
-library(sf)
-library(cowplot)
-library(ggspatial)
-library(DiagrammeR)
 library(RAM)
-library(readr)
-library(tufte)
-library(dotwhisker)
-library(ggpubr)
-library(scales)
-source("data/functions/table_maker.R")
-source("data/functions/asim_path_validation.R")
+##to install RAM: devtools::install_url("https://cran.r-project.org/src/contrib/Archive/RAM/RAM_1.2.1.tar.gz")
 ```
 
 # Methods
@@ -32,38 +24,8 @@ Designing a test scenario to use within ActivitySim and BEAM was essential to un
 ### Test Scenario Region
 The test scenario used in this research includes the approximate 2.1 million agents of the Salt Lake City, Utah, USA region. This region includes Box Elder, Davis, Salt Lake, Utah, and Weber counties. Figure \@ref(fig:figregion) shows the 2881 Traffic Analysis Zones (TAZs) along with the five counties that make up the region of study. 
 
-```{r, include = FALSE, eval = FALSE}
-sf_use_s2(FALSE)
-geo <- st_read('https://raw.githubusercontent.com/byu-transpolab/populationsim_wfrc/master/inputs/taz.geojson') %>%
-  st_transform(crs = 4326) %>%
-  filter(CO_FIPS != 0)
-utah <- st_read("data/Utah_State_Boundary-shp/Utah.shp") %>%
-  st_transform(crs = 4326) %>%
-  head(1)
-
-map1 <- ggplot() + 
-  annotation_map_tile() +
-  geom_sf(data = geo, mapping = aes(color = factor(CO_FIPS))) +
-  scale_color_brewer(labels = c("Box Elder", "Davis", "Salt Lake", "Utah", "Weber"), palette = "Dark2") +
-  theme_bw() +
-  guides(color=guide_legend("County")) + 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-
-map2 <- ggplot() +
-  geom_sf(data = utah, fill = "white") +
-  coord_sf(xlim = c(-115, -108.25), ylim = c(36.4, 42.5), expand = FALSE) +
-  theme_void() + 
-  annotate(geom = "rect", ymax = 41.4, ymin = 39.9, xmax = -112.3, xmin = -111.4, colour = "red", fill = NA)
-
-taz <- ggdraw() + 
-  draw_plot(map1) + 
-  draw_plot(map2, x = 0.025, y = 0.65, width = 0.3, height = 0.3) + 
-  theme_bw()
-ggsave("pics/taz.png",map1)
-```
-
 ```{r figregion, fig.cap='The TAZs of each county in the region of study.', out.width = "480px", echo = FALSE, warning = FALSE, message = FALSE, fig.align='center'}
-knitr::include_graphics("pics/taz.png")
+tar_read(tazmap)
 ```
 
 This extensive region was selected for the following reasons:
@@ -187,31 +149,12 @@ A detailed routable road network for the study area was obtained from WFRC's tra
 
 Figure \@ref(fig:network) displays the roadway network of the region of study. Figure \@ref(fig:closent) displays a close up of roadway network system within Salt Lake City, Utah to show significant detail. 
 
-```{r, include =FALSE, eval=FALSE, fig.width=6.5, fig.height=8.5}
-roads <- st_read("data/Utah_Roads/Utah_Roads.shp") %>%
-  st_transform(crs = 4326)
-croproads <- st_crop(roads,ymax = 41.4, ymin = 39.9, xmax = -112.15, xmin = -111.58)
-cropsalt <- st_crop(roads,ymax = 40.7, ymin = 40.5, xmax = -112, xmin = -111.8)
-
-bignetwork <- ggplot() + 
-  geom_sf(data = croproads, size = .1, color = "black") +
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggsave("pics/network.png",bignetwork)
-
-smallnetwork <- ggplot() + 
-  geom_sf(data = cropsalt, size = .1, color = "black") +
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggsave("pics/smallnetwork.png",smallnetwork)
-```
-
 ```{r network,  fig.cap='Transportation network for area of study.', echo = FALSE, warning = FALSE, message = FALSE, out.width = "480px", fig.align='center'}
-knitr::include_graphics("pics/network.png")
+tar_read(bignetpic)
 ```
 
 ```{r closent,  fig.cap='Close up of the transportation network of Salt Lake City.', echo = FALSE, warning = FALSE, message = FALSE, out.width = "480px", fig.align='center'}
-knitr::include_graphics("pics/smallnetwork.png")
+tar_read(smallnetpic)
 ```
 
 #### Other Input Files
@@ -246,21 +189,7 @@ Once primary purpose values were present in the population plans, the next step 
 Figure \@ref(fig:mnlflow) shows the process behind BEAM's default mode choice model. As described in Section \@ref(lit7), by default BEAM calculates mode choices using a multinomial logit function with only a few attribute variables. In Figure \@ref(fig:mnlflow) the flow of inputs and BEAM functions are shown. As shown, the inputs to the Mode Choice Calculator are the alternatives, person and household attributes, and the destination activity data. 
 
 ```{r mnlflow,  fig.cap='BEAM code flow chart behind the default multinomial logit choice model.', echo = FALSE, warning = FALSE, message = FALSE, out.width = "600px", fig.align='center'}
-#https://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html
-DiagrammeR::grViz("digraph {
-graph [layout = dot, rankdir = LR]
-node [shape = rectangle, style = filled, fillcolor = Linen]
-
-input1 [label = 'Alternatives', shape = folder, fillcolor = Beige]
-input2 [label = 'Person & \n Household \n Attributes', shape = folder, fillcolor = Beige]
-input3 [label = 'Destination \n Activity', shape = folder, fillcolor = Beige]
-input4 [label = 'MNL Utility \n Parameters', shape = folder, fillcolor = Beige]
-calculator [label =  'Mode Choice \n Calculator']
-logit [label = 'Multinomial \n Logit']
-mode [label= 'Trip Mode', shape = oval, fillcolor = Moccasin]
-
-{input1 input2 input3}  -> calculator -> logit -> mode
-input4 -> logit}")
+tar_read(mnlflow)
 ```
 
 The alternatives input represents a set of detailed travel itineraries that the agent can choose from. Within the alternatives variable, travel statistics, travel paths, travel modes, travel times, etc. are included. So as a result, the alternatives variable represents the modes in which the agent can choose from, while also including all the travel statistics needed to calculate the probability of selecting such mode. The next input is the  person and household attributes variable. This variable includes all the information from the person attributes input file (See Table \@ref(tab:peratt)) and the household attributes file (See Table \@ref(tab:house)). Within the household attributes file some information from the vehicle inputs file is also included. The person and household attributes variable is also needed to calculate the probability of selecting such a mode. The last input is the destination activity data. This data simply includes additional information relating to the current trip and the destination activity. It is also useful to calculating the final mode choice.
@@ -273,21 +202,7 @@ The organized data from the Mode Choice Calculator along with the multinomial lo
 BEAM has an obsolete LCCM within its code structure. When BEAM was first being developed, the LCCM was how modal decisions were made. Part of creating the new Tour Purpose Choice Model was first to recreate and reboot the LCCM and second to change its structure slightly to base decisions off of tour purpose. For this reason, the structure behind the LCCM is presented. Figure \@ref(fig:lccmflow) shows the flow of code for the LCCM.
 
 ```{r lccmflow,  fig.cap='BEAM code flow chart behind the latent class choice model.', echo = FALSE, warning = FALSE, message = FALSE, out.width = "650px", fig.align='center'}
-DiagrammeR::grViz("digraph {
-graph [layout = dot, rankdir = LR]
-node [shape = rectangle, style = filled, fillcolor = Linen]
-
-input1 [label = 'Alternatives', shape = folder, fillcolor = Beige]
-input2 [label = 'Person & \n Household \n Attributes', shape = folder, fillcolor = Beige]
-input3 [label = 'Destination \n Activity', shape = folder, fillcolor = Beige]
-input4 [label = 'LCCM Utility \n Parameters', shape = folder, fillcolor = Beige]
-calculator [label =  'Mode Choice \n Calculator']
-lccm [label = 'Latent Class \n Choice Model']
-logit [label = 'Multinomial \n Logit']
-mode [label= 'Trip Mode', shape = oval, fillcolor = Moccasin]
-
-{input1 input2 input3}  -> calculator -> lccm -> logit -> mode
-input4 -> lccm}")
+tar_read(lccmflow)
 ```
 
 Just like with the multinomial logit choice model, the same alternatives, person and household attributes, and destination activity inputs are fed into the Mode Choice Calculator. The Mode Choice Calculator then acts in a similar way to organize the data for further analysis. However, an additional step is taken where the information is sent to a Latent Class Choice Model Java class before it is sent to the Multinomial Logit Java class. Within the Latent Class Choice Model Java class, a few things happen. First, the LCCM Utility Parameters data file is read into the code and parsed. After parsing the data, the utility parameters are attached to each alternative and stored.
@@ -300,22 +215,7 @@ Interestingly enough, after the Latent Class Choice Model Java class reads in th
 As mentioned previously, the TPCM was constructed off of the LCCM within BEAM. This means the first step to creating this model was fixing the LCCM and making the LCCM run correctly. With a few minimal code adjustments, and a lot of debugging, the LCCM was brought back to life. The final flow of code for the TPCM is presented in Figure \@ref(fig:tpcmflow).
 
 ```{r tpcmflow,  fig.cap='BEAM code flow chart behind the tour purpose choice model.', echo = FALSE, warning = FALSE, message = FALSE, out.width = "650px", fig.align='center'}
-DiagrammeR::grViz("digraph {
-graph [layout = dot, rankdir = LR]
-node [shape = rectangle, style = filled, fillcolor = Linen]
-
-input1 [label = 'Alternatives', shape = folder, fillcolor = Beige]
-input2 [label = 'Person & \n Household \n Attributes', shape = folder, fillcolor = Beige]
-input3 [label = 'Destination \n Activity', shape = folder, fillcolor = Beige]
-input4 [label = 'Tour Purpose', shape = folder, fillcolor = Beige]
-input5 [label = 'ActivitySim \n Utility \n Parameters', shape = folder, fillcolor = Beige]
-calculator [label =  'Mode Choice \n Calculator']
-tpcm [label = 'Tour Purpose \n Choice Model']
-logit [label = 'Multinomial \n Logit']
-mode [label= 'Trip Mode', shape = oval, fillcolor = Moccasin]
-
-{input1 input2 input3 input4}  -> calculator -> tpcm -> logit -> mode
-input5 -> tpcm}")
+tar_read(tpcmflow)
 ```
 
 The flow chart shows a very similar choice process as the LCCM, except that an additional input is sent to the Mode Choice Calculator. Obviously, the tour purpose value is necessary for the choice model and is therefore also sent to the Mode Choice Calculator. This input is only available, however, because it was attached to the population plans as explained previously.
@@ -415,12 +315,12 @@ It is important to note that BEAM's internal code is built on a trip-based level
 After designing a tour purpose choice model within BEAM and extending the mode choice utility equation, more consistency with ActivitySim was achieved by adding additional modal alternatives. BEAM by default includes nine modal alternatives. ActivitySim, however has eight upper level mode choices and 18 total mode choices. The lower level mode choices include distinctions between car and carpool modes being paid or not, and five different types of transit modes. For simplicity, BEAM's modes will be compared to ActivitySims upper level mode choice categories. Figure \@ref(fig:venn) shows a venn diagram of how the modes compare between BEAM and ActivitySim.
  
 ```{r venn, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "A comparison between BEAM and ActivitySim's modal alternatives.", fig.align='center'}
-BEAM <- c("Car", "Bike","Walk", "Ride Hail", "Ride Hail- \n Pooled", "Drive Transit", "Walk Transit", "Ride Hail- \n Transit", "Bike Transit")
-ActivitySim <- c("Car","HOV2","HOV3", "Bike", "Walk", "Walk Transit", "Drive Transit", "Bike Transit")
+  BEAM <- c("Car", "Bike","Walk", "Ride Hail", "Ride Hail- \n Pooled", "Drive Transit", "Walk Transit", "Ride Hail- \n Transit", "Bike Transit")
+  ActivitySim <- c("Car","HOV2","HOV3", "Bike", "Walk", "Walk Transit", "Drive Transit", "Bike Transit")
 group.venn(list(BEAM=BEAM, ActivitySim=ActivitySim), label=TRUE, 
-    fill = c("lightblue", "pink"),
-    cat.pos = c(-25, 15),
-    lab.cex=1.1)
+             fill = c("lightblue", "pink"),
+             cat.pos = c(-25, 15),
+             lab.cex=1.1)
 ```
 
 As seen in Figure \@ref(fig:venn), both BEAM and ActivitySim include car, bike, walk, and various types of transit modes. BEAM includes ride hailing modal alternatives whereas ActivitySim includes carpooling alternatives (HOV2 and HOV3). HOV2 means High Occupancy Vehicle with 1 passenger (2 people in the vehicle) and HOV3 means High Occupancy Vehicle with 2 or more passengers (at least 3 people in the vehicle). Both HOV2 and HOV3 simply represent the option to carpool. Therefore, to create more consistency with ActivitySim, carpooling/HOV alternatives were added into the BEAM mode choice model.
@@ -584,26 +484,20 @@ Although ActivitySim has ten primary purpose values, the other models only had t
 
 Figure \@ref(fig:hbw) shows the comparison of the path utility parameter values between all four models for home-based work trips. For the egress time, in vehicle travel time (ivtt), the number of transfers, transfer time, and the wait times, ActivitySim seems to use a very similar coefficient value as the other three models. The largest discrepancy exists with short and long walking distances. ActivitySim seems to use a value almost ten fold that of the other models. This occurs because in the WFRC and Utah Statewide models, there is a limit to walking distance. ActivitySim however does not cap walking distances and therefore there is a high penalty for long walking distances. With this clarification, it is clear to see that ActivitySim's path coefficient values do not require calibration and were left as is.
 
-```{r, include = FALSE}
-hbw_graph <- ivtt_ratio_grapher("Home-Based Work",get_asim_hbw(),get_utah_hbw(),get_wfrc_hbw(),get_nchrp_hbw())
-hbs_graph <- ivtt_ratio_grapher("Home-Based School",get_asim_hbs(),get_utah_hbs(),get_wfrc_hbs(),get_nchrp_hbs())
-hbo_graph <- ivtt_ratio_grapher("Home-Based Other",get_asim_hbo(),get_utah_hbo(),get_wfrc_hbo(),get_nchrp_hbo())
-```
-
 ```{r hbw, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based work mode choice path coefficients model comparison.", fig.align='center', out.width = "400px"}
-hbw_graph
+tar_read(hbw_graph)
 ```
 
 Figure \@ref(fig:hbs) shows the comparison of the path utility parameter values between all four models for home-based school trips. Similar to the home-based work analysis, for the egress time, ivtt, transfer time, and the wait times, ActivitySim seems to use a very similar coefficient value as the other three models. Again, the largest discrepancy exists with short and long walking distances. Since this is simply a difference between how walk distance is modeled, the discrepancy is ignored. In addition, the other three models did not have information on number of transfers. As a result, there is no comparison done with number of transfers. ActivitySim's path coefficient values do not require calibration for the home-based school parameters.
 
 ```{r hbs, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based school mode choice path coefficients model comparison.", fig.align='center', out.width = "400px"}
-hbs_graph
+tar_read(hbs_graph)
 ```
 
 Lastly, Figure \@ref(fig:hbo) shows the comparison of path utility parameter values between all four models for home-based other trips. Again, besides for walk distance all variables seem to be similar between all four models. An interesting point is that for models other than ActivitySim, the cost coefficient varies greatly. Fortunately, ActivitySim bases the cost coefficient on each individual's value of time so this is not a concern. Overall, for all purpose types the coefficients used by ActivitySim are similar enough to other models that exist, and therefore do not require calibration. The ActivitySim alternative specific constants do, however, require calibration (See Section \@ref(clib)).
 
 ```{r hbo, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based other mode choice path coefficients model comparison.", fig.align='center', out.width = "400px"}
-hbo_graph
+tar_read(hbo_graph)
 ```
 
 ### Mode Choice Calibration {#clib}

@@ -1,32 +1,34 @@
-Welcome! 
+## Description
 
-This is a project and template for a BYU thesis based on R Markdown and
-**bookdown** (https://github.com/rstudio/bookdown).
+This project generates my master's thesis document. In it, the data is
+analyzed with R functions that I wrote. It was generated using the BYU thesis
+template created by Dr. Macfarlane based on R Markdown and **bookdown**
+(https://github.com/rstudio/bookdown).
 
-This template provides a skeleton file structure that you can edit to create your 
-thesis. The contents inside the .Rmd files provide some pointers to help you
-get started, but feel free to also delete the content in each file and start
-fresh.
 
-Additional resources:
+## How to Run
+A few steps need to be completed before creating the thesis. These steps are
+outlined below.
 
-The **bookdown** book: https://bookdown.org/yihui/bookdown/
-
-The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
-
+  1. Download the data and put it into the data folder. Data is found at This
+  link: (put link here).
+  2. Run tar_make() to build the figures and tables used in the document.
+  3. Dowload the 'RAM' package using this command: devtools::install_url
+  ("https://cran.r-project.org/src/contrib/Archive/RAM/RAM_1.2.1.tar.gz")
+  4. Build the book.
 
 ## Outputs
 
-This template creates two outputs:
+This thesis creates two outputs:
 
-  1. A PDF conforming to the BYU thesis style guide. 
+  1. A PDF conforming to the BYU thesis style guide.
   2. A `gitbook`, or a book-styled website that renders mathematics beautifully
   and can be easily posted online. There is also a download button at the top
   of each page where people can download the PDF.
 
 
-To build the documents, press the "Build Book" button in the "Build" pane of 
-RStudio. Otherwise, you can also compile from the R prompt with 
+To build the documents, press the "Build Book" button in the "Build" pane of
+RStudio. Otherwise, you can also compile from the R prompt with
 
 ```r
 # build website

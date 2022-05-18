@@ -33,28 +33,28 @@
 \contentsline {section}{\numberline {3.1}Overview}{29}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Creating and Setting up the Test Scenario}{29}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Test Scenario Region}{30}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Setting up and Running ActivitySim}{32}{subsection.3.2.2}%
-\contentsline {subsubsection}{Creating Input Files}{32}{subsubsection*.14}%
-\contentsline {subsubsection}{Calibration and Validation}{33}{subsubsection*.15}%
-\contentsline {subsection}{\numberline {3.2.3}Setting up BEAM}{34}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.2}Setting up and Running ActivitySim}{31}{subsection.3.2.2}%
+\contentsline {subsubsection}{Creating Input Files}{31}{subsubsection*.14}%
+\contentsline {subsubsection}{Calibration and Validation}{32}{subsubsection*.15}%
+\contentsline {subsection}{\numberline {3.2.3}Setting up BEAM}{33}{subsection.3.2.3}%
 \contentsline {subsubsection}{Population File}{34}{subsubsection*.16}%
-\contentsline {subsubsection}{Household and Vehicle Files}{35}{subsubsection*.19}%
-\contentsline {subsubsection}{Vechile Types Files}{36}{subsubsection*.22}%
-\contentsline {subsubsection}{Transportation Services}{38}{subsubsection*.25}%
-\contentsline {subsubsection}{Other Input Files}{40}{subsubsection*.28}%
-\contentsline {section}{\numberline {3.3}Improved Mode Choice in BEAM}{40}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Purpose-based Decisions}{40}{subsection.3.3.1}%
-\contentsline {subsubsection}{Multinomial Logit Choice Model}{44}{subsubsection*.29}%
+\contentsline {subsubsection}{Household and Vehicle Files}{36}{subsubsection*.19}%
+\contentsline {subsubsection}{Vechile Types Files}{37}{subsubsection*.22}%
+\contentsline {subsubsection}{Transportation Services}{37}{subsubsection*.25}%
+\contentsline {subsubsection}{Other Input Files}{39}{subsubsection*.28}%
+\contentsline {section}{\numberline {3.3}Improved Mode Choice in BEAM}{39}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Purpose-based Decisions}{42}{subsection.3.3.1}%
+\contentsline {subsubsection}{Multinomial Logit Choice Model}{43}{subsubsection*.29}%
 \contentsline {subsubsection}{Latent Class Choice Model}{45}{subsubsection*.31}%
 \contentsline {subsubsection}{Tour Purpose Choice Model}{47}{subsubsection*.33}%
 \contentsline {subsection}{\numberline {3.3.2}Additional Attributes in Utility Equation}{49}{subsection.3.3.2}%
 \contentsline {subsubsection}{Path Type Utility Equation}{52}{subsubsection*.36}%
-\contentsline {subsubsection}{Person Type Utility Equation}{52}{subsubsection*.37}%
+\contentsline {subsubsection}{Person Type Utility Equation}{53}{subsubsection*.37}%
 \contentsline {subsubsection}{Location Type Utility Equation}{53}{subsubsection*.38}%
 \contentsline {subsubsection}{BEAM's New Consistent Utility Equation}{53}{subsubsection*.39}%
 \contentsline {subsection}{\numberline {3.3.3}Carpool Alternatives}{54}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Mode Choice Algorithms}{56}{subsection.3.3.4}%
-\contentsline {section}{\numberline {3.4}Data Validation and Calibration}{57}{section.3.4}%
+\contentsline {subsection}{\numberline {3.3.4}Mode Choice Algorithms}{57}{subsection.3.3.4}%
+\contentsline {section}{\numberline {3.4}Data Validation and Calibration}{61}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}ActivitySim Path Variable Validation}{61}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Mode Choice Calibration}{64}{subsection.3.4.2}%
 \contentsline {section}{\numberline {3.5}Summary}{64}{section.3.5}%
