@@ -1,9 +1,8 @@
 ---
 always_allow_html: yes
 title: |
-  | A Consistent Mode Choice Model between an 
-  | Activity-based Model and an Agent-
-  | based Microsimulation Tool
+  | Consistent Mode Choices Across 
+  | Multiple Model Frameworks
 # Your thesis title should be inverted pyramid-shaped, with the longest
 # line on top and shorter lines below. Add a new line as tab-|-space-Words
 author: 'Christopher Day'
@@ -28,7 +27,7 @@ site: bookdown::bookdown_site
 
 # Note that a tab is needed on the line after the `|`.
 abstract: |
-  | Every day individuals make a decision about which modes of transportation they should use. Predicting this behavior perfectly is impossible, however, there are countless ways to appoximating mode choice in transportation modeling. In this research we aim to increase the accuracy in predicting mode choice using transportation modeling software. Specifically we determine the significance of creating a consistent mode choice model between an activity-based model and a microsimulation tool. Oftentimes, the outputs of an activity-based model serve as the inputs to a microsimulation tool. Yet, the mode choice models betweeen these two software often vary significantly. Using ActivitySim as the activity-based model and BEAM as the microsimulation tool, we establish a consistent mode choice model within BEAM. We then model the mode choice decisions for agents in the Salt Lake City, Utah region. Their modal distributions and mode choice structures are compared to determine the effect of mode choice consistency. Interestingly, we find that a model that uses a consistent mode choice creates a modal distribution that aligns more closely with target shares. We also find that the introduction of path, person, and location variables in the mode choice utility equation helps better predict mode choice decisions. Further research is necessary in order to understand the effects of identical mode choice models between activity-based models and microsimulation tools.
+  | Every day individuals make a decision about which modes of transportation they should use. Predicting this behavior perfectly is impossible, however, there are  ways to appoximating mode choice in transportation modeling. In this research we aim to increase the accuracy in predicting mode choice using transportation modeling software. Specifically we determine the significance of creating a consistent mode choice model between an activity-based model and a microsimulation tool. Oftentimes, the outputs of an activity-based model serve as the inputs to a microsimulation tool. Yet, the mode choice models betweeen these two software often vary significantly. Using ActivitySim as the activity-based model and BEAM as the microsimulation tool, we establish a consistent mode choice model within BEAM. We then model the mode choice decisions for agents in the Salt Lake City, Utah region. Their modal distributions and mode choice structures are compared to determine the effect of mode choice consistency. Interestingly, we find that a model that uses a consistent mode choice creates a modal distribution that aligns more closely with target shares. We also find that the introduction of path, person, and location variables in the mode choice utility equation helps better predict mode choice decisions. Further research is necessary in order to understand the effects of identical mode choice models between activity-based models and microsimulation tools.
 
   
 acknowledgments: |
