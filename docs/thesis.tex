@@ -1,56 +1,72 @@
-% This is the Reed College LaTeX thesis template. Most of the work
-% for the document class was done by Sam Noble (SN), as well as this
-% template. Later comments etc. by Ben Salzberg (BTS). Additional
-% restructuring and APA support by Jess Youngberg (JY).
-% Your comments and suggestions are more than welcome; please email
-% them to cus@reed.edu
-%
-% See https://www.reed.edu/cis/help/LaTeX/index.html for help. There are a
-% great bunch of help pages there, with notes on
-% getting started, bibtex, etc. Go there and read it if you're not
-% already familiar with LaTeX.
-%
-% Any line that starts with a percent symbol is a comment.
-% They won't show up in the document, and are useful for notes
-% to yourself and explaining commands.
-% Commenting also removes a line from the document;
-% very handy for troubleshooting problems. -BTS
+\documentclass[3p, authoryear, review]{elsarticle} %review=doublespace preprint=single 5p=2 column
+%%% Begin My package additions %%%%%%%%%%%%%%%%%%%
 
-% As far as I know, this follows the requirements laid out in
-% the 2002-2003 Senior Handbook. Ask a librarian to check the
-% document before binding. -SN
+\usepackage[hyphens]{url}
 
-%%
-%% Preamble
-%%
-% \documentclass{<something>} must begin each LaTeX document
-\documentclass[12pt, oneside, openright]{byuthesis}
+  \journal{submitted to Health and Place} % Sets Journal name
+
+\usepackage{lineno} % add
+
+\usepackage{graphicx}
+%%%%%%%%%%%%%%%% end my additions to header
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \usepackage{fontspec}
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={Christopher Day},
+            pdftitle={},
+            colorlinks=false,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+
+\setcounter{secnumdepth}{5}
+% Pandoc toggle for numbering sections (defaults to be off)
 
 
-\title{Consistent Mode Choices Across\\
-Multiple Model Frameworks}
-\author{Christopher Day}
-\copyyear{2022}
-\committeeMembers{Gregory S. Macfarlane, Chair
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-Grant G. Schultz
-
-Gustavious P. Williams}
-\keywords{four step model, discrete choice model, activity-based model, microsimulation tool, mode choice model, tour purpose, multinomial logit, latent class choice model}
-\degree{Master of Science}
-\doctype{thesis}
-\department{Department of Civil and Construction Engineering}
-
-
-
-	\usepackage{algorithm}
-	\usepackage{algpseudocode}
-	\usepackage{dsfont}
-% End of CII addition
-%%
-%% End Preamble
-%%
-%
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 
 % Pandoc citation processing
 \newlength{\cslhangindent}
@@ -82,35 +98,51 @@ Gustavious P. Williams}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{dsfont}
+
 
 
 \begin{document}
 
-\begin{abstract}
-Every day individuals make a decision about which modes of transportation they should use. Predicting this behavior perfectly is impossible, however, there are ways to appoximating mode choice in transportation modeling. In this research we aim to increase the accuracy in predicting mode choice using transportation modeling software. Specifically we determine the significance of creating a consistent mode choice model between an activity-based model and a microsimulation tool. Oftentimes, the outputs of an activity-based model serve as the inputs to a microsimulation tool. Yet, the mode choice models betweeen these two software often vary significantly. Using ActivitySim as the activity-based model and BEAM as the microsimulation tool, we establish a consistent mode choice model within BEAM. We then model the mode choice decisions for agents in the Salt Lake City, Utah region. Their modal distributions and mode choice structures are compared to determine the effect of mode choice consistency. Interestingly, we find that a model that uses a consistent mode choice creates a modal distribution that aligns more closely with target shares. We also find that the introduction of path, person, and location variables in the mode choice utility equation helps better predict mode choice decisions. Further research is necessary in order to understand the effects of identical mode choice models between activity-based models and microsimulation tools.
-\end{abstract}
 
+\begin{frontmatter}
 
-\makefrontmatter % this stuff will be roman-numbered
-\thesisbody
+  \title{Consistent Mode Choices Across\\
+Multiple Model Frameworks}
+    \author[]{}
+  
+      \affiliation[BYU]{Brigham Young University, Civil and Construction Engineering Department, 430 EB, Provo, Utah 84602}
+    \affiliation[BYUPH]{Brigham Young University, Public Health Department, 4103 LSB, Provo, Utah 84602}
+    \cortext[cor1]{Corresponding author}
+    \fntext[1]{Corresponding Author}
+  
+  \begin{abstract}
+  Every day individuals make a decision about which modes of transportation they should use. Predicting this behavior perfectly is impossible, however, there are ways to appoximating mode choice in transportation modeling. In this research we aim to increase the accuracy in predicting mode choice using transportation modeling software. Specifically we determine the significance of creating a consistent mode choice model between an activity-based model and a microsimulation tool. Oftentimes, the outputs of an activity-based model serve as the inputs to a microsimulation tool. Yet, the mode choice models betweeen these two software often vary significantly. Using ActivitySim as the activity-based model and BEAM as the microsimulation tool, we establish a consistent mode choice model within BEAM. We then model the mode choice decisions for agents in the Salt Lake City, Utah region. Their modal distributions and mode choice structures are compared to determine the effect of mode choice consistency. Interestingly, we find that a model that uses a consistent mode choice creates a modal distribution that aligns more closely with target shares. We also find that the introduction of path, person, and location variables in the mode choice utility equation helps better predict mode choice decisions. Further research is necessary in order to understand the effects of identical mode choice models between activity-based models and microsimulation tools.
+  \end{abstract}
+    \begin{keyword}
+    four step model, discrete choice model, activity-based model, microsimulation tool, mode choice model, tour purpose, multinomial logit, latent class choice model \sep 
+    four step model, discrete choice model, activity-based model, microsimulation tool, mode choice model, tour purpose, multinomial logit, latent class choice model
+  \end{keyword}
+  
+ \end{frontmatter}
 
 \hypertarget{introduction}{%
-\chapter{Introduction}\label{introduction}}
+\section{Introduction}\label{introduction}}
 
 \hypertarget{problem-statement}{%
-\section{Problem Statement}\label{problem-statement}}
+\subsection{Problem Statement}\label{problem-statement}}
 
-Public transit is a sustainable mode of transportation that helps improve the overall quality of life. It's sustainability is shown in the effects it has on the environment, on the economy, and with the community. Environmentally, public transit helps metropolitan areas meet national ambient air quality standards (NAAQS) by lowering overall vehicle emissions and pollutants (FTA 2022). Public transit also helps conserve land and reduce the need to construct new roadways. This helps decrease travel demand and lower degraded water runoff. Fuel use and greenhouse gas emissions are also lowered. Economically, public transit has shown to easily return more to the national economy than it costs. For example, in 1997 public transit returned \$26 billion. These economic benefits seemed to originate from households that prefer not to drive, people who wanted to avoid congestion, people who lived near transit, a decrease in auto emissions, and an increase in property tax among others (FTA 2015). Lastly, public transit also benefits the community by improving overall equity among individuals. Usually a community is composed of a wide range of people with varying socioeconomic status. Public transit gives opportunities to those people who otherwise would not have been able to have. Public transit can decrease travel time and costs, increase accessibility, improve property value, improve health, and increase employment (Venter et al. 2018). Overall, these environmental, economic, and social benefits make public transit seem like the be-all and end-all. Public transit may be sustainable, but it comes with its own limitations.
+Public transit is a sustainable mode of transportation that helps improve the overall quality of life. It's sustainability is shown in the effects it has on the environment, on the economy, and with the community. Environmentally, public transit helps metropolitan areas meet national ambient air quality standards (NAAQS) by lowering overall vehicle emissions and pollutants \citep{fta22}. Public transit also helps conserve land and reduce the need to construct new roadways. This helps decrease travel demand and degraded water runoff. Fuel use and greenhouse gas emissions are also lowered. Economically, public transit has shown to easily return more to the national economy than it costs. For example, in 1997 public transit returned \$26 billion. The economic benefits seemed to originate from households that prefer not to drive, people who wanted to avoid congestion, people who lived near transit, a decrease in auto emissions, and an increase in property tax among others \citep{fta15}. Lastly, public transit also benefits the community by improving overall equity among individuals. Usually a community is composed of a wide range of people with varying socioeconomic status. Public transit gives opportunities to those people who otherwise would not have been able to have. Public transit can decrease travel time and costs, increase accessibility, improve property value, improve health, and increase employment \citep{venter18}. Overall, these environmental, economic, and social benefits make public transit seem like the be-all and end-all. Public transit may be sustainable, but it comes with its own limitations.
 
-The limitations of public transit deal with problems relating to cost, time, and distance among other reasons. For example, an overpriced transit ticket can deter travelers from using public transit and vice versa. According to Litman (2022), transit ridership has an average elasticity with respect to fares of -0.4, meaning that for every 1.0\% increase in fare transit ridership will decrease by 0.4\%. Transit ridership depends heavily on correct pricing. Along with fares, travel time and travel distance are also significant limitations. The overall travel time when using transit is often longer than other modes of travel. Longer travel times often push away potential transit users. In addition, since transit uses fixed routes the distance to and from transit locations can be hard to cover. This extra distance added to the trip can increase travel times and travel costs. Trips to and from transit locations are referred to as ``first mile'' and ``last mile'' trips although they can vary in length and mode. The success of transit depends heavily on providing sufficient access and making first mile and last mile trips manageable for as many as possible. Travel time, distance, and cost are significant limitations for public transit and they have contributed to recent transit ridership decline.
+The limitations of public transit deal with problems relating to cost, time, and distance among other reasons. For example, an overpriced transit ticket can deter travelers from using public transit and vice versa. According to \citet{todd}, transit ridership has an average elasticity with respect to fares of -0.4, meaning that for every 1.0\% increase in fare, transit ridership will decrease by 0.4\%. Transit ridership depends heavily on correct pricing. Along with fares, travel time and travel distance are also significant limitations. The overall travel time when using transit is often longer than other modes of travel. Longer travel times often push away potential transit users. In addition, since transit uses fixed routes, the distance to and from transit locations can be hard to cover. This extra distance added to the trip can increase travel times and travel costs. Trips to and from transit locations are referred to as ``first mile'' and ``last mile'' trips although they can vary in length and mode. The success of transit depends heavily on providing sufficient access and making first mile and last mile trips manageable for as many passengers as possible. Travel time, distance, and cost are significant limitations for public transit and they may have contributed to the recent transit ridership decline.
 
-According to Graehler, Mucci, and Erhardt (2019), the most recent steepest decline in transit ridership occurred between the years 2015 to 2018. A variety of factors may have caused this decline, among them being the introduction of bike share and Transportation Network Companies (TNCs). Bike share is a shared transportation service where bikes are available to share among individuals at a small price. TNCs are ridesharing companies that match passengers to drivers with vehicles to provide a ride at a price (e.i. Uber or Lyft). Graehler, Mucci, and Erhardt (2019) estimate that the introduction of bike share has caused a decrease in bus ridership of 1.8\% and the introduction of TNCs will decrease heavy rail ridership by 1.3\%. This decline in transit ridership is not sustainable and if it continues, will cause economic and environmental problems across the United States. Therefore, reversing the decline of public transit ridership is essential to creating a more sustainable future.
+According to \citet{greg}, the most recent steepest decline in transit ridership occurred between the years 2015 to 2018. A variety of factors may have caused this decline, among them being the introduction of bike share and Transportation Network Companies (TNCs). Bike share is a shared transportation service where bikes are available to share among individuals at a small price. TNCs are ridesharing companies that match passengers to drivers with vehicles to provide a ride at a price (e.i. Uber or Lyft). \citet{greg} estimate that the introduction of bike share has caused a decrease in bus ridership of 1.8\% and the introduction of TNCs will decrease heavy rail ridership by 1.3\%. This decline in transit ridership is not sustainable and if it continues, will cause economic and environmental problems across the United States. Therefore, reversing the decline of public transit ridership is essential to creating a more sustainable future.
 
-In 2020, a project from the Transit - Serving Communities Optimally, Responsively, and Efficiently (T-SCORE) Center was proposed with the goal of keeping transit sustainable and resilient into the future. Along with keeping transit sustainable, T-SCORE hoped to discover how to increase transit ridership in the near future. As a result T-SCORE was divided up into two tracks: the community analysis track and the multi-modal optimization and simulation (MMOS) analysis track. The community analysis track aimed to statistically determine why ridership was declining and identify possible solutions. The MMOS analysis track had the purpose of using modeling techniques to determine the effectiveness of on-demand transit vehicles. On-demand transit vehicles serve as ridehailing vehicles with the sole purpose of bringing users to and from transit locations (i.e.~using Uber to get to the train). The hypothesis was that instead of having ridership of public transit compete with TNCs, to instead pair together ride hail and transit services. If put at a fair price, on-demand transit vehicles could help many users minimize travel time and cost of the first-mile and last-mile trips while also increasing overall transit ridership.
+In 2020, a project from the Transit - Serving Communities Optimally, Responsively, and Efficiently (T-SCORE) Center was proposed with the goal of keeping transit sustainable and resilient into the future. Along with keeping transit sustainable, T-SCORE hoped to discover how to increase transit ridership. As a result T-SCORE was divided up into two tracks: the community analysis track and the multi-modal optimization and simulation (MMOS) analysis track. The community analysis track aimed to statistically determine why ridership was declining and identify possible solutions. The MMOS analysis track had the purpose of using modeling techniques to determine the effectiveness of on-demand transit vehicles. On-demand transit vehicles serve as ridehailing vehicles with the sole purpose of bringing users to and from transit locations (i.e.~using Uber to get to the train). The hypothesis was that instead of having ridership of public transit compete with TNCs, to instead pair together ride hail and transit services. If put at a fair price, on-demand transit vehicles could possibly help many users minimize travel time and cost of the first-mile and last-mile trips while also increasing overall transit ridership.
 
-Modeling on-demand transit vehicles was an effective avenue toward understanding their impact on transit ridership. Figure \ref{fig:mmos} shows the entire modeling and optimization process used in the MMOS track to analyze on-demand transit vehicles. The inputs are represented in green whereas the outputs are represented in yellow (with the exception of the mode choice model). Since the research revolved around understanding the impact of a new mode option, using an accurate and consistent mode choice model was essential to creating reliable predictions. Mode choice models are used to analyze and predict which modes of transportation individuals will use on their trips. Therefore, the mode choice model would determine which individuals would choose to use on-demand transit vehicles. A problem arose however when we noticed that the different modeling frameworks within the MMOS track each used a different mode choice model!
+Modeling on-demand transit vehicles was an effective avenue toward understanding their impact on transit ridership. Figure \ref{fig:mmos} shows the entire modeling and optimization process used in the MMOS track to analyze on-demand transit vehicles. The inputs are represented in green whereas the outputs are represented in yellow (with the exception of the mode choice model). Since the research revolved around understanding the impact of a new mode option, using an accurate mode choice model was essentail. Mode choice models are used to analyze and predict which modes of transportation individuals will use on their trips. Therefore, the mode choice model would determine which individuals would choose to use on-demand transit vehicles. A problem arose however when we noticed that the different modeling frameworks within the MMOS track each used a different mode choice model!
 
 \begin{figure}
 
@@ -124,18 +156,18 @@ Modeling on-demand transit vehicles was an effective avenue toward understanding
 Figure \ref{fig:mmos} displays in blue all the parts that use its own mode choice model. First, the activity-based model used to create the daily activities and trips uses its own mode choice model. Then the multi-agent simulation has a different mode choice model as well as the multi-modal optimization having its own mode choice. We wondered if using three separate mode choice models would have an adverse effect in modeling the on-demand transit vehicles. Therefore, in an effort to minimize variability between models in predicting the usage of on-demand transit vehicles, a consistent mode choice structure was designed.
 
 \hypertarget{purpose-of-research}{%
-\section{Purpose of Research}\label{purpose-of-research}}
+\subsection{Purpose of Research}\label{purpose-of-research}}
 
-The main objective of this research was to create a consistent mode choice structure across multiple model frameworks. Although the T-SCORE project presented three frameworks each with their own mode choice model, this research focuses on the effects of a consistent mode choice model between two frameworks: an activity-based model and a microsimulation tool. This consistency is needed because the mode choice models within activity-based models and microsimulation tools are vastly different. For example, activity-based models often use a variety of utility parameters to predict mode choices whereas microsimulation tools use less. In addition, microsimulation tools are better at predicting ridehailing services more realistically. Usually, microsimulation tools use varied wait times and varied vehicle availability whereas activity-based models use average wait times and constant vehicle availability. Overall, some key differences do exist between these two modeling frameworks, so creating a consistent mode choice model could result in more constant predictions of new transportation modes between frameworks.
+The main objective of this research was to create a consistent mode choice structure across multiple model frameworks. Although the T-SCORE project presented three frameworks each with their own mode choice model, this research focuses on the effects of a consistent mode choice model between two frameworks: an activity-based model and a microsimulation tool. This consistency is needed because the mode choice models within activity-based models and microsimulation tools are vastly different. For example, activity-based models often use a variety of utility parameters to predict mode choices whereas microsimulation tools use less. In addition, microsimulation tools are better at predicting ridehailing services more realistically. Usually, microsimulation tools use varied wait times and varied vehicle availability whereas activity-based models use average wait times and constant vehicle availability. Overall, some key differences do exist between these two modeling frameworks, so creating a consistent mode choice model could result in constant predictions of new transportation modes between frameworks.
 
-In order to determine if a consistent mode choice model between frameworks results in more consistent predictions, three measures of effectiveness were completed. First, a comparison showing the final modal distribution within a test region was analyzed. The final distribution generated using inconsistent modeling frameworks was compared with the final distribution generated using consistent modeling frameworks. The second measure of effectiveness analyzed the importance of using multiple utility parameters in the mode choice function. Specifically, the weight of importance of each path, person, and location type variables were described. Lastly, a comparison was done showing how mode choice was modeled at the sub tour trip level between modeling frameworks. With these three measures of effectiveness, the importance of a consistent mode choice model can be discussed.
+In order to determine if a consistent mode choice model between frameworks results in more consistent predictions, three measures of effectiveness were completed. First, a comparison of final modal distributions were analyzed: the final distribution using inconsistent modeling frameworks was compared with the final distribution using consistent modeling frameworks. The second measure of effectiveness analyzed the importance of using multiple utility parameters in the mode choice function. Specifically, the weight of importance of each path, person, and location type variables were described. Lastly, a comparison was done showing how mode choice was modeled at the sub tour trip level between modeling frameworks. With these three measures of effectiveness, the importance of a consistent mode choice model will be discussed.
 
-Two important software were used to create consistent mode choice structures. ActivitySim was used as the activity-based model and BEAM was used as the microsimulation tool. ActivitySim is an open-source advanced activity-based travel model maintained by a group of Metropolitan Planning Organizations (MPOs), Department of Transportations (DOTs), and other transportation agencies (ActivitySim 2021). Its primary purpose it to use a synthetic population to generate daily activity patterns (DAPs) for each individual. Using ActivitySim and a synthetic population, a set of DAPs for agents in the Salt Lake City, Utah region were generated. (The Salt Lake City, Utah region was the location of the test scenario used in this research.) BEAM, standing for Behavior, Energy, Autonomy, and Mobility, is an agent-based microsimulation tool developed by Lawrence Berkeley National Laboratory and the UC Berkeley Institute for Transportation studies (BEAM 2022). BEAM's primary purpose is to model the DAPs of a region to create a model that accurately displays the region's current transportation system. BEAM has the capability of accomplishing within-day planning where agents are able to dynamically respond to new transportation services. Using BEAM, the DAPs generated from ActivitySim for the Salt Lake City, Utah region were modeled.
+Two important software were used to create consistent mode choice structures. ActivitySim was used as the activity-based model and BEAM was used as the microsimulation tool. ActivitySim is an open-source advanced activity-based travel model maintained by a group of Metropolitan Planning Organizations (MPOs), Department of Transportations (DOTs), and other transportation agencies \citep{asim}. Its primary purpose it to use a synthetic population to generate daily activity patterns (DAPs) for each individual. Using ActivitySim and a synthetic population, a set of DAPs for agents in the Salt Lake City, Utah region were generated. (The Salt Lake City, Utah region was the location of the test scenario used in this research.) BEAM, standing for Behavior, Energy, Autonomy, and Mobility, is an agent-based microsimulation tool developed by Lawrence Berkeley National Laboratory and the UC Berkeley Institute for Transportation studies \citep{beam}. BEAM's primary purpose is to model the DAPs of individual angents within a region to create a model that accurately displays the region's current transportation system. BEAM has the capability of accomplishing within-day planning where agents are able to dynamically respond to new transportation services. Using BEAM, the DAPs generated from ActivitySim for the Salt Lake City, Utah region were modeled.
 
-This project's main objective was carried out by changing BEAM's default mode choice model to more closely align with that of ActivitySim's. Then, the results generated by BEAM were compared to those by ActivitySim to determine the effects of mode choice consistency. The various differences that exist between ActivitySim's and BEAM's mode choice models are described in Section 3 and the outline of the entire research project is described in Section \ref{outline}.
+This project's main objective was carried out by changing BEAM's default mode choice model to more closely align with that of ActivitySim's. Then, the results generated by BEAM were compared to those by ActivitySim to determine the effects of mode choice consistency. The various differences that exist between ActivitySim's and BEAM's mode choice models are described in Chapter 3 and the outline of the entire research project is described in Section \ref{outline}.
 
 \hypertarget{outline}{%
-\section{Outline of Research}\label{outline}}
+\subsection{Outline of Research}\label{outline}}
 
 Chapter 1 introduces the objectives and motives behind the research. This chapter also gives the outline to the thesis. In Chapter 2 a literature review on mode choice modeling is conducted. Chapter 2 begins by explaining mode choice in the four step model as well as giving a brief history of mode choice in discrete choice modeling. Afterwards, the broad range of mode choice models used in activity-based models are explained. Then, the mode choice models of ActivitySim, MATSim, and BEAM are described in detail.
 
@@ -146,103 +178,103 @@ Chapter 4 describes the results of having a consistent mode choice model within 
 Chapter 5 has the purpose of reviewing the results and determining the effects of the research as a whole. It also describes what the next steps moving forward are as well as the limitations in this research. A conclusion is then given in Chapter 6 where the wider implications are explained and the first-mile/last-mile problem is restated.
 
 \hypertarget{literature-review}{%
-\chapter{Literature Review}\label{literature-review}}
+\section{Literature Review}\label{literature-review}}
 
 \hypertarget{overview}{%
-\section{Overview}\label{overview}}
+\subsection{Overview}\label{overview}}
 
 Mode choice models are essential components in the transportation planning process. Key investment decisions along with other transportation decisions rely on the determination of individual mode choices within a population. Whether mode choice is estimated in a four step model, an activity-based model, or an agent based model, its level of significance remains the same.
 
 \hypertarget{lit1}{%
-\section{Mode Choice in the Four Step Model}\label{lit1}}
+\subsection{Mode Choice in the Four Step Model}\label{lit1}}
 
-The four step model (FSM) has been the primary tool in person travel demand modeling since its development (McNally 2000). Although travel is theorized to be derived from activity participation, the FSM focuses on modeling with trip-based not activity-based travel methods. The methodology presented in the FSM is mostly universal. The FSM can be divided up into two stages. The first defining the traveler and land use characteristics and the second defining the demand on a transportation network and the travel characteristics (McNally 2000).
+The four step model (FSM) has been the primary tool in person travel demand modeling since its development \citep{mcnally2000four}. Although travel is theorized to be derived from activity participation, the FSM focuses on modeling with trip-based not activity-based travel methods. The methodology presented in the FSM is mostly universal. The FSM can be divided up into two stages. The first defining the traveler and land use characteristics and the second defining the demand on a transportation network and the travel characteristics \citep{mcnally2000four}.
 
 As its name suggests, the FSM includes four different steps: trip generation, trip distribution, mode choice, and route choice. In trip generation the magnitude of total trips is estimated and in trip distribution those trips are disbursed along different directions of travel. In mode and route choice, a multitude of variables are used to determine specifically how travel occurs.
 
-Of the four steps in the FSM, mode choice in particular is a diverse, variable, and disaggregate step among different modeling applications. According to McNally (2000), mode choice is almost exclusively modeled on a disaggregate level within separate choice-based sampling. Choice probabilities are calculated on the individual trip level. McNally (2000) also mentions that with transit, carpooling vehicles, automobile tolls, and other new factors the mode choice algorithm can become extensive and difficult to determine. One common method used to estimate mode choice probabilities is a nested logit model (see Section \ref{lit3}). These mode choice models can reflect trip-maker characteristics as well as multiple performance variables (Ortuzar and G.Willumsen 1994; McNally 2000). Most applications of the FSM require multiple iterations of the mode choice and trip distribution steps in order to approximate formal convergence. Like with the nested logit model, discrete choice modeling has historically been the preferred method in estimating mode choice in the FSM as well as in other modeling applications.
+Of the four steps in the FSM, mode choice in particular is a diverse, variable, and disaggregate step among different modeling applications. According to \citet{mcnally2000four}, mode choice is almost exclusively modeled on a disaggregate level within separate choice-based sampling. Choice probabilities are calculated on the individual trip level. \citet{mcnally2000four} also mentions that with transit, carpooling vehicles, automobile tolls, and other new factors the mode choice algorithm can become extensive and difficult to determine. One common method used to estimate mode choice probabilities is a nested logit model (see Section \ref{lit3}). These mode choice models can reflect trip-maker characteristics as well as multiple performance variables \citep{ortuzar94, mcnally2000four}. Most applications of the FSM require multiple iterations of the mode choice and trip distribution steps in order to approximate formal convergence. Like with the nested logit model, discrete choice modeling has historically been the preferred method in estimating mode choice in the FSM as well as in other modeling applications.
 
 \hypertarget{lit2}{%
-\section{A Brief History of Mode Choice in Discrete Choice Models}\label{lit2}}
+\subsection{A Brief History of Mode Choice in Discrete Choice Models}\label{lit2}}
 
-Various choice modeling systems have been used to accurately determine mode choices. The beginning of such analyses started with the developments of McFadden et al. (1973), who outlined a general procedure for modeling population choice behavior from distributions of individual decision rules. Before then, discrete choices were simply modeled using a random utility model (RUM) framework. The interpretation assumed that each individual carried their own utility function distribution and selected one randomly; according to Manski (2001), McFadden reinterpreted the random assignment of the utility functions across the population itself rather than the individual. This yielded an entirely new view of discrete choice modeling, and a more general version of the multinomial logit model (MNL) was introduced. This new MNL model, also called the conditional logit analysis, was the beginning of modern mode choice analysis. Goulias, Davis, and Bhat (2020) describe that McFadden's MNL model, the nested logit model, and the multinomial probit model (MNP) were the main engines in mode choice and most discrete choice analyses up through the 1990s.
+Various choice modeling systems have been used to accurately determine mode choices. The beginning of such analyses started with the developments of \citet{mcfadden1973}, who outlined a general procedure for modeling population choice behavior from distributions of individual decision rules. Before then, discrete choices were simply modeled using a random utility model (RUM) framework. The interpretation assumed that each individual carried their own utility function distribution and selected one randomly; according to \citet{manski2001}, McFadden reinterpreted the random assignment of the utility functions across the population itself rather than the individual. This yielded an entirely new view of discrete choice modeling, and a more general version of the multinomial logit model (MNL) was introduced. This new MNL model, also called the conditional logit analysis, was the beginning of modern mode choice analysis. \citet{bhat20} describe that McFadden's MNL model, the nested logit model, and the multinomial probit model (MNP) were the main engines in mode choice and most discrete choice analyses up through the 1990s.
 
-Although the developments of McFadden are still in effect today, mode choice analysis has evolved greatly in the last few decades. Goulias, Davis, and Bhat (2020) explain that up through 2010, mixed multinomial logit (MMNL) models and multiple discrete-continuous (MDC) choice models were the main models in practice. In addition, Bhat (1995) estimated a disaggregate mode choice model to explain how new and updated services affected ridership and mode choice on intercity travel. His heteroscedastic extreme value model overcame the independence of irrelevant alternatives (IIA) property and allowed more flexibility among the alternatives than the nested logit model. Ben-Akiva, Mcfadden, et al. (2002) developed a hybrid choice model (HCM) that went beyond the standard RUM as it included latent variables, latent classes, and a flexible error structure. It implemented multiple facets of discrete choice modeling and more accurately represented the behaviors of the individuals. Pinjari et al. (2007) used a simultaneous mixed logit model to understand how commuters' mode choice is affected by the surrounding build environment.
+Although the developments of McFadden are still in effect today, mode choice analysis has evolved greatly in the last few decades. \citet{bhat20} explain that up through 2010, mixed multinomial logit (MMNL) models and multiple discrete-continuous (MDC) choice models were the main models in practice. In addition, \citet{bhat95} estimated a disaggregate mode choice model to explain how new and updated services affected ridership and mode choice on intercity travel. His heteroscedastic extreme value model overcame the independence of irrelevant alternatives (IIA) property and allowed more flexibility among the alternatives than the nested logit model. \citet{ben02} developed a hybrid choice model (HCM) that went beyond the standard RUM as it included latent variables, latent classes, and a flexible error structure. It implemented multiple facets of discrete choice modeling and more accurately represented the behaviors of the individuals. \citet{pinjari07} used a simultaneous mixed logit model to understand how commuters' mode choice is affected by the surrounding build environment.
 
-According to Goulias, Davis, and Bhat (2020), from 2010 to 2015 joint models of data with mixed dependent variables arrived. Vij, Carrel, and Walker (2013), for example, used a behavioral mixtures model, composed of a latent class choice model (LCCM) and a continuous logit mixture model, to extrapolate unobserved modality styles and their effects on travel decisions. Paulssen et al. (2014) focused on improving the integrated choice and latent variable (ICLV) model of McFadden (1986) and Ben-Akiva, Walker, et al. (2002) by including a value system among the individuals. Overall, the general advancement within mode choice and discrete choice modeling is comprehensive across recent years. Similarly, the variability among mode choice analysis can specifically be seen within activity-based modeling.
+According to \citet{bhat20}, from 2010 to 2015 joint models of data with mixed dependent variables arrived. \citet{vij13}, for example, used a behavioral mixtures model, composed of a latent class choice model (LCCM) and a continuous logit mixture model, to extrapolate unobserved modality styles and their effects on travel decisions. \citet{paulssen14} focused on improving the integrated choice and latent variable (ICLV) model of \citet{mcfadden86} and \citet{ben02num2} by including a value system among the individuals. Overall, the general advancement within mode choice and discrete choice modeling is comprehensive across recent years. Similarly, the variability among mode choice analysis can specifically be seen within activity-based modeling.
 
 \hypertarget{lit3}{%
-\section{An Extensive Look into Mode Choice in Activity-Based Models}\label{lit3}}
+\subsection{An Extensive Look into Mode Choice in Activity-Based Models}\label{lit3}}
 
-A significant part of activity-based modeling is the mode choice decision within the model. Bhat and Koppelman (1999) stated that originally travel demand models used individual trips as the primary unit of analysis. In recent years though, there has been a shift toward activity-based travel demand modeling. According to Eluru et al. (2010), this shift has occurred due to improved understanding of activity-based travel, global climate concerns, and advances in microsimulation techniques. With this shift to activity-based travel modeling, FSMs have evolved immensely, and especially within the last decade (Hasnine and Nurul Habib 2021). A major maturing in activity scheduling, activity duration, activity generation, and location choice has occurred and resulted in advanced activity-based modeling. Although these components have evolved significantly, the mode choice decision has remained relatively simple and constant.
+A significant part of activity-based modeling is the mode choice decision within the model. \citet{bhat99} stated that originally travel demand models used individual trips as the primary unit of analysis. In recent years though, there has been a shift toward activity-based travel demand modeling. According to \citet{eluru10}, this shift has occurred due to improved understanding of activity-based travel, global climate concerns, and advances in microsimulation techniques. With this shift to activity-based travel modeling, FSMs have evolved immensely, and especially within the last decade \citep{hasnine21}. A major maturing in activity scheduling, activity duration, activity generation, and location choice has occurred and resulted in advanced activity-based modeling. Although these components have evolved significantly, the mode choice decision has remained relatively simple and constant.
 
-In general, the two types of mode choice models commonly applied in travel demand modeling are trip-based and tour-based models. Trip-based mode choice models select modes based on the characteristics of individual trips, independent of other existing trips. A tour is defined as a chain of trips that end in the same location as they start (John L. Bowman et al. 1999). Tour-based models are based on the characteristics of the trips' overarching tour, meaning trip modes are not independently calculated. Most activity-based models commonly implement the tour-based mode choice structure (Hasnine and Nurul Habib 2021).
+In general, the two types of mode choice models commonly applied in travel demand modeling are trip-based and tour-based models. Trip-based mode choice models select modes based on the characteristics of individual trips, independent of other existing trips. A tour is defined as a chain of trips that end in the same location as they start \citep{bowman99}. Tour-based models are based on the characteristics of the trips' overarching tour, meaning trip modes are not independently calculated. Most activity-based models commonly implement the tour-based mode choice structure \citep{hasnine21}.
 
-The most common use of the tour-based mode choice model is the ``simplified tour-based'' mode choice model. The simplified tour-based model has been used in a variety of studies (Arentze and Timmermans 2000; J. L. Bowman and Ben-Akiva 2001; Ram M. Pendyala et al. 1997). This simplified model hinges on trip-based mode choice where a single mode is used to define the entire tour opposed to a string of possible mode option combinations. For example, a simplified tour-based mode choice would define the tour-mode as ``public transit'' whereas a true tour-based model would define the tour-mode as ``public transit - ride hail - public transit''. Simplified tour-based models overlooks mobility attributes as well as the dynamics that exist between trips on a tour (Hasnine and Nurul Habib 2021).
+The most common use of the tour-based mode choice model is the ``simplified tour-based'' mode choice model. The simplified tour-based model has been used in a variety of studies \citep{arentze00, bowman01, pendyala97}. This simplified model hinges on trip-based mode choice where a single mode is used to define the entire tour opposed to a string of possible mode option combinations. For example, a simplified tour-based mode choice would define the tour-mode as ``public transit'' whereas a true tour-based model would define the tour-mode as ``public transit - ride hail - public transit''. Simplified tour-based models overlooks mobility attributes as well as the dynamics that exist between trips on a tour \citep{hasnine21}.
 
-There have been many attempts during the last few decades to include trip and tour based mode choice models into activity-based models. As a way to better understand the diversity that exists with tour-based mode choice in activity-based models, Hasnine and Nurul Habib (2021) conducted research on a variety of activity-based models from the years 1995 to 2020 and found that seven specific mode choice analyses have been used. All seven techniques are framed about the tour-based methodology further reinforcing the knowledge that ``the tour-based approach is the most relevant to the activity-based modelling framework'' (Hasnine and Nurul Habib 2021). These seven categories are further discussed in the following subsections.
+There have been many attempts during the last few decades to include trip and tour based mode choice models into activity-based models. As a way to better understand the diversity that exists with tour-based mode choice in activity-based models, \citet{hasnine21} conducted research on a variety of activity-based models from the years 1995 to 2020 and found that seven specific mode choice analyses have been used. All seven techniques are framed about the tour-based methodology further reinforcing the knowledge that ``the tour-based approach is the most relevant to the activity-based modelling framework'' \citep{hasnine21}. These seven categories are further discussed in the following subsections.
 
 \hypertarget{lit31}{%
-\subsection{Simplified main tour model}\label{lit31}}
+\subsubsection{Simplified main tour model}\label{lit31}}
 
-The simplified main tour model is another name for the simplified tour-based model previously discussed and implemented in most activity-based modeling applications (Arentze and Timmermans 2000; J. L. Bowman and Ben-Akiva 2001; Ram M. Pendyala et al. 1997). In the A Learning-Based Transportation Oriented Simulation System (ALBATROSS) developed by Arentze and Timmermans (2000), for example, when individuals had a work activity in their daily plan, a transport mode was determined for the work travel purpose. A singular tour mode value was selected and given to that individual. In cases where households had less cars than people, a car tour mode assigned to one individual in a household prevented a car mode being given to another individual in that same household. The simplified main tour model keeps track of car ownership and availability in a logical way. The ALBATROSS system selected the tour mode based on a subset of rules and decision trees programmed into the model. This means that the ALBATROSS system only allowed each trip within a tour to have the same mode as the tour mode (Arentze and Timmermans 2000).
+The simplified main tour model is another name for the simplified tour-based model previously discussed and implemented in most activity-based modeling applications \citep{arentze00, bowman01, pendyala97}. In the A Learning-Based Transportation Oriented Simulation System (ALBATROSS) developed by \citet{arentze00}, for example, when individuals had a work activity in their daily plan, a transport mode was determined for the work travel purpose. A singular tour mode value was selected and given to that individual. In cases where households had less cars than people, a car tour mode assigned to one individual in a household prevented a car mode being given to another individual in that same household. The simplified main tour model keeps track of car ownership and availability in a logical way. The ALBATROSS system selected the tour mode based on a subset of rules and decision trees programmed into the model. This means that the ALBATROSS system only allowed each trip within a tour to have the same mode as the tour mode \citep{arentze00}.
 
-Since a singular mode value is assigned to the tour in the simplified main tour model method, no flexibility exists for trip mode selection. Once a tour mode is determined, that same mode is held constant for each trip within that tour. Although not entirely realistic, many modelers prefer this method as it is a computationally easier task than a tour-based mode choice that permits trip modes to be different than their overarching tour mode. Realistically, however, individuals often vary their modes on different trips within a tour. For example, those who walk or bike or drive to transit are unable to do so in a simplified main tour model. Using the simplified main tour mode choice model may be popular and computationally simple, but it is not dynamic or realistic in representing travel behavior (Hasnine and Nurul Habib 2021).
+Since a singular mode value is assigned to the tour in the simplified main tour model method, no flexibility exists for trip mode selection. Once a tour mode is determined, that same mode is held constant for each trip within that tour. Although not entirely realistic, many modelers prefer this method as it is a computationally easier task than a tour-based mode choice that permits trip modes to be different than their overarching tour mode. Realistically, however, individuals often vary their modes on different trips within a tour. For example, those who walk or bike or drive to transit are unable to do so in a simplified main tour model. Using the simplified main tour mode choice model may be popular and computationally simple, but it is not dynamic or realistic in representing travel behavior \citep{hasnine21}.
 
 \hypertarget{lit32}{%
-\subsection{Two-tier nested logit model}\label{lit32}}
+\subsubsection{Two-tier nested logit model}\label{lit32}}
 
-The two-tier nested logit model first completes an upper-level location choice followed by a lower-level mode choice which corresponds to the destination's location. One example of this approach being implemented in the literature is the Florida Activity Mobility Simulator (FAMOS) model (Ram M. Pendyala et al. 2005). The FAMOS model uses both the Household Attributes Generation System and the Prism-Constrained Activity-Travel Simulator in order to model activity patterns. The sub models within FAMOS include an activity-type choice, a joint destination and mode choice, and an activity duration choice. Additionally, FAMOS mode choice model first determines the destination location, and then selects a mode dependent on the destination location. Although it uses a two-tier nested logit model, Hasnine and Nurul Habib (2021) states that a tour-based mode choice is not ``explicitly identified'' in the FAMOS model. At its development, FAMOS gave promising results in the effectiveness of an activity-based modeling system (Ram M. Pendyala et al. 2005). It did not however include an extensive mode choice model.
+The two-tier nested logit model first completes an upper-level location choice followed by a lower-level mode choice which corresponds to the destination's location. One example of this approach being implemented in the literature is the Florida Activity Mobility Simulator (FAMOS) model \citep{pendyala05}. The FAMOS model uses both the Household Attributes Generation System and the Prism-Constrained Activity-Travel Simulator in order to model activity patterns. The sub models within FAMOS include an activity-type choice, a joint destination and mode choice, and an activity duration choice. Additionally, FAMOS mode choice model first determines the destination location, and then selects a mode dependent on the destination location. Although it uses a two-tier nested logit model, \citet{hasnine21} states that a tour-based mode choice is not ``explicitly identified'' in the FAMOS model. At its development, FAMOS gave promising results in the effectiveness of an activity-based modeling system \citep{pendyala05}. It did not however include an extensive mode choice model.
 
 \hypertarget{lit33}{%
-\subsection{Simplified main tour mode and conditional trip-level mode}\label{lit33}}
+\subsubsection{Simplified main tour mode and conditional trip-level mode}\label{lit33}}
 
-The simplified main tour mode and conditional trip-level mode choice model has two parts. First a tour mode is estimated. Then, conditional on the estimated tour mode and attributes of the activity, trip modes are estimated. One example of a model that uses this structure is called DaySim (John L. Bowman, Bradley, and Gibbs 2006). DaySim follows the same activity scheduling approach developed by J. L. Bowman and Ben-Akiva (2001). The DaySim model is a microsimulation model that works off of four levels: long term person/household decisions, single day activity patterns, tour-level decisions, and trip-level decisions. The mode choice structure within DaySim involves a series of logsums and approximated logsums in order to econometrically estimate individual mode choice. More specifically, first a logsum is used to determine an overarching tour mode. This mode is used for all trip modes under that tour for the first steps within the model (John L. Bowman, Bradley, and Gibbs 2006). Later, however, trip modes are updated individually based on the tour mode value, origin and destination locations, and start times. The mode choice approach in DaySim is effective in that it relies heavily on fundamental econometric theories and allows trip modes to vary from tour modes (Hasnine and Nurul Habib 2021).
+The simplified main tour mode and conditional trip-level mode choice model has two parts. First a tour mode is estimated. Then, conditional on the estimated tour mode and attributes of the activity, trip modes are estimated. One example of a model that uses this structure is called DaySim \citep{bowman06}. DaySim follows the same activity scheduling approach developed by \citet{bowman01}. The DaySim model is a microsimulation model that works off of four levels: long term person/household decisions, single day activity patterns, tour-level decisions, and trip-level decisions. The mode choice structure within DaySim involves a series of logsums and approximated logsums in order to econometrically estimate individual mode choice. More specifically, first a logsum is used to determine an overarching tour mode. This mode is used for all trip modes under that tour for the first steps within the model \citep{bowman06}. Later, however, trip modes are updated individually based on the tour mode value, origin and destination locations, and start times. The mode choice approach in DaySim is effective in that it relies heavily on fundamental econometric theories and allows trip modes to vary from tour modes \citep{hasnine21}.
 
 Other examples in the literature also use the simplified main tour mode and conditional trip-level mode choice structure, however only the details relating to ActivitySim's mode choice structure will be discussed further (see Section \ref{lit4})
 
 \hypertarget{lit34}{%
-\subsection{An activity-based model with exogenous mode choice}\label{lit34}}
+\subsubsection{An activity-based model with exogenous mode choice}\label{lit34}}
 
-The idea behind this mode choice model is that the mode choice decision is not estimated within the activity-based model, but estimated outside of it. One example of an activity-based model with the mode choice decision estimated exogenously is the comprehensive utility-based system of activity-travel scheduling options modelling (CUSTOM). The research done by Nurul Habib (2017) using the CUSTOM system assumed an exogenous mode choice. This meant that the mode specific travel time used to estimate travel behavior was an explanatory variable in the model. Nurul Habib (2017) mentions that the exogenous mode choice was a limitation in their research and further research is needed to specify how to seamlessly align the exogenous mode choice into the CUSTOM structure. Hasnine and Nurul Habib (2021) also mentions that a limitation to this mode choice model is that the mode is not modeled endogenously with other activity attributes.
+The idea behind this mode choice model is that the mode choice decision is not estimated within the activity-based model, but estimated outside of it. One example of an activity-based model with the mode choice decision estimated exogenously is the comprehensive utility-based system of activity-travel scheduling options modelling (CUSTOM). The research done by \citet{habib17} using the CUSTOM system assumed an exogenous mode choice. This meant that the mode specific travel time used to estimate travel behavior was an explanatory variable in the model. \citet{habib17} mentions that the exogenous mode choice was a limitation in their research and further research is needed to specify how to seamlessly align the exogenous mode choice into the CUSTOM structure. \citet{hasnine21} also mentions that a limitation to this mode choice model is that the mode is not modeled endogenously with other activity attributes.
 
 \hypertarget{lit35}{%
-\subsection{Simulation-based tour-based mode choice}\label{lit35}}
+\subsubsection{Simulation-based tour-based mode choice}\label{lit35}}
 
-The simulation-based tour-based mode choice model is a simulation-based approach to estimating modes when large sets of modal alternatives are present. An example of this approach in the literature is a model used by Miller, Roorda, and Carrasco (2005) called the Travel/Activity Scheduler for Household Agents (TASHA). TASHA is both agent-based and activity-based where decisions are modeled using a random utility framework. In addition, TASHA is both chain-based and trip-based meaning that individual trips have individual modes chosen, but tour modes are constructed in a chain-based manner. Utility functions are used to calculate the utility of both individual trip modes as well as chains of modes used in the tour-based mode choice model. TASHA adopts a probit modeling structure in order to determine probabilities of modal alternatives (Miller, Roorda, and Carrasco 2005; Hasnine and Nurul Habib 2021). This simulation approach is computationally heavy but is effective in providing unique trip modes based on chain-based tour modes.
+The simulation-based tour-based mode choice model is a simulation-based approach to estimating modes when large sets of modal alternatives are present. An example of this approach in the literature is a model used by \citet{miller05} called the Travel/Activity Scheduler for Household Agents (TASHA). TASHA is both agent-based and activity-based where decisions are modeled using a random utility framework. In addition, TASHA is both chain-based and trip-based meaning that individual trips have individual modes chosen, but tour modes are constructed in a chain-based manner. Utility functions are used to calculate the utility of both individual trip modes as well as chains of modes used in the tour-based mode choice model. TASHA adopts a probit modeling structure in order to determine probabilities of modal alternatives \citep{miller05, hasnine21}. This simulation approach is computationally heavy but is effective in providing unique trip modes based on chain-based tour modes.
 
-Another example of a simulation-based mode choice model is presented by Eluru et al. (2010). Eluru et al. (2010) developed a joint multiple discrete continuous extreme value (MDCEV) framework to model the individual's choices across five dimensions: activity type, time of day, mode, destination, and time use. The MDCEV framework aimed to model activity travel choices simultaneously.
+Another example of a simulation-based mode choice model is presented by \citet{eluru10}. \citet{eluru10} developed a joint multiple discrete continuous extreme value (MDCEV) framework to model the individual's choices across five dimensions: activity type, time of day, mode, destination, and time use. The MDCEV framework aimed to model activity travel choices simultaneously.
 
 \hypertarget{lit36}{%
-\subsection{Combinatorial tour-based mode choice}\label{lit36}}
+\subsubsection{Combinatorial tour-based mode choice}\label{lit36}}
 
-The combinatorial tour-based mode choice model simulates all combinations of modes within any given tour. A utility value is then calculated for each combination of trip modes and a logit model is used to determine which combination any given agent will select. This method is computationally heavy, but allows the possibility for any combination of modes to exist (Hasnine and Nurul Habib 2021). An example of this model being used in practice is the research conducted by Vovsha et al. (2017).
+The combinatorial tour-based mode choice model simulates all combinations of modes within any given tour. A utility value is then calculated for each combination of trip modes and a logit model is used to determine which combination any given agent will select. This method is computationally heavy, but allows the possibility for any combination of modes to exist \citep{hasnine21}. An example of this model being used in practice is the research conducted by \citet{vovsha17}.
 
 \hypertarget{lit37}{%
-\subsection{Dynamic tour-based mode choice}\label{lit37}}
+\subsubsection{Dynamic tour-based mode choice}\label{lit37}}
 
-Dynamic tour-based mode choice models are programmed with dynamic discrete choice modeling. The central idea is to model sequential discrete choices in order to determine current and future outcomes. Saleem, Västberg, and Karlström (2018) provides an example of implementing a dynamic tour-based mode choice model in the random utility based travel model named SCAPER. SCAPER makes decisions sequentially in time, based on random utility theory. MATSim also implements the SCAPER model by generating activity schedules, activity duration, activity locations, and mode choices. MATSim iteratively updates the mode choice based on the best modal option available, and continues to iteratively update mode choice until schotastic equilibrium is reached (Hasnine and Nurul Habib 2021). More intimate details inside the MATSim mode choice model will be discussed later on in Section \ref{lit5}.
+Dynamic tour-based mode choice models are programmed with dynamic discrete choice modeling. The central idea is to model sequential discrete choices in order to determine current and future outcomes. \citet{saleem18} provides an example of implementing a dynamic tour-based mode choice model in the random utility based travel model named SCAPER. SCAPER makes decisions sequentially in time, based on random utility theory. MATSim also implements the SCAPER model by generating activity schedules, activity duration, activity locations, and mode choices. MATSim iteratively updates the mode choice based on the best modal option available, and continues to iteratively update mode choice until schotastic equilibrium is reached \citep{hasnine21}. More intimate details inside the MATSim mode choice model will be discussed later on in Section \ref{lit5}.
 
-Overall, the seven categories of mode choice presented by Hasnine and Nurul Habib (2021) gives a good overview on the details behind existing mode choice structures within activity-based models. It is shown that although trip-based models have been used, tour-based mode choice models are the prominent form of mode choice modeling in activity-based models. ActivitySim is the activity-based model used in this research, and so the details of its mode choice structure will be analyzed more closely in Section \ref{lit4}.
+Overall, the seven categories of mode choice presented by \citet{hasnine21} gives a good overview on the details behind existing mode choice structures within activity-based models. It is shown that although trip-based models have been used, tour-based mode choice models are the prominent form of mode choice modeling in activity-based models. ActivitySim is the activity-based model used in this research, and so the details of its mode choice structure will be analyzed more closely in Section \ref{lit4}.
 
 \hypertarget{lit4}{%
-\section{The Mode Choice Models used in ActivitySim}\label{lit4}}
+\subsection{The Mode Choice Models used in ActivitySim}\label{lit4}}
 
-The activity-based model used in this research to generate activity plans is ActivitySim. ActivitySim is an activity simulator used to generate plans for millions of agents each with their own demographic attributes (Gali et al. 2008). Instead of independently modeling each trip, ActivitySim simulates each individual and their daily travel diaries and schedules. Since ActivitySim forecasts travel based on a disaggregate population, more realistic travel estimates are generated than can be generated by forecasting travel using aggregate trips. Long term decisions are made first, and then shorter term decisions are calculated based on the long term decisions ({``ActivitySim: An Advanced Activity-Based Travel Demand Model Built by and for Users''} 2021). Overall, ActivitySim is an advanced activity-based model that is cost effective, user friendly, and efficient at forecasting travel behavior.
+The activity-based model used in this research to generate activity plans is ActivitySim. ActivitySim is an activity simulator used to generate plans for millions of agents each with their own demographic attributes \citep{gali08}. Instead of independently modeling each trip, ActivitySim simulates each individual and their daily travel diaries and schedules. Since ActivitySim forecasts travel based on a disaggregate population, more realistic travel estimates are generated than can be generated by forecasting travel using aggregate trips. Long term decisions are made first, and then shorter term decisions are calculated based on the long term decisions \citep{rsg21}. Overall, ActivitySim is an advanced activity-based model that is cost effective, user friendly, and efficient at forecasting travel behavior.
 
-As discussed in Section \ref{lit33}, ActivitySim adopts a simplified main tour mode model and a conditional trip-level mode model for its mode choice framework. The specifics of this dual level mode choice is described further in its application by MTC (2012).
-The mode choice model in ActivitySim is multifaceted between tours, trips, and purpose. In other words, there is a mode choice model that determines the \emph{primary} mode for each tour and a separate mode choice model that determines the mode for each trip within each tour (MTC 2012). The tour choice is the upper-level choice whereas the trip mode choice is the lower-level choice that is conditional upon the upper-level choice. Two levels of mode choice is more advanced than the simplified main tour mode choice model.
+As discussed in Section \ref{lit33}, ActivitySim adopts a simplified main tour mode model and a conditional trip-level mode model for its mode choice framework. The specifics of this dual level mode choice is described further in its application by \citet{mtc12}.
+The mode choice model in ActivitySim is multifaceted between tours, trips, and purpose. In other words, there is a mode choice model that determines the \emph{primary} mode for each tour and a separate mode choice model that determines the mode for each trip within each tour \citep{mtc12}. The tour choice is the upper-level choice whereas the trip mode choice is the lower-level choice that is conditional upon the upper-level choice. Two levels of mode choice is more advanced than the simplified main tour mode choice model.
 
 This overarching mode choice structure exists separately for each purpose. This means that since there are ten purposes specified in ActivitySim, there are ten tour mode choice models and ten trip mode choice models.
 
-Multiple travel statistics are calculated at the trip and the tour level. At the tour level the tour modes, stop frequencies, and stop locations are estimated. Then, at the trip level the departure times, trip modes, parking for automobiles, and vehicle assignments are determined ({``ActivitySim: An Advanced Activity-Based Travel Demand Model Built by and for Users''} 2021).
+Multiple travel statistics are calculated at the trip and the tour level. At the tour level the tour modes, stop frequencies, and stop locations are estimated. Then, at the trip level the departure times, trip modes, parking for automobiles, and vehicle assignments are determined \citep{rsg21}.
 
 \hypertarget{lit41}{%
-\subsection{ActivitySim's Tour Mode Choice Model}\label{lit41}}
+\subsubsection{ActivitySim's Tour Mode Choice Model}\label{lit41}}
 
-The tour mode choice model assigns the primary mode that is used to get from origin to destination. This level accounts for variables that affect the entire tour. The tour mode decision also affects the alternative values that are available for each trip. The specific details that determine which mode is used for each tour have to do with whether the tour is done by private car or by public transit, walking, or biking; whether there is carpooling available; and whether the transit mode is accessible by foot or by car (MTC 2012).
+The tour mode choice model assigns the primary mode that is used to get from origin to destination. This level accounts for variables that affect the entire tour. The tour mode decision also affects the alternative values that are available for each trip. The specific details that determine which mode is used for each tour have to do with whether the tour is done by private car or by public transit, walking, or biking; whether there is carpooling available; and whether the transit mode is accessible by foot or by car \citep{mtc12}.
 
-The specific choice model used to determine the overarching tour mode is a nested logit model. It separates similar modes into differing bins as to ``more accurately model the cross-elasticities between the alternatives'' (MTC 2012). Figure \ref{fig:fig1} shows all 18 modes within ActivitySim and how they fit within the nested logit structure.
+The specific choice model used to determine the overarching tour mode is a nested logit model. It separates similar modes into differing bins as to ``more accurately model the cross-elasticities between the alternatives'' \citep{mtc12}. Figure \ref{fig:fig1} shows all 18 modes within ActivitySim and how they fit within the nested logit structure.
 
 \begin{figure}
 
@@ -253,16 +285,16 @@ The specific choice model used to determine the overarching tour mode is a neste
 \caption{Tour Mode Choice Nested Logit Model (MTC 2012).}\label{fig:fig1}
 \end{figure}
 
-The first division of modes is describes whether it is an automobile, a non-motorized vehicle, or a transit type. In a broad sense, the second level of nesting for automobile and non-motorized has to do with vehicle occupancy. If it is an automobile, three secondary bins exist: drive-alone, shared-ride with two people, and shared-ride with three or more people. Then, in the third level of nesting, two bins exist having to do with if the mode is free or not. On the other hand, the non-motorized section is only divided up into the walk or bike mode, with no options on the third level. The transit nest is divided into walk-transit and drive transit on the secondary level. There are then five more bins within each one of those transit options having to do with which specific transit type is involved, like LRT, express, etc. The logsum coeffiecient for the first nest is 0.72 and for the second nest 0.35 (MTC 2012).
+The first division of modes is describes whether it is an automobile, a non-motorized vehicle, or a transit type. In a broad sense, the second level of nesting for automobile and non-motorized has to do with vehicle occupancy. If it is an automobile, three secondary bins exist: drive-alone, shared-ride with two people, and shared-ride with three or more people. Then, in the third level of nesting, two bins exist having to do with if the mode is free or not. On the other hand, the non-motorized section is only divided up into the walk or bike mode, with no options on the third level. The transit nest is divided into walk-transit and drive transit on the secondary level. There are then five more bins within each one of those transit options having to do with which specific transit type is involved, like LRT, express, etc. The logsum coeffiecient for the first nest is 0.72 and for the second nest 0.35 \citep{mtc12}.
 
 The utility functions for each mode are shown in Section \ref{lit411}. The primary variables in the utility functions are in-vehicle time, other travel times, cost, characteristics of the destination zone, demographics, and auto ownership of the household. Each mode has different parameter values for each one of the variables, for each tour purpose value.
 
 \hypertarget{lit411}{%
-\subsection{ActivitySim's Tour Mode Choice Utility Functions}\label{lit411}}
+\subsubsection{ActivitySim's Tour Mode Choice Utility Functions}\label{lit411}}
 
 The utility functions for the auto, nonmotorized, and transit tour modes are presented in this section.
 
-All \(\beta\) and \(ASC\) values are meant to represent parameter values. All other variables are dependent on other things, like time for example. (The utility equations are deduced from information from MTC (2012)).
+All \(\beta\) and \(ASC\) values are meant to represent parameter values. All other variables are dependent on other things, like time for example. (The utility equations are deduced from information from \citet{mtc12}).
 
 \textbf{Auto}
 
@@ -355,7 +387,7 @@ All \(\beta\) and \(ASC\) values are meant to represent parameter values. All ot
 \end{itemize}
 
 \hypertarget{lit42}{%
-\subsection{ActivitySim's Trip Mode Choice Model}\label{lit42}}
+\subsubsection{ActivitySim's Trip Mode Choice Model}\label{lit42}}
 
 The trip mode choice model assigns a specific mode to each trip on a given tour. It is similar to the tour mode choice model, except only certain trips are allowed depending on the tour mode. Figure \ref{fig:fig2} displays a detailed explanation of which trip modes are allowed according to the tour mode that was selected in the tour mode choice.
 
@@ -368,7 +400,7 @@ The trip mode choice model assigns a specific mode to each trip on a given tour.
 \caption{Trip Mode Availability based on Tour Mode (MTC 2012).}\label{fig:fig2}
 \end{figure}
 
-The rules that define the correspondence between trips and tours are defined as the following: (MTC 2012)
+The rules that define the correspondence between trips and tours are defined as the following: \citep{mtc12}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -381,7 +413,7 @@ The rules that define the correspondence between trips and tours are defined as 
 \item
   The walk mode is an allowed mode for any given trip, no matter the tour.
 \item
-  ``The availability of transit line-haul submodes on transit tours depends on the skimming and tour mode choice hierarchy'' (MTC 2012). Albeit a low probability, free shared-ride trip modes are allowed in walk-transit tours. Paid shared-ride trip modes are not allowed, however, on transit tours because no evidence promotes this mode selection.
+  ``The availability of transit line-haul submodes on transit tours depends on the skimming and tour mode choice hierarchy'' \citep{mtc12}. Albeit a low probability, free shared-ride trip modes are allowed in walk-transit tours. Paid shared-ride trip modes are not allowed, however, on transit tours because no evidence promotes this mode selection.
 \end{enumerate}
 
 The utility function equations used for the trip mode choice model are shown in Section \ref{lit421}. These parameters are very similar to the ones used in the tour mode choice model. In most cases, the in-vehicle times for coefficients in the trip mode choice are identical with the in-vehicle times in the tour mode choice. For coefficients of variables that apply in the trip mode choice to multiple legs, but only apply once in the tour mode choice, the trip mode choice in-vehicle time is half that of the tour mode choice in-vehicle time.
@@ -389,9 +421,9 @@ The utility function equations used for the trip mode choice model are shown in 
 The trip is determined using a nested logit model structure, just like the tour mode choice model. There is one for each tour purpose as well. Notice how it is based on \emph{tour} purpose and not each \emph{trip} purpose.
 
 \hypertarget{lit421}{%
-\subsection{ActivitySim's Trip Mode Choice Utility Functions}\label{lit421}}
+\subsubsection{ActivitySim's Trip Mode Choice Utility Functions}\label{lit421}}
 
-The utility functions for the auto, nonmotorized, and transit trip modes are presented in this section. All \(\beta\) and \(ASC\) values are meant to represent parameter values. All other variables are dependent on other things, like time for example. (The utility equations are deduced from information from MTC (2012)).
+The utility functions for the auto, nonmotorized, and transit trip modes are presented in this section. All \(\beta\) and \(ASC\) values are meant to represent parameter values. All other variables are dependent on other things, like time for example. (The utility equations are deduced from information from \citet{mtc12}).
 
 \textbf{Auto}
 
@@ -484,34 +516,34 @@ The utility functions for the auto, nonmotorized, and transit trip modes are pre
 \end{itemize}
 
 \hypertarget{lit5}{%
-\section{The Mode Choice Models used in Agent-based Models}\label{lit5}}
+\subsection{The Mode Choice Models used in Agent-based Models}\label{lit5}}
 
 Thus far, an extensive review of mode choice in activity-based models as well as the tour and trip mode choice choice models in Activitysim has been conducted. It is clear that an overarching tour mode value is essential to mode choice trip estimation in activity-based models. In ActivitySim, a multitude of person, path, and location variables are also needed to estimate accurate mode choice decisions.
 
 As a comparison, we will now review the mechanics of mode choice in agent-based models / microsimulation tools. In Section \ref{lit6} the mode choice model of the agent-based model MATSim is discussed. Then, in Section \ref{lit7} the mode choice model of the agent-based model BEAM is discussed. The BEAM microsimulation tool is the agent-based model used extensively this research.
 
 \hypertarget{lit6}{%
-\section{The Mode Choice Model used in MATSim}\label{lit6}}
+\subsection{The Mode Choice Model used in MATSim}\label{lit6}}
 
 Microsimulation is a modeling tool used to simulate individual vehicle movement across a network for the purpose of evaluating the traffic performance of the entire system. MATSim, as mentioned in Section @ref(lit3.7), is an example of a microsimulation tool used today and implements a unique mode choice model.
 
-W Axhausen, Horni, and Nagel (2016) explains that mode choice in MATSim, along with time choice, destination choice, and route assignment, are chosen through an iterative cycle where every agent optimizes its daily activity pattern by picking the best option after each iteration. After multiple iterations, the optimal choice is determined. Specifically, it uses scoring functions (like the Charypar-Nagel utility function) to help determine the optimal choice for each iteration. Equation \eqref{eq:eq1} shows the basic form of the Charypar-Nagel Function used in MATSim (W Axhausen, Horni, and Nagel 2016).
+\citet{horni16} explains that mode choice in MATSim, along with time choice, destination choice, and route assignment, are chosen through an iterative cycle where every agent optimizes its daily activity pattern by picking the best option after each iteration. After multiple iterations, the optimal choice is determined. Specifically, it uses scoring functions (like the Charypar-Nagel utility function) to help determine the optimal choice for each iteration. Equation \eqref{eq:eq1} shows the basic form of the Charypar-Nagel Function used in MATSim \citep{horni16}.
 
 \begin{equation} 
   S_{plan} = \sum_{q=0}^{N-1} S_{act,q} + \sum_{q=0}^{N-1} S_{trav,mode(q)}
   \label{eq:eq1}
 \end{equation}
 
-In the Charypar-Nagel utility function, \(S_{plan}\) represents the utility of a plan, \(S_{act,q}\) represents the sum of all the activity utilities, and \(S_{trav,mode(q)}\) represents the sum of all the travel ``(dis)utilities'' (W Axhausen, Horni, and Nagel 2016). In other words, the plan's utility is computed from adding the activity utilities and subtracting the mode and travel utilities.
+In the Charypar-Nagel utility function, \(S_{plan}\) represents the utility of a plan, \(S_{act,q}\) represents the sum of all the activity utilities, and \(S_{trav,mode(q)}\) represents the sum of all the travel ``(dis)utilities'' \citep{horni16}. In other words, the plan's utility is computed from adding the activity utilities and subtracting the mode and travel utilities.
 
-During each iteration, a new plan for the agent is calculated, resulting in different travel and mode values selected. After each iteration, the plan with the best overall ``score'' or utility is selected probabilistically among the previous and current iteration utility plans. As discussed in Section \ref{lit37}, MATSim continues to iteratively update mode choice until schotastic equilibrium is reached (Hasnine and Nurul Habib 2021). This action of determining the best modal alternative over a simulation process means that the mode choice model is a mix of a simulation-based model (Section \ref{lit35}) and a dynamic tour-based model (Section \ref{lit37}).
+During each iteration, a new plan for the agent is calculated, resulting in different travel and mode values selected. After each iteration, the plan with the best overall ``score'' or utility is selected probabilistically among the previous and current iteration utility plans. As discussed in Section \ref{lit37}, MATSim continues to iteratively update mode choice until schotastic equilibrium is reached \citep{hasnine21}. This action of determining the best modal alternative over a simulation process means that the mode choice model is a mix of a simulation-based model (Section \ref{lit35}) and a dynamic tour-based model (Section \ref{lit37}).
 
 MATSim's mode choice programming contrasts greatly from ActivitySim's mode choice model. Various efforts have been proposed to create a more advanced mode choice model system in MATSim. These efforts will be further explained in Section \ref{lit8}. First, Section \ref{lit7} explores the mode choice model of a different microsimulation tool named BEAM.
 
 \hypertarget{lit7}{%
-\section{The Mode Choice Model used in BEAM}\label{lit7}}
+\subsection{The Mode Choice Model used in BEAM}\label{lit7}}
 
-Another microsimulation tool, similar to MATSim, is BEAM. BEAM stands for Beahvior, Energy, Autonomy, and Mobility and is being developed at the Lawrence Berkeley National Laboratory. According to El Zarwi, Vij, and Walker (2017), BEAM's framework is designed to model and forecast the adoption and diffusion of new transportation services. Originally, BEAM implemented a Latent Class Choice Model (LCCM) as the mode choice structure to more accurately model early adopters, imitators, and non-adopters of the new transportation services. BEAM's user guide, however, explains that the LCCM model is not currently being used, and instead something similar to a nested multinomial logit model is in effect. The observed utility function for the multinomial logit model includes parameters relating to travel time, cost, and a constant term.
+Another microsimulation tool, similar to MATSim, is BEAM. BEAM stands for Beahvior, Energy, Autonomy, and Mobility and is being developed at the Lawrence Berkeley National Laboratory. According to \citet{zarwi17}, BEAM's framework is designed to model and forecast the adoption and diffusion of new transportation services. Originally, BEAM implemented a Latent Class Choice Model (LCCM) as the mode choice structure to more accurately model early adopters, imitators, and non-adopters of the new transportation services. BEAM's user guide, however, explains that the LCCM model is not currently being used, and instead something similar to a nested multinomial logit model is in effect. The observed utility function for the multinomial logit model includes parameters relating to travel time, cost, and a constant term.
 
 BEAM's mutlinomial logit model takes in certain parameters and inputs and uses them to probabilistically estimate the likely mode choice for each user in their respective situation. Mathematically, the observable utility equation for the simple multinomial logit model in BEAM is shown in Equation \eqref{eq:beammnl}.
 
@@ -550,29 +582,29 @@ A total of nine different modal alternatives are available in BEAM. Unlike Activ
 ActivitySim provides mode choices off of the primary tour activity. For example, referring to in Figure \ref{fig:fig-mode-compare}, if a person wants to go to their work activity by train, ActivitySim knows that they can either walk or take transit to their gym activity. Contrastingly, BEAM bases mode choice on the first trip of the day. This means that BEAM will determine the optimal mode to go to the gym in, and then figure our how to get to work based on the first trip mode. In addition, ActivitySim knows that when a person leaves for lunch from their work activity, they will be returning back to their work activity after lunch. This means that the person is able to leave their car at work and possibly walk or take transit to and from their lunch activity. In BEAM though, if someone goes to lunch, they will most likely take their car as to not abandon their vehicle for the rest of their day. It is clear that BEAM's mode choice is less representative of how people actually transport themselves during the day. ActivitySim provides a better representation of mode choice. As a result, it is important to improve the mode choice model in BEAM (See Section \ref{lit8}).In this research we explore the importance of creating consistency between the mode choice models between BEAM and ActivitySim (See Section \ref{lit9}).
 
 \hypertarget{lit8}{%
-\section{Previous Attempts to Enhance Mode Choice in Agent-based Models}\label{lit8}}
+\subsection{Previous Attempts to Enhance Mode Choice in Agent-based Models}\label{lit8}}
 
-In recent years, suggestions have been made on how to improve MATSim's mode choice structure. Axhausen, Balmer, and Ciari (2008) proposed introducing discrete choice, in the form of a multinomial logit model on the subtour level of mode choice. Currently, MATSim's mode choice is performed at the tour level, meaning subtour mode choice is limited. This new introduction would allow variation in mode on all subtours. Similarly, Hörl, Balac, and Axhausen (2018) proposed updating upon a subtour mode choice model to eliminate heavily randomized processes and to increase the use of realistic subtour modal options.
+In recent years, suggestions have been made on how to improve MATSim's mode choice structure. \citet{ax08} proposed introducing discrete choice, in the form of a multinomial logit model on the subtour level of mode choice. Currently, MATSim's mode choice is performed at the tour level, meaning subtour mode choice is limited. This new introduction would allow variation in mode on all subtours. Similarly, \citet{horl18} proposed updating upon a subtour mode choice model to eliminate heavily randomized processes and to increase the use of realistic subtour modal options.
 
-In addition to improving the subtour mode choice strategy within MATSim, Hörl, Balac, and Axhausen (2018) also proposed introducing a chain-based modal selection model, similar to the type of model discussed in Section \ref{lit36}. Hörl, Balac, and Axhausen (2018) describes this chain-based model with, ``If one iterates over all possible combinations of modes on these trips, one arrives at a set of available mode chains C of size \(M^{N}\), where \(M\) is the number of possible modes and \(N\) is the number of trips.'' The resulting set of feasible chains \(C_f \in C\) could look as follows:
+In addition to improving the subtour mode choice strategy within MATSim, \citet{horl18} also proposed introducing a chain-based modal selection model, similar to the type of model discussed in Section \ref{lit36}. \citet{horl18} describes this chain-based model with, ``If one iterates over all possible combinations of modes on these trips, one arrives at a set of available mode chains C of size \(M^{N}\), where \(M\) is the number of possible modes and \(N\) is the number of trips.'' The resulting set of feasible chains \(C_f \in C\) could look as follows:
 
 \begin{equation} 
   C_f = \{(car,car,car),(transit,transit,transit),(transit,walk,transit),...\}
   \label{eq:eq2}
 \end{equation}
 
-Equation \eqref{eq:eq2} provides a great example of all the chain-based modal alternatives that would exist in the choice set. In order to model the chain selection, Hörl, Balac, and Axhausen (2018) suggest incorporating ``an out-of-the-box discrete mode choice model into MATSim''. They propose that this discrete choice model would involve two sampling approaches. The first approach involves calculating the total utility value for the chain-based modes and the other would be based on individual trip probabilities. In order to calculate the utility however, various variables like travel time and travel costs would be involved. The downside to this model would be that analyzing the chain-based modes and calculating individual utilities would cause significant computational overhead compared to MATSim's default mode choice model.
+Equation \eqref{eq:eq2} provides a great example of all the chain-based modal alternatives that would exist in the choice set. In order to model the chain selection, \citet{horl18} suggest incorporating ``an out-of-the-box discrete mode choice model into MATSim''. They propose that this discrete choice model would involve two sampling approaches. The first approach involves calculating the total utility value for the chain-based modes and the other would be based on individual trip probabilities. In order to calculate the utility however, various variables like travel time and travel costs would be involved. The downside to this model would be that analyzing the chain-based modes and calculating individual utilities would cause significant computational overhead compared to MATSim's default mode choice model.
 
-In the work done by Hörl, Balać, and Axhausen (2019), a discrete choice model is actually inserted into MATSim and tested using a case study of the city of Zurich. In this model, both a trip based and a tour based mode choice model are used. The tour based model is identical to the chain-based model described in the work done by Hörl, Balac, and Axhausen (2018). A multinomial logit model is used to probabilistically select between the utility values of each modal alternative. With the introduction of discrete choice and chain-based tour mode choice into MATSim, Hörl, Balać, and Axhausen (2019) states that there is better convergence behavior. Since mode choice is not done at random and no irrational modal decisions are being made, this newer model arrives at convergence with fewer iterations. However, since more explanatory variables are needed to estimate mode choice, extensive calibration is required in order to ensure the mode choice model performs in an unbiased manner.
+In the work done by \citet{horl19}, a discrete choice model is actually inserted into MATSim and tested using a case study of the city of Zurich. In this model, both a trip based and a tour based mode choice model are used. The tour based model is identical to the chain-based model described in the work done by \citet{horl18}. A multinomial logit model is used to probabilistically select between the utility values of each modal alternative. With the introduction of discrete choice and chain-based tour mode choice into MATSim, \citet{horl19} states that there is better convergence behavior. Since mode choice is not done at random and no irrational modal decisions are being made, this newer model arrives at convergence with fewer iterations. However, since more explanatory variables are needed to estimate mode choice, extensive calibration is required in order to ensure the mode choice model performs in an unbiased manner.
 
-Hörl, Balać, and Axhausen (2019) found that the advanced trip-based model resulted in a more accurate mode share by time of day than the simple trip-based model. It was also determined that run time was higher with the advanced trip-based mode. Overall, the introduction of discrete choice and chain-based tour mode choice into MATSim could result in scenarios with quicker convergence, more accurate modal shares, and higher run times.
+\citet{horl19} found that the advanced trip-based model resulted in a more accurate mode share by time of day than the simple trip-based model. It was also determined that run time was higher with the advanced trip-based mode. Overall, the introduction of discrete choice and chain-based tour mode choice into MATSim could result in scenarios with quicker convergence, more accurate modal shares, and higher run times.
 
-Since BEAM is a new agent-based model that is still being developed regularly, not many proposals have been made to improve its mode choice model. However, one example in the literature of a mode choice improvement to BEAM is done by Barth et al. (2020). Barth et al. (2020) proposed that BEAM implements a fundamental influencing factor (FIF) mode choice model instead of the original LCCM or the current MNL. The primary goal of the FIF model would be to calibrate the model against data on people's actual travel decisions while simultaneously allowing the introduction of any hypothetical mode. The FIF model would implement an LCCM by grouping individuals into different classes based on a logit function. The logit utility function, however, would include seven parameters; this makes the influencing factors more than twice that of BEAM's current function. Overall, this new model would make BEAM more effective at estimating the usage of new transportation services, but the structure would be vastly different than many activity-based models.
+Since BEAM is a new agent-based model that is still being developed regularly, not many proposals have been made to improve its mode choice model. However, one example in the literature of a mode choice improvement to BEAM is done by \citet{barth20}. \citet{barth20} proposed that BEAM implements a fundamental influencing factor (FIF) mode choice model instead of the original LCCM or the current MNL. The primary goal of the FIF model would be to calibrate the model against data on people's actual travel decisions while simultaneously allowing the introduction of any hypothetical mode. The FIF model would implement an LCCM by grouping individuals into different classes based on a logit function. The logit utility function, however, would include seven parameters; this makes the influencing factors more than twice that of BEAM's current function. Overall, this new model would make BEAM more effective at estimating the usage of new transportation services, but the structure would be vastly different than many activity-based models.
 
 The research we present is another idea of how to improve the mode choice model in the agent-based tool BEAM. This proposed improvement is discussed in Section \ref{lit9} and revolves around the idea of creating consistency between activity-based models and microsimulation tools.
 
 \hypertarget{lit9}{%
-\section{Summary}\label{lit9}}
+\subsection{Summary}\label{lit9}}
 
 Oftentimes, the outputs of an activity-based model serve as the inputs to a microsimulation tool. However, as discussed in Section \ref{lit3} activity-based models can include a wide range of mode choice modeling. Usually the mode choice models within activity-based models rely on a tour-mode choice first, followed by trip-mode choice. Mode choice models within activity-based models are usually more thorough than mode choice models in microsimulation tools. As discussed in Section \ref{lit6} MATSim simply uses a scoring function to determine mode decisions; after each iteration a new option is explored. In Section \ref{lit7}, BEAM's mode choice model was explained as a simple multinomial logit model with only a few parameters. Overall, the mode choice structures within activity-based models and microsimulation tools differ between each other.
 
@@ -583,31 +615,22 @@ We propose to make a consistent mode choice model between an activity-based mode
 We aim to better understand the effects of a consistent mode choice model between an activity-based model and a microsimulation tool. We will do this by upgrading the mode choice model in BEAM to be more closely aligned with that of ActivitySim. We will then explore the outputs and compare the effects of the new mode choice model and the original mode choice model. Chapter 4 explains the methodology of how we accomplished this task.
 
 \hypertarget{methods}{%
-\chapter{Methods}\label{methods}}
+\section{Methods}\label{methods}}
 
 \hypertarget{overview-1}{%
-\section{Overview}\label{overview-1}}
+\subsection{Overview}\label{overview-1}}
 
 The approach to determine the effects of a consistent mode choice model between an activity-based model and a microsimulation tool required three main steps. The first step involved creating a test scenario that runs within the activity-based model ActivitySim and the microsimulation tool BEAM. Section \ref{mscen} explains this step including how the test scenario was created and how ActivitySim and BEAM were configured. The second step involved adjusting the internal code of BEAM to align the mode choice model with that of ActivitySim's. Section \ref{mbeam} explains the details behind the changes made to BEAM's default mode choice model to align more closely with that of ActivitySim's. Section \ref{mbeam} also describes the existing mode choice models within BEAM and how their components were altered. The last step was to calibrate the mode choice utility values within BEAM. Section \ref{mcalib} explains the details behind the validation and calibration of the mode choice parameters.
 
 \hypertarget{mscen}{%
-\section{Creating and Setting up the Test Scenario}\label{mscen}}
+\subsection{Creating and Setting up the Test Scenario}\label{mscen}}
 
 Designing a test scenario to use within ActivitySim and BEAM was essential to understanding and testing mode choice between models. This section explains the region that was used to model the test scenario. This section also explains how the input files needed to run both ActivitySim and BEAM were generated for the test scenario.
 
 \hypertarget{test-scenario-region}{%
-\subsection{Test Scenario Region}\label{test-scenario-region}}
+\subsubsection{Test Scenario Region}\label{test-scenario-region}}
 
 The test scenario used in this research includes the approximate 2.1 million agents of the Salt Lake City, Utah, USA region. This region includes Box Elder, Davis, Salt Lake, Utah, and Weber counties. Figure \ref{fig:figregion} shows the 2881 Traffic Analysis Zones (TAZs) along with the five counties that make up the region of study.
-
-\begin{figure}
-
-{\centering \includegraphics[width=480px]{thesis_files/figure-latex/figregion-1} 
-
-}
-
-\caption{The TAZs of each county in the region of study.}\label{fig:figregion}
-\end{figure}
 
 This extensive region was selected for the following reasons:
 
@@ -617,7 +640,7 @@ This extensive region was selected for the following reasons:
 \item
   There is substantial data that exists for this region. Having sufficient data points for each of the TAZs was essential to creating the inputs to ActivitySim and BEAM. The majority of the data used for this research was gathered and shared by Wasatch Front Regional Council (WFRC), the Metropolitan Planning Organization (MPO) of Salt Lake county.
 \item
-  There currently exists a need to analyze this region with a microsimulation tool, such as BEAM. Specifically, the Utah Transit Authority (UTA) wishes to understand which specific sub regions in the Salk Lake area will best serve new on-demand transit vehicles. In some future research, this specific question will be answered. Along this this question, having a microsimulation model of a region will prove to be an effective method to answering multiple transportation service questions in the future. To date, only one previous analysis of this region has been conducted with the BEAM software (Lant 2021).
+  There currently exists a need to analyze this region with a microsimulation tool, such as BEAM. Specifically, the Utah Transit Authority (UTA) wishes to understand which specific sub regions in the Salk Lake area will best serve new on-demand transit vehicles. In some future research, this specific question will be answered. Along this this question, having a microsimulation model of a region will prove to be an effective method to answering multiple transportation service questions in the future. To date, only one previous analysis of this region has been conducted with the BEAM software \citep{nate}.
 \item
   The size and population within the study area are comparable to other regions around the United States. This means that the work completed in this research may be useful to other cities besides Salt Lake City.
 \item
@@ -627,14 +650,14 @@ This extensive region was selected for the following reasons:
 Overall, the Salt Lake City, Utah region proved to be an effective location for this mode choice analysis research. After selecting the region of study, the next steps involved setting up and running ActivitySim.
 
 \hypertarget{setting-up-and-running-activitysim}{%
-\subsection{Setting up and Running ActivitySim}\label{setting-up-and-running-activitysim}}
+\subsubsection{Setting up and Running ActivitySim}\label{setting-up-and-running-activitysim}}
 
-Setting up and running ActivitySim for the Salt Lake region was based off example scenarios presented by ActivitySim (ActivitySim 2021). The entire process for setting up the activity-based model for this region is explained in the research done by Lant (2021). The research done by Lant (2021) was the basis to the work completed in this project.
+Setting up and running ActivitySim for the Salt Lake region was based off example scenarios presented by ActivitySim \citep{asim}. The entire process for setting up the activity-based model for this region is explained in the research done by \citet{nate}. The research done by \citet{nate} was the basis to the work completed in this project.
 
 However, a brief explanation of the setup of the activity-based model is explained in Section \ref{asiminput}. The two main steps behind creating an activity-based model for the Salt Lake region was creating corresponding input files and calibrating and validating the results.
 
 \hypertarget{asiminput}{%
-\subsubsection{Creating Input Files}\label{asiminput}}
+\paragraph{Creating Input Files}\label{asiminput}}
 
 ActivitySim requires the following three input files in order to run:
 
@@ -648,25 +671,25 @@ ActivitySim requires the following three input files in order to run:
   A set of skims that describe the cost and travel times of all modes between all zones.
 \end{itemize}
 
-The synthetic population is used to generate an entire population with specific individual details for each agent (like gender, age, income, vehicle ownership). Gathering individual information for all the agents in the region may be considered an invasion of privacy. So instead, a synthetic population is used. The synthetic population is a generated population with specific individual attributes that add up to the regional characteristics as a whole. The synthetic population was generated using a software called PopulationSim (PopulationSim 2021). To run PopulationSim a ``seed'' table and a set of ``targets'' were used. The ``seed'' table represented information about a subset of the population and the set of ``targets'' represented demographic data for smaller areas within the region (Lant 2021). Together, PopulationSim was able to simulate individual attributes for the approximate 2 million agents in the Salt Lake region.
+The synthetic population is used to generate an entire population with specific individual details for each agent (like gender, age, income, vehicle ownership). Gathering individual information for all the agents in the region may be considered an invasion of privacy. So instead, a synthetic population is used. The synthetic population is a generated population with specific individual attributes that add up to the regional characteristics as a whole. The synthetic population was generated using a software called PopulationSim \citep{popsim}. To run PopulationSim a ``seed'' table and a set of ``targets'' were used. The ``seed'' table represented information about a subset of the population and the set of ``targets'' represented demographic data for smaller areas within the region \citep{nate}. Together, PopulationSim was able to simulate individual attributes for the approximate 2 million agents in the Salt Lake region.
 
-The zonal socioeconomic data file stores zonal characteristics regarding household information, worker information, and other activity type information. This file specifically gives information on what types and how many types of activities may be found within a certain zonal region. This file was created using data from WFRC, Utah Automated Geographic Reference Center (AGRC 2021), and the synthetic population when necessary.
+The zonal socioeconomic data file stores zonal characteristics regarding household information, worker information, and other activity type information. This file specifically gives information on what types and how many types of activities may be found within a certain zonal region. This file was created using data from WFRC, Utah Automated Geographic Reference Center \citep{agrc}, and the synthetic population when necessary.
 
-The third input to ActivitySim is detailed travel skims. Skims are large matrices showing travel times and costs between every set of zones within the area of study. Included in these skims were further details regarding differences in modes, distances, wait times, etc. (Lant 2021). The existing skims from WFRC were used along with some slight adjustments to fit the ActivitySim model.
+The third input to ActivitySim is detailed travel skims. Skims are large matrices showing travel times and costs between every set of zones within the area of study. Included in these skims were further details regarding differences in modes, distances, wait times, etc. \citep{nate}. The existing skims from WFRC were used along with some slight adjustments to fit the ActivitySim model.
 
 \hypertarget{asimcal}{%
-\subsubsection{Calibration and Validation}\label{asimcal}}
+\paragraph{Calibration and Validation}\label{asimcal}}
 
-The calibration and validation of ActivitySim was conducted by Lant (2021). The purpose of the calibration and validation was to ensure the outputs generated by ActivitySim matched target regional values. Specifically trip productions, trip distributions, and mode choices were tested to match the given target values from WFRC's four-step model.
+The calibration and validation of ActivitySim was conducted by \citet{nate}. The purpose of the calibration and validation was to ensure the outputs generated by ActivitySim matched target regional values. Specifically trip productions, trip distributions, and mode choices were tested to match the given target values from WFRC's four-step model.
 
-To validate the trip productions, total trips per county were compared between ActivitySim and WFRC target values. These trips were close to identical, with only a variation of 1.0 percent. The trip distributions were compared as well, with about a 4.0 percent margin of error. Overall, Lant (2021) shows that the trip productions and distributions of the ActivitySim model were a good representation of travel behavior, requiring no calibration.
+To validate the trip productions, total trips per county were compared between ActivitySim and WFRC target values. These trips were close to identical, with only a variation of 1.0 percent. The trip distributions were compared as well, with about a 4.0 percent margin of error. Overall, \citet{nate} shows that the trip productions and distributions of the ActivitySim model were a good representation of travel behavior, requiring no calibration.
 
-The mode choice validation was difficult as the mode choice categories between WFRC and ActivitySim are vastly different. ActivitySim considers five trip mode choice alternatives whereas the WFRC model considers ten trip mode choice alternatives. However, ActivitySim does include ten tour mode choice alternatives. When comparing mode choice distributions, both the trip and tour distributions from ActivitySim were compared with the trip distributions of WFRC. Lant (2021) performs an in depth comparison between these values and found that ActivitySim under represents non-motorized university trips and over represents non-motorized work trips. In addition ActivitySim under represents shared ride trips for all tour purposes and does not accurately represent commuter rail and local bus trips for all tour purposes. overall, the mode choice model did not match closely with the WFRC targets, and required calibration.
+The mode choice validation was difficult as the mode choice categories between WFRC and ActivitySim are vastly different. ActivitySim considers five trip mode choice alternatives whereas the WFRC model considers ten trip mode choice alternatives. However, ActivitySim does include ten tour mode choice alternatives. When comparing mode choice distributions, both the trip and tour distributions from ActivitySim were compared with the trip distributions of WFRC. \citet{nate} performs an in depth comparison between these values and found that ActivitySim under represents non-motorized university trips and over represents non-motorized work trips. In addition ActivitySim under represents shared ride trips for all tour purposes and does not accurately represent commuter rail and local bus trips for all tour purposes. overall, the mode choice model did not match closely with the WFRC targets, and required calibration.
 
-Lant (2021) performed an in depth calibration across ActivitySim modes to minimize error with the WFRC target shares. The calibration process will not be explained in this research paper. Upon calibration, trip productions and distributions remained relatively unchanged, and therefore needed no calibration. Mode choice distributions were closer to target values as well. Overall, after some calibration the results of ActivitySim produced sufficiently accurate information to move forward with the research.
+\citet{nate} performed an in depth calibration across ActivitySim modes to minimize error with the WFRC target shares. The calibration process will not be explained in this research paper. Upon calibration, trip productions and distributions remained relatively unchanged, and therefore needed no calibration. Mode choice distributions were closer to target values as well. Overall, after some calibration the results of ActivitySim produced sufficiently accurate information to move forward with the research.
 
 \hypertarget{setting-up-beam}{%
-\subsection{Setting up BEAM}\label{setting-up-beam}}
+\subsubsection{Setting up BEAM}\label{setting-up-beam}}
 
 After setting up, calibrating, and running the ActivitySim scenario for the Salt Lake region, the next step was setting up BEAM using the results of the ActivitySim model. BEAM requires a variety of input files, most of which are as follows:
 
@@ -687,7 +710,7 @@ After setting up, calibrating, and running the ActivitySim scenario for the Salt
 The details behind these input files along with example tables of these files are discussed and shown in the following subsections.
 
 \hypertarget{population-file}{%
-\subsubsection{Population File}\label{population-file}}
+\paragraph{Population File}\label{population-file}}
 
 The population file was created from the ActivitySim generated data. ActivitySim's main purpose is to generate daily activity patterns (DAPs) for each agent from the synthetic population. The DAPs generated by ActivitySim consists of all the activities that each agent within the population embark on during the day. Using the activity types, activity locations, activity durations, mode choices, departure and arrival times, and overall activity data, BEAM generated a population file along with a person attributes file.
 
@@ -754,7 +777,7 @@ ID & Household ID & Age & Sex & VOT & TAZ & Income & Household Size & Auto Work 
 \end{table}
 
 \hypertarget{household-and-vehicle-files}{%
-\subsubsection{Household and Vehicle Files}\label{household-and-vehicle-files}}
+\paragraph{Household and Vehicle Files}\label{household-and-vehicle-files}}
 
 ActivitySim generates three specific files: a households, a persons, and a trips file. The persons and trips files were used to construct the population plans file. The households file, however, was used to generate both the household and vehicle BEAM input files.
 
@@ -807,7 +830,7 @@ Vehicle ID & Vehicle Type & Household ID\\
 \end{table}
 
 \hypertarget{vechile-types-files}{%
-\subsubsection{Vechile Types Files}\label{vechile-types-files}}
+\paragraph{Vechile Types Files}\label{vechile-types-files}}
 
 In addition to the household and vehicle files, two vehicle type files are also needed to run BEAM. The first describes attributes that relate to each vehicle type. For example, some attributes that are included in the vehicle types file is the fuel efficiency, seating capacity, vehicle length, etc. An example of a subset of the vehicle types file that is used as an input to BEAM is shown in Table \ref{tab:vehtypes}.
 
@@ -874,11 +897,11 @@ rideHailVehicle-010500 & Car & 425560.0 & 4483818 & \{10:25200\}\\
 \end{table}
 
 \hypertarget{transportation-services}{%
-\subsubsection{Transportation Services}\label{transportation-services}}
+\paragraph{Transportation Services}\label{transportation-services}}
 
 BEAM requires two main files in order to provide transportation services to agents within the simulation. These two files are a GTFS file and a routable transportation network.
 
-GTFS data is a common format that houses information relating to transportation schedules and transportation locations. Many public agencies publish transportation data in the GTFS format. The GTFS data used as the input to BEAM was obtained from UTA's mobility data feed from 2019 (UTA 2021). BEAM maps the GTFS data onto the highway network allowing agents to use both transportation and highway services interchangeably (Lant 2021).
+GTFS data is a common format that houses information relating to transportation schedules and transportation locations. Many public agencies publish transportation data in the GTFS format. The GTFS data used as the input to BEAM was obtained from UTA's mobility data feed from 2019 \citep{gtfs}. BEAM maps the GTFS data onto the highway network allowing agents to use both transportation and highway services interchangeably \citep{nate}.
 
 A detailed routable road network for the study area was obtained from WFRC's travel demand model. After some manipulation, the network was cleaned of disconnections and filtered to include the correct attributes. Within the network, various attributes such as capacity, free flow speed, number of lanes, functional classification, direction, whether it is a one-way street, etc. were included. The network was constructed from a series of link and node combinations. The nodes represent intersections and activity locations whereas the links represent the roadways that connect each node. The links include the attributes of the network whereas the nodes include the coordinates. A detailed highway network of links and nodes allows BEAM to simulate traffic conditions in a more realistic manner.
 
@@ -886,7 +909,7 @@ Figure \ref{fig:network} displays the roadway network of the region of study. Fi
 
 \begin{figure}
 
-{\centering \includegraphics[width=480px]{pics/network} 
+{\centering \includegraphics[width=29.17in]{pics/network} 
 
 }
 
@@ -895,7 +918,7 @@ Figure \ref{fig:network} displays the roadway network of the region of study. Fi
 
 \begin{figure}
 
-{\centering \includegraphics[width=480px]{pics/smallnetwork} 
+{\centering \includegraphics[width=29.17in]{pics/smallnetwork} 
 
 }
 
@@ -903,19 +926,19 @@ Figure \ref{fig:network} displays the roadway network of the region of study. Fi
 \end{figure}
 
 \hypertarget{other-input-files}{%
-\subsubsection{Other Input Files}\label{other-input-files}}
+\paragraph{Other Input Files}\label{other-input-files}}
 
 A variety of additional input files can be included to run the BEAM simulation. Not all the files will be mentioned, but a few of them include a configuration file, a parking file, a toll prices file, TAZ specific files, and mode choice utility parameter file. Except for the mode choice utility parameter file, details about these additional files will not be provided. The details behind the mode choice utility parameter file will be discussed in Section \ref{ute}.
 
 \hypertarget{mbeam}{%
-\section{Improved Mode Choice in BEAM}\label{mbeam}}
+\subsection{Improved Mode Choice in BEAM}\label{mbeam}}
 
 After creating the basic input files in order to run BEAM for the Salt Lake region, the next step was adjusting the mode choice model within BEAM itself. As discussed in Section \ref{lit7} BEAM's default mode choice model is a simple multinomial logit model calculated with minimal travel attributes. In Section \ref{lit4} it is discussed that ActivitySim's mode choice model is more comprehensive.
 
 Changing the mode choice model within BEAM to become more consistent with that of ActivitySim's required some major adjustments to BEAM's internal code. Specifically, in this research BEAM's code was changed in three significant ways. Section \ref{purp} describes how choices were changed to be made using activity purpose values, Section \ref{ute} describes how additional attributes were inserted to the utility equation, and Section \ref{pool} describes how new modal alternatives were added to BEAM. Then, in Section\ref{algo} algorithms explaining BEAM's improved mode choice model is presented.
 
 \hypertarget{purp}{%
-\subsection{Purpose-based Decisions}\label{purp}}
+\subsubsection{Purpose-based Decisions}\label{purp}}
 
 The first major addition to BEAM's mode choice model to improve consistency with ActivitySim was to base mode choice decisions off of activity purposes. An activity purpose describes the primary activity of trips on a tour. Primary purposes are selected on a tour-based level. For this reason, the primary purpose is also referred to as the tour purpose. For example, if an agent were to go to the gym, then to work, and then return home, each trip on the work tour would have a primary purpose of ``work''. In this paper, tour purpose, primary purpose, activity purpose, and tour type are all used interchangeable to mean the same thing.
 
@@ -950,13 +973,13 @@ To ensure the ability to distinguish between tour purpose values, it was necessa
 Once primary purpose values were present in the population plans, the next step was to design a new mode choice model within BEAM. In order to better understand the new code that was inserted into BEAM, three flow charts were constructed (See Figure \ref{fig:mnlflow}, Figure \ref{fig:lccmflow}, and Figure \ref{fig:tpcmflow}). In these flow charts inputs are displayed as folder icons, Java classes and methods are displayed as rectangles, and the result is displayed as an oval. These flow charts help display the code behind the BEAM's mode choice models. Understanding BEAM's default mode choice model and its obsolete Latent Class Choice Model (LCCM) are useful toward understanding how the new Tour Purpose Choice Model (TPCM) was constructed in the BEAM code.
 
 \hypertarget{multinomial-logit-choice-model}{%
-\subsubsection{Multinomial Logit Choice Model}\label{multinomial-logit-choice-model}}
+\paragraph{Multinomial Logit Choice Model}\label{multinomial-logit-choice-model}}
 
 Figure \ref{fig:mnlflow} shows the process behind BEAM's default mode choice model. As described in Section \ref{lit7}, by default BEAM calculates mode choices using a multinomial logit function with only a few attribute variables. In Figure \ref{fig:mnlflow} the flow of inputs and BEAM functions are shown. As shown, the inputs to the Mode Choice Calculator are the alternatives, person and household attributes, and the destination activity data.
 
 \begin{figure}
 
-{\centering \includegraphics[width=600px]{thesis_files/figure-latex/mnlflow-1} 
+{\centering \includegraphics{thesis_files/figure-latex/mnlflow-1} 
 
 }
 
@@ -970,13 +993,13 @@ The alternatives, person and household attributes, and destination activity are 
 The organized data from the Mode Choice Calculator along with the multinomial logit utility parameters are then sent to the multinomial logit choice model. The utility parameters in the default BEAM code are simply expressed in the configuration file. For each mode, an intercept, transit occupancy level, and transfer intercept/multiplier is specified. Then, within the multinomial logit choice model the utility value is calculated for each modal alternative. Those utility values are then sampled and one final mode is chosen!
 
 \hypertarget{latent-class-choice-model}{%
-\subsubsection{Latent Class Choice Model}\label{latent-class-choice-model}}
+\paragraph{Latent Class Choice Model}\label{latent-class-choice-model}}
 
 BEAM has an obsolete LCCM within its code structure. When BEAM was first being developed, the LCCM was how modal decisions were made. Part of creating the new Tour Purpose Choice Model was first to recreate and reboot the LCCM and second to change its structure slightly to base decisions off of tour purpose. For this reason, the structure behind the LCCM is presented. Figure \ref{fig:lccmflow} shows the flow of code for the LCCM.
 
 \begin{figure}
 
-{\centering \includegraphics[width=650px]{thesis_files/figure-latex/lccmflow-1} 
+{\centering \includegraphics{thesis_files/figure-latex/lccmflow-1} 
 
 }
 
@@ -990,13 +1013,13 @@ The LCCM Utility Parameters file includes mode choice coefficients relating to n
 Interestingly enough, after the Latent Class Choice Model Java class reads in the utility information and stores it accordingly, it is sent to the same Multinomial Logit Java class. The overall utility value is calculated for each alternative and then are sampled down to a final mode choice!
 
 \hypertarget{tour-purpose-choice-model}{%
-\subsubsection{Tour Purpose Choice Model}\label{tour-purpose-choice-model}}
+\paragraph{Tour Purpose Choice Model}\label{tour-purpose-choice-model}}
 
 As mentioned previously, the TPCM was constructed off of the LCCM within BEAM. This means the first step to creating this model was fixing the LCCM and making the LCCM run correctly. With a few minimal code adjustments, and a lot of debugging, the LCCM was brought back to life. The final flow of code for the TPCM is presented in Figure \ref{fig:tpcmflow}.
 
 \begin{figure}
 
-{\centering \includegraphics[width=650px]{thesis_files/figure-latex/tpcmflow-1} 
+{\centering \includegraphics{thesis_files/figure-latex/tpcmflow-1} 
 
 }
 
@@ -1010,13 +1033,13 @@ In order to create the TPCM, two main steps were taken. First, a Tour Purpose Ch
 Overall, the Tour Purpose Choice Model Java class performed similarly to the Latent Class Choice Model Java class. It was able to parse the input utility parameters, attach those values to the alternatives, as well as calculate the travel statistics for all 25 travel variables. To do this, an additional class was built to calculate each of the travel variables. The final mode choice was determined in the same manner as well. These alternatives were sent to the Multinomial Logit Java class where their modal utilities were calculated and sampled. The sampling then determined a final mode choice for each individual.
 
 \hypertarget{ute}{%
-\subsection{Additional Attributes in Utility Equation}\label{ute}}
+\subsubsection{Additional Attributes in Utility Equation}\label{ute}}
 
 Equally important to developing the tour purpose choice model code structure within BEAM was to develop a consistent mode choice utility function. As explained in Section \ref{lit4} ActivitySim bases its mode choice off of an abundance of path, person, and location type variables. Therefore, most of these path, person, and location type variables were inserted into the BEAM structure and used to calculate mode choice. The travel statistics for each variable were calculated within the TPCM code and the coefficient and intercept parameter values were included using an input file.
 
 The input file for the utility calculation included every combination of variable, mode, and purpose. For example, what is the cost coefficient for a drive transit trip on a school tour? With 25 different variables, 11 different modes, and 10 different tour purposes, a total of 3251 parameter values existed! Of course, a large portion of these combinations were left blank. (For example, the walk distance variable was only applied to walk type modes.) These parameter values were obtained from a variety of sources.
 
-The alternate specific constants were obtained from the utility values used in the example\_mtc scenario from the ActivitySim software (ActivitySim 2021). These constants were used in the initial stages of modeling, but were then updated and calibrated to the Salt Lake Region in Section \ref{clib}. The majority of the coefficient values were obtained from the tour mode choice coefficients from MTC (2012). Since BEAM's mode choice is trip-based however, all these tour-based coefficients were multiplied by two and then used as trip-based coefficients. The trip-based coefficients from MTC (2012) were not used because they did not provide the same level of precision and thoroughness as the tour-based coefficients. Tour values were hence doubled as to better represent trip characteristics. In places where coefficients and constants did not exist for certain modes, the values of its most similar mode were used instead, sometimes with slight adjustments. For example, the bike transit constants did not exist so the walk transit values were used instead of leaving its values empty. Below, a list of the path, person, and location variables used to calculate the modal utility is shown. Not all 25 variables are listed since some of the variables describe a group of variables.
+The alternate specific constants were obtained from the utility values used in the example\_mtc scenario from the ActivitySim software \citep{asim}. These constants were used in the initial stages of modeling, but were then updated and calibrated to the Salt Lake Region in Section \ref{clib}. The majority of the coefficient values were obtained from the tour mode choice coefficients from \citet{mtc12}. Since BEAM's mode choice is trip-based however, all these tour-based coefficients were multiplied by two and then used as trip-based coefficients. The trip-based coefficients from \citet{mtc12} were not used because they did not provide the same level of precision and thoroughness as the tour-based coefficients. Tour values were hence doubled as to better represent trip characteristics. In places where coefficients and constants did not exist for certain modes, the values of its most similar mode were used instead, sometimes with slight adjustments. For example, the bike transit constants did not exist so the walk transit values were used instead of leaving its values empty. Below, a list of the path, person, and location variables used to calculate the modal utility is shown. Not all 25 variables are listed since some of the variables describe a group of variables.
 
 \begin{itemize}
 \tightlist
@@ -1080,7 +1103,7 @@ Person & cost & walk\_transit & util/min & atwork & -0.038\\
 The observable utility equation for the new tour purpose choice model can be divided up into three sub-equations. Equation \eqref{eq:tpcmpath} shows the Path type variable part of the TPCM utility equation. Equation \eqref{eq:tpcmperson} shows the Person type variable part of the TPCM utility equation. Equation \eqref{eq:tpcmloc} shows the Location type variable part of the the TPCM utility equation. The full TPCM utility equation, however, is the combination of path, person, and location type variables, as displayed in Equation \eqref{eq:tpcmall}.
 
 \hypertarget{path-type-utility-equation}{%
-\subsubsection{Path Type Utility Equation}\label{path-type-utility-equation}}
+\paragraph{Path Type Utility Equation}\label{path-type-utility-equation}}
 
 \begin{equation}
   V_j = \beta_{t_v}(t_v) + \beta_{t_w}(t_w) + \beta_{t_e}(t_e) + \beta_{tr_p}(tr_p) + \beta_{xfer}(xfer) + \beta_{w_{dis}}(w_{dis}) + \\ \beta_{b_{dis}}(b_{dis}) + \beta_{d_{dis}}(d_{dis}) \label{eq:tpcmpath}
@@ -1117,7 +1140,7 @@ where
 \end{itemize}
 
 \hypertarget{person-type-utility-equation}{%
-\subsubsection{Person Type Utility Equation}\label{person-type-utility-equation}}
+\paragraph{Person Type Utility Equation}\label{person-type-utility-equation}}
 
 \begin{equation}
   V_j = ASC_{auto} +  \beta_{c}(c) + \beta_{ag}(ag) \label{eq:tpcmperson}
@@ -1140,7 +1163,7 @@ where
 \end{itemize}
 
 \hypertarget{location-type-utility-equation}{%
-\subsubsection{Location Type Utility Equation}\label{location-type-utility-equation}}
+\paragraph{Location Type Utility Equation}\label{location-type-utility-equation}}
 
 \begin{equation}
   V_j = \beta_{zdi}(zdi) + \beta_{cbd}(cbd) \label{eq:tpcmloc}
@@ -1163,7 +1186,7 @@ where
 \end{itemize}
 
 \hypertarget{beams-new-consistent-utility-equation}{%
-\subsubsection{BEAM's New Consistent Utility Equation}\label{beams-new-consistent-utility-equation}}
+\paragraph{BEAM's New Consistent Utility Equation}\label{beams-new-consistent-utility-equation}}
 
 \begin{equation}  
   V_j = Eq:4.1 + Eq:4.2 + Eq:4.3 \label{eq:tpcmall}
@@ -1182,7 +1205,7 @@ When comparing Equation \eqref{eq:tpcmall} with BEAM's default equation in Equat
 It is important to note that BEAM's internal code is built on a trip-based level, and so no overarching tour mode choice was determined before trip mode choice. It was outside the scope of this project to adjust BEAM's structure to include a tour mode choice model. As a result, the mode choice consistency only exists on the trip-based mode choice level. Hopefully, in the future a consistent tour-based mode choice can be inserted into BEAM as well.
 
 \hypertarget{pool}{%
-\subsection{Carpool Alternatives}\label{pool}}
+\subsubsection{Carpool Alternatives}\label{pool}}
 
 After designing a tour purpose choice model within BEAM and extending the mode choice utility equation, more consistency with ActivitySim was achieved by adding additional modal alternatives. BEAM by default includes nine modal alternatives. ActivitySim, however has eight upper level mode choices and 18 total mode choices. The lower level mode choices include distinctions between car and carpool modes being paid or not, and five different types of transit modes. For simplicity, BEAM's modes will be compared to ActivitySims upper level mode choice categories. Figure \ref{fig:venn} shows a venn diagram of how the modes compare between BEAM and ActivitySim.
 
@@ -1199,12 +1222,12 @@ As seen in Figure \ref{fig:venn}, both BEAM and ActivitySim include car, bike, w
 
 Four new carpooling alternatives were added to BEAM: HOV2, HOV2\_TELEPORTATION, HOV3, and HOV3\_TELEPORTATION. HOV2 and HOV3 were coded to act identical to car modes. They were mapped to the network and thus could add to congestion. Their travel statistics were also calculated in the same way as for car modes. Agents who selected HOV2 or HOV3 were represented as the drivers of the carpooling cars. HOV2\_TELEPORTATION and HOV3\_TELEPORTATION modes were added to the modal alternative options as to represent non driving carpooling agents / passengers. These agents would simply teleport to their destination as to not add extra congestion to the network. Their travel statistics, however, were still calculated to represent a car traveling from the origin to the destination. Adding both car and teleporting HOV modes allowed carpooling alternatives to be represented as accurately as possible within the BEAM code.
 
-Within the code, HOV2 and HOV3 modes were provided as modal options by transforming an existing car option into an HOV option. By doing this, HOV modes did not have to be added to the R5 routing engine (Conveyal 2022). The R5 routing engine helps BEAM accomplish multi-modal routing. For the default modes with BEAM, agents make a request to the router and then the routing system calculates a distinct route through the system for all possible modal options (BEAM 2022). Car alternatives from the router were copied and changed into HOV2 and HOV3 options for agents to choose from. This allows car travel statistics to be transferred over to the carpooling modes.
+Within the code, HOV2 and HOV3 modes were provided as modal options by transforming an existing car option into an HOV option. By doing this, HOV modes did not have to be added to the R5 routing engine \citep{r5}. The R5 routing engine helps BEAM accomplish multi-modal routing. For the default modes with BEAM, agents make a request to the router and then the routing system calculates a distinct route through the system for all possible modal options \citep{beam}. Car alternatives from the router were copied and changed into HOV2 and HOV3 options for agents to choose from. This allows car travel statistics to be transferred over to the carpooling modes.
 
 In cases where car routes were not provided from the router, HOV2 and HOV3 options could not be created. Often times this occurred for agents that did not have access to a car. This birthed the question of how to provide carpooling vehicles to agents without their own vehicle? In the real world, plenty of people without vehicles get rides from their friends. Therefore, as a way to surpass this problem, teleportation HOV vehicles were provided to these agents. In these cases, walk routes from the router were transformed into teleportation routes. Car travel statistics like travel time were calculated using the input skim data. In addition, costs for all teleportation modes were set to \$0, as oftentimes in the real world when picking up a friend that friend does not contribute to drive costs. Overall, by transforming existing routes from the router into carpooling alternatives, the ability to carpool became possible within BEAM. The carpooling addition thus made BEAM more consistent with the ActivitySim mode choice model.
 
 \hypertarget{algo}{%
-\subsection{Mode Choice Algorithms}\label{algo}}
+\subsubsection{Mode Choice Algorithms}\label{algo}}
 
 As a way to better understand the complexity behind the code changes within BEAM, two pseudocode algorithms are provided. Specifically, the algorithms are meant to provide clarification on how BEAM's new mode choice model works.
 
@@ -1345,16 +1368,16 @@ This function takes a vector of modes and  their probabilities of being chosen. 
 \end{algorithm}
 
 \hypertarget{mcalib}{%
-\section{Data Validation and Calibration}\label{mcalib}}
+\subsection{Data Validation and Calibration}\label{mcalib}}
 
 After coding a consistent mode choice model within BEAM, further validation and calibration were completed. BEAM's new mode choice model was basing decisions off of utility parameter values from the MTC example from ActivitySim. We needed to understand if these parameter values were consistent with values from other mode choice models. In Section\ref{valid} ActivitySim parameter values are compared with values from other models. After validating the mode choice utility coefficient values, the alternative specific constants within the mode choice utility function needed to be calibrated. Upon calibration, the modal distributions aligned more closely with the target values within the region. This calibration is doen in Section \ref{clib}
 
 \hypertarget{valid}{%
-\subsection{ActivitySim Path Variable Validation}\label{valid}}
+\subsubsection{ActivitySim Path Variable Validation}\label{valid}}
 
-The utility parameter values used in BEAM's new mode choice model were copied directly from MTC's implementation of ActivitySim (MTC 2012). MTC's implementation of ActivitySim was designed for the San Francisco, California region. Logically, travel behaviors such as travel time, travel distance, and number of transfers should affect people in different regions in similar ways. However, as a way to validate the use of ActivitySim's path utility coefficients in the Salt Lake region, these values are compared to values from other models. Specifically, these coefficient values are compared with three different models.
+The utility parameter values used in BEAM's new mode choice model were copied directly from MTC's implementation of ActivitySim \citep{mtc12}. MTC's implementation of ActivitySim was designed for the San Francisco, California region. Logically, travel behaviors such as travel time, travel distance, and number of transfers should affect people in different regions in similar ways. However, as a way to validate the use of ActivitySim's path utility coefficients in the Salt Lake region, these values are compared to values from other models. Specifically, these coefficient values are compared with three different models.
 
-The first model used to compare path utility coefficients is the Utah Statewide model (UDOT 2021). This model is useful as it provides a rough idea of the influence of path variables in Utah as a whole. The second model used in this comparison comes from the WFRC regional model (WFRC 2019). This model is a useful comparison as it predicts travel behavior for the same region of study used in this research project. The last model used in this comparison is not exactly a model but a report. NCHRP Report 716 provides a rough idea of what parameter values should look like for a generalized modeling point of view (Cambridge Systematics et al. 2012). Overall, comparing these three sets of path parameter values with the MTC ActivitySim parameter values used in BEAM should help validate the values used in this research.
+The first model used to compare path utility coefficients is the Utah Statewide model \citep{utahstate}. This model is useful as it provides a rough idea of the influence of path variables in Utah as a whole. The second model used in this comparison comes from the WFRC regional model \citep{wfrc}. This model is a useful comparison as it predicts travel behavior for the same region of study used in this research project. The last model used in this comparison is not exactly a model but a report. NCHRP Report 716 provides a rough idea of what parameter values should look like for a generalized modeling point of view \citep{nchrp}. Overall, comparing these three sets of path parameter values with the MTC ActivitySim parameter values used in BEAM should help validate the values used in this research.
 
 Although ActivitySim has ten primary purpose values, the other models only had three categories: home-based work, home-based school, and home-based other. Fortunately, most of the purpose values that fit into the home-based other group are identical. Therefore, three charts were created to validate the ActivitySim's path utility parameter values. In addition, in all the graphs ActivitySim does not have a cost variable value because it is based soley on each person's value of time. The coefficients for the other models are shown though. Lastly, only ActivitySim has coefficient values for the biking distances, but those are also shown in the graphs.
 
@@ -1362,7 +1385,7 @@ Figure \ref{fig:hbw} shows the comparison of the path utility parameter values b
 
 \begin{figure}
 
-{\centering \includegraphics[width=400px]{thesis_files/figure-latex/hbw-1} 
+{\centering \includegraphics{thesis_files/figure-latex/hbw-1} 
 
 }
 
@@ -1373,7 +1396,7 @@ Figure \ref{fig:hbs} shows the comparison of the path utility parameter values b
 
 \begin{figure}
 
-{\centering \includegraphics[width=400px]{thesis_files/figure-latex/hbs-1} 
+{\centering \includegraphics{thesis_files/figure-latex/hbs-1} 
 
 }
 
@@ -1384,7 +1407,7 @@ Lastly, Figure \ref{fig:hbo} shows the comparison of path utility parameter valu
 
 \begin{figure}
 
-{\centering \includegraphics[width=400px]{thesis_files/figure-latex/hbo-1} 
+{\centering \includegraphics{thesis_files/figure-latex/hbo-1} 
 
 }
 
@@ -1392,29 +1415,34 @@ Lastly, Figure \ref{fig:hbo} shows the comparison of path utility parameter valu
 \end{figure}
 
 \hypertarget{clib}{%
-\subsection{Mode Choice Calibration}\label{clib}}
+\subsubsection{Mode Choice Calibration}\label{clib}}
 
 \hypertarget{summary}{%
-\section{Summary}\label{summary}}
+\subsection{Summary}\label{summary}}
 
 \hypertarget{results}{%
-\chapter{Results}\label{results}}
+\section{Results}\label{results}}
 
 \hypertarget{total-modal-distribution}{%
-\section{Total Modal Distribution}\label{total-modal-distribution}}
+\subsection{Total Modal Distribution}\label{total-modal-distribution}}
 
 \hypertarget{path-person-and-location-analysis}{%
-\section{Path, Person, and Location Analysis}\label{path-person-and-location-analysis}}
+\subsection{Path, Person, and Location Analysis}\label{path-person-and-location-analysis}}
 
 \hypertarget{subtour-trip-analysis}{%
-\section{Subtour Trip Analysis}\label{subtour-trip-analysis}}
+\subsection{Subtour Trip Analysis}\label{subtour-trip-analysis}}
 
 \hypertarget{discussion}{%
-\chapter{Discussion}\label{discussion}}
+\section{Discussion}\label{discussion}}
 
 \hypertarget{conclusions}{%
-\chapter{Conclusions}\label{conclusions}}
+\section{Conclusions}\label{conclusions}}
 
+`r
+\# \{=latex\} for thesis
+\# \{\} for elsevier'
+
+\begin{verbatim}
 \cleardoublepage
     \bookmarksetupnext{level=part}
     \phantomsection
@@ -1423,159 +1451,14 @@ Lastly, Figure \ref{fig:hbo} shows the comparison of path utility parameter valu
     REFERENCES\\
     \vskip 1 \baselineskip
     \end{centering}
+    
+\end{verbatim}
 
 \hypertarget{refs}{}
-\begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-asim}{}}%
-ActivitySim. 2021. \emph{ActivitySim: An Open Platform for Activity-Based Travel Modeling} (version 0.9.9.1). \url{https://github.com/ActivitySim/activitysim.}
-
-\leavevmode\vadjust pre{\hypertarget{ref-rsg21}{}}%
-{``ActivitySim: An Advanced Activity-Based Travel Demand Model Built by and for Users.''} 2021. \emph{RSG}. \url{https://rsginc.com/activitysim-white-paper/\#advanced-activity-based-travel-demand-model}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-agrc}{}}%
-AGRC. 2021. \emph{Automated Geographic Reference Center}. \url{https://gis.utah.gov/}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-arentze00}{}}%
-Arentze, Theo, and Harry Timmermans. 2000. \emph{Albatross: A Learning Based Transportation Oriented Simulation System}. Citeseer.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ax08}{}}%
-Axhausen, K, M Balmer, and F Ciari. 2008. {``A New Mode Choice Model for a Multi-Agent Transport Simulation.''} In \emph{8th Swiss Transport Research Conference. ETH, Eidgen{ö}ssische Technische Hochschule}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-barth20}{}}%
-Barth, Matthew, Peng Hao, Guoyuan Wu, Shams Tanvir, Chao Wang, Jeff Gonder, Jacob Holden, Andrew Devall, and Bingrong Sun. 2020. {``Evaluating Energy Efficiency Opportunities from Connected and Automated Vehicle Deployments Coupled with Shared Mobility in California.''} University of California-Riverside.
-
-\leavevmode\vadjust pre{\hypertarget{ref-beam}{}}%
-BEAM. 2022. \emph{Behavior, Energy, Autonomy, and Mobility}. Lawrence Berkeley National Laboratory the UC Berkeley Institute for Transportation Studies. \url{https://beam.readthedocs.io/en/develop/users.html}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ben02}{}}%
-Ben-Akiva, Moshe, Daniel Mcfadden, Kenneth Train, Joan Walker, Chandra Bhat, Michel Bierlaire, Denis Bolduc, et al. 2002. {``Hybrid Choice Models: Progress and Challenges.''} \emph{Marketing Letters} 13 (3): 163--75. \url{https://doi.org/10.1023/a:1020254301302}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ben02num2}{}}%
-Ben-Akiva, Moshe, Joan Walker, Adriana T. Bernardino, Dinesh A. Gopinath, Taka Morikawa, and Amalia Polydoropoulou. 2002. {``Integration of Choice and Latent Variable Models.''} \emph{In Perpetual Motion}, 431--70. \url{https://doi.org/10.1016/b978-008044044-6/50022-x}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-bhat95}{}}%
-Bhat, Chandra R. 1995. {``A Heteroscedastic Extreme Value Model of Intercity Travel Mode Choice.''} \emph{Transportation Research Part B: Methodological} 29 (6): 471--83.
-
-\leavevmode\vadjust pre{\hypertarget{ref-bhat99}{}}%
-Bhat, Chandra R, and Frank S Koppelman. 1999. {``Activity-Based Modeling of Travel Demand.''} In \emph{Handbook of Transportation Science}, 35--61. Springer.
-
-\leavevmode\vadjust pre{\hypertarget{ref-bowman01}{}}%
-Bowman, J. L, and M. E Ben-Akiva. 2001. {``Activity-Based Disaggregate Travel Demand Model System with Activity Schedules.''} \emph{Transportation Research Part A: Policy and Practice} 35 (1): 1--28. \url{https://doi.org/10.1016/s0965-8564(99)00043-9}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-bowman06}{}}%
-Bowman, John L., Mark A. Bradley, and John Gibbs. 2006. {``The Sacramento Activity-Based Travel Demand Model: Estimation and Validation Results.''} \emph{In European Transport Conference.}
-
-\leavevmode\vadjust pre{\hypertarget{ref-bowman99}{}}%
-Bowman, John L, Mark Bradley, Yoram Shiftan, T Keith Lawton, and Moshe Ben-Akiva. 1999. {``Demonstration of an Activity-Based Model for Portland.''} In \emph{World Transport Research: Selected Proceedings of the 8th World Conference on Transport ResearchWorld Conference on Transport Research Society}. Volume 3.
-
-\leavevmode\vadjust pre{\hypertarget{ref-nchrp}{}}%
-Cambridge Systematics, Inc., Inc. Vanasse Hangen Brustlin, Gallop Corporation, Chandra R. Bhat, LLC Shapiro Transportation Consulting, and PLLC Martin/Alexiou/Bryson. 2012. {``Travel Demand Forecasting: Parameters and Techniques.''} In \emph{NCHRP Report 716}, 55--60. Transportation Research Board.
-
-\leavevmode\vadjust pre{\hypertarget{ref-r5}{}}%
-Conveyal. 2022. \emph{R5: Rapid Realistic Routing on Real-World and Reimagined Networks}. \url{https://github.com/conveyal/r5}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-zarwi17}{}}%
-El Zarwi, Feras, Akshay Vij, and Joan L Walker. 2017. {``A Discrete Choice Framework for Modeling and Forecasting the Adoption and Diffusion of New Transportation Services.''} \emph{Transportation Research Part C: Emerging Technologies} 79: 207--23.
-
-\leavevmode\vadjust pre{\hypertarget{ref-eluru10}{}}%
-Eluru, Naveen, Abdul Pinjari, Ram Pendyala, and Chandra Bhat. 2010. {``An Econometric Multi-Dimensional Choice Model of Activity-Travel Behavior.''} \emph{Transportation Letters} 2 (4): 217--30. \url{https://doi.org/10.3328/tl.2010.02.04.217-230}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-fta15}{}}%
-FTA. 2015. {``Public Transit in the United States.''} Federal Transit Administration. \url{https://www.transit.dot.gov/regulations-and-guidance/environmental-programs/public-transit-united-states\#:~:text=Transit\%20serves\%20many\%20public\%20purposes,mutually\%20exclusive\%20and\%20frequently\%20overlap.}
-
-\leavevmode\vadjust pre{\hypertarget{ref-fta22}{}}%
----------. 2022. {``Transit and Sustainability.''} Federal Transit Administration. \url{https://www.transit.dot.gov/regulations-and-programs/environmental-programs/transit-and-sustainability}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-gali08}{}}%
-Gali, Emmanuel, Stephan Eidenbenz, Sue Mniszewski, Leticia Cuellar, and Christof Teuscher. 2008. {``ActivitySim: Large-Scale Agent Based Activity Generation for Infrastructure Simulation,''} January. \url{https://www.osti.gov/biblio/960770}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-bhat20}{}}%
-Goulias, Konstadinos G., Adam Wilkinson Davis, and Chandra R. Bhat. 2020. {``Chapter 5 - Consumer Choice Modeling: The Promises and the Cautions.''} In \emph{Mapping the Travel Behavior Genome}, 63--80. Elsevier.
-
-\leavevmode\vadjust pre{\hypertarget{ref-greg}{}}%
-Graehler, Michael, Richard Alexander Mucci, and Gregory D Erhardt. 2019. {``Understanding the Recent Transit Ridership Decline in Major US Cities: Service Cuts or Emerging Modes.''} In \emph{98th Annual Meeting of the Transportation Research Board, Washington, DC}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-hasnine21}{}}%
-Hasnine, Md Sami, and Khandker Nurul Habib. 2021. {``Tour-Based Mode Choice Modelling as the Core of an Activity-Based Travel Demand Modelling Framework: A Review of State-of-the-Art.''} \emph{Transport Reviews} 41 (1): 5--26. \url{https://doi.org/10.1080/01441647.2020.1780648}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-horl18}{}}%
-Hörl, Sebastian, Milos Balac, and Kay W Axhausen. 2018. {``A First Look at Bridging Discrete Choice Modeling and Agent-Based Microsimulation in MATSim.''} \emph{Procedia Computer Science} 130: 900--907.
-
-\leavevmode\vadjust pre{\hypertarget{ref-horl19}{}}%
-Hörl, Sebastian, Miloš Balać, and Kay W Axhausen. 2019. {``Pairing Discrete Mode Choice Models and Agent-Based Transport Simulation with MATSim.''} In \emph{2019 TRB Annual Meeting Online}, 19--02409. Transportation Research Board.
-
-\leavevmode\vadjust pre{\hypertarget{ref-nate}{}}%
-Lant, Nathan John. 2021. {``Estimation and Simulation of Daily Activity Patterns for Individuals Using Wheelchairs.''} PhD thesis, Brigham Young University.
-
-\leavevmode\vadjust pre{\hypertarget{ref-todd}{}}%
-Litman, Todd. 2022. {``Evaluating Public Transit Benefits and Costs.''} Victoria Transport Policy Institute. \url{https://vtpi.org/tranben.pdf}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-manski2001}{}}%
-Manski, Charles F. 2001. {``Daniel McFadden and the Econometric Analysis of Discrete Choice.''} \emph{The Scandinavian Journal of Economics} 103 (2): 217--29.
-
-\leavevmode\vadjust pre{\hypertarget{ref-mcfadden1973}{}}%
-McFadden, Daniel et al. 1973. {``Conditional Logit Analysis of Qualitative Choice Behavior.''}
-
-\leavevmode\vadjust pre{\hypertarget{ref-mcfadden86}{}}%
-McFadden, Daniel. 1986. {``The Choice Theory Approach to Market Research.''} \emph{Marketing Science} 5 (4): 275--97.
-
-\leavevmode\vadjust pre{\hypertarget{ref-mcnally2000four}{}}%
-McNally, Michael G. 2000. {``The Four Step Model.''} In \emph{Handbook of Transport Modelling}. Emerald Group Publishing Limited.
-
-\leavevmode\vadjust pre{\hypertarget{ref-miller05}{}}%
-Miller, Eric J., Matthew J. Roorda, and Juan Antonio Carrasco. 2005. {``A Tour-Based Model of Travel Mode Choice.''} \emph{Transportation} 32 (4): 399--422. \url{https://doi.org/10.1007/s11116-004-7962-3}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-mtc12}{}}%
-MTC. 2012. \emph{Travel Model Development: Calibration and Validation Technical Report}. Metropolitan Transportation Commission with Parsons Brinckerhoff, Inc.
-
-\leavevmode\vadjust pre{\hypertarget{ref-habib17}{}}%
-Nurul Habib, Khandker. 2017. {``A Comprehensive Utility-Based System of Activity-Travel Scheduling Options Modelling (Custom) for Worker's Daily Activity Scheduling Processes.''} \emph{Transportmetrica A: Transport Science} 14 (4): 292--315. \url{https://doi.org/10.1080/23249935.2017.1385656}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ortuzar94}{}}%
-Ortuzar, J.de D., and L. G.Willumsen. 1994. Wiley.
-
-\leavevmode\vadjust pre{\hypertarget{ref-paulssen14}{}}%
-Paulssen, Marcel, Dirk Temme, Akshay Vij, and Joan L. Walker. 2014. {``Values, Attitudes and Travel Behavior: A Hierarchical Latent Variable Mixed Logit Model of Travel Mode Choice.''} \emph{Transportation} 41 (4): 873--88. \url{https://doi.org/10.1007/s11116-013-9504-3}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-pendyala05}{}}%
-Pendyala, Ram M., Ryuichi Kitamura, Akira Kikuchi, Toshiyuki Yamamoto, and Satoshi Fujii. 2005. {``Florida Activity Mobility Simulator.''} \emph{Transportation Research Record: Journal of the Transportation Research Board} 1921 (1): 123--30. \url{https://doi.org/10.1177/0361198105192100114}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-pendyala97}{}}%
-Pendyala, Ram M, Ryuichi Kitamura, Cynthia Chen, and Eric I Pas. 1997. {``An Activity-Based Microsimulation Analysis of Transportation Control Measures.''} \emph{Transport Policy} 4 (3): 183--92.
-
-\leavevmode\vadjust pre{\hypertarget{ref-pinjari07}{}}%
-Pinjari, Abdul Rawoof, Ram M. Pendyala, Chandra R. Bhat, and Paul A. Waddell. 2007. {``Modeling Residential Sorting Effects to Understand the Impact of the Built Environment on Commute Mode Choice.''} \emph{Transportation} 34 (5): 557--73. \url{https://doi.org/10.1007/s11116-007-9127-7}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-popsim}{}}%
-PopulationSim. 2021. \emph{An Open Platform for Population Synthesis} (version 0.5). \url{https://activitysim.github.io/populationsim/}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-saleem18}{}}%
-Saleem, Mohammad, Oskar Blom Västberg, and Anders Karlström. 2018. {``An Activity Based Demand Model for Large Scale Simulations.''} \emph{Procedia Computer Science} 130: 920--25.
-
-\leavevmode\vadjust pre{\hypertarget{ref-utahstate}{}}%
-UDOT. 2021. \emph{Utah State Travel Demand Model}. Utah Department of Transportation.
-
-\leavevmode\vadjust pre{\hypertarget{ref-gtfs}{}}%
-UTA. 2021. {``OpenMobilityData - GTFS.''} Utah Transit Authority. \url{https://transitfeeds.com/p/utah-transportation-authority/59}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-venter18}{}}%
-Venter, Christoffel, Gail Jennings, Darío Hidalgo, and Andrés Felipe Valderrama Pineda. 2018. {``The Equity Impacts of Bus Rapid Transit: A Review of the Evidence and Implications for Sustainable Transport.''} \emph{International Journal of Sustainable Transportation} 12 (2): 140--52.
-
-\leavevmode\vadjust pre{\hypertarget{ref-vij13}{}}%
-Vij, Akshay, André Carrel, and Joan L. Walker. 2013. {``Incorporating the Influence of Latent Modal Preferences on Travel Mode Choice Behavior.''} \emph{Transportation Research Part A: Policy and Practice} 54: 164--78. \url{https://doi.org/10.1016/j.tra.2013.07.008}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-vovsha17}{}}%
-Vovsha, P., J. E. Hicks, G. Vyas, V. Livshits, K. Jeon, R. Anderson, and G. Giaimo. 2017. {``Combinatorial Tour Mode Choice.''} In \emph{Presented at He 96th Annual Meeting of Transportation Research Board}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-horni16}{}}%
-W Axhausen, Kay, Andreas Horni, and Kai Nagel. 2016. \emph{The Multi-Agent Transport Simulation MATSim}. Ubiquity Press.
-
-\leavevmode\vadjust pre{\hypertarget{ref-wfrc}{}}%
-WFRC. 2019. \emph{Wasatch Front Travel Demand Model} (version v8.3.1). Wasatch Front Regional Council. \url{https://wfrc.org/programs/models-forecasting/}.
-
+\begin{CSLReferences}{0}{0}
 \end{CSLReferences}
 
+\bibliography{book.bib}
 
-% Index?
 
 \end{document}

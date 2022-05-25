@@ -17,13 +17,22 @@ committeeMembers: |
   
   Gustavious P. Williams
 keywords: 'four step model, discrete choice model, activity-based model, microsimulation tool, mode choice model, tour purpose, multinomial logit, latent class choice model'
-layout: '12pt, oneside, openright' 
-# use option 'oneside' for ETD
-# change this to option 'twoside' for printing
+
+address: 
+  - code: BYU
+    address: Brigham Young University, Civil and Construction Engineering Department, 430 EB, Provo, Utah 84602
+  - code: BYUPH
+    address: Brigham Young University, Public Health Department, 4103 LSB, Provo, Utah 84602
+footnote:
+  - code: 1
+    text: "Corresponding Author"
+date: "`r Sys.Date()`"
 
 # Remove the hashtag to specify which version of output you would like.
 # Can only choose one at a time.
 site: bookdown::bookdown_site
+
+journal: "submitted to Health and Place"
 
 # Note that a tab is needed on the line after the `|`.
 abstract: |
@@ -37,11 +46,19 @@ acknowledgments: |
   the dissertation, thesis or selected project. Acknowledgements should be simple
   and in good taste.
 
-  
+# use option 'oneside' for ETD
+# change this to option 'twoside' for printing
+#layout: '12pt, oneside, openright' #thesis
+layout: "3p, authoryear, review" #elsevier
 # Specify the location of the bibliography below
-bibliography: [book.bib, packages.bib]
+
+bibliography: [book.bib] 
+
 # Download your specific csl file and refer to it in the line below.
-#csl: csl/apa.csl
+# csl styles: https://www.zotero.org/styles
+csl: elsevier-harvard-italics.csl #elsevier
+link-citations: yes
+
 lot: true
 lof: true
 ---

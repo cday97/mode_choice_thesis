@@ -8,10 +8,18 @@ bookdown::gitbook:
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
     download: ["pdf", "epub"]
+    
+#thesis
+#bookdown::pdf_book:
+#  template: template.tex
+#  latex_engine: pdflatex
+#  keep_tex: yes
+#  pandoc_args: [
+#    "--top-level-division=chapter"
+#  ]
+
+#elsevier
 bookdown::pdf_book:
-  template: template.tex
-  latex_engine: pdflatex
+  base_format: rticles::elsevier_article
+  latex_engine: xelatex
   keep_tex: yes
-  pandoc_args: [
-    "--top-level-division=chapter"
-  ]

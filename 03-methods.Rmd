@@ -24,10 +24,6 @@ Designing a test scenario to use within ActivitySim and BEAM was essential to un
 ### Test Scenario Region
 The test scenario used in this research includes the approximate 2.1 million agents of the Salt Lake City, Utah, USA region. This region includes Box Elder, Davis, Salt Lake, Utah, and Weber counties. Figure \@ref(fig:figregion) shows the 2881 Traffic Analysis Zones (TAZs) along with the five counties that make up the region of study. 
 
-```{r figregion, fig.cap='The TAZs of each county in the region of study.', out.width = "480px", echo = FALSE, warning = FALSE, message = FALSE, fig.align='center'}
-tar_read(tazmap)
-```
-
 This extensive region was selected for the following reasons:
 
   1. There is substantial data that exists for this region. Having sufficient data points for each of the TAZs was essential to creating the inputs to ActivitySim and BEAM. The majority of the data used for this research was gathered and shared by Wasatch Front Regional Council (WFRC), the Metropolitan Planning Organization (MPO) of Salt Lake county. 
@@ -149,11 +145,11 @@ A detailed routable road network for the study area was obtained from WFRC's tra
 
 Figure \@ref(fig:network) displays the roadway network of the region of study. Figure \@ref(fig:closent) displays a close up of roadway network system within Salt Lake City, Utah to show significant detail. 
 
-```{r network,  fig.cap='Transportation network for area of study.', echo = FALSE, warning = FALSE, message = FALSE, out.width = "480px", fig.align='center'}
+```{r network,  fig.cap='Transportation network for area of study.', echo = FALSE, warning = FALSE, message = FALSE, fig.align='center'}
 tar_read(bignetpic)
 ```
 
-```{r closent,  fig.cap='Close up of the transportation network of Salt Lake City.', echo = FALSE, warning = FALSE, message = FALSE, out.width = "480px", fig.align='center'}
+```{r closent,  fig.cap='Close up of the transportation network of Salt Lake City.', echo = FALSE, warning = FALSE, message = FALSE, fig.align='center'}
 tar_read(smallnetpic)
 ```
 
@@ -188,7 +184,7 @@ Once primary purpose values were present in the population plans, the next step 
 #### Multinomial Logit Choice Model
 Figure \@ref(fig:mnlflow) shows the process behind BEAM's default mode choice model. As described in Section \@ref(lit7), by default BEAM calculates mode choices using a multinomial logit function with only a few attribute variables. In Figure \@ref(fig:mnlflow) the flow of inputs and BEAM functions are shown. As shown, the inputs to the Mode Choice Calculator are the alternatives, person and household attributes, and the destination activity data. 
 
-```{r mnlflow,  fig.cap='BEAM code flow chart behind the default multinomial logit choice model.', echo = FALSE, warning = FALSE, message = FALSE, out.width = "600px", fig.align='center'}
+```{r mnlflow,  fig.cap='BEAM code flow chart behind the default multinomial logit choice model.', echo = FALSE, warning = FALSE, message = FALSE, fig.align='center'}
 tar_read(mnlflow)
 ```
 
@@ -201,7 +197,7 @@ The organized data from the Mode Choice Calculator along with the multinomial lo
 #### Latent Class Choice Model
 BEAM has an obsolete LCCM within its code structure. When BEAM was first being developed, the LCCM was how modal decisions were made. Part of creating the new Tour Purpose Choice Model was first to recreate and reboot the LCCM and second to change its structure slightly to base decisions off of tour purpose. For this reason, the structure behind the LCCM is presented. Figure \@ref(fig:lccmflow) shows the flow of code for the LCCM.
 
-```{r lccmflow,  fig.cap='BEAM code flow chart behind the latent class choice model.', echo = FALSE, warning = FALSE, message = FALSE, out.width = "650px", fig.align='center'}
+```{r lccmflow,  fig.cap='BEAM code flow chart behind the latent class choice model.', echo = FALSE, warning = FALSE, message = FALSE, fig.align='center'}
 tar_read(lccmflow)
 ```
 
@@ -214,7 +210,7 @@ Interestingly enough, after the Latent Class Choice Model Java class reads in th
 #### Tour Purpose Choice Model
 As mentioned previously, the TPCM was constructed off of the LCCM within BEAM. This means the first step to creating this model was fixing the LCCM and making the LCCM run correctly. With a few minimal code adjustments, and a lot of debugging, the LCCM was brought back to life. The final flow of code for the TPCM is presented in Figure \@ref(fig:tpcmflow).
 
-```{r tpcmflow,  fig.cap='BEAM code flow chart behind the tour purpose choice model.', echo = FALSE, warning = FALSE, message = FALSE, out.width = "650px", fig.align='center'}
+```{r tpcmflow,  fig.cap='BEAM code flow chart behind the tour purpose choice model.', echo = FALSE, warning = FALSE, message = FALSE, fig.align='center'}
 tar_read(tpcmflow)
 ```
 
@@ -484,19 +480,19 @@ Although ActivitySim has ten primary purpose values, the other models only had t
 
 Figure \@ref(fig:hbw) shows the comparison of the path utility parameter values between all four models for home-based work trips. For the egress time, in vehicle travel time (ivtt), the number of transfers, transfer time, and the wait times, ActivitySim seems to use a very similar coefficient value as the other three models. The largest discrepancy exists with short and long walking distances. ActivitySim seems to use a value almost ten fold that of the other models. This occurs because in the WFRC and Utah Statewide models, there is a limit to walking distance. ActivitySim however does not cap walking distances and therefore there is a high penalty for long walking distances. With this clarification, it is clear to see that ActivitySim's path coefficient values do not require calibration and were left as is.
 
-```{r hbw, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based work mode choice path coefficients model comparison.", fig.align='center', out.width = "400px"}
+```{r hbw, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based work mode choice path coefficients model comparison.", fig.align='center'}
 tar_read(hbw_graph)
 ```
 
 Figure \@ref(fig:hbs) shows the comparison of the path utility parameter values between all four models for home-based school trips. Similar to the home-based work analysis, for the egress time, ivtt, transfer time, and the wait times, ActivitySim seems to use a very similar coefficient value as the other three models. Again, the largest discrepancy exists with short and long walking distances. Since this is simply a difference between how walk distance is modeled, the discrepancy is ignored. In addition, the other three models did not have information on number of transfers. As a result, there is no comparison done with number of transfers. ActivitySim's path coefficient values do not require calibration for the home-based school parameters.
 
-```{r hbs, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based school mode choice path coefficients model comparison.", fig.align='center', out.width = "400px"}
+```{r hbs, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based school mode choice path coefficients model comparison.", fig.align='center'}
 tar_read(hbs_graph)
 ```
 
 Lastly, Figure \@ref(fig:hbo) shows the comparison of path utility parameter values between all four models for home-based other trips. Again, besides for walk distance all variables seem to be similar between all four models. An interesting point is that for models other than ActivitySim, the cost coefficient varies greatly. Fortunately, ActivitySim bases the cost coefficient on each individual's value of time so this is not a concern. Overall, for all purpose types the coefficients used by ActivitySim are similar enough to other models that exist, and therefore do not require calibration. The ActivitySim alternative specific constants do, however, require calibration (See Section \@ref(clib)).
 
-```{r hbo, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based other mode choice path coefficients model comparison.", fig.align='center', out.width = "400px"}
+```{r hbo, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Home-based other mode choice path coefficients model comparison.", fig.align='center'}
 tar_read(hbo_graph)
 ```
 
