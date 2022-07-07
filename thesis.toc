@@ -34,28 +34,28 @@
 \contentsline {section}{\numberline {3.2}Creating and Setting up the Test Scenario}{31}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Test Scenario Region}{32}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Setting up and Running ActivitySim}{33}{subsection.3.2.2}%
-\contentsline {subsubsection}{Creating Input Files}{33}{subsubsection*.14}%
-\contentsline {subsubsection}{Calibration and Validation}{34}{subsubsection*.15}%
+\contentsline {subsubsection}{Creating Input Files}{33}{subsubsection*.13}%
+\contentsline {subsubsection}{Calibration and Validation}{34}{subsubsection*.14}%
 \contentsline {subsection}{\numberline {3.2.3}Setting up BEAM}{35}{subsection.3.2.3}%
-\contentsline {subsubsection}{Population File}{36}{subsubsection*.16}%
-\contentsline {subsubsection}{Household and Vehicle Files}{38}{subsubsection*.19}%
-\contentsline {subsubsection}{Vechile Types Files}{39}{subsubsection*.22}%
-\contentsline {subsubsection}{Transportation Services}{39}{subsubsection*.25}%
-\contentsline {subsubsection}{Other Input Files}{41}{subsubsection*.28}%
+\contentsline {subsubsection}{Population File}{35}{subsubsection*.15}%
+\contentsline {subsubsection}{Household and Vehicle Files}{36}{subsubsection*.18}%
+\contentsline {subsubsection}{Vechile Types Files}{37}{subsubsection*.21}%
+\contentsline {subsubsection}{Transportation Services}{39}{subsubsection*.24}%
+\contentsline {subsubsection}{Other Input Files}{41}{subsubsection*.27}%
 \contentsline {section}{\numberline {3.3}Improved Mode Choice in BEAM}{41}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Purpose-based Decisions}{44}{subsection.3.3.1}%
-\contentsline {subsubsection}{Multinomial Logit Choice Model}{45}{subsubsection*.29}%
-\contentsline {subsubsection}{Latent Class Choice Model}{47}{subsubsection*.31}%
-\contentsline {subsubsection}{Tour Purpose Choice Model}{49}{subsubsection*.33}%
+\contentsline {subsection}{\numberline {3.3.1}Purpose-based Decisions}{41}{subsection.3.3.1}%
+\contentsline {subsubsection}{Multinomial Logit Choice Model}{45}{subsubsection*.28}%
+\contentsline {subsubsection}{Latent Class Choice Model}{47}{subsubsection*.30}%
+\contentsline {subsubsection}{Tour Purpose Choice Model}{49}{subsubsection*.32}%
 \contentsline {subsection}{\numberline {3.3.2}Additional Attributes in Utility Equation}{51}{subsection.3.3.2}%
-\contentsline {subsubsection}{Path Type Utility Equation}{54}{subsubsection*.36}%
-\contentsline {subsubsection}{Person Type Utility Equation}{55}{subsubsection*.37}%
-\contentsline {subsubsection}{Location Type Utility Equation}{55}{subsubsection*.38}%
-\contentsline {subsubsection}{BEAM's New Consistent Utility Equation}{55}{subsubsection*.39}%
+\contentsline {subsubsection}{Path Type Utility Equation}{52}{subsubsection*.35}%
+\contentsline {subsubsection}{Person Type Utility Equation}{54}{subsubsection*.36}%
+\contentsline {subsubsection}{Location Type Utility Equation}{54}{subsubsection*.37}%
+\contentsline {subsubsection}{BEAM's New Consistent Utility Equation}{55}{subsubsection*.38}%
 \contentsline {subsection}{\numberline {3.3.3}Carpool Alternatives}{56}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Mode Choice Algorithms}{59}{subsection.3.3.4}%
-\contentsline {section}{\numberline {3.4}Data Validation and Calibration}{63}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}ActivitySim Path Variable Validation}{63}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.3.4}Mode Choice Algorithms}{58}{subsection.3.3.4}%
+\contentsline {section}{\numberline {3.4}Data Validation and Calibration}{61}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}ActivitySim Path Variable Validation}{61}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Mode Choice Calibration}{66}{subsection.3.4.2}%
 \contentsline {section}{\numberline {3.5}Summary}{66}{section.3.5}%
 \contentsline {chapter}{\numberline {4}Results}{67}{chapter.4}%
@@ -64,4 +64,4 @@
 \contentsline {section}{\numberline {4.3}Subtour Trip Analysis}{67}{section.4.3}%
 \contentsline {chapter}{\numberline {5}Discussion}{68}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Conclusions}{69}{chapter.6}%
-\contentsline {chapter}{References}{70}{section*.44}%
+\contentsline {chapter}{References}{70}{section*.43}%

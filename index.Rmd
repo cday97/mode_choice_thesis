@@ -46,20 +46,30 @@ acknowledgments: |
   the dissertation, thesis or selected project. Acknowledgements should be simple
   and in good taste.
 
-# use option 'oneside' for ETD
-# change this to option 'twoside' for printing
-#layout: '12pt, oneside, openright' #thesis
-layout: "3p, authoryear, review" #elsevier
-# Specify the location of the bibliography below
 
+# Specify the location of the bibliography below
 bibliography: [book.bib] 
 
 # Download your specific csl file and refer to it in the line below.
 # csl styles: https://www.zotero.org/styles
-csl: elsevier-harvard-italics.csl #elsevier
-link-citations: yes
 
 lot: true
 lof: true
+
+
+# ELSEVIER ----------------------------------------------------------------#
+# change to elsevier format in _ouput.yml and references
+# uncomment the following specifications (and comment THESIS section)
+
+#layout: "3p, authoryear, review" #elsevier
+#csl: elsevier-harvard-italics.csl #elsevier
+#link-citations: yes
+
+# THESIS ------------------------------------------------------------------#
+# delete thesis.aux BEFORE building pdf book
+# change to elsevier format in _ouput.yml and references
+# uncomment the following specification  (and comment ELSEVIER SECTION)
+
+layout: '12pt, oneside, openright' #thesis use option 'oneside' for ETD, 'twoside' for printing
 ---
 

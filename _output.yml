@@ -10,16 +10,16 @@ bookdown::gitbook:
     download: ["pdf", "epub"]
     
 #thesis
-#bookdown::pdf_book:
-#  template: template.tex
-#  latex_engine: pdflatex
-#  keep_tex: yes
-#  pandoc_args: [
-#    "--top-level-division=chapter"
-#  ]
+bookdown::pdf_book:
+  template: template.tex
+  latex_engine: pdflatex
+  keep_tex: yes
+  pandoc_args: [
+    "--top-level-division=chapter"
+  ]
 
 #elsevier
-bookdown::pdf_book:
-  base_format: rticles::elsevier_article
-  latex_engine: xelatex
-  keep_tex: yes
+#bookdown::pdf_book:
+#  base_format: rticles::elsevier_article
+#  latex_engine: xelatex
+#  keep_tex: yes
