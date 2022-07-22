@@ -67,7 +67,7 @@ lof: true
 
 # THESIS ------------------------------------------------------------------#
 # delete thesis.aux BEFORE building pdf book
-# change to elsevier format in _ouput.yml and references
+# change to thesis format in _ouput.yml and references
 # uncomment the following specification  (and comment ELSEVIER SECTION)
 
 layout: '12pt, oneside, openright' #thesis use option 'oneside' for ETD, 'twoside' for printing
