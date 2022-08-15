@@ -1,25 +1,31 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
 %!in%|function|9c17137be680b5d3|||||||||||||||
-asim_hbo|stem|4bb88aef4d67c232|1e8c7930b45144d1|11c523878049f4f9|205244841||t19130.7944278979s|61fc8c0a83d01b53|440|rds|local|vector|||0.12||
-asim_hbs|stem|1bf54244b40104cf|c642b149d9a6f9ab|88b4ede54722d4b7|1120581330||t19130.7944241114s|58367ec0d185fff8|442|rds|local|vector|||0.22||
-asim_hbw|stem|7cf82da15d42da21|ebfeba6a27d33cec|39d6307bc7434d77|2038309948||t19130.791750352s|b8b72f32f304fed7|446|rds|local|vector|||4.74|package sf was built under R version 4.1.3. package cowplot was built under R version 4.1.3. package ggspatial was built under R version 4.1.3. package DiagrammeR was built under R version 4.1.3. package vegan was built under R version 4.1.3. package permute was built under R version 4.1.3. package ape was built under R version 4.1.3. package tufte was built under R version 4.1.3. package dotwhisker was built under R version 4.1.3. package ggpubr was built under R version 4.1.3. package scales was built under R version 4.1.3|
+all_all_norh|stem|734b277db5b8bea6|75888500e9430ed2|ef46db3751d8e999|465887338|data/events/all_all_norh.csv|t19172.9756566935s|4af242b93f2ff7b8|270091058|file|local|vector|||0||
+all_all_wrh|stem|ac1e410a3734b501|bd249c8cbebac821|ef46db3751d8e999|2074516988|data/events/12.events-15pct-wRH-all-all.csv|t19210.8029054151s|9e9386d2bff430a7|5025542326|file|local|vector|||0||
+all_join|function|6ca7d4584d60bc1e|||||||||||||||
+all_path_norh|stem|734b277db5b8bea6|d51ccdd20f5b1fc6|ef46db3751d8e999|-354722341|data/events/all_path_norh.csv|t19172.9756566935s|4af242b93f2ff7b8|270091058|file|local|vector|||0||
+all_path_wrh|stem|269be4a5f5d0e9ff|d9dcfd67025a25d0|ef46db3751d8e999|-1748263918|data/events/12.events-15pct-wRH-all-path.csv|t19210.8046117591s|376e66bbeea3cd77|4835392081|file|local|vector|||0||
+analysis_targets|object|b01b091d1fd711b8|||||||||||||||
+asim_hbo|stem|4bb88aef4d67c232|1e8c7930b45144d1|11c523878049f4f9|205244841||t19219.7409296764s|61fc8c0a83d01b53|440|rds|local|vector|||0.27||
+asim_hbs|stem|1bf54244b40104cf|c642b149d9a6f9ab|88b4ede54722d4b7|1120581330||t19219.7409327647s|58367ec0d185fff8|442|rds|local|vector|||0.25||
+asim_hbw|stem|7cf82da15d42da21|ebfeba6a27d33cec|39d6307bc7434d77|2038309948||t19219.7408433098s|b8b72f32f304fed7|446|rds|local|vector|||0.53|package bookdown was built under R version 4.1.3|
 asim_table|function|fb393797225ab28f|||||||||||||||
-bignet|stem|c78902f611280f1e|0ff7b703b355ff1c|028e7afe1636b0e3|-51707565||t19130.7601453736s|047e113d9281ab4c|244290151|rds|local|vector|||122.45|attribute variables are assumed to be spatially constant throughout all geometries|
-bignetpic|stem|d61ce4023584c002|0eb7dd66e15c1cc4|a208f4a21a2e1698|-226714103||t19130.7688639039s|5ccb3d41d74b2974|116|rds|local|vector|||45.55|package sf was built under R version 4.1.3. package cowplot was built under R version 4.1.3. package ggspatial was built under R version 4.1.3. package DiagrammeR was built under R version 4.1.3. package vegan was built under R version 4.1.3. package permute was built under R version 4.1.3. package ape was built under R version 4.1.3. package tufte was built under R version 4.1.3. package dotwhisker was built under R version 4.1.3. package ggpubr was built under R version 4.1.3. package scales was built under R version 4.1.3|
 build_nchrp_hbo|function|30f57784ee8320d3|||||||||||||||
 build_nchrp_hbw|function|9bc3830dd0f14b46|||||||||||||||
 build_nchrp_nhb|function|0aa00555c93fa559|||||||||||||||
+cols|stem|0a436fd83cda4bed|6e9753804188638a|a3dad144c40657ed|-1668097849||t19211.6598147374s|66f17367b4297c1e|170|rds|local|vector|||0.06|package bookdown was built under R version 4.1.3|
 cost_creator|function|39f3b51774085d6a|||||||||||||||
-diagram_targets|object|6859eab771fa749b|||||||||||||||
+count_rh_transit_transfers|function|69f0cce88ecc0054|||||||||||||||
+data_targets|object|f40c6ee20a090933|||||||||||||||
+events_list|stem|d79aa7ea1921cb84|ae99f360ab6a5d38|52a43c5ffa77ff53|-79269241||t19211.6743413801s|648dcd7daa0c5733|883275539|rds|local|vector|||685.37|as.tibble was deprecated in tibble 2.0.0.Please use as_tibble instead.The signature and semantics have changed, see as_tibble.90mThis warning is displayed once every 8 hours.39m90mCall lifecyclelast_lifecycle_warnings to see where this warning was generated.39m|
 get_asim_hbo|function|34984924416be197|||||||||||||||
 get_asim_hbs|function|5b124e0ceb8699c7|||||||||||||||
 get_asim_hbw|function|306ce0a42cfb47d5|||||||||||||||
-get_bignet_pic|function|b1a784f855e4ed36|||||||||||||||
+get_coltypes|function|3d443168317620cf|||||||||||||||
 get_nchrp_data|function|c1a6a86ece042c3e|||||||||||||||
 get_nchrp_hbo|function|e7b40006543df933|||||||||||||||
 get_nchrp_hbs|function|3850dfb7e791a7f6|||||||||||||||
 get_nchrp_hbw|function|1af29c175f3f75f9|||||||||||||||
-get_smallnet_pic|function|a33cc74671729556|||||||||||||||
 get_utah_data|function|18011bf67af47785|||||||||||||||
 get_utah_hbo|function|e9afdb0f2d103b59|||||||||||||||
 get_utah_hbs|function|0f5f6d4997ced224|||||||||||||||
@@ -28,45 +34,45 @@ get_wfrc_data|function|99346c13f59c3536|||||||||||||||
 get_wfrc_hbo|function|2b35bb512fd8bd73|||||||||||||||
 get_wfrc_hbs|function|f154294238f3005a|||||||||||||||
 get_wfrc_hbw|function|4f5213c3bd991e64|||||||||||||||
-hbo_graph|stem|8391ef0f0f4f0d31|97adb846299a1b26|21692955137748e8|1123108183||t19130.7944456217s|42f1eea846b904dd|89858|rds|local|vector|||0.3||
-hbs_graph|stem|3b79cde7b32e9cfa|1c71d7588cc949b8|23e3462d3f0e64cd|-1987348629||t19130.794441081s|a77c8de512931841|89564|rds|local|vector|||0.3||
-hbw_graph|stem|ccb4c288dc82a9e1|170023c5754b511e|3ef5f78a471cf1ec|1264446149||t19130.7922426015s|2e891511f6a33c89|89691|rds|local|vector|||4.53|package sf was built under R version 4.1.3. package cowplot was built under R version 4.1.3. package ggspatial was built under R version 4.1.3. package DiagrammeR was built under R version 4.1.3. package vegan was built under R version 4.1.3. package permute was built under R version 4.1.3. package ape was built under R version 4.1.3. package tufte was built under R version 4.1.3. package dotwhisker was built under R version 4.1.3. package ggpubr was built under R version 4.1.3. package scales was built under R version 4.1.3|
+hbo_graph|stem|a095b9d39a63759e|97adb846299a1b26|21692955137748e8|1123108183||t19219.7425969615s|986d065ac2a43642|89854|rds|local|vector|||0.4||
+hbs_graph|stem|a3760f43459941f5|1c71d7588cc949b8|23e3462d3f0e64cd|-1987348629||t19219.742604479s|6119223d11aff5e8|89671|rds|local|vector|||0.47||
+hbw_graph|stem|0a8ccb2282fd4dc4|170023c5754b511e|3ef5f78a471cf1ec|1264446149||t19219.7425906287s|b4d5e6d1135f7689|89688|rds|local|vector|||0.42||
 ivtt_ratio_grapher|function|c07377e0605e7c1f|||||||||||||||
-lccmflow|stem|ef809253d55dd0a9|40236de40048c9af|c3c4bab42e6869a2|-2096605279||t19130.7614388466s|589f299dfb36ce9f|677|rds|local|vector|||0||
-lit_targets|object|ed7cf0cb2b8d968e|||||||||||||||
 loggrapher|function|6d3fb7667675d3fa|||||||||||||||
-make_bignet_map|function|aef5434d612450bf|||||||||||||||
-make_lccm_flow|function|dad65501d957bdd4|||||||||||||||
-make_mnl_flow|function|3dec7edd4b11ef26|||||||||||||||
-make_network_map|function|1a81793abd02aed5|||||||||||||||
-make_smallnet_map|function|376d71f3d818165e|||||||||||||||
-make_taz_map|function|f078c79c05a106e8|||||||||||||||
-make_tpcm_flow|function|ebae73406da65613|||||||||||||||
-make_venn|function|3e6860e60f9cfdad|||||||||||||||
-map_targets|object|4db486fc591eec25|||||||||||||||
-method_targets|object|f84d2ef4bd3718f0|||||||||||||||
-mnlflow|stem|d7b4a34261d8612f|f4c14f766441dde8|6e1d77f954bfd99c|-2129793402||t19130.7614393081s|9663aa929e3671b9|650|rds|local|vector|||0||
-nchrp_hbo|stem|2c0e00b2a9e330f1|b01d45ab091255b5|9353bc0d78f9c979|-1040758971||t19130.7944288539s|79f8eb81a21a6392|265|rds|local|vector|||0.06||
-nchrp_hbs|stem|2c0e00b2a9e330f1|66fd2d161673aba4|c704ae310d895881|-1812305076||t19130.794425689s|79f8eb81a21a6392|265|rds|local|vector|||0.11||
-nchrp_hbw|stem|b236d7bb33726187|0c5652e49fa2c2e5|ce31384741fd8584|1366844953||t19130.7917675055s|029eb1f8e8dd17b3|269|rds|local|vector|||0.11||
+mode_choice|function|2c479eb5bc64475a|||||||||||||||
+mode_choice_table|stem|2e2b76562dca071e|d9632dd8174f0a6f|1b23ce3ab587a4cd|1698574471||t19211.6744317655s|fc9f28cc3f504a36|589|rds|local|vector|||6.29||
+nchrp_hbo|stem|2c0e00b2a9e330f1|b01d45ab091255b5|9353bc0d78f9c979|-1040758971||t19219.7409160973s|79f8eb81a21a6392|265|rds|local|vector|||0.12||
+nchrp_hbs|stem|2c0e00b2a9e330f1|66fd2d161673aba4|c704ae310d895881|-1812305076||t19219.7409341624s|79f8eb81a21a6392|265|rds|local|vector|||0.09||
+nchrp_hbw|stem|b236d7bb33726187|0c5652e49fa2c2e5|ce31384741fd8584|1366844953||t19219.740847309s|029eb1f8e8dd17b3|269|rds|local|vector|||0.23||
 nchrp_table|function|999788841eeef1b0|||||||||||||||
 neg_log_trans|function|e845ab376efed72b|||||||||||||||
+none_norh|stem|734b277db5b8bea6|ba0fbe6891ce7c72|ef46db3751d8e999|-551044967|data/events/none_norh.csv|t19172.9756566935s|4af242b93f2ff7b8|270091058|file|local|vector|||1.4|package ggplot2 was built under R version 4.1.3. package bookdown was built under R version 4.1.3|
+none_wrh|stem|9bc4f0ed278d52f8|d587e82be7ff6a1e|ef46db3751d8e999|-2015132136|data/events/12.events-15pct-wRH-none.csv|t19210.8063821736s|760636e745d2bfe9|4518465592|file|local|vector|||0.14|package bookdown was built under R version 4.1.3|
+num_passengers|stem|3cfcabcae2d0ade7|4dda1b51c163ed14|244ceb95759dedb3|146658985||t19211.6814015626s|a8b3ea8305874c58|321|rds|local|vector|||4.94||
+read_events|function|597229e3260ddd1b|||||||||||||||
 read_utah_cf|function|af1edae9e5c6bf8a|||||||||||||||
 read_utah_cst|function|72b0f5878a015565|||||||||||||||
 read_wfrc_cf|function|16cf6c442763c66d|||||||||||||||
 read_wfrc_cst|function|246c7418ca0fafb6|||||||||||||||
-smallnet|stem|932553b67f65100a|c049ad59760dd683|af741c67d14c8e56|-303860203||t19130.7578577732s|64e9b782fb45f207|147603016|rds|local|vector|||113.36|package sf was built under R version 4.1.3. package cowplot was built under R version 4.1.3. package ggspatial was built under R version 4.1.3. package DiagrammeR was built under R version 4.1.3. package vegan was built under R version 4.1.3. package permute was built under R version 4.1.3. package ape was built under R version 4.1.3. package tufte was built under R version 4.1.3. package dotwhisker was built under R version 4.1.3. package ggpubr was built under R version 4.1.3. package scales was built under R version 4.1.3. attribute variables are assumed to be spatially constant throughout all geometries|
-smallnetpic|stem|dae4cf247fadc701|763839a5db5f5ff7|9fcfca49f96f1fe8|-1682793917||t19130.7691484879s|383bd5e2f277cce6|122|rds|local|vector|||11.14||
-tazmap|stem|bea7c4c2ad4a1932|b306cebe0ccf4da0|1284bf67e888b942|1114847188||t19130.7424935962s|0e0f2fea56256ff4|13832331|rds|local|vector|||7.57|package sf was built under R version 4.1.3. package cowplot was built under R version 4.1.3. package ggspatial was built under R version 4.1.3. package DiagrammeR was built under R version 4.1.3. package vegan was built under R version 4.1.3. package permute was built under R version 4.1.3. package ape was built under R version 4.1.3. package tufte was built under R version 4.1.3. package dotwhisker was built under R version 4.1.3. package ggpubr was built under R version 4.1.3. package scales was built under R version 4.1.3|
-tpcmflow|stem|234ddab047a542a6|e10c287344a7533b|0ea376e0c54e8c38|1128691666||t19130.7614384766s|0e921cc0ebc5f72b|685|rds|local|vector|||8.56|package sf was built under R version 4.1.3. package cowplot was built under R version 4.1.3. package ggspatial was built under R version 4.1.3. package DiagrammeR was built under R version 4.1.3. package vegan was built under R version 4.1.3. package permute was built under R version 4.1.3. package ape was built under R version 4.1.3. package tufte was built under R version 4.1.3. package dotwhisker was built under R version 4.1.3. package ggpubr was built under R version 4.1.3. package scales was built under R version 4.1.3|
-utah_hbo|stem|a932e6053c6025f8|f1504dd715d3d31f|f40aeeb6314592bd|-1796426361||t19130.7944361518s|e51bafa8fa3437a6|262|rds|local|vector|||0.61||
-utah_hbs|stem|a932e6053c6025f8|ef63a5a5df34a2f4|081c23b9f011c0d3|487245253||t19130.7944212079s|e51bafa8fa3437a6|262|rds|local|vector|||0.69||
-utah_hbw|stem|7f769f1d40f696d6|fe9411e39b3c90d5|e31d3016d626aef1|1698846259||t19130.7917657662s|2d953a1d5c1331ae|264|rds|local|vector|||0.6||
+reserve_times|stem|af102a5167098c76|2f136ce2f7a608b2|aff9cc728f8fa06c|-1802097018||t19207.985315749s|df4a46d8aae84355|306|rds|local|vector|||24.19||
+rh_all_norh|stem|734b277db5b8bea6|2ec91dfd1316f86c|ef46db3751d8e999|-197833288|data/events/rh_all_norh.csv|t19172.9756566935s|4af242b93f2ff7b8|270091058|file|local|vector|||0||
+rh_all_wrh|stem|1d5b3e23a3a95214|95dff212bb8f8d77|ef46db3751d8e999|-827782741|data/events/12.events-15pct-wRH-rh-all.csv|t19210.8081017023s|da135fb21147b629|4385287828|file|local|vector|||0||
+rh_pass|function|ee400cba812230e6|||||||||||||||
+rh_path_norh|stem|734b277db5b8bea6|eb0164b191ed0619|ef46db3751d8e999|676162960|data/events/rh_path_norh.csv|t19172.9756566935s|4af242b93f2ff7b8|270091058|file|local|vector|||0||
+rh_path_wrh|stem|70e0615b76b7ccc4|fb85321b8255b89e|ef46db3751d8e999|-936421935|data/events/12.events-15pct-wRH-rh-path.csv|t19210.809520773s|1c8d8948e429e697|4367020832|file|local|vector|||0||
+rh_times|function|774a28e1b64f1b9c|||||||||||||||
+rh_to_transit|stem|6af6977789688d94|832f3b377b2c61e1|f4da185070021f9a|-204065769||t19211.6768937656s|93360449c501f39a|288|rds|local|vector|||162.93||
+rh_travel_times|function|2fc52e9b4e9e1b59|||||||||||||||
+scenario_list|stem|d2a7a1328446a01a|727f63487ea1b991|7b8dbfb8e22c4797|-641555310||t19211.5751296501s|c3fe8fa20937dc09|268|rds|local|vector|||0||
+travel_times|stem|3662c07cd8b5d0f2|7684f3bf5cd75269|aad634ec3bd03a42|-570801696||t19211.6750076359s|6bfb85cd30f70995|426|rds|local|vector|||49.73||
+trip_arrivals|function|44d49a232f21c911|||||||||||||||
+utah_hbo|stem|a932e6053c6025f8|f1504dd715d3d31f|f40aeeb6314592bd|-1796426361||t19219.7409026981s|e51bafa8fa3437a6|262|rds|local|vector|||0.91||
+utah_hbs|stem|a932e6053c6025f8|ef63a5a5df34a2f4|081c23b9f011c0d3|487245253||t19219.7409141932s|e51bafa8fa3437a6|262|rds|local|vector|||0.91||
+utah_hbw|stem|7f769f1d40f696d6|fe9411e39b3c90d5|e31d3016d626aef1|1698846259||t19219.7408667622s|2d953a1d5c1331ae|264|rds|local|vector|||1.64||
 utah_table|function|41e615b8c78389ec|||||||||||||||
-validation_targets|object|d05df99bd501716e|||||||||||||||
-venn|stem|60c85de45e4d9920|a726a68c94e1f2b7|0ceca54f8d90a847|711572424||t19130.7734429109s|3bd8f66805fd112b|45|rds|local|vector|||4.54|package sf was built under R version 4.1.3. package cowplot was built under R version 4.1.3. package ggspatial was built under R version 4.1.3. package DiagrammeR was built under R version 4.1.3. package vegan was built under R version 4.1.3. package permute was built under R version 4.1.3. package ape was built under R version 4.1.3. package tufte was built under R version 4.1.3. package dotwhisker was built under R version 4.1.3. package ggpubr was built under R version 4.1.3. package scales was built under R version 4.1.3|
-wfrc_hbo|stem|e9635a7849ea8496|2ea57012fc16a23a|271d450b0eed2a34|-1204131522||t19130.7944061993s|a8b3ea8305874c58|321|rds|local|vector|||5.36|package sf was built under R version 4.1.3. package cowplot was built under R version 4.1.3. package ggspatial was built under R version 4.1.3. package DiagrammeR was built under R version 4.1.3. package vegan was built under R version 4.1.3. package permute was built under R version 4.1.3. package ape was built under R version 4.1.3. package tufte was built under R version 4.1.3. package dotwhisker was built under R version 4.1.3. package ggpubr was built under R version 4.1.3. package scales was built under R version 4.1.3|
-wfrc_hbs|stem|16cd4cbe850486ca|6463d8014ca6b6b5|aa2094e062bf26c6|-2094072024||t19130.7944129582s|3a51847e250d1f69|277|rds|local|vector|||0.52||
-wfrc_hbw|stem|a3bb0411d9c4065c|fd493011c3791d4d|9260ea8dd0f7fdfb|-966621806||t19130.7917585217s|d0d32454f13403e8|324|rds|local|vector|||0.67||
+wait_times|stem|4c54d1ba9b5a920c|2f136ce2f7a608b2|e4cd120cf476f20f|227864465||t19211.9622668902s|0acbd531865c2a30|415|rds|local|vector|||719.89||
+wfrc_hbo|stem|e9635a7849ea8496|2ea57012fc16a23a|271d450b0eed2a34|-1204131522||t19219.7408918937s|a8b3ea8305874c58|321|rds|local|vector|||0.75||
+wfrc_hbs|stem|16cd4cbe850486ca|6463d8014ca6b6b5|aa2094e062bf26c6|-2094072024||t19219.7409262489s|3a51847e250d1f69|277|rds|local|vector|||0.83||
+wfrc_hbw|stem|a3bb0411d9c4065c|fd493011c3791d4d|9260ea8dd0f7fdfb|-966621806||t19219.7408804596s|d0d32454f13403e8|324|rds|local|vector|||1.13||
 wfrc_table|function|d1046667c11050a9|||||||||||||||
 wgrapher|function|754fbfe3e6e95d8d|||||||||||||||

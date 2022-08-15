@@ -1,12 +1,4 @@
 # Results
 
 
-## Total Modal Distribution
-
-
-
-## Path, Person, and Location Analysis
-
-
-
-## Subtour Trip Analysis
+## Table

@@ -24,7 +24,7 @@ Multiple Model Frameworks</div>" />
 <meta name="author" content="Christopher Day" />
 
 
-<meta name="date" content="2022-07-13" />
+<meta name="date" content="2022-08-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,6 +63,10 @@ div.abstract{
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
 
 
 
@@ -110,64 +114,27 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#problem-statement"><i class="fa fa-check"></i><b>2.1</b> Problem Statement</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#purpose-of-research"><i class="fa fa-check"></i><b>2.2</b> Purpose of Research</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#outline"><i class="fa fa-check"></i><b>2.3</b> Outline of Research</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="literature-review.html"><a href="literature-review.html"><i class="fa fa-check"></i><b>3</b> Literature Review</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="literature-review.html"><a href="literature-review.html#overview"><i class="fa fa-check"></i><b>3.1</b> Overview</a></li>
-<li class="chapter" data-level="3.2" data-path="literature-review.html"><a href="literature-review.html#lit1"><i class="fa fa-check"></i><b>3.2</b> Mode Choice in the Four Step Model</a></li>
-<li class="chapter" data-level="3.3" data-path="literature-review.html"><a href="literature-review.html#lit2"><i class="fa fa-check"></i><b>3.3</b> A Brief History of Mode Choice in Discrete Choice Models</a></li>
-<li class="chapter" data-level="3.4" data-path="literature-review.html"><a href="literature-review.html#lit3"><i class="fa fa-check"></i><b>3.4</b> An Extensive Look into Mode Choice in Activity-Based Models</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="literature-review.html"><a href="literature-review.html#lit31"><i class="fa fa-check"></i><b>3.4.1</b> Simplified main tour model</a></li>
-<li class="chapter" data-level="3.4.2" data-path="literature-review.html"><a href="literature-review.html#lit32"><i class="fa fa-check"></i><b>3.4.2</b> Two-tier nested logit model</a></li>
-<li class="chapter" data-level="3.4.3" data-path="literature-review.html"><a href="literature-review.html#lit33"><i class="fa fa-check"></i><b>3.4.3</b> Simplified main tour mode and conditional trip-level mode</a></li>
-<li class="chapter" data-level="3.4.4" data-path="literature-review.html"><a href="literature-review.html#lit34"><i class="fa fa-check"></i><b>3.4.4</b> An activity-based model with exogenous mode choice</a></li>
-<li class="chapter" data-level="3.4.5" data-path="literature-review.html"><a href="literature-review.html#lit35"><i class="fa fa-check"></i><b>3.4.5</b> Simulation-based tour-based mode choice</a></li>
-<li class="chapter" data-level="3.4.6" data-path="literature-review.html"><a href="literature-review.html#lit36"><i class="fa fa-check"></i><b>3.4.6</b> Combinatorial tour-based mode choice</a></li>
-<li class="chapter" data-level="3.4.7" data-path="literature-review.html"><a href="literature-review.html#lit37"><i class="fa fa-check"></i><b>3.4.7</b> Dynamic tour-based mode choice</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="literature-review.html"><a href="literature-review.html#lit4"><i class="fa fa-check"></i><b>3.5</b> The Mode Choice Models used in ActivitySim</a>
-<ul>
-<li class="chapter" data-level="3.5.1" data-path="literature-review.html"><a href="literature-review.html#lit41"><i class="fa fa-check"></i><b>3.5.1</b> ActivitySim’s Tour Mode Choice Model</a></li>
-<li class="chapter" data-level="3.5.2" data-path="literature-review.html"><a href="literature-review.html#lit411"><i class="fa fa-check"></i><b>3.5.2</b> ActivitySim’s Tour Mode Choice Utility Functions</a></li>
-<li class="chapter" data-level="3.5.3" data-path="literature-review.html"><a href="literature-review.html#lit42"><i class="fa fa-check"></i><b>3.5.3</b> ActivitySim’s Trip Mode Choice Model</a></li>
-<li class="chapter" data-level="3.5.4" data-path="literature-review.html"><a href="literature-review.html#lit421"><i class="fa fa-check"></i><b>3.5.4</b> ActivitySim’s Trip Mode Choice Utility Functions</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="literature-review.html"><a href="literature-review.html#lit5"><i class="fa fa-check"></i><b>3.6</b> The Mode Choice Models used in Agent-based Models</a></li>
-<li class="chapter" data-level="3.7" data-path="literature-review.html"><a href="literature-review.html#lit6"><i class="fa fa-check"></i><b>3.7</b> The Mode Choice Model used in MATSim</a></li>
-<li class="chapter" data-level="3.8" data-path="literature-review.html"><a href="literature-review.html#lit7"><i class="fa fa-check"></i><b>3.8</b> The Mode Choice Model used in BEAM</a></li>
-<li class="chapter" data-level="3.9" data-path="literature-review.html"><a href="literature-review.html#lit8"><i class="fa fa-check"></i><b>3.9</b> Previous Attempts to Enhance Mode Choice in Agent-based Models</a></li>
-<li class="chapter" data-level="3.10" data-path="literature-review.html"><a href="literature-review.html#lit9"><i class="fa fa-check"></i><b>3.10</b> Summary</a></li>
+<li class="chapter" data-level="3.1" data-path="literature-review.html"><a href="literature-review.html#lit-abm"><i class="fa fa-check"></i><b>3.1</b> Introduction to Activity-based Models</a></li>
+<li class="chapter" data-level="3.2" data-path="literature-review.html"><a href="literature-review.html#introduction-to-multi-agent-simulation"><i class="fa fa-check"></i><b>3.2</b> Introduction to Multi-agent Simulation</a></li>
+<li class="chapter" data-level="3.3" data-path="literature-review.html"><a href="literature-review.html#limited-attempts-to-pair-two-disparate-modeling-approaches"><i class="fa fa-check"></i><b>3.3</b> Limited Attempts to Pair Two Disparate Modeling Approaches</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="methods.html"><a href="methods.html#overview-1"><i class="fa fa-check"></i><b>4.1</b> Overview</a></li>
-<li class="chapter" data-level="4.2" data-path="methods.html"><a href="methods.html#mscen"><i class="fa fa-check"></i><b>4.2</b> Creating and Setting up the Test Scenario</a>
+<li class="chapter" data-level="4.1" data-path="methods.html"><a href="methods.html#activitysim-as-the-activity-based-model"><i class="fa fa-check"></i><b>4.1</b> ActivitySim as the Activity-based Model</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="methods.html"><a href="methods.html#test-scenario-region"><i class="fa fa-check"></i><b>4.2.1</b> Test Scenario Region</a></li>
-<li class="chapter" data-level="4.2.2" data-path="methods.html"><a href="methods.html#setting-up-and-running-activitysim"><i class="fa fa-check"></i><b>4.2.2</b> Setting up and Running ActivitySim</a></li>
-<li class="chapter" data-level="4.2.3" data-path="methods.html"><a href="methods.html#setting-up-beam"><i class="fa fa-check"></i><b>4.2.3</b> Setting up BEAM</a></li>
+<li class="chapter" data-level="4.1.1" data-path="methods.html"><a href="methods.html#novel-modes-in-activitysim"><i class="fa fa-check"></i><b>4.1.1</b> Novel Modes in ActivitySim</a></li>
+<li class="chapter" data-level="4.1.2" data-path="methods.html"><a href="methods.html#activitysim-configured-to-the-case-study-region"><i class="fa fa-check"></i><b>4.1.2</b> ActivitySim Configured to the Case Study Region</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="methods.html"><a href="methods.html#mbeam"><i class="fa fa-check"></i><b>4.3</b> Improved Mode Choice in BEAM</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="methods.html"><a href="methods.html#purp"><i class="fa fa-check"></i><b>4.3.1</b> Purpose-based Decisions</a></li>
-<li class="chapter" data-level="4.3.2" data-path="methods.html"><a href="methods.html#ute"><i class="fa fa-check"></i><b>4.3.2</b> Additional Attributes in Utility Equation</a></li>
-<li class="chapter" data-level="4.3.3" data-path="methods.html"><a href="methods.html#pool"><i class="fa fa-check"></i><b>4.3.3</b> Carpool Alternatives</a></li>
-<li class="chapter" data-level="4.3.4" data-path="methods.html"><a href="methods.html#algo"><i class="fa fa-check"></i><b>4.3.4</b> Mode Choice Algorithms</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="methods.html"><a href="methods.html#mcalib"><i class="fa fa-check"></i><b>4.4</b> Data Validation and Calibration</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="methods.html"><a href="methods.html#valid"><i class="fa fa-check"></i><b>4.4.1</b> ActivitySim Path Variable Validation</a></li>
-<li class="chapter" data-level="4.4.2" data-path="methods.html"><a href="methods.html#clib"><i class="fa fa-check"></i><b>4.4.2</b> Mode Choice Calibration</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="methods.html"><a href="methods.html#summary"><i class="fa fa-check"></i><b>4.5</b> Summary</a></li>
+<li class="chapter" data-level="4.2" data-path="methods.html"><a href="methods.html#beam-as-the-multi-agent-simulation-tool"><i class="fa fa-check"></i><b>4.2</b> BEAM as the Multi-agent Simulation Tool</a></li>
+<li class="chapter" data-level="4.3" data-path="methods.html"><a href="methods.html#linking-the-mode-choice-of-activitysim-and-beam"><i class="fa fa-check"></i><b>4.3</b> Linking the Mode Choice of ActivitySim and BEAM</a></li>
+<li class="chapter" data-level="4.4" data-path="methods.html"><a href="methods.html#case-study-scenarios"><i class="fa fa-check"></i><b>4.4</b> Case Study Scenarios</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#total-modal-distribution"><i class="fa fa-check"></i><b>5.1</b> Total Modal Distribution</a></li>
-<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#path-person-and-location-analysis"><i class="fa fa-check"></i><b>5.2</b> Path, Person, and Location Analysis</a></li>
-<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#subtour-trip-analysis"><i class="fa fa-check"></i><b>5.3</b> Subtour Trip Analysis</a></li>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#table"><i class="fa fa-check"></i><b>5.1</b> Table</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>6</b> Discussion</a></li>
 <li class="chapter" data-level="7" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>7</b> Conclusions</a></li>
@@ -259,6 +226,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -43,9 +43,20 @@ Gustavious P. Williams}
 
 
 
-	\usepackage{algorithm}
-	\usepackage{algpseudocode}
-	\usepackage{dsfont}
+	\usepackage{booktabs}
+ \usepackage{longtable}
+ \usepackage{array}
+ \usepackage{multirow}
+ \usepackage{wrapfig}
+ \usepackage{float}
+ \usepackage{colortbl}
+ \usepackage{pdflscape}
+ \usepackage{tabu}
+ \usepackage{threeparttable}
+ \usepackage{threeparttablex}
+ \usepackage[normalem]{ulem}
+ \usepackage{makecell}
+ \usepackage{xcolor}
 % End of CII addition
 %%
 %% End Preamble
@@ -444,6 +455,7 @@ After BEAM validation and BEAM calibration were completed for the case study reg
 
 \caption{\label{tab:tbexperiments}ActivitySim - BEAM Mode Choice Combination Scenario Description}
 \centering
+\resizebox{\linewidth}{!}{
 \begin{tabular}[t]{lllll}
 \toprule
 Scenario Number & Scenario Name & ActivitySim Input Type & BEAM Utility Variables & Scenario Description\\
@@ -452,10 +464,10 @@ Scenario Number & Scenario Name & ActivitySim Input Type & BEAM Utility Variable
 2 & All-ALL-wRH & With RH & Path, Person, Location & All variables used\\
 3 & All-All-wRH & With Ride Hail & Path & just path variables used\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
-REFERENCES NEEDED: WFRC, HHTS12,
+REFERENCES NEEDED: WFRC?, HHTS12,
 
 \hypertarget{results}{%
 \chapter{Results}\label{results}}
