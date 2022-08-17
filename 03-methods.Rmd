@@ -1,18 +1,13 @@
----
-header-includes:
-  - \usepackage{algorithm}
-  - \usepackage{algpseudocode}
-  - \usepackage{dsfont}
----
+
 
 ```{r, include = FALSE}
 library(targets)
 library(tarchetypes)
 library(tidyverse)
 library(data.tree)
-library(RAM)
 library(knitr)
 library(kableExtra)
+library(DiagrammeR)
 
 # Instructions and options =========
 # prints missing data in tables as blank space
@@ -273,7 +268,7 @@ After BEAM validation and BEAM calibration were completed for the case study reg
 # Scenario Number, Scenario Name, ActivitySim Input Type, BEAM Utility Function Variables, Scenario Description 
 input <- c("1", "None", "With RH","Path, Person, Location","Mode Choice Off",
            "2", "All-ALL-wRH", "With RH", "Path, Person, Location", "All variables used",
-           "3", "All-All-wRH", "With Ride Hail","Path", "just path variables used")
+           "3", "All-All-wRH", "With Ride Hail","Path", "just path variables used just path variables used just path variables used just path variables used just path variables used ")
 inputTable <- matrix(input,ncol=5,byrow=TRUE) %>%
   as.tibble() %>% 
   rename("Scenario Number" = V1, "Scenario Name" = V2, "ActivitySim Input Type" = V3, "BEAM Utility Variables" = V4, "Scenario Description" = V5)
@@ -282,9 +277,8 @@ inputTable <- matrix(input,ncol=5,byrow=TRUE) %>%
 
 ```{r tbexperiments, echo=FALSE}
 kable(inputTable, caption = 'ActivitySim - BEAM Mode Choice Combination Scenarios', booktabs = TRUE) %>%
-  kable_styling(latex_options="scale_down")
-#kableExtra doesn't work with algorithm!!
-
+  kable_styling(latex_options="scale_down") %>%#, full_width = TRUE)
+  column_spec(5, width = "12em")
 ```
 
 

@@ -56,6 +56,10 @@ bibliography: [book.bib]
 lot: true
 lof: true
 
+header-includes:
+  - \usepackage{algorithm}
+  - \usepackage{algpseudocode}
+  - \usepackage{dsfont}
 
 # ELSEVIER ----------------------------------------------------------------#
 # change to elsevier format in _ouput.yml and references

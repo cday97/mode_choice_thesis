@@ -44,8 +44,22 @@ Gustavious P. Williams}
 
 
 	\usepackage{algorithm}
-	\usepackage{algpseudocode}
-	\usepackage{dsfont}
+\usepackage{algpseudocode}
+\usepackage{dsfont}
+	\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 % End of CII addition
 %%
 %% End Preamble
@@ -442,20 +456,21 @@ After BEAM validation and BEAM calibration were completed for the case study reg
 
 \begin{table}
 
-\caption{\label{tab:tbexperiments}ActivitySim - BEAM Mode Choice Combination Scenario Description}
+\caption{\label{tab:tbexperiments}ActivitySim - BEAM Mode Choice Combination Scenarios}
 \centering
-\begin{tabular}[t]{lllll}
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{llll>{\raggedright\arraybackslash}p{12em}}
 \toprule
 Scenario Number & Scenario Name & ActivitySim Input Type & BEAM Utility Variables & Scenario Description\\
 \midrule
 1 & None & With RH & Path, Person, Location & Mode Choice Off\\
 2 & All-ALL-wRH & With RH & Path, Person, Location & All variables used\\
-3 & All-All-wRH & With Ride Hail & Path & just path variables used\\
+3 & All-All-wRH & With Ride Hail & Path & just path variables used just path variables used just path variables used just path variables used just path variables used\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
-REFERENCES NEEDED: WFRC, HHTS12,
+REFERENCES NEEDED: WFRC?, HHTS12,
 
 \hypertarget{results}{%
 \chapter{Results}\label{results}}

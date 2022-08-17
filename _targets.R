@@ -5,7 +5,7 @@ library(tarchetypes)
 
 # Set target-specific options such as packages.
 ## To install RAM: devtools::install_url("https://cran.r-project.org/src/contrib/Archive/RAM/RAM_1.2.1.tar.gz")
-tar_option_set(packages = c("tidyverse", "bookdown", "RAM", "readr", "dotwhisker", 
+tar_option_set(packages = c("tidyverse", "bookdown", "readr", "dotwhisker", 
                             "ggpubr", "scales", "future", "future.apply", "furrr",
                             "data.table"))
 
