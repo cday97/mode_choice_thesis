@@ -5,7 +5,7 @@ all_all_wrh|stem|ac1e410a3734b501|bd249c8cbebac821|ef46db3751d8e999|2074516988|d
 all_join|function|6ca7d4584d60bc1e|||||||||||||||
 all_path_norh|stem|ed73f7e175cd72f2|8c43ed3e804bd5e8|ef46db3751d8e999|-354722341|data/events/12.events-15pct-noRH-all-path.csv|t19223.7289017004s|2de103f6a37d3382|4634675865|file|local|vector|||0||
 all_path_wrh|stem|269be4a5f5d0e9ff|d9dcfd67025a25d0|ef46db3751d8e999|-1748263918|data/events/12.events-15pct-wRH-all-path.csv|t19210.8046117591s|ae63cdddf41a1b43|4835392081|file|local|vector|||0||
-analysis_targets|object|475bdfb9814f7c83|||||||||||||||
+analysis_targets|object|28b2201939ecf08a|||||||||||||||
 asim_hbo|stem|68567a6b29e1985a|1e8c7930b45144d1|11c523878049f4f9|205244841||t19221.7047327299s|31332efc7bb99c56|441|rds|local|vector|||0.26||
 asim_hbs|stem|65ee10f7b4a69430|c642b149d9a6f9ab|88b4ede54722d4b7|1120581330||t19221.7047358616s|984cbd81dd27df51|440|rds|local|vector|||0.22||
 asim_hbw|stem|cede97f647c99f7d|ebfeba6a27d33cec|39d6307bc7434d77|2038309948||t19221.7039680494s|8d0aba61fa8a9196|444|rds|local|vector|||3.61||
@@ -16,9 +16,10 @@ build_nchrp_nhb|function|0aa00555c93fa559|||||||||||||||
 cols|stem|151095bc335e6276|6e9753804188638a|a3dad144c40657ed|-1668097849||t19221.7047001851s|274be9fab5df2fde|169|rds|local|vector|||0||
 cost_creator|function|39f3b51774085d6a|||||||||||||||
 count_rh_transit_transfers|function|69f0cce88ecc0054|||||||||||||||
-data_targets|object|3ab784143e4e29cb|||||||||||||||
+data_targets|object|fb6c905421f6bae9|||||||||||||||
 events_list|stem|a6e2d1683f11d1d0|ae99f360ab6a5d38|793d235f63301edc|-79269241||t19223.7810916819s|60d5c893b31f09df|1647077556|rds|local|vector|||1801.09|as.tibble was deprecated in tibble 2.0.0.Please use as_tibble instead.The signature and semantics have changed, see as_tibble.90mThis warning is displayed once every 8 hours.39m90mCall lifecyclelast_lifecycle_warnings to see where this warning was generated.39m|
 format_ridership_table|function|d45a99af5a9985cc|||||||||||||||
+format_transfers_graph|function|57a34db7c2ecd4a8|||||||||||||||
 format_transfers_table|function|0190c3e839f2d0b8|||||||||||||||
 format_waits_graph|function|400a67af4aa8cbe2|||||||||||||||
 get_asim_hbo|function|34984924416be197|||||||||||||||
@@ -67,9 +68,10 @@ rh_times|function|9aeac7badc3eb228|||||||||||||||
 rh_times_summary|function|7c91f11ae4195ea3|||||||||||||||
 rh_to_transit|stem|f6fe2683dacd5df2|832f3b377b2c61e1|f42883a8ddaa3fcb|-204065769||t19223.8002132892s|0592d33550c0bb62|308|rds|local|vector|||362.98||
 rh_travel_times|function|2fc52e9b4e9e1b59|||||||||||||||
-ridership|stem|63447871a5ef2004|cc19796f94b57a53|58bef9cfc8846c0f|165593927||t19224.4398267628s|4234d4d3d176dfdc|445|rds|local|vector|||1.56||
+ridership|stem|63447871a5ef2004|cc19796f94b57a53|58bef9cfc8846c0f|165593927||t19224.5425008463s|4234d4d3d176dfdc|445|rds|local|vector|||0.13||
 scenario_list|stem|458a3b716f9efc58|727f63487ea1b991|1b53bd0a2fc03ca0|-641555310||t19223.7466351659s|f61d5eec182b6cd2|255|rds|local|vector|||0||
 transfers|stem|ed690de067961bd9|3d802dfbb69403e3|363f3d8144f0a993|685282604||t19224.439803218s|c98679baf4c2e099|315|rds|local|vector|||0.16||
+transfersgraph|stem|78ebf308e94a9e8f|5d9c61d335686ddd|b3e27f1b232a8904|-254665950||t19224.6216412531s|bba596d586aac420|61839|rds|local|vector|||0.07||
 travel_times|stem|236f5b8da20157fd|7684f3bf5cd75269|bcd32160b743f879|-570801696||t19223.7828077531s|fd3d94fe2afecb96|520|rds|local|vector|||140.51||
 trip_arrivals|function|44d49a232f21c911|||||||||||||||
 utah_hbo|stem|4a3334c5fd49acc5|f1504dd715d3d31f|f40aeeb6314592bd|-1796426361||t19221.7046997511s|76e9cd5162d27791|263|rds|local|vector|||1.32||

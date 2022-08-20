@@ -20,7 +20,10 @@
 \contentsline {subsection}{\numberline {3.2.3}BEAM Configured to the Case Study Region}{19}{subsection.3.2.3}%
 \contentsline {section}{\numberline {3.3}Case Study Scenarios}{27}{section.3.3}%
 \contentsline {chapter}{\numberline {4}Results}{31}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Table}{31}{section.4.1}%
-\contentsline {chapter}{\numberline {5}Discussion}{32}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusions}{33}{chapter.6}%
-\contentsline {chapter}{References}{34}{section*.16}%
+\contentsline {section}{\numberline {4.1}Ridership}{31}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Transfers}{31}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Wait Times}{31}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Discussion}{34}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusions}{35}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusions}{36}{chapter.7}%
+\contentsline {chapter}{References}{37}{section*.19}%

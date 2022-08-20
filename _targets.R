@@ -7,7 +7,7 @@ library(tarchetypes)
 ## To install RAM: devtools::install_url("https://cran.r-project.org/src/contrib/Archive/RAM/RAM_1.2.1.tar.gz")
 tar_option_set(packages = c("tidyverse", "bookdown", "readr", "dotwhisker", 
                             "ggpubr", "scales", "future", "future.apply", "furrr",
-                            "data.table"))
+                            "data.table", "ggpattern"))
 
 #Define custom functions and other global objects.
 # This is where you write source(\"R/functions.R\")
@@ -92,6 +92,7 @@ analysis_targets <- tar_plan(
   
   tar_target(ridership, format_ridership_table(mode_choice_table)),
   tar_target(transfers, format_transfers_table(rh_to_transit)),
+  tar_target(transfersgraph, format_transfers_graph(transfers)),
   tar_target(waits, format_waits_graph(wait_times))
 )
 
@@ -100,4 +101,4 @@ tar_plan(
   analysis_targets
 )
 
-#tar_read(waits)
+#mode_choice_table <- tar_read(mode_choice_table)

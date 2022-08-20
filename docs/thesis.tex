@@ -400,7 +400,7 @@ BEAM was configured to the case study region by gathering the inputs, validating
 
 The utility parameter values used in BEAM's new mode choice model were copied directly from MTC's implementation of ActivitySim (MTC 2012). MTC's implementation of ActivitySim was designed for the San Francisco, California region. Logically, travel behaviors such as travel time, travel distance, and number of transfers should affect people in different regions in similar ways. However, as a way to validate the use of ActivitySim's path utility coefficients in the Salt Lake region, these values are compared to values from the Utah Statewide model, the WFRC travel demand model, and the NCHRP Report 716. The Utah Statewide model is useful as it provides a rough idea of the influence of path variables in Utah as a whole (UDOT 2021). The WFRC model model is a useful comparison as it predicts travel behavior for the same region of study used in this research project (WFRC 2019) . NCHRP Report 716 provides a rough idea of what parameter values should look like for a generalized modeling point of view (Cambridge Systematics et al. 2012). Overall, comparing these three sets of path parameter values with the MTC ActivitySim parameter values used in BEAM helps ensure that the the utility parameters are valid.
 
-Figure \ref{fig:hbw} shows the comparison of the path utility parameter values between all four models for home-based work trips. For the egress time, in vehicle travel time (ivtt), the number of transfers, transfer time, and the wait times, MTC's ActivitySim seems to use a very similar coefficient value as the other three models. The largest discrepancy exists with short and long walking distances. ActivitySim seems to use a value almost ten fold that of the other models. This occurs because the WFRC and Utah Statewide models caps walking distance whereas ActivitySim instead gives a high penalty for long walking distances. With this clarification, it is clear to see that ActivitySim's path coefficient values do not require calibration and were left as is.
+Figure \ref{fig:hbw} shows the comparison of the path utility parameter values between all four models for home-based work trips. For the egress time, in vehicle travel time (IVTT), the number of transfers, transfer time, and the wait times, MTC's ActivitySim seems to use a very similar coefficient value as the other three models. The largest discrepancy exists with short and long walking distances. ActivitySim seems to use a value almost ten fold that of the other models. This occurs because the WFRC and Utah Statewide models caps walking distance whereas ActivitySim instead gives a high penalty for long walking distances. With this clarification, it is clear to see that ActivitySim's path coefficient values do not require calibration and were left as is.
 
 \begin{figure}
 
@@ -411,7 +411,7 @@ Figure \ref{fig:hbw} shows the comparison of the path utility parameter values b
 \caption{Home-based work mode choice path coefficients model comparison.}\label{fig:hbw}
 \end{figure}
 
-Figure \ref{fig:hbs} shows the comparison of the path utility parameter values between all four models for home-based school trips. Similar to the home-based work analysis, for the egress time, ivtt, transfer time, and the wait times, ActivitySim seems to use a very similar coefficient value as the other three models. Again, the largest discrepancy exists with short and long walking distances. Since this is simply a difference between how walk distance is modeled, the discrepancy is ignored. In addition, the other three models did not have information on number of transfers. As a result, there is no comparison done with number of transfers. ActivitySim's path coefficient values do not require calibration for the home-based school parameters.
+Figure \ref{fig:hbs} shows the comparison of the path utility parameter values between all four models for home-based school trips. Similar to the home-based work analysis, for the egress time, IVTT, transfer time, and the wait times, ActivitySim seems to use a very similar coefficient value as the other three models. Again, the largest discrepancy exists with short and long walking distances. Since this is simply a difference between how walk distance is modeled, the discrepancy is ignored. In addition, the other three models did not have information on number of transfers. As a result, there is no comparison done with number of transfers. ActivitySim's path coefficient values do not require calibration for the home-based school parameters.
 
 \begin{figure}
 
@@ -422,7 +422,7 @@ Figure \ref{fig:hbs} shows the comparison of the path utility parameter values b
 \caption{Home-based school mode choice path coefficients model comparison.}\label{fig:hbs}
 \end{figure}
 
-Lastly, Figure \ref{fig:hbo} shows the comparison of path utility parameter values between all four models for home-based other trips. Again, besides for walk distance all variables seem to be similar between all four models. An interesting point is that for models other than ActivitySim, the cost coefficient varies greatly. Fortunately, ActivitySim bases the cost coefficient on each individual's value of time so this is not a concern. Overall, for all purpose types the coefficients used by ActivitySim are similar enough to other models that exist, and therefore do not require calibration. The ActivitySim alternative specific constants do, however, require calibration (See Section \ref{clib}).
+Lastly, Figure \ref{fig:hbo} shows the comparison of path utility parameter values between all four models for home-based other trips. Again, besides for walk distance all variables seem to be similar between all four models. An interesting point is that for models other than ActivitySim, the cost coefficient varies greatly. Fortunately, ActivitySim bases the cost coefficient on each individual's value of time so this is not a concern. Overall, for all purpose types the coefficients used by ActivitySim are similar enough to other models that exist, and therefore do not require calibration.
 
 \begin{figure}
 
@@ -451,18 +451,18 @@ After validation was completed, the last step in order to run BEAM with the case
 \hypertarget{case-study-scenarios}{%
 \section{Case Study Scenarios}\label{case-study-scenarios}}
 
-After BEAM validation and BEAM calibration were completed for the case study region, a series of different BEAM scenarios were run. Specifically, 10 different experiments were conducted, each with a unique ActivitySim-to-BEAM mode choice combination. Table \ref{tab:tbexperiments} provides a short description of the 10 different scenarios.
+After BEAM validation and BEAM calibration were completed for the case study region, a series of different BEAM experiements were run. Each experiment was run for a total of 12 iterations using a 15\% population size. Ten different experiments were conducted, each with a unique ActivitySim-to-BEAM mode choice combination. Table \ref{tab:tbexperiments} provides a short description of the 10 different scenarios.
 
 \begin{table}
 
-\caption{\label{tab:tbexperiments}ActivitySim - BEAM Mode Choice Combination Scenarios}
+\caption{\label{tab:tbexperiments}ActivitySim-to-BEAM Mode Choice Combination Scenarios}
 \centering
 \resizebox{\linewidth}{!}{
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{4em}>{\raggedright\arraybackslash}p{8em}>{\raggedright\arraybackslash}p{8em}>{\raggedright\arraybackslash}p{8em}>{\raggedright\arraybackslash}p{8em}>{\raggedright\arraybackslash}p{25em}}
 \toprule
 Scenario Number & Scenario Name & ActivitySim Mode Options & BEAM Mode Options & BEAM Utility Variables & Scenario Description\\
 \midrule
-1 & wRH-None & All Modes & No Modes & N/A & BEAM run using plans that include ride hail modes; mode innovation is turned off / mode choice remains static\\
+1 & wRH-None & All Modes & No Modes & N/A & BEAM run using ActivitySim output plans that include ride hail modes; mode innovation is turned off / mode choice remains static\\
 2 & wRH-AllModes-AllVars & All Modes & All Modes & Path, Person, Location & BEAM run using ActivitySim output plans that include ride hail; all variables are used in the utility equation; all modes are available for selection\\
 3 & wRH-AllModes-PathVars & All Modes & All Modes & Path & BEAM run using ActivitySim output plans that include ride hail; only path variables are used in the utility equation; all modes are available for selection\\
 4 & wRH-RHModes-AllVars & All Modes & Ride Hail Modes Only & Path, Person, Location & BEAM run using ActivitySim output plans that include ride hail; all variables are used in the utility equation; mode innovation is turned off for all trips except non-car trips, which have the option to change to ride hail\\
@@ -477,7 +477,7 @@ Scenario Number & Scenario Name & ActivitySim Mode Options & BEAM Mode Options &
 \end{tabular}}
 \end{table}
 
-Three different mode choice adjustments help describe the setup of each experiment. The first descriptor references how ActivitySim's modes were configured, which in Table \ref{tab:tbexperiments} is labeled as ``ActivitySim Mode Options''. Only two options are available: ``All Modes'' and ``All Modes except Ride Hail''. To explain, ActivitySim was run two times, one with ride hail alternatives turned on and one with ride hail turned off. In other words, the ride hail nesting option as shown in Figure \ref{fig-asim-nest} existed in one run of ActivitySim (``All Modes''), whereas in the other it did not (``All Modes except Ride Hail''). Since the daily activity plans generated by ActivitySim were converted to BEAM inputs, this descriptor also explains the initial mode choice selections for all trips entered into BEAM. Two different plans files were used to running BEAM: one plans file included some trips with ride hail modes whereas the other plans file included no trips with ride hail modes. By creating this distinction, we hope to better understand how heavily a multiagent simulation prioritizes ride hail as opposed to an activity-based model.
+Three different mode choice adjustments help describe the setup of each experiment. The first descriptor references how ActivitySim's modes were configured, which in Table \ref{tab:tbexperiments} is labeled as ``ActivitySim Mode Options''. Only two options are available: ``All Modes'' and ``All Modes except Ride Hail''. To explain, ActivitySim was run two times, one with ride hail alternatives turned on and one with ride hail turned off. In other words, the ride hail nesting option as shown in Figure \ref{fig:fig-asim-nest} existed in one run of ActivitySim (``All Modes''), whereas in the other it did not (``All Modes except Ride Hail''). Since the daily activity plans generated by ActivitySim were converted to BEAM inputs, this descriptor also explains the initial mode choice selections for all trips entered into BEAM. Two different plans files were used to running BEAM: one plans file included some trips with ride hail modes whereas the other plans file included no trips with ride hail modes. By creating this distinction, we hope to better understand how heavily a multiagent simulation prioritizes ride hail as opposed to an activity-based model.
 
 The second descriptor present in Table \ref{tab:tbexperiments} is labeled as ``BEAM Mode Options'' and explains the modal alternatives available for choice within BEAM. Three different variations were used: ``No Modes'', ``All Modes'', ``Ride Hail Modes Only''. The ``No Modes'' category represents a run of BEAM where all modal innovation was turned off. This means that no mode choice was available, and the modes from the initial input plans remained constant across each iteration. The ``All Modes'' category however, represents a run of BEAM where modal innovation was turned on, and all modal alternatives were available for choice. This meant that within-day replanning as well as across-day replanning was turned on, and agents could change their trip modes to maximize their utility. Lastly, the ``Ride Hail Modes Only'' category represented a run of BEAM where modal innovation was partially turned off. All trips that originally took car or carpool modes had modal innovation turned off; their modes were locked. All trips that originally took walk-transit or drive-transit modes, however, were given the option to switch to ride hail transit. Also, all walk modes were given the option to switch to ride hail. ``Ride Hail Modes Only'' represented the version of BEAM where ride hail and ride hail transit modes were given to non-car dependent agents. Overall, by using different mode choice structures within BEAM, we hope to better understand how altering available modal alternatives affects ride hail service capabilities.
 
@@ -488,14 +488,64 @@ Overall, we ran 10 different scenarios each with a slightly different ActivitySi
 \hypertarget{results}{%
 \chapter{Results}\label{results}}
 
-\hypertarget{table}{%
-\section{Table}\label{table}}
+\hypertarget{ridership}{%
+\section{Ridership}\label{ridership}}
+
+\begin{table}
+
+\caption{\label{tab:ridership}Percent Ride Hail Ridership by Mode Choice Combination Scenario}
+\centering
+\begin{tabular}[t]{lrrr}
+\toprule
+Scenario Name & ride\_hail & ride\_hail\_pooled & ride\_hail\_transit\\
+\midrule
+wRH-None & 0.024 & 0.003 & 0.000\\
+noRH-None & 0.000 & 0.000 & 0.000\\
+wRH-AllModes-AllVars & 0.280 & 0.536 & 0.014\\
+noRH-AllModes-AllVars & 0.280 & 0.567 & 0.011\\
+wRH-AllModes-PathVars & 0.312 & 0.413 & 0.008\\
+\addlinespace
+noRH-AllModes-PathVars & 0.423 & 0.145 & 0.003\\
+wRH-RHModes-AllVars & 3.980 & 2.293 & 0.323\\
+noRH-RHModes-AllVars & 1.615 & 3.327 & 0.395\\
+wRH-RHModes-PathVars & 1.824 & 3.465 & 0.461\\
+noRH-RHModes-PathVars & 3.814 & 2.120 & 0.249\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\hypertarget{transfers}{%
+\section{Transfers}\label{transfers}}
+
+\begin{figure}
+
+{\centering \includegraphics{thesis_files/figure-latex/transfergraph-1} 
+
+}
+
+\caption{Number of Transfers per Transfer Type by Mode Choice Combination Scenario}\label{fig:transfergraph}
+\end{figure}
+
+\hypertarget{wait-times}{%
+\section{Wait Times}\label{wait-times}}
+
+\begin{figure}
+
+{\centering \includegraphics{thesis_files/figure-latex/waits-1} 
+
+}
+
+\caption{Distribution of Ride Hail Wait Times per Mode Choice Combination Scenario}\label{fig:waits}
+\end{figure}
 
 \hypertarget{discussion}{%
 \chapter{Discussion}\label{discussion}}
 
 \hypertarget{conclusions}{%
 \chapter{Conclusions}\label{conclusions}}
+
+\hypertarget{conclusions-1}{%
+\chapter{Conclusions}\label{conclusions-1}}
 
 `r
 \# \{=latex\} for thesis

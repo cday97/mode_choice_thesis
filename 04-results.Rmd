@@ -4,10 +4,30 @@
 
 ## Ridership
 
+```{r ridership, echo=FALSE}
+ridership <- tar_read(ridership)
+kable(ridership, caption = 'Percent Ride Hail Ridership by Mode Choice Combination Scenario', booktabs = TRUE) 
+```
 
 
 ## Transfers
 
 
+```{r transfers, echo=FALSE, include = FALSE}
+#transfers <- tar_read(transfers)
+#kable(transfers, caption = 'Number of Transfers per Transfer Type #by Mode Choice Combination Scenario', booktabs = TRUE) 
+```
+
+```{r transfergraph, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Number of Transfers per Transfer Type by Mode Choice Combination Scenario", fig.align='center'}
+library(ggpattern)
+tar_read(transfersgraph)
+```
+
 
 ## Wait Times
+
+
+```{r waits, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Distribution of Ride Hail Wait Times per Mode Choice Combination Scenario", fig.align='center'}
+tar_read(waits)
+```
+

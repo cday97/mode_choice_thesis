@@ -144,7 +144,8 @@ format_ridership_table <- function(mode_choice_table){
     pivot_longer(!mode,names_to = "Scenario Name", values_to = "ridership") %>%
     filter(mode %in% c("ride_hail","ride_hail_pooled","ride_hail_transit")) %>%
     pivot_wider("Scenario Name", names_from=mode,values_from=ridership) %>%
-    mutate_all(~replace(., is.na(.), 0))
+    mutate_all(~replace(., is.na(.), 0.000)) 
+    #mutate(across(!"Scenario Name", ~paste0(.,"%")))
 }
 
 format_transfers_table <- function(rh_to_transit){
@@ -154,6 +155,30 @@ format_transfers_table <- function(rh_to_transit){
     mutate(transfer_type = ifelse(transfer_type == "rideHail-transit", "ride_hail-to-transit","transit-to-ride_hail")) %>%
     pivot_wider("Scenario Name", names_from = transfer_type, values_from = value) %>%
     mutate_all(~replace(., is.na(.), 0))
+}
+
+format_transfers_graph <- function(transfers){
+  transfer_long <- transfers %>%
+    pivot_longer(!`Scenario Name`, names_to="transfertype",values_to="numtransfers") %>%
+    rename("scenario" = "Scenario Name")
+  
+  transfer_long$scenario <- factor(transfer_long$scenario, 
+                                   levels=c("wRH-None", "noRH-None", "wRH-AllModes-AllVars", "noRH-AllModes-AllVars", "wRH-AllModes-PathVars",
+                                            "noRH-AllModes-PathVars", "wRH-RHModes-AllVars","noRH-RHModes-AllVars", "wRH-RHModes-PathVars", "noRH-RHModes-PathVars"))
+  ggplot(transfer_long) +
+    aes(x = as.factor(scenario), y = numtransfers, fill = transfertype) +
+    geom_col_pattern(
+      aes(pattern = transfertype, pattern_angle = transfertype, pattern_spacing = transfertype),
+      fill            = 'white', 
+      colour          = 'black',
+      pattern_spacing = 0.04,
+      position = "dodge2") + 
+    theme_bw() +
+    theme(axis.text.x = element_text(angle=90, hjust=1)) +
+    xlab("Scenario Name") +
+    ylab("Number of Transfers")  +
+    theme(legend.position="top") +
+    geom_text(aes(label = numtransfers, y = numtransfers + 80), position = position_dodge(1.2))    
 }
 
 format_waits_graph <- function(wait_times){
