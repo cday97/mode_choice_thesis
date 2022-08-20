@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.15)  17 AUG 2022 12:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.15)  19 AUG 2022 12:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1083,88 +1083,88 @@ File: thesis_files/figure-latex/fig-asim-nest-1.pdf Graphic file (type pdf)
 Package pdftex.def Info: thesis_files/figure-latex/fig-asim-nest-1.pdf  used on input line 196.
 (pdftex.def)             Requested size: 328.82707pt x 184.24748pt.
 [14 <./thesis_files/figure-latex/fig-asim-nest-1.pdf>] [15] [16] [17] [18]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 264.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 263.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 267.
+(Font)              scaled to size 10.0pt on input line 266.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 288.
+(Font)              scaled to size 12.0pt on input line 287.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.8pt on input line 297.
+(Font)              scaled to size 8.8pt on input line 296.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.6pt on input line 297.
-LaTeX Font Info:    Trying to load font information for U+dsrom on input line 367.
+(Font)              scaled to size 6.6pt on input line 296.
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 366.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 ) [19] [20] [21
 pdfTeX warning (ext4): destination with the same identifier (name{algorithm.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.401 
+l.402 
       ] [22]
 <thesis_files/figure-latex/hbw-1.pdf, id=243, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbw-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbw-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/hbw-1.pdf  used on input line 408.
+Package pdftex.def Info: thesis_files/figure-latex/hbw-1.pdf  used on input line 407.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[23] [24 <./thesis_files/figure-latex/hbw-1.pdf>]
-<thesis_files/figure-latex/hbs-1.pdf, id=258, 469.755pt x 325.215pt>
+<thesis_files/figure-latex/hbs-1.pdf, id=245, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbs-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbs-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/hbs-1.pdf  used on input line 419.
+Package pdftex.def Info: thesis_files/figure-latex/hbs-1.pdf  used on input line 418.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-LaTeX Warning: Reference `clib' on page 25 undefined on input line 426.
+LaTeX Warning: Reference `clib' on page 23 undefined on input line 425.
 
-<thesis_files/figure-latex/hbo-1.pdf, id=260, 469.755pt x 325.215pt>
+[23] [24 <./thesis_files/figure-latex/hbw-1.pdf>] [25 <./thesis_files/figure-latex/hbs-1.pdf>]
+<thesis_files/figure-latex/hbo-1.pdf, id=271, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbo-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbo-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/hbo-1.pdf  used on input line 430.
+Package pdftex.def Info: thesis_files/figure-latex/hbo-1.pdf  used on input line 429.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[25 <./thesis_files/figure-latex/hbs-1.pdf>] [26 <./thesis_files/figure-latex/hbo-1.pdf>]
-<pics/BeamCalib.png, id=284, 752.8125pt x 481.8pt>
+[26 <./thesis_files/figure-latex/hbo-1.pdf>]
+<pics/BeamCalib.png, id=285, 752.8125pt x 481.8pt>
 File: pics/BeamCalib.png Graphic file (type png)
 <use pics/BeamCalib.png>
-Package pdftex.def Info: pics/BeamCalib.png  used on input line 445.
+Package pdftex.def Info: pics/BeamCalib.png  used on input line 444.
 (pdftex.def)             Requested size: 469.75502pt x 300.65375pt.
 
-LaTeX Warning: Reference `tb:tbexperiments' on page 27 undefined on input line 455.
+LaTeX Warning: Reference `fig-asim-nest' on page 27 undefined on input line 480.
 
-[27 <./pics/BeamCalib.png>] [28]
+[27 <./pics/BeamCalib.png>] [28] [29] [30]
 Chapter 4.
-[29
-
-]
-Chapter 5.
-[30
-
-]
-Chapter 6.
-LaTeX Font Info:    Trying to load font information for OMS+ntxtlf on input line 488.
-LaTeX Font Info:    No file OMSntxtlf.fd. on input line 488.
-
-LaTeX Font Warning: Font shape `OMS/ntxtlf/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 488.
-
 [31
 
 ]
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 504.
+Chapter 5.
+[32
 
-Overfull \hbox (17.40172pt too wide) in paragraph at lines 503--505
+]
+Chapter 6.
+LaTeX Font Info:    Trying to load font information for OMS+ntxtlf on input line 501.
+LaTeX Font Info:    No file OMSntxtlf.fd. on input line 501.
+
+LaTeX Font Warning: Font shape `OMS/ntxtlf/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 501.
+
+[33
+
+]
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 12.0pt on input line 517.
+
+Overfull \hbox (17.40172pt too wide) in paragraph at lines 516--518
 \OT1/ntxtlf/m/it/12 RSG\OT1/minntx/m/n/12 . [][]$https : / / rsginc . com / activitysim-[]white-[]paper / #advanced-[]activity-[]based-[]travel-[]demand-[]model$[][]. 
  []
 
-[32
+[34
 
-] [33] [34] [35] [36] [37] [38]
+] [35] [36] [37] [38] [39] [40]
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
-[39] (./thesis.aux)
+[41] (./thesis.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -1173,18 +1173,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 25180 strings out of 479638
- 448836 string characters out of 5877192
- 767102 words of memory out of 5000000
+ 25182 strings out of 479638
+ 448781 string characters out of 5877192
+ 768102 words of memory out of 5000000
  43078 multiletter control sequences out of 15000+600000
  492819 words of font info for 80 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  106i,12n,131p,2219b,1031s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf-pc.enc}{c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}<c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txexs.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txsys.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmb.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmr.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on thesis.pdf (45 pages, 347920 bytes).
+Output written on thesis.pdf (47 pages, 352078 bytes).
 PDF statistics:
- 593 PDF objects out of 1000 (max. 8388607)
- 506 compressed objects within 6 object streams
- 187 named destinations out of 1000 (max. 500000)
+ 605 PDF objects out of 1000 (max. 8388607)
+ 516 compressed objects within 6 object streams
+ 189 named destinations out of 1000 (max. 500000)
  199 words of extra memory for PDF output out of 10000 (max. 10000000)
 
