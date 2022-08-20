@@ -39,11 +39,11 @@ data_targets <- tar_plan(
   tar_target(rh_all_wrh, "data/events/12.events-15pct-wRH-rh-all.csv", format = "file"),
   tar_target(rh_path_wrh, "data/events/12.events-15pct-wRH-rh-path.csv", format = "file"),
   tar_target(none_wrh, "data/events/12.events-15pct-wRH-none.csv", format = "file"),
-  tar_target(all_all_norh, "data/events/all_all_norh.csv", format = "file"),
-  tar_target(all_path_norh, "data/events/all_path_norh.csv", format = "file"),
-  tar_target(rh_all_norh, "data/events/rh_all_norh.csv", format = "file"),
-  tar_target(rh_path_norh, "data/events/rh_path_norh.csv", format = "file"),
-  tar_target(none_norh, "data/events/none_norh.csv", format = "file"),
+  tar_target(all_all_norh, "data/events/12.events-15pct-noRH-all-all.csv", format = "file"),
+  tar_target(all_path_norh, "data/events/12.events-15pct-noRH-all-path.csv", format = "file"),
+  tar_target(rh_all_norh, "data/events/12.events-15pct-noRH-rh-all.csv", format = "file"),
+  tar_target(rh_path_norh, "data/events/12.events-15pct-noRH-rh-path.csv", format = "file"),
+  tar_target(none_norh, "data/events/12.events-15pct-noRH-none.csv", format = "file"),
   
   ## Scenario List
   scenario_list = list(
@@ -88,7 +88,11 @@ analysis_targets <- tar_plan(
   tar_target(num_passengers, all_join(events_list, rh_pass, "numPassengers", "num_passengers")),
   tar_target(wait_times, all_join(events_list, rh_times, "summary", "values")),
   tar_target(travel_times, all_join(events_list, rh_travel_times, "summary", "values")),
-  tar_target(rh_to_transit, all_join(events_list, count_rh_transit_transfers, "transferType", "transfer_type"))
+  tar_target(rh_to_transit, all_join(events_list, count_rh_transit_transfers, "transferType", "transfer_type")),
+  
+  tar_target(ridership, format_ridership_table(mode_choice_table)),
+  tar_target(transfers, format_transfers_table(rh_to_transit)),
+  tar_target(waits, format_waits_graph(wait_times))
 )
 
 tar_plan(
@@ -96,6 +100,4 @@ tar_plan(
   analysis_targets
 )
 
-
-
-#result_transfer <- tar_read(rh_to_transit)
+#tar_read(waits)

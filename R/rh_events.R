@@ -32,7 +32,10 @@ mode_choice <- function(events){
   events %>% 
     filter(type == "ModeChoice") %>% 
     group_by(mode) %>% 
-    summarize(n = n())
+    summarize(n = n()) %>%
+    mutate(share = n / sum(n)) %>%
+    mutate(share = round(share*100,3)) %>%
+    select(-n)
 }
 # trip arrivals
 trip_arrivals <- function(events){
@@ -72,16 +75,14 @@ rh_times <- function(events){
     ) %>%
     filter(!is.na(rhReserveTime)) %>%
     group_by(rhReserveOutcome) %>%
-    filter(rhReserveOutcome == "PersonEntersVehicle")
-  
+    filter(rhReserveOutcome == "PersonEntersVehicle") %>%
+    mutate(rhReserveTime = rhReserveTime / 60)
   times %>% 
-    summarise(mean = mean(rhReserveTime) / 60,
-              q25 = quantile(rhReserveTime,c(.25)) / 60,
-              q50 = quantile(rhReserveTime,c(.5)) / 60,
-              q75 = quantile(rhReserveTime,c(.75)) / 60) %>%
+    summarise(mean = mean(rhReserveTime),
+              sd = sd(rhReserveTime)) %>%
     pivot_longer(!rhReserveOutcome, names_to = "summary", values_to = "values") %>%
     select(-rhReserveOutcome)
-}
+  }
 
 #' rh travel times
 rh_travel_times <- function(events){
@@ -135,46 +136,62 @@ count_rh_transit_transfers <- function(events){
     summarize(n = n())
 }
 
+# create tables/graphs used in results section--------------------------------------------------#
+format_ridership_table <- function(mode_choice_table){
+  ridership <- mode_choice_table %>%
+    #instead of renaming, just fix the names in targets and rerun (will take like 1hr)
+    rename(rename_list) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
+    pivot_longer(!mode,names_to = "Scenario Name", values_to = "ridership") %>%
+    filter(mode %in% c("ride_hail","ride_hail_pooled","ride_hail_transit")) %>%
+    pivot_wider("Scenario Name", names_from=mode,values_from=ridership) %>%
+    mutate_all(~replace(., is.na(.), 0))
+}
 
+format_transfers_table <- function(rh_to_transit){
+  transfers <- rh_to_transit %>%
+    rename(rename_list) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
+    pivot_longer(!transfer_type, names_to="Scenario Name") %>%
+    mutate(transfer_type = ifelse(transfer_type == "rideHail-transit", "ride_hail-to-transit","transit-to-ride_hail")) %>%
+    pivot_wider("Scenario Name", names_from = transfer_type, values_from = value) %>%
+    mutate_all(~replace(., is.na(.), 0))
+}
 
+format_waits_graph <- function(wait_times){
+  summary <- wait_times %>%
+    rename(rename_list) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
+    mutate_all(~replace(., is.na(.), 0)) %>%
+    pivot_longer(!values, names_to="scenario", values_to="vals") %>%
+    pivot_wider(scenario, names_from="values",values_from="vals") %>%
+    mutate(scenario = as.factor(scenario))
+  summary$scenario <- factor(summary$scenario, 
+    levels=c("wRH-None", "noRH-None", "wRH-AllModes-AllVars", "noRH-AllModes-AllVars", "wRH-AllModes-PathVars",
+             "noRH-AllModes-PathVars", "wRH-RHModes-AllVars","noRH-RHModes-AllVars", "wRH-RHModes-PathVars", "noRH-RHModes-PathVars"))
+  
+  ggplot(summary, aes(x = scenario)) +
+    geom_boxplot(aes(
+      lower = mean - sd, 
+      upper = mean + sd, 
+      middle = mean, 
+      ymin = mean - 3*sd, 
+      ymax = mean + 3*sd),
+      stat = "identity") +
+    xlab("Scenario Name") +
+    ylab("Wait Time (sec)") +
+    theme_bw() +
+    theme(axis.text.x = element_text(angle=90, hjust=1)) +
+    geom_text(aes(label = round(mean,2), y = mean + 2.3))
+}
 
-
-
-
-
-
-#' rh utilization
-#rh_utilization <- function(events, rh_info){
-#  rhUtil <- events %>%
-#    filter(type == "PathTraversal",
-#           vehicleType == "micro") %>% 
-#    separate(vehicle, c("vehicle_number", "area"), sep = "@") %>% 
-#    select(area, numPassengers) %>% 
-#    table() %>% as_tibble() %>% 
-#    left_join(rh_info, by = c("area" = "Area")) %>% 
-#    transmute(area,
-#              utilization = as.numeric(numPassengers) * n
-#              / fleetSize / operating_hours) %>% 
-#    group_by(area) %>% 
-#    summarise(utilization = sum(utilization))
-#  
-#  rhUtil
-#}
-
-
-#' format rh info
-#format_rh_info <- function(rh_raw){
-#  rh_info <- rh_raw %>% 
-#    read_csv() %>% 
-#    mutate(shift_start = str_replace(shifts, "\\{(\\d+):\\d+\\}", "\\1") %>% 
-#             as.numeric(),
-#           shift_end = str_replace(shifts,"\\{\\d+:(\\d+)\\}", "\\1") %>% 
-#             as.numeric(),
-#           operating_hours = (shift_end - shift_start) / 3600) %>% 
-#    select(Area, fleetSize, operating_hours)
-#  
-#  rh_info
-#}
-
-
+rename_list = c(
+  "wRH-AllModes-AllVars" = "All Modes - All Variables - W/ RH",
+  "wRH-AllModes-PathVars" = "All Modes - Path Variables - W/ RH",
+  "wRH-RHModes-AllVars" = "RH Modes - All Variables - W/ RH",
+  "wRH-RHModes-PathVars" = "RH Modes - Path Variables - W/ RH",
+  "wRH-None" = "No Modes - W/ RH",
+  "noRH-AllModes-AllVars" = "All Modes - All Variables - No RH",
+  "noRH-AllModes-PathVars" = "All Modes - Path Variables - No RH",
+  "noRH-RHModes-AllVars" = "RH Modes - All Variables - No RH",
+  "noRH-RHModes-PathVars" = "RH Modes - Path Variables - No RH",
+  "noRH-None" = "No Modes - No RH"
+)
 
