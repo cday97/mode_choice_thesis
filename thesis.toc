@@ -21,9 +21,12 @@
 \contentsline {section}{\numberline {3.3}Case Study Scenarios}{27}{section.3.3}%
 \contentsline {chapter}{\numberline {4}Results}{31}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Ridership}{31}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Transfers}{31}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Wait Times}{31}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Discussion}{34}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusions}{35}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusions}{36}{chapter.7}%
-\contentsline {chapter}{References}{37}{section*.19}%
+\contentsline {subsection}{\numberline {4.1.1}Comparing Scenarios Individually}{32}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Comparing Scenarios Collectively}{34}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}A Deeper Look at Ridership}{36}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Wait Times}{38}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Transfers}{38}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Discussion}{40}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusions}{41}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusions}{42}{chapter.7}%
+\contentsline {chapter}{References}{43}{section*.20}%

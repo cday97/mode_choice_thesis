@@ -1,6 +1,7 @@
 # target libraries
 library(targets)
 library(tarchetypes)
+library(tidyverse)
 
 
 # Set target-specific options such as packages.
@@ -76,7 +77,16 @@ data_targets <- tar_plan(
            "personalVehicleAvailable"
   ),
   
-  events_list = future_map(scenario_list, read_events, cols)
+  events_list = future_map(scenario_list, read_events, cols),
+  
+  tar_target(wRH_all_all_p0, read_plans("data/plans/final-plans/0.plans-wRH-All-All.csv")),
+  tar_target(wRH_all_all_p12, read_plans("data/plans/final-plans/12.plans-wRH-All-All.csv")),
+  tar_target(wRH_all_path_p0, read_plans("data/plans/final-plans/0.plans-wRH-All-Path.csv")),
+  tar_target(wRH_all_path_p12, read_plans("data/plans/final-plans/12.plans-wRH-All-Path.csv")),
+  tar_target(noRH_all_all_p0, read_plans("data/plans/final-plans/0.plans-noRH-All-All.csv")),
+  tar_target(noRH_all_all_p12, read_plans("data/plans/final-plans/12.plans-noRH-All-All.csv")),
+  tar_target(noRH_all_path_p0, read_plans("data/plans/final-plans/0.plans-noRH-All-Path.csv")),
+  tar_target(noRH_all_path_p12, read_plans("data/plans/final-plans/12.plans-noRH-All-Path.csv"))
 )
 
 analysis_targets <- tar_plan(
@@ -93,7 +103,16 @@ analysis_targets <- tar_plan(
   tar_target(ridership, format_ridership_table(mode_choice_table)),
   tar_target(transfers, format_transfers_table(rh_to_transit)),
   tar_target(transfersgraph, format_transfers_graph(transfers)),
-  tar_target(waits, format_waits_graph(wait_times))
+  tar_target(waits, format_waits_graph(wait_times)),
+  
+  tar_target(wRH_all_all_sum, rh_switch(wRH_all_all_p0,wRH_all_all_p12)),
+  tar_target(wRH_all_path_sum, rh_switch(wRH_all_path_p0,wRH_all_path_p12)),
+  tar_target(noRH_all_all_sum, rh_switch(noRH_all_all_p0,wRH_all_all_p12)),
+  tar_target(noRH_all_path_sum, rh_switch(noRH_all_path_p0,wRH_all_path_p12)),
+  
+  tar_target(plansbind, bind_plans(wRH_all_all_sum,wRH_all_path_sum,noRH_all_all_sum,noRH_all_path_sum)),
+  tar_target(piechart, pie_chart(plansbind))
+  
 )
 
 tar_plan(
@@ -101,4 +120,5 @@ tar_plan(
   analysis_targets
 )
 
-#mode_choice_table <- tar_read(mode_choice_table)
+#plans_sum<- tar_read(plansbind)
+#plans_check <- tar_read(noRH_all_path_sum)

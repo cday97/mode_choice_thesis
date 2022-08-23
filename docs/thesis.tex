@@ -448,8 +448,8 @@ After validation was completed, the last step in order to run BEAM with the case
 \caption{BEAM mode choice ASC calibration}\label{fig:fig-beam-calib}
 \end{figure}
 
-\hypertarget{case-study-scenarios}{%
-\section{Case Study Scenarios}\label{case-study-scenarios}}
+\hypertarget{meth-scenarios}{%
+\section{Case Study Scenarios}\label{meth-scenarios}}
 
 After BEAM validation and BEAM calibration were completed for the case study region, a series of different BEAM experiements were run. Each experiment was run for a total of 12 iterations using a 15\% population size. Ten different experiments were conducted, each with a unique ActivitySim-to-BEAM mode choice combination. Table \ref{tab:tbexperiments} provides a short description of the 10 different scenarios.
 
@@ -463,59 +463,146 @@ After BEAM validation and BEAM calibration were completed for the case study reg
 Scenario Number & Scenario Name & ActivitySim Mode Options & BEAM Mode Options & BEAM Utility Variables & Scenario Description\\
 \midrule
 1 & wRH-None & All Modes & No Modes & N/A & BEAM run using ActivitySim output plans that include ride hail modes; mode innovation is turned off / mode choice remains static\\
-2 & wRH-AllModes-AllVars & All Modes & All Modes & Path, Person, Location & BEAM run using ActivitySim output plans that include ride hail; all variables are used in the utility equation; all modes are available for selection\\
-3 & wRH-AllModes-PathVars & All Modes & All Modes & Path & BEAM run using ActivitySim output plans that include ride hail; only path variables are used in the utility equation; all modes are available for selection\\
-4 & wRH-RHModes-AllVars & All Modes & Ride Hail Modes Only & Path, Person, Location & BEAM run using ActivitySim output plans that include ride hail; all variables are used in the utility equation; mode innovation is turned off for all trips except non-car trips, which have the option to change to ride hail\\
-5 & wRH-RHModes-PathVars & All Modes & Ride Hail Modes Only & Path & BEAM run using ActivitySim output plans that include ride hail; only path varibales are used in the utility equation; mode innovation is turned off for all trips except non-car trips, which have the option to change to ride hail\\
+2 & noRH-None & All Modes except Ride Hail & No Modes & N/A & BEAM run using ActivitySim output plans that don't include ride hail; mode innovation is turned off / mode choice remains static\\
+3 & wRH-AllModes-AllVars & All Modes & All Modes & Path, Person, Location & BEAM run using ActivitySim output plans that include ride hail; all variables are used in the utility equation; all modes are available for selection\\
+4 & noRH-AllModes-AllVars & All Modes except Ride Hail & All Modes & Path, Person, Location & BEAM run using ActivitySim output plans that don't include ride hail; all variables are used in the utility equation; all modes are available for selection\\
+5 & wRH-AllModes-PathVars & All Modes & All Modes & Path & BEAM run using ActivitySim output plans that include ride hail; only path variables are used in the utility equation; all modes are available for selection\\
 \addlinespace
-6 & noRH-None & All Modes except Ride Hail & No Modes & N/A & BEAM run using ActivitySim output plans that don't include ride hail; mode innovation is turned off / mode choice remains static\\
-7 & noRH-AllModes-AllVars & All Modes except Ride Hail & All Modes & Path, Person, Location & BEAM run using ActivitySim output plans that don't include ride hail; all variables are used in the utility equation; all modes are available for selection\\
-8 & noRH-AllModes-PathVars & All Modes except Ride Hail & All Modes & Path & BEAM run using ActivitySim output plans that don't include ride hail; only path variables are used in the utility equation; all modes are available for selection\\
-9 & noRH-RHModes-AllVars & All Modes except Ride Hail & Ride Hail Modes Only & Path, Person, Location & BEAM run using ActivitySim output plans that don't include ride hail; all variables are used in the utility equation; mode innovation is turned off for all trips except non-car trips, which have the option to change to ride hail\\
+6 & noRH-AllModes-PathVars & All Modes except Ride Hail & All Modes & Path & BEAM run using ActivitySim output plans that don't include ride hail; only path variables are used in the utility equation; all modes are available for selection\\
+7 & wRH-RHModes-AllVars & All Modes & Ride Hail Modes Only & Path, Person, Location & BEAM run using ActivitySim output plans that include ride hail; all variables are used in the utility equation; mode innovation is turned off for all trips except non-car trips, which have the option to change to ride hail\\
+8 & noRH-RHModes-AllVars & All Modes except Ride Hail & Ride Hail Modes Only & Path, Person, Location & BEAM run using ActivitySim output plans that don't include ride hail; all variables are used in the utility equation; mode innovation is turned off for all trips except non-car trips, which have the option to change to ride hail\\
+9 & wRH-RHModes-PathVars & All Modes & Ride Hail Modes Only & Path & BEAM run using ActivitySim output plans that include ride hail; only path varibales are used in the utility equation; mode innovation is turned off for all trips except non-car trips, which have the option to change to ride hail\\
 10 & noRH-RHModes-PathVars & All Modes except Ride Hail & Ride Hail Modes Only & Path & BEAM run using ActivitySim output plans that don't include ride hail; only path variables are used in the utility equation; mode innovation is turned off for all trips except non-car trips, which have the option to change to ride hail\\
 \bottomrule
 \end{tabular}}
 \end{table}
 
-Three different mode choice adjustments help describe the setup of each experiment. The first descriptor references how ActivitySim's modes were configured, which in Table \ref{tab:tbexperiments} is labeled as ``ActivitySim Mode Options''. Only two options are available: ``All Modes'' and ``All Modes except Ride Hail''. To explain, ActivitySim was run two times, one with ride hail alternatives turned on and one with ride hail turned off. In other words, the ride hail nesting option as shown in Figure \ref{fig:fig-asim-nest} existed in one run of ActivitySim (``All Modes''), whereas in the other it did not (``All Modes except Ride Hail''). Since the daily activity plans generated by ActivitySim were converted to BEAM inputs, this descriptor also explains the initial mode choice selections for all trips entered into BEAM. Two different plans files were used to running BEAM: one plans file included some trips with ride hail modes whereas the other plans file included no trips with ride hail modes. By creating this distinction, we hope to better understand how heavily a multiagent simulation prioritizes ride hail as opposed to an activity-based model.
+Three different mode choice adjustments help describe the setup of each experiment. The first descriptor references how ActivitySim's modes were configured, which in Table \ref{tab:tbexperiments} is labeled as ``ActivitySim Mode Options''. Only two options are available: ``All Modes'' and ``All Modes except Ride Hail''. To explain, ActivitySim was run two times, one with ride hail alternatives turned on and one with ride hail turned off. In other words, the ride hail nesting option as shown in Figure \ref{fig:fig-asim-nest} existed in one run of ActivitySim (``All Modes''), whereas in the other it did not (``All Modes except Ride Hail''). Since the daily activity plans generated by ActivitySim were converted to BEAM inputs, this descriptor also explains the initial mode choice selections for all trips entered into BEAM. Two different plans files were used to running BEAM: one plans file included some trips with ride hail modes whereas the other plans file included no trips with ride hail modes. By creating this distinction, we hope to better understand how heavily a multi-agent simulation prioritizes ride hail as opposed to an activity-based model.
 
 The second descriptor present in Table \ref{tab:tbexperiments} is labeled as ``BEAM Mode Options'' and explains the modal alternatives available for choice within BEAM. Three different variations were used: ``No Modes'', ``All Modes'', ``Ride Hail Modes Only''. The ``No Modes'' category represents a run of BEAM where all modal innovation was turned off. This means that no mode choice was available, and the modes from the initial input plans remained constant across each iteration. The ``All Modes'' category however, represents a run of BEAM where modal innovation was turned on, and all modal alternatives were available for choice. This meant that within-day replanning as well as across-day replanning was turned on, and agents could change their trip modes to maximize their utility. Lastly, the ``Ride Hail Modes Only'' category represented a run of BEAM where modal innovation was partially turned off. All trips that originally took car or carpool modes had modal innovation turned off; their modes were locked. All trips that originally took walk-transit or drive-transit modes, however, were given the option to switch to ride hail transit. Also, all walk modes were given the option to switch to ride hail. ``Ride Hail Modes Only'' represented the version of BEAM where ride hail and ride hail transit modes were given to non-car dependent agents. Overall, by using different mode choice structures within BEAM, we hope to better understand how altering available modal alternatives affects ride hail service capabilities.
 
 Finally, the third descriptor present in Table \ref{tab:tbexperiments} is labeled as ``BEAM Utility Variables'' and explains which utility variables were used to calculate modal utility. Three difference variations were present: ``N/A'', ``Path, Person, Location'', and ``Path''. The ``N/A'' option means no utility parameters were used in determining mode choice, because modal innovation as turned off completely. The ``Path, Person, Location'' option represented the version of BEAM that used all utility parameter types to calculate the mode choice utility. As ActivitySim uses path, person, and location type variables to determining modes, this version of BEAM also uses all three types of variables. Section \ref{meth-beam-link} describes how BEAM was configured to use all these variable types. The ``Path'' option represented the version of BEAM that only used path type utility parameters to calculate mode choice utility; the location and person type variables were not used. By altering which variables were used in the utility equation, We hope to better understand the effect different types of utility parameters have on mode choice and ride hail service capabilities.
 
-Overall, we ran 10 different scenarios each with a slightly different ActivitySim-to-BEAM mode choice combination. Each scenario is built from which modes were included in the input plans, which modal alternatives were available for choice, and which utility parameter types were used to calculate the mode choice utility. By altering these three different mode choice characteristics, we hope to better understand the affect a linked activity-based model and multiagent simulation have on the service capabilities of a novel mode.
+Overall, we ran 10 different scenarios each with a slightly different ActivitySim-to-BEAM mode choice combination. Each scenario is built from which modes were included in the input plans, which modal alternatives were available for choice, and which utility parameter types were used to calculate the mode choice utility. By altering these three different mode choice characteristics, we hope to better understand the affect a linked activity-based model and multi-agent simulation have on the service capabilities of a novel mode.
 
 \hypertarget{results}{%
 \chapter{Results}\label{results}}
 
-\hypertarget{ridership}{%
-\section{Ridership}\label{ridership}}
+We ran 10 different ActivitySim-to-BEAM mode choice combinations and processed their ride hail statistics and service capabilities into results. Specifically, we obtained ridership (Section \ref{res-ridership}), transfer (Section \ref{res-transfers}), and wait time (Section \ref{res-waits}) information from the final iteration of BEAM for each scenario. Alongside each other, these results should shed some light on how differing mode choice structures between an activity-based model and a multi-agent simulation affect the forecasting of novel modes.
+
+\hypertarget{res-ridership}{%
+\section{Ridership}\label{res-ridership}}
+
+As novel modes, like ride hail, become more popular it is ever more important to accurately predict ridership. Predicting accurate ridership totals will allow for efficient driver allocation, decreased traffic congestion, and improved rider experience (Chen, Thakuriah, and Ampountolas 2021). Table \ref{tab:ridership} shows the ridership percentages of ride hail, ride hail pooled, and ride hail transit modes for all 10 mode choice combinations. Correctly understanding the results of Table \ref{tab:ridership} may help forecasters predict ridership numbers more effectively in the future. To accurately interpret the results of Table \ref{tab:ridership} however, we must determine the best method to reading the table. The many slight variations in each mode choice structure makes interpretting the results complicated.
 
 \begin{table}
 
 \caption{\label{tab:ridership}Percent Ride Hail Ridership by Mode Choice Combination Scenario}
 \centering
-\begin{tabular}[t]{lrrr}
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{rlrrrr}
 \toprule
-Scenario Name & ride\_hail & ride\_hail\_pooled & ride\_hail\_transit\\
+Scenario Number & Scenario Name & ride\_hail & ride\_hail\_pooled & ride\_hail\_transit & Total\\
 \midrule
-wRH-None & 0.024 & 0.003 & 0.000\\
-noRH-None & 0.000 & 0.000 & 0.000\\
-wRH-AllModes-AllVars & 0.280 & 0.536 & 0.014\\
-noRH-AllModes-AllVars & 0.280 & 0.567 & 0.011\\
-wRH-AllModes-PathVars & 0.312 & 0.413 & 0.008\\
+1 & wRH-None & 0.024 & 0.003 & 0.000 & 0.027\\
+2 & noRH-None & 0.000 & 0.000 & 0.000 & 0.000\\
+3 & wRH-AllModes-AllVars & 0.280 & 0.536 & 0.014 & 0.830\\
+4 & noRH-AllModes-AllVars & 0.280 & 0.567 & 0.011 & 0.858\\
+5 & wRH-AllModes-PathVars & 0.312 & 0.413 & 0.008 & 0.733\\
 \addlinespace
-noRH-AllModes-PathVars & 0.423 & 0.145 & 0.003\\
-wRH-RHModes-AllVars & 3.980 & 2.293 & 0.323\\
-noRH-RHModes-AllVars & 1.615 & 3.327 & 0.395\\
-wRH-RHModes-PathVars & 1.824 & 3.465 & 0.461\\
-noRH-RHModes-PathVars & 3.814 & 2.120 & 0.249\\
+6 & noRH-AllModes-PathVars & 0.423 & 0.145 & 0.003 & 0.571\\
+7 & wRH-RHModes-AllVars & 3.980 & 2.293 & 0.323 & 6.596\\
+8 & noRH-RHModes-AllVars & 1.615 & 3.327 & 0.395 & 5.337\\
+9 & wRH-RHModes-PathVars & 1.824 & 3.465 & 0.461 & 5.750\\
+10 & noRH-RHModes-PathVars & 3.814 & 2.120 & 0.249 & 6.183\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
-\hypertarget{transfers}{%
-\section{Transfers}\label{transfers}}
+We propose two methodologies to interpreting the results of Table \ref{tab:ridership} as well as the other results presented in Section \ref{res-transfers} and Section \ref{res-waits}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Comparing scenarios individually
+\item
+  Comparing scenarios collectively
+\end{enumerate}
+
+\hypertarget{res-ind}{%
+\subsection{Comparing Scenarios Individually}\label{res-ind}}
+
+To provide an example of using the first methodology, we compare the wRH-None scenario with the other nine scenarios. To begin, the wRH-None scenario compared with the noRH-None scenario helps us understand how ActivitySim estimates ridership. Since the wRH-None scenario and noRH-None scenario are run with BEAM's modal innovation turned off, we can assume that these results mimic those output from ActivitySim. Obviously the noRH-None scenario will produce no ride hail results. Looking at the wRH-None scenario though, we clearly see the level at which ActivitySim predicts ridership. ActivitySim estimates that of the entire population's mode choice, 0.0024\% are ride hail modes, 0.003\% are ride hail pooled modes, and 0.0\% are ride hail transit modes. Since 0.0\% are ride hail transit trips, we conclude that ActivitySim struggles at creating this particular mode option. Ride hail pooled modes are also very low, but not impossible.
+
+Comparing the wRH-None scenario with the wRH-AllModes-AllVars we learn about the inter-workings of the BEAM mode choice that is most consistent with ActivitySim. As described in Table \ref{tab:tbexperiments}, the AllModes-AllVars references a BEAM mode choice structure which uses all modal options and all utility parameters. In other words, this BEAM mode choice structure is the one most aligned with that of ActivitySim. By comparing this scenario with the wRH-None scenario, we see how ride hail statistics \emph{differ} when modeled with an activity-based model or with a multiagent simulation. This comparison is justified because the wRH-AllModes-AllVars scenario represents a version of BEAM's mode choice model which is most consistent with that of ActivitySim. Looking at the differences between these two scenarios in Table \ref{tab:ridership}, we see an increase of 0.256\% of total ride hail modes, 0.533\% of total pooled ride hail, and 0.014\% of total ride hail transit modes. Overall, a significant increase in ridership was acheived by simply turning on modal innovation in BEAM. Overall, we conclude that BEAM is more prone to estimating higher ridership totals for ride hailing modes than ActivitySim.
+
+Comparing the wRH-None scenario with the noRH-AllModes-AllVars scenario we see the effectiveness of BEAM at estimating ride hail modes without ride hail being selected in the initial plans. A large increase in total ride hail ridership is seen. Similarly with the wRH-AllModes-AllVars scenario, BEAM will estimate higher ridership totals than ActivitySim, independent of whether or not the input plans include ride hailing modes. Comparing the wRH-None scenario with the wRH-AllModes-PathVars and noRH-AllModes-PathVars scenarios we see the a glipmse at how BEAM at estimates ride hail modes with only path variables, independent of whether or not the input plans include ride hail. A significant increase in ridership is displayed when compared with the wRH-None scenario. This may highlight the importance of using path variables to estimate ride hail ridership.
+
+Comparing the wRH-None scenario with the final four ``RHModes'' scenarios, less direct conclusions can be made. Of course, we obviously see that the ridership totals for all ride hail modes in all scenarios are greater than the ridership of the wRH-None scenario. We can conclude that the BEAM mode choice structure which allows only ride hail modal innovation will predict higher ridership totals than ActivitySim. However, since each scenario presents a unique total ridership for each ride hail mode, we cannot draw anymore conclusions by only referencing the results of the wRH-None scenario. Comparing other scenarios amoungst each other individually may help us draw more conclusions, however, analyzing every combination of individual scenario is beyond the extent of this paper. As a result, we instead move to comparing these scenarios collectively to better understand these results.
+
+\hypertarget{res-col}{%
+\subsection{Comparing Scenarios Collectively}\label{res-col}}
+
+Looking at scenarios collectively, and comparing them with each other and with other collective groups will extract deeper results in our research. Section \ref{meth-scenarios} and Table \ref{tab:tbexperiments} describe the following three different descriptors which will be used as the collective groups:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ActivitySim Mode Options
+\item
+  BEAM Mode Options
+\item
+  BEAM Utility Variables.
+\end{enumerate}
+
+As shown in Table \ref{tab:ridership}, minimal differences in ridership is produced between ActivitySim mode option outputs (noRH vs.~wRH). For example, examining Scenario 3 and Scenario 4, the output ridership percentages are almost identical. When using the BEAM mode choice mode that is most consistent with that of ActivitySim, BEAM estimates ride hail ridership at the same level with or without ride hail in the input plans. However, when examining Scenario 5 and Scenario 6 we see that when only path variables are used in the utility equation, ridership is not identical between ActivitySim mode options. Scenario 6 shows an increase in ridership for ride hail modes and a decrease in ride hail pooled and ride hail transit modes than in Scenario 5. Initial plan sets play a role in who selects pooled and transit ride hail trips when only using path variables to determine mode choice. We hypothesize that with the lack of person attributes in the utility equation, pooled and transit ride hail options look less appealing. Comparing the ``RHModes'' type scenarios we see no direct correlation with ridership and input plans. However if ride hail, ride hail pooled, and ride hail transit modes are summed up it provides slightly more clarity. With Scenario 7 and Scenario 8, we see that when ride hail exists in the input plans, the total ride hail type modes complete about 6.6\% of total modal distribution whereas when ride hail type modes aren't included, total ride hail type modes complete around 5.3\% of total modal distribution. Although both project an enormous share using ride hail, the scenario with ride hail in the input plans project more ride hail ridership. Oddly enough, with Scenario 9 and Scenario 10 the opposite is true; the scenario where the input plans did not include ride hail projects about 6.2\% of users taking ride hail whereas only about 5.8\% of users take ride hail in Scenario 9. Collectively, comparing Scenarios 1, 3, 5, 7, and 9 against Scenarios 2, 4, 6, 8, and 10 we see similar results among similar mode choice structures. Although slight differences were noticed, as a whole, we determine that changing the ActivitySim mode options has no \emph{significant} change in final ride hail ridership.
+
+Analyzing the BEAM mode options from Table \ref{tab:ridership}, obvious results are seen. The None type scenarios (Scenario 1 and Scenario 2) produce little to no agents choosing ride hail. The reasoning behind this is described in Section \ref{res-ind}. The ``AllModes'' type mode structure (Scenarios 3, 4, 5, and 6) produces a significantly larger number of ride hail modes than the None type. According to BEAM, ride hail type modes are more attractive than initially projected by ActivitySim. The ``RHModes'' type mode structure (Scenarios 7, 8, 9, 10) produce significantly larger number of ride hail modes than the ``AllModes'' type! We assume this is because with the ``RHModes'' type mode choice, walking individuals only have the option to continue walking or take ride hail. Taking a ride hail mode is usually more attractive than walking a long distance; and because of this limitation, even more agents switch to using ride hail. Ridership is affected significantly by which mode choice structure is used by BEAM; this conclusion is clear.
+
+Finally, we can analyze the effect the BEAM utility variables have on ride hail ridership totals. Two different options are shown: ``AllVars'' and ``PathVars.'' To best understand the effect the utility variables have, we compare similar BEAM structures with just the utility variables adjusted. For example, Scenario 3 and Scenario 5 can be compared together. In this case, the ride hail mode ridership increases when using only path variables, but decreases with ride hail pooled and ride hail transit when using only path variables. This same pattern occurs when analyzing the difference between Scenario 4 and Scenario 6, as well as with Scenario 8 and Scenario 10. For some oddity, Scenario 7 and Scenario 9 follow an opposite pattern where ride hail increases and ride hail pooled and ride hail transit decrease when only using path variables. Similarly, with all comparisons except between Scenario 7 and Scenario 9, total ride hail percentages decrease when only using path variables to estimate ride hail. We acknowledge that not all scenarios follow this pattern, but conclude that in general using path variables to estimate ride hail ridership will result in less total ride hail ridership than if using path, person, and location type variables.
+
+\hypertarget{a-deeper-look-at-ridership}{%
+\subsection{A Deeper Look at Ridership}\label{a-deeper-look-at-ridership}}
+
+The results from Table \ref{tab:tbexperiments} analyzed in Section \ref{res-ind} and Section \ref{res-col} can be explained further by understanding the original setup of the experiments. For example, the clearest distinction in ridership exists between BEAM mode choice structures. The ``None'', ``AllModes'', and ``RHModes'' scenario types each produce results at a different magnitude. These vastly different results are directly related to how each model structure was constructed.
+
+The ``None'' BEAM mode choice model type uses no mode choice code from the BEAM software. As explained in Table \ref{tab:tbexperiments}, this scenario descriptor points toward turning off BEAM's modal innovation. In a way, the results from these scenarios are almost identical to the direct output of ActivitySim itself. Since BEAM locked every trip's mode selection, we use these experiments to help understand the difference between how BEAM estimates ride hail against how ActivitySim estimates ride hail. Although it may seem illogical to use BEAM on top of ActivitySim for the ``None'' type scenarios, it was still necessary to run them with BEAM because BEAM estimates ride hail service capabilities with more detail than ActivitySim (See Section \ref{lit-mas}).
+
+The ``AllModes'' BEAM mode choice model type uses a linked mode choice model with that of ActivitySim (See Section \ref{meth-beam-link}) with all modal alternatives available. This adjusted model structure helps us better understand why we obtained much higher ridership than with the ``None'' type. Users that switched to ride hail mainly from \emph{x-mode} modes.
+
+The ``RHModes'' BEAM mode choice model type also uses a linked mode choice model with that of ActivitySim, but only walk and transit users have the option to switch to ride hail type modes; vehicle trips remain locked across each iteration.
+
+\begin{figure}
+
+{\centering \includegraphics{thesis_files/figure-latex/piechart-1} 
+
+}
+
+\caption{Piechart}\label{fig:piechart}
+\end{figure}
+
+\emph{create graph/table showing which modes rh is stealing from -- ito vs it12?}
+
+\emph{explains the wRH/noRH diff} This points toward the modal options available in ActivitySim. ActivitySim was run two times, one with ride hail modal options turned on and one with them turned off. This generated two input plans files, one with agents taking ride hail and with with no agents taking ride hail. For each experiment, BEAM was run for 12 iterations. Twelve iterations was enough for BEAM to generate similar results among regardless of initial ride hail selections.
+
+\hypertarget{res-waits}{%
+\section{Wait Times}\label{res-waits}}
+
+\emph{do wait times first because most similar with riderrship}
+
+\begin{figure}
+
+{\centering \includegraphics{thesis_files/figure-latex/waits-1} 
+
+}
+
+\caption{Distribution of Ride Hail Wait Times by Mode Choice Combination Scenario}\label{fig:waits}
+\end{figure}
+
+\hypertarget{res-transfers}{%
+\section{Transfers}\label{res-transfers}}
 
 \begin{figure}
 
@@ -524,18 +611,6 @@ noRH-RHModes-PathVars & 3.814 & 2.120 & 0.249\\
 }
 
 \caption{Number of Transfers per Transfer Type by Mode Choice Combination Scenario}\label{fig:transfergraph}
-\end{figure}
-
-\hypertarget{wait-times}{%
-\section{Wait Times}\label{wait-times}}
-
-\begin{figure}
-
-{\centering \includegraphics{thesis_files/figure-latex/waits-1} 
-
-}
-
-\caption{Distribution of Ride Hail Wait Times per Mode Choice Combination Scenario}\label{fig:waits}
 \end{figure}
 
 \hypertarget{discussion}{%
@@ -598,6 +673,9 @@ Campbell, Andrew A, Christopher R Cherry, Megan S Ryerson, and Xinmiao Yang. 201
 
 \leavevmode\vadjust pre{\hypertarget{ref-cetin02}{}}%
 Cetin, Nurhan, Kai Nagel, Bryan Raney, and Andreas Voellmy. 2002. {``Large-Scale Multi-Agent Transportation Simulations.''} \emph{Computer Physics Communications} 147 (1-2): 559--64.
+
+\leavevmode\vadjust pre{\hypertarget{ref-chen21}{}}%
+Chen, Long, Piyushimita Vonu Thakuriah, and Konstantinos Ampountolas. 2021. {``Short-Term Prediction of Demand for Ride-Hailing Services: A Deep Learning Approach.''} \emph{Journal of Big Data Analytics in Transportation} 3 (2): 175--95.
 
 \leavevmode\vadjust pre{\hypertarget{ref-cho22}{}}%
 Cho, Shin-Hyung, and DongHwa Shin. 2022. {``Estimation of Route Choice Behaviors of Bike-Sharing Users as First-and Last-Mile Trips for Introduction of Mobility-as-a-Service (MaaS).''} \emph{KSCE Journal of Civil Engineering}, 1--12.

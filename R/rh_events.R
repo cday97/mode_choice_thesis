@@ -136,6 +136,62 @@ count_rh_transit_transfers <- function(events){
     summarize(n = n())
 }
 
+
+#plans comparison
+read_plans <- function(plans_raw){
+  plans <- plans_raw %>% 
+    fread(select=c("personId","planElementIndex","planSelected","activityType","activityEndTime","legMode")) %>% as.tibble() %>% 
+    mutate(
+      personElement = paste0(personId,"_",planElementIndex)
+    ) %>%
+    filter(planSelected == TRUE)
+}
+
+
+rh_switch <- function(plans0,plans10){
+  final_rh_users <- plans10 %>%
+    filter(grepl("ride",legMode))
+  
+  original_rh_users <- plans0 %>%
+    filter(legMode != "") %>% filter(!is.na(legMode)) %>%
+    filter(personElement %in% final_rh_users$personElement)
+  
+  
+#  summary0 <- final_rh_users %>%
+#    group_by(legMode) %>%
+#    summarize(n = n()) %>%
+#    mutate(share = n / sum(n)) %>%
+#    mutate(share = round(share*100,3))
+  summary <- original_rh_users %>%
+    group_by(legMode) %>%
+    summarize(n = n()) %>%
+    mutate(share = n / sum(n)) %>%
+    mutate(share = round(share*100,3))
+  summary
+}
+
+bind_plans <- function(plans1,plans2,plans3,plans4){
+  bind_rows(plans1,plans2,plans3,plans4, .id = "Scenario") %>%
+    mutate(ScenarioName = ifelse(Scenario == 1, "wRH-AllModes-AllVars",
+                              ifelse(Scenario == 2, "wRH-AllModes-PathVars",
+                                ifelse(Scenario == 3, "noRH-AllModes-AllVars", "noRH-AllModes-PathVars"))))
+}
+
+pie_chart <- function(plans_sum){
+  ggplot(plans_sum, aes(x=" ", y=share, group=legMode, colour=legMode, fill=legMode)) +
+    geom_bar(width = 1, stat = "identity") +
+    geom_col(color = "black") +
+    geom_text(aes(label = round(share,0)),
+              color = "black",
+              position = position_stack(vjust = 0.5),
+              size = 2.5) +
+    coord_polar("y", start=0) + 
+    facet_grid(.~ ScenarioName) +theme_void() + 
+    theme(text = element_text(size = 8)) +
+    scale_fill_brewer(palette="Set3")
+}
+
+
 # create tables/graphs used in results section--------------------------------------------------#
 format_ridership_table <- function(mode_choice_table){
   ridership <- mode_choice_table %>%
@@ -144,13 +200,16 @@ format_ridership_table <- function(mode_choice_table){
     pivot_longer(!mode,names_to = "Scenario Name", values_to = "ridership") %>%
     filter(mode %in% c("ride_hail","ride_hail_pooled","ride_hail_transit")) %>%
     pivot_wider("Scenario Name", names_from=mode,values_from=ridership) %>%
-    mutate_all(~replace(., is.na(.), 0.000)) 
+    mutate_all(~replace(., is.na(.), 0.000)) %>%
     #mutate(across(!"Scenario Name", ~paste0(.,"%")))
+    mutate("Scenario Number" = row_number(),
+           "Total" = ride_hail + ride_hail_pooled+ride_hail_transit) %>%
+    select(5,1,2,3,4,6)
 }
 
 format_transfers_table <- function(rh_to_transit){
   transfers <- rh_to_transit %>%
-    rename(rename_list) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
+    rename(rename_list_graph) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
     pivot_longer(!transfer_type, names_to="Scenario Name") %>%
     mutate(transfer_type = ifelse(transfer_type == "rideHail-transit", "ride_hail-to-transit","transit-to-ride_hail")) %>%
     pivot_wider("Scenario Name", names_from = transfer_type, values_from = value) %>%
@@ -163,8 +222,9 @@ format_transfers_graph <- function(transfers){
     rename("scenario" = "Scenario Name")
   
   transfer_long$scenario <- factor(transfer_long$scenario, 
-                                   levels=c("wRH-None", "noRH-None", "wRH-AllModes-AllVars", "noRH-AllModes-AllVars", "wRH-AllModes-PathVars",
-                                            "noRH-AllModes-PathVars", "wRH-RHModes-AllVars","noRH-RHModes-AllVars", "wRH-RHModes-PathVars", "noRH-RHModes-PathVars"))
+                                   levels=c("wRH-None (1)", "noRH-None (2)", "wRH-AllModes-AllVars (3)", "noRH-AllModes-AllVars (4)", "wRH-AllModes-PathVars (5)",
+                                            "noRH-AllModes-PathVars (6)", "wRH-RHModes-AllVars (7)","noRH-RHModes-AllVars (8)", "wRH-RHModes-PathVars (9)", "noRH-RHModes-PathVars (10)"))
+  
   ggplot(transfer_long) +
     aes(x = as.factor(scenario), y = numtransfers, fill = transfertype) +
     geom_col_pattern(
@@ -183,14 +243,14 @@ format_transfers_graph <- function(transfers){
 
 format_waits_graph <- function(wait_times){
   summary <- wait_times %>%
-    rename(rename_list) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
+    rename(rename_list_graph) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
     mutate_all(~replace(., is.na(.), 0)) %>%
     pivot_longer(!values, names_to="scenario", values_to="vals") %>%
     pivot_wider(scenario, names_from="values",values_from="vals") %>%
     mutate(scenario = as.factor(scenario))
   summary$scenario <- factor(summary$scenario, 
-    levels=c("wRH-None", "noRH-None", "wRH-AllModes-AllVars", "noRH-AllModes-AllVars", "wRH-AllModes-PathVars",
-             "noRH-AllModes-PathVars", "wRH-RHModes-AllVars","noRH-RHModes-AllVars", "wRH-RHModes-PathVars", "noRH-RHModes-PathVars"))
+    levels=c("wRH-None (1)", "noRH-None (2)", "wRH-AllModes-AllVars (3)", "noRH-AllModes-AllVars (4)", "wRH-AllModes-PathVars (5)",
+             "noRH-AllModes-PathVars (6)", "wRH-RHModes-AllVars (7)","noRH-RHModes-AllVars (8)", "wRH-RHModes-PathVars (9)", "noRH-RHModes-PathVars (10)"))
   
   ggplot(summary, aes(x = scenario)) +
     geom_boxplot(aes(
@@ -220,3 +280,15 @@ rename_list = c(
   "noRH-None" = "No Modes - No RH"
 )
 
+rename_list_graph = c(
+  "wRH-AllModes-AllVars (3)" = "All Modes - All Variables - W/ RH",
+  "wRH-AllModes-PathVars (5)" = "All Modes - Path Variables - W/ RH",
+  "wRH-RHModes-AllVars (7)" = "RH Modes - All Variables - W/ RH",
+  "wRH-RHModes-PathVars (9)" = "RH Modes - Path Variables - W/ RH",
+  "wRH-None (1)" = "No Modes - W/ RH",
+  "noRH-AllModes-AllVars (4)" = "All Modes - All Variables - No RH",
+  "noRH-AllModes-PathVars (6)" = "All Modes - Path Variables - No RH",
+  "noRH-RHModes-AllVars (8)" = "RH Modes - All Variables - No RH",
+  "noRH-RHModes-PathVars (10)" = "RH Modes - Path Variables - No RH",
+  "noRH-None (2)" = "No Modes - No RH"
+)
