@@ -2,13 +2,13 @@
 library(targets)
 library(tarchetypes)
 library(tidyverse)
+library(ggrepel)
 
 
 # Set target-specific options such as packages.
-## To install RAM: devtools::install_url("https://cran.r-project.org/src/contrib/Archive/RAM/RAM_1.2.1.tar.gz")
 tar_option_set(packages = c("tidyverse", "bookdown", "readr", "dotwhisker", 
                             "ggpubr", "scales", "future", "future.apply", "furrr",
-                            "data.table", "ggpattern"))
+                            "data.table", "ggpattern", "ggrepel"))
 
 #Define custom functions and other global objects.
 # This is where you write source(\"R/functions.R\")

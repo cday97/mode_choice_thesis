@@ -156,12 +156,6 @@ rh_switch <- function(plans0,plans10){
     filter(legMode != "") %>% filter(!is.na(legMode)) %>%
     filter(personElement %in% final_rh_users$personElement)
   
-  
-#  summary0 <- final_rh_users %>%
-#    group_by(legMode) %>%
-#    summarize(n = n()) %>%
-#    mutate(share = n / sum(n)) %>%
-#    mutate(share = round(share*100,3))
   summary <- original_rh_users %>%
     group_by(legMode) %>%
     summarize(n = n()) %>%
@@ -178,17 +172,23 @@ bind_plans <- function(plans1,plans2,plans3,plans4){
 }
 
 pie_chart <- function(plans_sum){
-  ggplot(plans_sum, aes(x=" ", y=share, group=legMode, colour=legMode, fill=legMode)) +
-    geom_bar(width = 1, stat = "identity") +
-    geom_col(color = "black") +
-    geom_text(aes(label = round(share,0)),
-              color = "black",
-              position = position_stack(vjust = 0.5),
-              size = 2.5) +
-    coord_polar("y", start=0) + 
-    facet_grid(.~ ScenarioName) +theme_void() + 
+  ggplot(plans_sum, aes(x=ScenarioName, y=share, group=legMode, fill=fct_inorder(legMode))) +
+    geom_bar(position = "stack",stat = "identity") +
+    geom_col(color = 1) +
+    geom_label_repel(aes(x = ScenarioName, 
+                        y = share, 
+                        label = paste0(round(share,2),"%")),
+                    color = "black",
+                    position = position_stack(vjust = .65),
+                    size = 2,
+                    show.legend = FALSE) + 
+    theme_bw() + 
+    guides(fill = guide_legend(title = "Mode")) +
     theme(text = element_text(size = 8)) +
-    scale_fill_brewer(palette="Set3")
+    scale_fill_brewer(palette="Set3", labels=c('Bike', 'Car', 'Drive to Transit', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride Hail", "Pooled Ride Hail", "Walk", "Walk to Transit")) +
+    xlab("Scenario Name") +
+    ylab("Share") +
+    theme(axis.text.x = element_text(angle=90, hjust=1))
 }
 
 
@@ -292,3 +292,17 @@ rename_list_graph = c(
   "noRH-RHModes-PathVars (10)" = "RH Modes - Path Variables - No RH",
   "noRH-None (2)" = "No Modes - No RH"
 )
+df <- data.frame(value = c(15, 25, 32, 28),
+                 group = paste0("G", 1:4))
+df2 <- df %>% 
+  mutate(csum = rev(cumsum(rev(value))), 
+         pos = value/2 + lead(csum, 1),
+         pos = if_else(is.na(pos), value/2, pos))
+
+ggplot(df, aes(x = "" , y = value, fill = fct_inorder(group))) +
+
+  coord_polar(theta = "y") +
+  scale_fill_brewer(palette = "Pastel1") +
+  geom_label_repel(data = df2,
+                   aes(label = paste0(value, "%")),
+                   size = 4.5)
