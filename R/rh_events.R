@@ -1,15 +1,4 @@
 
-#events_raw <- "data/events/12.events-15pct-wRH-all-all.csv"
-#events1 <- read_events(events_raw,cols)
-#mc1 <- mode_choice(events1)
-#ta1 <- trip_arrivals(events1)
-
-#rhpass1 <- rh_pass(events1)
-#rhtimes1 <- rh_times(events1)
-#rhtimes2 <- rh_travel_times(events1)
-#rht_transfer1 <- count_rh_transit_transfers(events1) # why 0?
-
-
 
 # functions ---------------------------------------------------------------------#
 read_events <- function(events_raw, cols){
@@ -57,7 +46,7 @@ rh_pass <- function(events){
   rhPassengers
 }
 
-#' rh wait and replanning times
+# old wait time calculation function (no sampling and only summary table ability)
 rh_times <- function(events){
   times <- events %>%
     arrange(person, time) %>%
@@ -79,10 +68,47 @@ rh_times <- function(events){
     mutate(rhReserveTime = rhReserveTime / 60)
   times %>% 
     summarise(mean = mean(rhReserveTime),
-              sd = sd(rhReserveTime)) %>%
+              sd = sd(rhReserveTime),
+              n = n(),
+              max = max(rhReserveTime),
+              min = min(rhReserveTime)) %>%
     pivot_longer(!rhReserveOutcome, names_to = "summary", values_to = "values") %>%
     select(-rhReserveOutcome)
-  }
+}
+
+
+#' rh wait and replanning times
+rh_waittimes <- function(events){
+  s_pop <- events %>%
+    filter(type == "ReserveRideHail") %>%
+    filter(duplicated(person) == FALSE) %>% 
+    select(person) %>%
+    sample_frac(.25)
+  
+  times <- events %>%
+    filter(person %in% s_pop$person) %>%
+    arrange(person, time) %>%
+    mutate(
+      rhReserveTime = ifelse(
+        type == "ReserveRideHail" & person == lead(person),
+        lead(time) - time,
+        NA
+      ),
+      rhReserveOutcome = ifelse(
+        type == "ReserveRideHail" & person == lead(person),
+        lead(type),
+        NA
+      )
+    ) %>%
+    filter(!is.na(rhReserveTime)) %>%
+    group_by(rhReserveOutcome) %>%
+    filter(rhReserveOutcome == "PersonEntersVehicle") %>%
+    mutate(rhReserveTime = rhReserveTime / 60) %>%
+    select(rhReserveOutcome,rhReserveTime) %>%
+    #ungroup() %>% unlist() %>% unname() %>%
+    as.data.frame()
+}
+
 
 #' rh travel times
 rh_travel_times <- function(events){
@@ -95,13 +121,49 @@ rh_travel_times <- function(events){
     group_by(variable)
   
   times %>%
-    summarise(mean = mean(travelTime),
+    summarise(sum = sum(travelTime),
+              mean = mean(travelTime),
               q25 = quantile(travelTime,c(.25)),
               q50 = quantile(travelTime,c(.5)),
               q75 = quantile(travelTime,c(.75))) %>%
     pivot_longer(!variable, names_to = "summary", values_to = "values") %>%
     select(-variable)
 }
+
+total_fleet_hours <- function(fleet){
+  fleet <- read_csv("data/Driverfleet_SLC.csv") %>%
+    mutate(shift2 = str_sub(shifts,2,-2)) %>%
+    separate(shift2,c("StartTime","EndTime")) %>%
+    mutate(shiftLength = (as.numeric(EndTime) - as.numeric(StartTime))/3600)
+  fleetSummary <- fleet %>%
+    summarize(sum = sum(shiftLength))
+  
+  as.numeric(fleetSummary[1,])
+}
+
+rh_utilization <- function(travel_times, num_passengers, totalFleetHours){
+  tt <- travel_times %>%
+    rename(rename_list_graph) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
+    pivot_longer(!values, names_to = "ScenarioName", values_to = "TotalTravelTime") %>%
+    filter(values == "sum") %>% select(-values) %>%
+    mutate(TotalTravelTime = TotalTravelTime / 60)
+  np <- num_passengers %>%
+    rename(rename_list_graph) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
+    pivot_longer(!num_passengers, names_to = "ScenarioName", values_to = "vals") %>%
+    filter(num_passengers != 0) %>%
+    group_by(ScenarioName) %>%
+    mutate_all(~replace(., is.na(.), 0)) %>%
+    mutate(TotalPassengers = sum(vals)) %>%
+    filter(num_passengers == 1) %>% select(-num_passengers,-vals)
+  
+  sumTable <- left_join(tt,np,by = "ScenarioName") %>%
+    mutate(TotalDriverHours = totalFleetHours) %>%
+    mutate(RideHailTimeUtilization = round(TotalTravelTime / TotalDriverHours * 100,3),
+           RideHailPersonUtilization = round(TotalPassengers / TotalDriverHours,3))
+  
+  sumTable <- sumTable[-2,]  
+}
+
 
 #' count transfers to/from transit and rh
 count_rh_transit_transfers <- function(events){
@@ -171,6 +233,8 @@ bind_plans <- function(plans1,plans2,plans3,plans4){
                                 ifelse(Scenario == 3, "noRH-AllModes-AllVars", "noRH-AllModes-PathVars"))))
 }
 
+
+# create tables/graphs used in results section--------------------------------------------------#
 pie_chart <- function(plans_sum){
   ggplot(plans_sum, aes(x=ScenarioName, y=share, group=legMode, fill=fct_inorder(legMode))) +
     geom_bar(position = "stack",stat = "identity") +
@@ -191,8 +255,6 @@ pie_chart <- function(plans_sum){
     theme(axis.text.x = element_text(angle=90, hjust=1))
 }
 
-
-# create tables/graphs used in results section--------------------------------------------------#
 format_ridership_table <- function(mode_choice_table){
   ridership <- mode_choice_table %>%
     #instead of renaming, just fix the names in targets and rerun (will take like 1hr)
@@ -227,12 +289,7 @@ format_transfers_graph <- function(transfers){
   
   ggplot(transfer_long) +
     aes(x = as.factor(scenario), y = numtransfers, fill = transfertype) +
-    geom_col_pattern(
-      aes(pattern = transfertype, pattern_angle = transfertype, pattern_spacing = transfertype),
-      fill            = 'white', 
-      colour          = 'black',
-      pattern_spacing = 0.04,
-      position = "dodge2") + 
+    geom_col(position = "dodge2") +
     theme_bw() +
     theme(axis.text.x = element_text(angle=90, hjust=1)) +
     xlab("Scenario Name") +
@@ -242,29 +299,34 @@ format_transfers_graph <- function(transfers){
 }
 
 format_waits_graph <- function(wait_times){
-  summary <- wait_times %>%
-    rename(rename_list_graph) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
-    mutate_all(~replace(., is.na(.), 0)) %>%
-    pivot_longer(!values, names_to="scenario", values_to="vals") %>%
-    pivot_wider(scenario, names_from="values",values_from="vals") %>%
-    mutate(scenario = as.factor(scenario))
-  summary$scenario <- factor(summary$scenario, 
-    levels=c("wRH-None (1)", "noRH-None (2)", "wRH-AllModes-AllVars (3)", "noRH-AllModes-AllVars (4)", "wRH-AllModes-PathVars (5)",
+  waittimes <- wait_times %>%
+    group_by(ScenarioName) %>%
+    mutate(mean = mean(rhReserveTime)) %>%
+    mutate(ScenarioName = as.factor(ScenarioName)) %>%
+    mutate(ScenarioName = case_when(
+      ScenarioName == "All Modes - All Variables - W/ RH" ~ "wRH-AllModes-AllVars (3)",
+      ScenarioName == "All Modes - Path Variables - W/ RH" ~ "wRH-AllModes-PathVars (5)",
+      ScenarioName == "RH Modes - All Variables - W/ RH" ~ "wRH-RHModes-AllVars (7)",
+      ScenarioName == "RH Modes - Path Variables - W/ RH" ~ "wRH-RHModes-PathVars (9)",
+      ScenarioName == "No Modes - W/ RH" ~ "wRH-None (1)",
+      ScenarioName == "All Modes - All Variables - No RH" ~ "noRH-AllModes-AllVars (4)",
+      ScenarioName == "All Modes - Path Variables - No RH" ~ "noRH-AllModes-PathVars (6)",
+      ScenarioName == "RH Modes - All Variables - No RH" ~ "noRH-RHModes-AllVars (8)",
+      ScenarioName == "RH Modes - Path Variables - No RH" ~ "noRH-RHModes-PathVars (10)"
+    ))
+  waittimes$ScenarioName <- factor(waittimes$ScenarioName, 
+    levels=c("wRH-None (1)", "wRH-AllModes-AllVars (3)", "noRH-AllModes-AllVars (4)", "wRH-AllModes-PathVars (5)",
              "noRH-AllModes-PathVars (6)", "wRH-RHModes-AllVars (7)","noRH-RHModes-AllVars (8)", "wRH-RHModes-PathVars (9)", "noRH-RHModes-PathVars (10)"))
-  
-  ggplot(summary, aes(x = scenario)) +
-    geom_boxplot(aes(
-      lower = mean - sd, 
-      upper = mean + sd, 
-      middle = mean, 
-      ymin = mean - 3*sd, 
-      ymax = mean + 3*sd),
-      stat = "identity") +
+
+  ggplot(waittimes, aes(x = ScenarioName, y = rhReserveTime, fill = ScenarioName, alpha = .3)) + 
+    geom_violin() + geom_boxplot(width = 0.3) +
+    scale_fill_brewer(palette="Set3") +
+    geom_text(aes(label = round(mean,1), y = mean + 1), size = 3)  +  
     xlab("Scenario Name") +
-    ylab("Wait Time (sec)") +
+    ylab("Wait Time (min)") +
     theme_bw() +
-    theme(axis.text.x = element_text(angle=90, hjust=1)) +
-    geom_text(aes(label = round(mean,2), y = mean + 2.3))
+    theme(legend.position="none") +
+    theme(axis.text.x = element_text(angle=90, hjust=1))
 }
 
 rename_list = c(
@@ -292,17 +354,4 @@ rename_list_graph = c(
   "noRH-RHModes-PathVars (10)" = "RH Modes - Path Variables - No RH",
   "noRH-None (2)" = "No Modes - No RH"
 )
-df <- data.frame(value = c(15, 25, 32, 28),
-                 group = paste0("G", 1:4))
-df2 <- df %>% 
-  mutate(csum = rev(cumsum(rev(value))), 
-         pos = value/2 + lead(csum, 1),
-         pos = if_else(is.na(pos), value/2, pos))
 
-ggplot(df, aes(x = "" , y = value, fill = fct_inorder(group))) +
-
-  coord_polar(theta = "y") +
-  scale_fill_brewer(palette = "Pastel1") +
-  geom_label_repel(data = df2,
-                   aes(label = paste0(value, "%")),
-                   size = 4.5)

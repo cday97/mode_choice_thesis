@@ -584,6 +584,31 @@ We offer two factors as to why so many car users switch to ride hail modes. The 
 
 Finally, the ``RHModes'' BEAM mode choice model type also uses a linked mode choice model with that of ActivitySim, but only walk and transit users have the option to switch to ride hail type modes; car-type modes remained locked across each iteration. The way BEAM's internal code is written in this scenario explains the increase in ridership. The internal BEAM code was adjusted in order to allow some modes to be flexible while others to remain locked. For example, whenever a ride hail path could be built, all walk modes were automatically given the option to choose ride hail or ride hail pooled and all transit modes were automatically given the option to choose ride hail transit. Although it made logical sense to lock all car-type modes (for reasons described in the previous paragraph), by giving ride hail options only to walk and transit users, ridership increased even more than in the ``AllModes'' scenario. The increase in ridership occurred because 1.) BEAM's adjusted code forced ride hail to be an option in almost all cases, and 2.) in most cases ride hail was calculated to be more attractive than walk or transit modes.
 
+\emph{Talk about rh utilization and that there would be higher ridership if fleet wasn't all used up!}
+
+\begin{table}
+
+\caption{\label{tab:timeutil}Percent ride hail time utilization by mode choice combination scenario.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{lr}
+\toprule
+ScenarioName & RideHailTimeUtilization\\
+\midrule
+wRH-None (1) & 21.497\\
+wRH-AllModes-AllVars (3) & 71.117\\
+noRH-AllModes-AllVars (4) & 71.298\\
+wRH-AllModes-PathVars (5) & 76.520\\
+noRH-AllModes-PathVars (6) & 80.593\\
+\addlinespace
+wRH-RHModes-AllVars (7) & 97.832\\
+noRH-RHModes-AllVars (8) & 95.810\\
+wRH-RHModes-PathVars (9) & 96.724\\
+noRH-RHModes-PathVars (10) & 99.203\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
 As seen by the explanation of the ``None'', ``AllModes'', and ``RHModes'' type scenarios, BEAM's different mode choice structures affected total ride hail ridership significantly. These different mode choice structures also affected the other results in a similar fashion. Many of the conclusions that were arrived at from analyzing ridership can be seen in the other results. Section \ref{res-waits} displays the wait time results calculated from the same scenarios.
 
 \hypertarget{res-waits}{%

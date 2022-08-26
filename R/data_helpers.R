@@ -21,3 +21,15 @@ all_join <- function(events_list, func, join_col, col_1_name, ...){
   full %>% 
     `colnames<-`(c(col_1_name, names(events_list)))
 }
+
+rbind_join <- function(events_list, func){
+  full <-list()
+  for(i in 1:length(events_list)){
+    full[[i]] <- func(events_list[[i]]) %>% 
+      mutate(ScenarioName = names(events_list)[i])
+  }
+  
+  bind_rows(full, .id = "id") %>%
+    select(-id)
+}
+

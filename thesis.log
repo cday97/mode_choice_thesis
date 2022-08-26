@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.15)  24 AUG 2022 16:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.26)  26 AUG 2022 09:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **thesis.tex
 (./thesis.tex
 LaTeX2e <2022-06-01> patch level 5
-L3 programming layer <2022-08-05> (./byuthesis.cls
+L3 programming layer <2022-08-23> (./byuthesis.cls
 Document Class: byuthesis 2021/11/01 BYU Tech MS/PhD Thesis Class
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
@@ -905,7 +905,7 @@ File: ot1ntxtlf.fd 2021/05/24 v1.0 font definition file for OT1/ntx/tlf
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 12.0pt on input line 103.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2022-08-05 L3 backend support: PDF output (pdfTeX)
+File: l3backend-pdftex.def 2022-08-23 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count381
 \l__pdf_internal_box=\box126
 ) (./thesis.aux)
@@ -1067,7 +1067,7 @@ Chapter 2.
 [3
 
 ] [4] [5] [6] [7] [8]
-<pics/abm-mas-compare.png, id=165, 1046.40938pt x 314.67563pt>
+<pics/abm-mas-compare.png, id=167, 1046.40938pt x 314.67563pt>
 File: pics/abm-mas-compare.png Graphic file (type png)
 <use pics/abm-mas-compare.png>
 Package pdftex.def Info: pics/abm-mas-compare.png  used on input line 161.
@@ -1077,7 +1077,7 @@ Chapter 3.
 [13
 
 ]
-<thesis_files/figure-latex/fig-asim-nest-1.pdf, id=196, 1003.75pt x 582.175pt>
+<thesis_files/figure-latex/fig-asim-nest-1.pdf, id=198, 1003.75pt x 582.175pt>
 File: thesis_files/figure-latex/fig-asim-nest-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/fig-asim-nest-1.pdf>
 Package pdftex.def Info: thesis_files/figure-latex/fig-asim-nest-1.pdf  used on input line 196.
@@ -1101,24 +1101,24 @@ pdfTeX warning (ext4): destination with the same identifier (name{algorithm.1}) 
                                                   \__shipout_drop_firstpage_...
 l.402 
       ] [22]
-<thesis_files/figure-latex/hbw-1.pdf, id=265, 469.755pt x 325.215pt>
+<thesis_files/figure-latex/hbw-1.pdf, id=267, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbw-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbw-1.pdf>
 Package pdftex.def Info: thesis_files/figure-latex/hbw-1.pdf  used on input line 407.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<thesis_files/figure-latex/hbs-1.pdf, id=267, 469.755pt x 325.215pt>
+<thesis_files/figure-latex/hbs-1.pdf, id=269, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbs-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbs-1.pdf>
 Package pdftex.def Info: thesis_files/figure-latex/hbs-1.pdf  used on input line 418.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [23] [24 <./thesis_files/figure-latex/hbw-1.pdf>] [25 <./thesis_files/figure-latex/hbs-1.pdf>]
-<thesis_files/figure-latex/hbo-1.pdf, id=293, 469.755pt x 325.215pt>
+<thesis_files/figure-latex/hbo-1.pdf, id=295, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbo-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbo-1.pdf>
 Package pdftex.def Info: thesis_files/figure-latex/hbo-1.pdf  used on input line 429.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [26 <./thesis_files/figure-latex/hbo-1.pdf>]
-<pics/BeamCalib.png, id=307, 752.8125pt x 481.8pt>
+<pics/BeamCalib.png, id=309, 752.8125pt x 481.8pt>
 File: pics/BeamCalib.png Graphic file (type png)
 <use pics/BeamCalib.png>
 Package pdftex.def Info: pics/BeamCalib.png  used on input line 444.
@@ -1131,60 +1131,60 @@ Chapter 4.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
 (Font)              scaled to size 12.0pt on input line 538.
 [32] [33] [34] [35] [36]
-<thesis_files/figure-latex/piechart-1.pdf, id=392, 469.755pt x 325.215pt>
+<thesis_files/figure-latex/piechart-1.pdf, id=394, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/piechart-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/piechart-1.pdf>
 Package pdftex.def Info: thesis_files/figure-latex/piechart-1.pdf  used on input line 576.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[37 <./thesis_files/figure-latex/piechart-1.pdf>] [38]
-<thesis_files/figure-latex/waits-1.pdf, id=409, 469.755pt x 325.215pt>
+[37 <./thesis_files/figure-latex/piechart-1.pdf>] [38] [39]
+<thesis_files/figure-latex/waits-1.pdf, id=416, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/waits-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/waits-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/waits-1.pdf  used on input line 598.
+Package pdftex.def Info: thesis_files/figure-latex/waits-1.pdf  used on input line 623.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<thesis_files/figure-latex/transfergraph-1.pdf, id=410, 469.755pt x 325.215pt>
+<thesis_files/figure-latex/transfergraph-1.pdf, id=417, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/transfergraph-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/transfergraph-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/transfergraph-1.pdf  used on input line 610.
+Package pdftex.def Info: thesis_files/figure-latex/transfergraph-1.pdf  used on input line 635.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-LaTeX Font Info:    Trying to load font information for OT1+ntxtt on input line 620.
+LaTeX Font Info:    Trying to load font information for OT1+ntxtt on input line 645.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/ot1ntxtt.fd
 File: ot1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `OT1/ntxtt/m/n' will be
-(Font)              scaled to size 12.0pt on input line 620.
+(Font)              scaled to size 12.0pt on input line 645.
 
-Overfull \hbox (72.04393pt too wide) in paragraph at lines 636--636
+Overfull \hbox (72.04393pt too wide) in paragraph at lines 661--661
 []\OT1/ntxtt/m/n/12 1.) Ridership is affected significantly by which mode choice structure is used by BEAM[] 
  []
 
 
-Overfull \hbox (223.24364pt too wide) in paragraph at lines 636--636
+Overfull \hbox (223.24364pt too wide) in paragraph at lines 661--661
 []    \OT1/ntxtt/m/n/12 a.) BEAM (AllModes) is prone to estimating higher ridership totals for ride hailing modes than ActivitySim[] 
  []
 
-
-Overfull \hbox (65.74394pt too wide) in paragraph at lines 636--636
+[40 <./thesis_files/figure-latex/waits-1.pdf>] [41 <./thesis_files/figure-latex/transfergraph-1.pdf>]
+Overfull \hbox (65.74394pt too wide) in paragraph at lines 661--661
 []    \OT1/ntxtt/m/n/12 b.) BEAM (RHModes) will estimate much more ride hail usage than the other version[] 
  []
 
-[39] [40 <./thesis_files/figure-latex/waits-1.pdf>] [41 <./thesis_files/figure-latex/transfergraph-1.pdf>]
-Overfull \hbox (53.14397pt too wide) in paragraph at lines 636--636
+
+Overfull \hbox (53.14397pt too wide) in paragraph at lines 661--661
 []\OT1/ntxtt/m/n/12 2.) ActiviytSim struggles to provide ride hail pooled and ride hail transit options[] 
  []
 
 
-Overfull \hbox (342.9434pt too wide) in paragraph at lines 636--636
+Overfull \hbox (342.9434pt too wide) in paragraph at lines 661--661
 []\OT1/ntxtt/m/n/12 3.) Initial plans, and whether or not they include ride hail, do not affect the level at which BEAM estimates ride hail ridership[] 
  []
 
 
-Overfull \hbox (342.9434pt too wide) in paragraph at lines 636--636
+Overfull \hbox (342.9434pt too wide) in paragraph at lines 661--661
 []\OT1/ntxtt/m/n/12 4.) Path variables affects ridership (idk); and using all path, person, and location type variables will increase total ridership[] 
  []
 
 
-Overfull \hbox (292.5435pt too wide) in paragraph at lines 636--636
+Overfull \hbox (292.5435pt too wide) in paragraph at lines 661--661
 []\OT1/ntxtt/m/n/12 5.) With the lack of person attributes in the utility equation, pooled and transit ride hail options look less appealing.[] 
  []
 
@@ -1198,17 +1198,17 @@ Chapter 6.
 
 ]
 Chapter 7.
-LaTeX Font Info:    Trying to load font information for OMS+ntxtlf on input line 648.
-LaTeX Font Info:    No file OMSntxtlf.fd. on input line 648.
+LaTeX Font Info:    Trying to load font information for OMS+ntxtlf on input line 673.
+LaTeX Font Info:    No file OMSntxtlf.fd. on input line 673.
 
 LaTeX Font Warning: Font shape `OMS/ntxtlf/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 648.
+(Font)              for symbol `textbraceleft' on input line 673.
 
 [45
 
 ]
-Overfull \hbox (17.40172pt too wide) in paragraph at lines 663--665
+Overfull \hbox (17.40172pt too wide) in paragraph at lines 688--690
 \OT1/ntxtlf/m/it/12 RSG\OT1/minntx/m/n/12 . [][]$https : / / rsginc . com / activitysim-[]white-[]paper / #advanced-[]activity-[]based-[]travel-[]demand-[]model$[][]. 
  []
 
@@ -1226,18 +1226,18 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 25291 strings out of 479638
- 451140 string characters out of 5877192
- 768891 words of memory out of 5000000
- 43144 multiletter control sequences out of 15000+600000
+ 25294 strings out of 479489
+ 451194 string characters out of 5873325
+ 770007 words of memory out of 5000000
+ 43295 multiletter control sequences out of 15000+600000
  493095 words of font info for 81 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  106i,12n,131p,2333b,1053s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf-pc.enc}{c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}<c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txexs.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txsys.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/txfonts/txtt.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmb.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmr.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on thesis.pdf (59 pages, 418235 bytes).
+Output written on thesis.pdf (59 pages, 460398 bytes).
 PDF statistics:
- 761 PDF objects out of 1000 (max. 8388607)
- 651 compressed objects within 7 object streams
- 225 named destinations out of 1000 (max. 500000)
+ 766 PDF objects out of 1000 (max. 8388607)
+ 656 compressed objects within 7 object streams
+ 226 named destinations out of 1000 (max. 500000)
  246 words of extra memory for PDF output out of 10000 (max. 10000000)
 

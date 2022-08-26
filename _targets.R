@@ -3,6 +3,14 @@ library(targets)
 library(tarchetypes)
 library(tidyverse)
 library(ggrepel)
+library(data.table)
+library(future)
+library(future.apply)
+library(furrr)
+library(data.table)
+library(knitr)
+library(kableExtra)
+library(ggpattern)
 
 
 # Set target-specific options such as packages.
@@ -46,6 +54,8 @@ data_targets <- tar_plan(
   tar_target(rh_path_norh, "data/events/12.events-15pct-noRH-rh-path.csv", format = "file"),
   tar_target(none_norh, "data/events/12.events-15pct-noRH-none.csv", format = "file"),
   
+  tar_target(driverfleet, "data/Driverfleet_SLC.csv"),
+  
   ## Scenario List
   scenario_list = list(
     "All Modes - All Variables - W/ RH" = all_all_wrh,
@@ -78,6 +88,7 @@ data_targets <- tar_plan(
   ),
   
   events_list = future_map(scenario_list, read_events, cols),
+  events_waittime_list = events_list[-10],
   
   tar_target(wRH_all_all_p0, read_plans("data/plans/final-plans/0.plans-wRH-All-All.csv")),
   tar_target(wRH_all_all_p12, read_plans("data/plans/final-plans/12.plans-wRH-All-All.csv")),
@@ -96,9 +107,12 @@ analysis_targets <- tar_plan(
   
   tar_target(mode_choice_table, all_join(events_list, mode_choice, "mode", "mode")),
   tar_target(num_passengers, all_join(events_list, rh_pass, "numPassengers", "num_passengers")),
-  tar_target(wait_times, all_join(events_list, rh_times, "summary", "values")),
+  tar_target(wait_times, rbind_join(events_waittime_list, rh_waittimes)),
+  tar_target(old_wait_times, all_join(events_list, rh_times, "summary", "values")),
   tar_target(travel_times, all_join(events_list, rh_travel_times, "summary", "values")),
   tar_target(rh_to_transit, all_join(events_list, count_rh_transit_transfers, "transferType", "transfer_type")),
+  tar_target(fleet_hours, total_fleet_hours(driverfleet)),
+  tar_target(rh_utilization, rh_utilization(travel_times,num_passengers,fleet_hours)),
   
   tar_target(ridership, format_ridership_table(mode_choice_table)),
   tar_target(transfers, format_transfers_table(rh_to_transit)),
@@ -122,3 +136,4 @@ tar_plan(
 
 #plans_sum<- tar_read(plansbind)
 #plans_check <- tar_read(noRH_all_path_sum)
+#wait_times <- tar_read(wait_times)

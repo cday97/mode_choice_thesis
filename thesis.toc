@@ -25,9 +25,9 @@
 \contentsline {subsection}{\numberline {4.1.2}Comparing Scenarios Collectively}{34}{subsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.1.3}A Deeper Look at Ridership}{36}{subsection.4.1.3}%
 \contentsline {section}{\numberline {4.2}Wait Times}{39}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Transfers}{39}{section.4.3}%
-\contentsline {section}{\numberline {4.4}What We Concluded from Ridership:}{39}{section.4.4}%
+\contentsline {section}{\numberline {4.3}Transfers}{40}{section.4.3}%
+\contentsline {section}{\numberline {4.4}What We Concluded from Ridership:}{40}{section.4.4}%
 \contentsline {chapter}{\numberline {5}Discussion}{43}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Conclusions}{44}{chapter.6}%
 \contentsline {chapter}{\numberline {7}Conclusions}{45}{chapter.7}%
-\contentsline {chapter}{References}{46}{section*.20}%
+\contentsline {chapter}{References}{46}{section*.21}%
