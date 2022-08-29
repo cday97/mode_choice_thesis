@@ -1,1 +1,31 @@
-# Discussion
+# Discussion {#discussion}
+According to the results presented in Section \@ref(results), mode choice structure significantly affects novel mode ridership and service capabilities. The results also suggest that whether or not ride hail exists in the multi-agent simulation's input plans does not make a significant difference to overall ride hail statistics. With both of these determinations in mind, we conclude that forecasters should use *both* an activity-based model and a multi-agent simulation to forecast novel mode usage. However, we suggest that only one of these tools should be used to forecast ridership, while the multi-agent simulation should be used to forecast service capabilities. The results, backed up by the literature review conducted in Section \@ref(lit), illustrate why the multi-agent simulation should be used for service capability estimation, while the results suggest why only one of the tools should be used for ridership estimation. Specifically, the extreme variation in ridership among the 10 scenarios supports this conclusion. Overall, with these conclusions in mind, we offer two methodological approaches that forecasters should use to model novel modes:
+
+  1. Frozen Multi-Agent Estimation
+  2. Adjusted/Enhanced Multi-Agent Estimation
+
+## Frozen Multi-Agent Estimation
+In the Frozen Multi-Agent Estimation technique, we advice forecasters to use an activity-based model to estimate novel mode ridership usage. The activity-based model would be in charge of forecasting which users are prone to using the new mode and how many of these users should exist. Then, we advice forecasters to input these final plans into a multi-agent simulation to simulate all the trips. Mode choice innovation would be turned off (frozen) within the multi-agent simulation, meaning all mode choice would have been conducted in the activity-based model. The multi-agent simulation, however, would be used to verify that all the estimated novel mode trips are possible. In addition, the multi-agent simulation would use a simulated fleet of vehicles, variable wait times if applicable, and a street network to provide realistic service capability estimation. 
+
+The Frozen Multi-Agent Estimation technique is identical to Scenario 1 presented in Section \@ref(results). The results from Scenario 1 were reasonable, understandable, and realistic. For example, ridership values for this scenario were closest to the expected regional totals. Wait time values were also reasonable, especially when accounting for the amount of total users in comparison to the size of the ride hail fleet. In addition, Scenario 1 avoided all the pitfalls that existed in the scenarios where BEAM modal innovation was turned on. For example, without modal innovation turned on in BEAM, the vehicle allocation problem was avoided; car users did not unexpectable switch to a ride hailing mode. This approach was simplest, because a consistent mode choice structure wasn't needed but the advantages of the multi-agent simulation tool were exploited.
+
+Overall, the Frozen Multi-Agent Estimation technique will allow forecastres to exploit the advantages of using an activity-based model and of using a multi-agent simulation while also avoiding the disadvantages of each tool. *the results bakc this up blah blah blaZ* 
+
+
+
+
+
+
+
+
+Mode choice structure significantly affects novel mode ridership and service capabilities. We also know that whether or not ride hail exists in the input plans doesn't make a difference. We suggest using both an activity-based model and a mutli-agent simulation tool to estimate ride hail capabilities, but only estimating ride hail in one of them. In the mode choice, use path, person, and location type variables to allow for more realistic behavior. 
+
+We suggest two methodologies to forecasting novel mode capabilities.
+  1. Use an activity-based model to estimate ridership (who and how many use it). Then use a multi-agent simulation to simulate all the trips. Do mode choice only in the activity-based model; turn it off in the multi-agent simulation. Use the multi-agent simulation tool to verify the ride hail trips are possible. The multi-agent simulation will use an actual fleet, variable wait time, and and a street network to provide realistic service capability estimation. This allows the forecasters to take advantage of the strengths of both the activity-based model and the multi-agent simulation, while avoiding some of the pitfalls both of them have.
+  2. A hybrid model, where an activity-based model is used to generate the inputs (w/o rh) and a multi-agent simulation tool used to update the choices of the activity-based model to include rh. In this hybrid, however, we recommend adjusting the multi-agent simulation tool to avoid its inherit pitfalls. In our case, we were unable to perfect a hybrid tool. But, we came close with the RHModel model. By limiting RH to only those who go through clear modes, this model would have worked great (avoiding the pitfalls of beam like car algorithm, while estimating rh well). 
+  
+
+Other additional suggestions:
+  - Use Path, Person, and Location type variables when given the chance. The wide variety of utility parameters helps create a realistic modelling environment. 
+  - Tread carefully when forecasting novel modes with activity-based models or multi-agent simulations. Both tools are flexible enough to allow users to change how they work, even change them until you get the results you expect. Using both tools minimizes this risk, as well as being aware of the mode choice structures and model consistency.  
+  

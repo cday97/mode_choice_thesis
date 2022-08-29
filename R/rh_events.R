@@ -1,5 +1,4 @@
 
-
 # functions ---------------------------------------------------------------------#
 read_events <- function(events_raw, cols){
   events <- events_raw %>% 
@@ -198,160 +197,39 @@ count_rh_transit_transfers <- function(events){
     summarize(n = n())
 }
 
-
-#plans comparison
-read_plans <- function(plans_raw){
-  plans <- plans_raw %>% 
-    fread(select=c("personId","planElementIndex","planSelected","activityType","activityEndTime","legMode")) %>% as.tibble() %>% 
-    mutate(
-      personElement = paste0(personId,"_",planElementIndex)
-    ) %>%
-    filter(planSelected == TRUE)
-}
-
-
-rh_switch <- function(plans0,plans10){
-  final_rh_users <- plans10 %>%
-    filter(grepl("ride",legMode))
+#walk analysis
+walk_analysis <- function(events1){
+  eventchoice <- events1 %>%
+    filter(type %in% c("ModeChoice")) %>%
+    group_by(person,tourIndex) %>%
+    arrange(person,tourIndex,time) %>%
+    mutate(activityIndex = row_number()-1, person = as.numeric(person)) %>%
+    ungroup()
   
-  original_rh_users <- plans0 %>%
-    filter(legMode != "") %>% filter(!is.na(legMode)) %>%
-    filter(personElement %in% final_rh_users$personElement)
+  walk_trips <- eventchoice %>%
+    filter(mode == "walk")
+  walkers <- eventchoice %>%
+    filter(person %in% walk_trips$person) %>%
+    mutate(switchWalker = ifelse(activityIndex == 0 & mode != "walk",TRUE,FALSE)) %>%
+    filter(switchWalker == TRUE)
   
-  summary <- original_rh_users %>%
-    group_by(legMode) %>%
-    summarize(n = n()) %>%
-    mutate(share = n / sum(n)) %>%
-    mutate(share = round(share*100,3))
-  summary
-}
-
-bind_plans <- function(plans1,plans2,plans3,plans4){
-  bind_rows(plans1,plans2,plans3,plans4, .id = "Scenario") %>%
-    mutate(ScenarioName = ifelse(Scenario == 1, "wRH-AllModes-AllVars",
-                              ifelse(Scenario == 2, "wRH-AllModes-PathVars",
-                                ifelse(Scenario == 3, "noRH-AllModes-AllVars", "noRH-AllModes-PathVars"))))
+  switch_walker_trips <- eventchoice %>%
+    filter(person %in% walkers$person) %>%
+    mutate(hour = as.numeric(sub("\\..*","",paste(time/3600))),
+           count = 1)
+  switch_walker_trips
 }
 
 
-# create tables/graphs used in results section--------------------------------------------------#
-pie_chart <- function(plans_sum){
-  ggplot(plans_sum, aes(x=ScenarioName, y=share, group=legMode, fill=fct_inorder(legMode))) +
-    geom_bar(position = "stack",stat = "identity") +
-    geom_col(color = 1) +
-    geom_label_repel(aes(x = ScenarioName, 
-                        y = share, 
-                        label = paste0(round(share,2),"%")),
-                    color = "black",
-                    position = position_stack(vjust = .65),
-                    size = 2,
-                    show.legend = FALSE) + 
-    theme_bw() + 
-    guides(fill = guide_legend(title = "Mode")) +
-    theme(text = element_text(size = 8)) +
-    scale_fill_brewer(palette="Set3", labels=c('Bike', 'Car', 'Drive to Transit', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride Hail", "Pooled Ride Hail", "Walk", "Walk to Transit")) +
-    xlab("Scenario Name") +
-    ylab("Share") +
-    theme(axis.text.x = element_text(angle=90, hjust=1))
-}
 
-format_ridership_table <- function(mode_choice_table){
-  ridership <- mode_choice_table %>%
-    #instead of renaming, just fix the names in targets and rerun (will take like 1hr)
-    rename(rename_list) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
-    pivot_longer(!mode,names_to = "Scenario Name", values_to = "ridership") %>%
-    filter(mode %in% c("ride_hail","ride_hail_pooled","ride_hail_transit")) %>%
-    pivot_wider("Scenario Name", names_from=mode,values_from=ridership) %>%
-    mutate_all(~replace(., is.na(.), 0.000)) %>%
-    #mutate(across(!"Scenario Name", ~paste0(.,"%")))
-    mutate("Scenario Number" = row_number(),
-           "Total" = ride_hail + ride_hail_pooled+ride_hail_transit) %>%
-    select(5,1,2,3,4,6)
-}
 
-format_transfers_table <- function(rh_to_transit){
-  transfers <- rh_to_transit %>%
-    rename(rename_list_graph) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
-    pivot_longer(!transfer_type, names_to="Scenario Name") %>%
-    mutate(transfer_type = ifelse(transfer_type == "rideHail-transit", "ride_hail-to-transit","transit-to-ride_hail")) %>%
-    pivot_wider("Scenario Name", names_from = transfer_type, values_from = value) %>%
-    mutate_all(~replace(., is.na(.), 0))
-}
 
-format_transfers_graph <- function(transfers){
-  transfer_long <- transfers %>%
-    pivot_longer(!`Scenario Name`, names_to="transfertype",values_to="numtransfers") %>%
-    rename("scenario" = "Scenario Name")
-  
-  transfer_long$scenario <- factor(transfer_long$scenario, 
-                                   levels=c("wRH-None (1)", "noRH-None (2)", "wRH-AllModes-AllVars (3)", "noRH-AllModes-AllVars (4)", "wRH-AllModes-PathVars (5)",
-                                            "noRH-AllModes-PathVars (6)", "wRH-RHModes-AllVars (7)","noRH-RHModes-AllVars (8)", "wRH-RHModes-PathVars (9)", "noRH-RHModes-PathVars (10)"))
-  
-  ggplot(transfer_long) +
-    aes(x = as.factor(scenario), y = numtransfers, fill = transfertype) +
-    geom_col(position = "dodge2") +
-    theme_bw() +
-    theme(axis.text.x = element_text(angle=90, hjust=1)) +
-    xlab("Scenario Name") +
-    ylab("Number of Transfers")  +
-    theme(legend.position="top") +
-    geom_text(aes(label = numtransfers, y = numtransfers + 80), position = position_dodge(1.2))    
-}
 
-format_waits_graph <- function(wait_times){
-  waittimes <- wait_times %>%
-    group_by(ScenarioName) %>%
-    mutate(mean = mean(rhReserveTime)) %>%
-    mutate(ScenarioName = as.factor(ScenarioName)) %>%
-    mutate(ScenarioName = case_when(
-      ScenarioName == "All Modes - All Variables - W/ RH" ~ "wRH-AllModes-AllVars (3)",
-      ScenarioName == "All Modes - Path Variables - W/ RH" ~ "wRH-AllModes-PathVars (5)",
-      ScenarioName == "RH Modes - All Variables - W/ RH" ~ "wRH-RHModes-AllVars (7)",
-      ScenarioName == "RH Modes - Path Variables - W/ RH" ~ "wRH-RHModes-PathVars (9)",
-      ScenarioName == "No Modes - W/ RH" ~ "wRH-None (1)",
-      ScenarioName == "All Modes - All Variables - No RH" ~ "noRH-AllModes-AllVars (4)",
-      ScenarioName == "All Modes - Path Variables - No RH" ~ "noRH-AllModes-PathVars (6)",
-      ScenarioName == "RH Modes - All Variables - No RH" ~ "noRH-RHModes-AllVars (8)",
-      ScenarioName == "RH Modes - Path Variables - No RH" ~ "noRH-RHModes-PathVars (10)"
-    ))
-  waittimes$ScenarioName <- factor(waittimes$ScenarioName, 
-    levels=c("wRH-None (1)", "wRH-AllModes-AllVars (3)", "noRH-AllModes-AllVars (4)", "wRH-AllModes-PathVars (5)",
-             "noRH-AllModes-PathVars (6)", "wRH-RHModes-AllVars (7)","noRH-RHModes-AllVars (8)", "wRH-RHModes-PathVars (9)", "noRH-RHModes-PathVars (10)"))
 
-  ggplot(waittimes, aes(x = ScenarioName, y = rhReserveTime, fill = ScenarioName, alpha = .3)) + 
-    geom_violin() + geom_boxplot(width = 0.3) +
-    scale_fill_brewer(palette="Set3") +
-    geom_text(aes(label = round(mean,1), y = mean + 1), size = 3)  +  
-    xlab("Scenario Name") +
-    ylab("Wait Time (min)") +
-    theme_bw() +
-    theme(legend.position="none") +
-    theme(axis.text.x = element_text(angle=90, hjust=1))
-}
+#rhttest <- transfer_rht %>%
+#  filter(!person %in% transfer_trh$person)
 
-rename_list = c(
-  "wRH-AllModes-AllVars" = "All Modes - All Variables - W/ RH",
-  "wRH-AllModes-PathVars" = "All Modes - Path Variables - W/ RH",
-  "wRH-RHModes-AllVars" = "RH Modes - All Variables - W/ RH",
-  "wRH-RHModes-PathVars" = "RH Modes - Path Variables - W/ RH",
-  "wRH-None" = "No Modes - W/ RH",
-  "noRH-AllModes-AllVars" = "All Modes - All Variables - No RH",
-  "noRH-AllModes-PathVars" = "All Modes - Path Variables - No RH",
-  "noRH-RHModes-AllVars" = "RH Modes - All Variables - No RH",
-  "noRH-RHModes-PathVars" = "RH Modes - Path Variables - No RH",
-  "noRH-None" = "No Modes - No RH"
-)
 
-rename_list_graph = c(
-  "wRH-AllModes-AllVars (3)" = "All Modes - All Variables - W/ RH",
-  "wRH-AllModes-PathVars (5)" = "All Modes - Path Variables - W/ RH",
-  "wRH-RHModes-AllVars (7)" = "RH Modes - All Variables - W/ RH",
-  "wRH-RHModes-PathVars (9)" = "RH Modes - Path Variables - W/ RH",
-  "wRH-None (1)" = "No Modes - W/ RH",
-  "noRH-AllModes-AllVars (4)" = "All Modes - All Variables - No RH",
-  "noRH-AllModes-PathVars (6)" = "All Modes - Path Variables - No RH",
-  "noRH-RHModes-AllVars (8)" = "RH Modes - All Variables - No RH",
-  "noRH-RHModes-PathVars (10)" = "RH Modes - Path Variables - No RH",
-  "noRH-None (2)" = "No Modes - No RH"
-)
-
+#rheventstest <- events %>%
+#  filter(person %in% rhttest$person) %>%
+#  select(1:7,13)

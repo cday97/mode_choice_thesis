@@ -10,13 +10,13 @@ library(furrr)
 library(data.table)
 library(knitr)
 library(kableExtra)
-library(ggpattern)
-
+library(ggalluvial)
+library(RColorBrewer)
 
 # Set target-specific options such as packages.
 tar_option_set(packages = c("tidyverse", "bookdown", "readr", "dotwhisker", 
                             "ggpubr", "scales", "future", "future.apply", "furrr",
-                            "data.table", "ggpattern", "ggrepel"))
+                            "data.table", "ggrepel"))
 
 #Define custom functions and other global objects.
 # This is where you write source(\"R/functions.R\")
@@ -25,6 +25,8 @@ source("R/asim_path_validation.R")
 source("R/table_maker.R")
 source("R/data_helpers.R")
 source("R/rh_events.R")
+source("R/rh_plans.R")
+source("R/rh_visuals.R")
 
 
 data_targets <- tar_plan(
@@ -90,6 +92,11 @@ data_targets <- tar_plan(
   events_list = future_map(scenario_list, read_events, cols),
   events_waittime_list = events_list[-10],
   
+  short_list = list("All Modes - All Variables - W/ RH" = all_all_wrh),
+  short_cols = c("person","vehicle","time","type","mode","legMode","vehicleType","arrivalTime","departureTime","departTime","length","numPassengers","actType","personalVehicleAvailable","tourIndex"),
+  events1 = future_map(short_list, read_events,short_cols),
+  
+  # Ride Hail Plan Handler
   tar_target(wRH_all_all_p0, read_plans("data/plans/final-plans/0.plans-wRH-All-All.csv")),
   tar_target(wRH_all_all_p12, read_plans("data/plans/final-plans/12.plans-wRH-All-All.csv")),
   tar_target(wRH_all_path_p0, read_plans("data/plans/final-plans/0.plans-wRH-All-Path.csv")),
@@ -101,10 +108,7 @@ data_targets <- tar_plan(
 )
 
 analysis_targets <- tar_plan(
-  tar_target(hbw_graph, ivtt_ratio_grapher("Home-Based Work", asim_hbw, utah_hbw,wfrc_hbw,nchrp_hbw)),
-  tar_target(hbs_graph, ivtt_ratio_grapher("Home-Based School",asim_hbs,utah_hbs,wfrc_hbs,nchrp_hbs)),
-  tar_target(hbo_graph, ivtt_ratio_grapher("Home-Based Other",asim_hbo,utah_hbo,wfrc_hbo,nchrp_hbo)),
-  
+  #Ride Hail Statistics
   tar_target(mode_choice_table, all_join(events_list, mode_choice, "mode", "mode")),
   tar_target(num_passengers, all_join(events_list, rh_pass, "numPassengers", "num_passengers")),
   tar_target(wait_times, rbind_join(events_waittime_list, rh_waittimes)),
@@ -114,26 +118,42 @@ analysis_targets <- tar_plan(
   tar_target(fleet_hours, total_fleet_hours(driverfleet)),
   tar_target(rh_utilization, rh_utilization(travel_times,num_passengers,fleet_hours)),
   
-  tar_target(ridership, format_ridership_table(mode_choice_table)),
-  tar_target(transfers, format_transfers_table(rh_to_transit)),
-  tar_target(transfersgraph, format_transfers_graph(transfers)),
-  tar_target(waits, format_waits_graph(wait_times)),
-  
+  #Across Day Statistics
   tar_target(wRH_all_all_sum, rh_switch(wRH_all_all_p0,wRH_all_all_p12)),
   tar_target(wRH_all_path_sum, rh_switch(wRH_all_path_p0,wRH_all_path_p12)),
   tar_target(noRH_all_all_sum, rh_switch(noRH_all_all_p0,wRH_all_all_p12)),
   tar_target(noRH_all_path_sum, rh_switch(noRH_all_path_p0,wRH_all_path_p12)),
   
   tar_target(plansbind, bind_plans(wRH_all_all_sum,wRH_all_path_sum,noRH_all_all_sum,noRH_all_path_sum)),
-  tar_target(piechart, pie_chart(plansbind))
+  tar_target(full_plans, read_full_plans("data/plans/wRH-all-all-plans/")),
+  tar_target(mode_shifts, mode_shifts(full_plans)),
   
+  #Daily Plan Statistics
+  tar_target(dayhours, walk_analysis(events1[[1]]))
+  
+)
+
+visual_targets <- tar_plan(
+  #ASIM Coefficient Graphs
+  tar_target(hbw_graph, ivtt_ratio_grapher("Home-Based Work", asim_hbw, utah_hbw,wfrc_hbw,nchrp_hbw)),
+  tar_target(hbs_graph, ivtt_ratio_grapher("Home-Based School",asim_hbs,utah_hbs,wfrc_hbs,nchrp_hbs)),
+  tar_target(hbo_graph, ivtt_ratio_grapher("Home-Based Other",asim_hbo,utah_hbo,wfrc_hbo,nchrp_hbo)),
+  
+  # Ride Hail Result Visuals
+  tar_target(ridership, format_ridership_table(mode_choice_table)),
+  tar_target(transfers, format_transfers_table(rh_to_transit)),
+  tar_target(transfersgraph, format_transfers_graph(transfers)),
+  tar_target(waits, format_waits_graph(wait_times)),
+  
+  #Across Day and Daily Plan Analysis
+  tar_target(piechart, pie_chart(plansbind)),
+  tar_target(planshifts, make_plans_shift_chart(mode_shifts)),
+  tar_target(walk_switchers, switch_to_walk(dayhours))
 )
 
 tar_plan(
   data_targets,
-  analysis_targets
+  analysis_targets,
+  visual_targets
 )
 
-#plans_sum<- tar_read(plansbind)
-#plans_check <- tar_read(noRH_all_path_sum)
-#wait_times <- tar_read(wait_times)

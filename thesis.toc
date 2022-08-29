@@ -23,11 +23,17 @@
 \contentsline {section}{\numberline {4.1}Ridership}{31}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Comparing Scenarios Individually}{32}{subsection.4.1.1}%
 \contentsline {subsection}{\numberline {4.1.2}Comparing Scenarios Collectively}{34}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}A Deeper Look at Ridership}{36}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}Wait Times}{39}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Transfers}{40}{section.4.3}%
-\contentsline {section}{\numberline {4.4}What We Concluded from Ridership:}{40}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Discussion}{43}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusions}{44}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusions}{45}{chapter.7}%
-\contentsline {chapter}{References}{46}{section*.21}%
+\contentsline {subsection}{\numberline {4.1.3}Summary}{36}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Wait Times}{36}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Comparing Scenarios Individually}{38}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Comparing Scenarios Collectively}{38}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Summary}{40}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}A Deeper Look at Ridership and Wait Times}{40}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}``None'' BEAM Model}{40}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}``AllModes'' BEAM Model}{41}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}``RHModes'' BEAM Model}{47}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Summary}{48}{subsection.4.3.4}%
+\contentsline {chapter}{\numberline {5}Discussion}{50}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Limitations}{51}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusions}{52}{chapter.7}%
+\contentsline {chapter}{References}{53}{section*.22}%

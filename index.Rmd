@@ -60,6 +60,8 @@ header-includes:
   - \usepackage{algorithm}
   - \usepackage{algpseudocode}
   - \usepackage{dsfont}
+  - \usepackage{pdflscape}
+  - \usepackage{graphicx}
 
 # ELSEVIER ----------------------------------------------------------------#
 # change to elsevier format in _ouput.yml and references
