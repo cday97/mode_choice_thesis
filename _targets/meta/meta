@@ -5,7 +5,7 @@ all_all_wrh|stem|ac1e410a3734b501|bd249c8cbebac821|ef46db3751d8e999|2074516988|d
 all_join|function|6ca7d4584d60bc1e|||||||||||||||
 all_path_norh|stem|ed73f7e175cd72f2|8c43ed3e804bd5e8|ef46db3751d8e999|-354722341|data/events/12.events-15pct-noRH-all-path.csv|t19223.7289017004s|2de103f6a37d3382|4634675865|file|local|vector|||0||
 all_path_wrh|stem|269be4a5f5d0e9ff|d9dcfd67025a25d0|ef46db3751d8e999|-1748263918|data/events/12.events-15pct-wRH-all-path.csv|t19210.8046117591s|ae63cdddf41a1b43|4835392081|file|local|vector|||0||
-analysis_targets|object|582629efc73fbd43|||||||||||||||
+analysis_targets|object|b462e48aac50330e|||||||||||||||
 asim_hbo|stem|68567a6b29e1985a|1e8c7930b45144d1|11c523878049f4f9|205244841||t19221.7047327299s|31332efc7bb99c56|441|rds|local|vector|||0.26||
 asim_hbs|stem|65ee10f7b4a69430|c642b149d9a6f9ab|88b4ede54722d4b7|1120581330||t19221.7047358616s|984cbd81dd27df51|440|rds|local|vector|||0.22||
 asim_hbw|stem|cede97f647c99f7d|ebfeba6a27d33cec|39d6307bc7434d77|2038309948||t19221.7039680494s|8d0aba61fa8a9196|444|rds|local|vector|||3.61||
@@ -26,10 +26,10 @@ events_list|stem|a6e2d1683f11d1d0|ae99f360ab6a5d38|793d235f63301edc|-79269241||t
 events_waittime_list|stem|957e56e3bddc6b8a|617cda5846f0ee4a|54d833b7a9bfd5fc|1649326394||t19229.16751898s|fbcd7465431fe280|1487954105|rds|local|vector|||0.03||
 events1|stem|6794c71f7b6a763e|f59d82d460e8bbb8|bbd62c49ac5f7275|1390816617||t19231.1353746349s|710f62be2e34b74d|186667090|rds|local|vector|||159.21|as.tibble was deprecated in tibble 2.0.0.Please use as_tibble instead.The signature and semantics have changed, see as_tibble.90mThis warning is displayed once every 8 hours.39m90mCall lifecyclelast_lifecycle_warnings to see where this warning was generated.39m|
 fleet_hours|stem|36a82856c8a20556|a92bb51d14f1b7ec|68a1fa2683946737|-1837025178||t19230.6187616109s|7e02ad38317bcde4|55|rds|local|vector|||0.44||
-format_ridership_table|function|4eea28e7772258d7|||||||||||||||
+format_ridership_table|function|e802e0998d975baa|||||||||||||||
 format_transfers_graph|function|770c5c14ddd2f5a2|||||||||||||||
 format_transfers_table|function|9e18fa7b7052c31d|||||||||||||||
-format_waits_graph|function|2df36d0aaa4f35d4|||||||||||||||
+format_waits_graph|function|405d2cb7cd0b00ba|||||||||||||||
 full_plans|stem|4020e4abff1e54c3|a7ae62e1e9359d5f|13bf939e64dadf54|-675686623||t19230.8011728672s|955c204af280ef8f|160437172|rds|local|vector|||168.05|as.tibble was deprecated in tibble 2.0.0.Please use as_tibble instead.The signature and semantics have changed, see as_tibble.90mThis warning is displayed once every 8 hours.39m90mCall lifecyclelast_lifecycle_warnings to see where this warning was generated.39m|
 get_asim_hbo|function|34984924416be197|||||||||||||||
 get_asim_hbs|function|5b124e0ceb8699c7|||||||||||||||
@@ -53,10 +53,14 @@ hbw_graph|stem|f854960dec75fdfc|170023c5754b511e|27ee7b86d9ba7f1a|1264446149||t1
 ivtt_ratio_grapher|function|c07377e0605e7c1f|||||||||||||||
 loggrapher|function|6d3fb7667675d3fa|||||||||||||||
 make_modes_by_hour|function|f47ae6943b0d7e25|||||||||||||||
-make_plans_shift_chart|function|a31005b49bd6f7b8|||||||||||||||
+make_plans_shift_chart|function|e1671b4dbd09ed49|||||||||||||||
 mode_choice|function|08f9952271843736|||||||||||||||
 mode_choice_table|stem|f92f865c4307b96a|d9632dd8174f0a6f|88c0a6c6207c0756|1698574471||t19223.8286700458s|3c2f1957f46cf28f|1065|rds|local|vector|||41.56||
 mode_shifts|stem|e2073c68c827be45|849829052985c52d|1f566bb2fe182af2|-1301900877||t19230.8012124326s|3197486a0221e5b6|83943|rds|local|vector|||2.77||
+modesL1|object|8e5013953a6d4c07|||||||||||||||
+modesL2|object|9e5884ff37881dd1|||||||||||||||
+modesP|object|4e40b7ca93b76fd6|||||||||||||||
+modesP2|object|114bf87517092822|||||||||||||||
 nchrp_hbo|stem|5dfb72919dc71139|b01d45ab091255b5|9353bc0d78f9c979|-1040758971||t19221.7047164735s|76d5158c9904ac60|264|rds|local|vector|||0.1||
 nchrp_hbs|stem|5dfb72919dc71139|66fd2d161673aba4|c704ae310d895881|-1812305076||t19221.7047370155s|76d5158c9904ac60|264|rds|local|vector|||0.08||
 nchrp_hbw|stem|9b452bca556a71e6|0c5652e49fa2c2e5|ce31384741fd8584|1366844953||t19221.70397127s|3359bf05477e5075|269|rds|local|vector|||0.19||
@@ -74,13 +78,13 @@ noRH_all_path_p12|stem|7ca2a73188e60ff9|7fc2d16428cfb985|959c691769de10ab|-81019
 noRH_all_path_sum|stem|450a58edc687c491|c6be6a6987bc3e91|1efa22fb5e7aa500|-801320173||t19227.1068211904s|b1e85e08060e9f38|321|rds|local|vector|||0.95||
 num_passengers|stem|bcf3007f0b11ad57|4dda1b51c163ed14|c2a381c7562409c2|146658985||t19223.8008694391s|30ed5b6f0c29cb62|367|rds|local|vector|||56.64||
 old_wait_times|stem|b95cbeab171e418a|2f136ce2f7a608b2|292935c5d566242c|-1909382508||t19230.1604648796s|4764b896dcd0d132|527|rds|local|vector|||1017.97|no nonmissing arguments to max returning Inf. no nonmissing arguments to min returning Inf|
-pie_chart|function|39d5e871c2ef9a83|||||||||||||||
-piechart|stem|ea0992af0d83df43|b74e98b420932e5a|19d201c0ce5096df|-1820712068||t19228.9514654774s|1c45c44b7bf3b0e2|70375|rds|local|vector|||0.07||
+pie_chart|function|d797ab5d3aaa5e24|||||||||||||||
+piechart|stem|17ebf812c373e8cc|b74e98b420932e5a|ed1cb5ee92d84c65|-1820712068||t19234.0027629089s|bd2e1960d29a2ed1|54308|rds|local|vector|||0.13||
 plans_sum|stem|f4a1fecc3ac12240|a04741e8a472f823|41c73935e1b2bf8e|383168130||t19227.0620164939s|ac8eaf4243957eab|325|rds|local|vector|||0.16||
 plans0|stem|0107c2a675f566f8|da7e88dbc9690050|52b3f16c059dad0d|-360605332||t19227.0620112302s|640399024da7a5de|58667|rds|local|vector|||0.76|as.tibble was deprecated in tibble 2.0.0.Please use as_tibble instead.The signature and semantics have changed, see as_tibble.90mThis warning is displayed once every 8 hours.39m90mCall lifecyclelast_lifecycle_warnings to see where this warning was generated.39m|
 plans10|stem|66bcf88371d91f1d|a1355e9cb0fb8b90|52b3f16c059dad0d|1302796294||t19227.0620132156s|e6ffd591201e695d|60216|rds|local|vector|||0.08||
 plansbind|stem|f6dfc61d8e091cf4|477165c2a0394cda|db78e378ad5efe5b|-2140885647||t19227.1120717852s|7878a6b55ced0bb0|730|rds|local|vector|||0||
-planshifts|stem|247504fe0e898e3a|a8f059c35a0d50e4|1cdd5260a7446230|510860786||t19231.146664654s|fd6a1f9876236b3b|297437|rds|local|vector|||0.13|n too large, allowed maximum for palette Set3 is 12Returning the palette you asked for with that many colors|
+planshifts|stem|73744a79c435eb93|a8f059c35a0d50e4|eb7772701622122c|510860786||t19234.0027592843s|f4c07bfa61120d59|257433|rds|local|vector|||0.1||
 rbind_join|function|75c0f932bdf07051|||||||||||||||
 read_events|function|597229e3260ddd1b|||||||||||||||
 read_full_plans|function|a2fdc5daccde915e|||||||||||||||
@@ -94,6 +98,8 @@ rename_list_graph|object|862e18e9f1d3c577|||||||||||||||
 rh_all_norh|stem|f152c287c2fef4bf|95e38b4e4bc14b1c|ef46db3751d8e999|-197833288|data/events/12.events-15pct-noRH-rh-all.csv|t19223.7309738454s|c488e9107d3b769c|4342388467|file|local|vector|||0||
 rh_all_wrh|stem|1d5b3e23a3a95214|95dff212bb8f8d77|ef46db3751d8e999|-827782741|data/events/12.events-15pct-wRH-rh-all.csv|t19210.8081017023s|c4bb699ebf7db8ba|4385287828|file|local|vector|||0||
 rh_pass|function|ee400cba812230e6|||||||||||||||
+rh_pass_time|function|14f5441b3a852228|||||||||||||||
+rh_passenger_time|stem|19a2b6d8a219f631|113f005d44416ffa|f4544e6855019b71|-756516400||t19234.0215475869s|7c08b6911a348b50|283|rds|local|vector|||55.42||
 rh_path_norh|stem|0be52a050dbe4a97|9e03195221bbbb2a|ef46db3751d8e999|676162960|data/events/12.events-15pct-noRH-rh-path.csv|t19223.7322724571s|66b605d94262d0ec|4343181594|file|local|vector|||0||
 rh_path_wrh|stem|70e0615b76b7ccc4|fb85321b8255b89e|ef46db3751d8e999|-936421935|data/events/12.events-15pct-wRH-rh-path.csv|t19210.809520773s|c122a71b7fe495ae|4367020832|file|local|vector|||0||
 rh_switch|function|3ede533d71b0dea4|||||||||||||||
@@ -101,15 +107,16 @@ rh_times|function|e6286ebf95cd92c6|||||||||||||||
 rh_times_summary|function|7c91f11ae4195ea3|||||||||||||||
 rh_to_transit|stem|f6fe2683dacd5df2|832f3b377b2c61e1|f42883a8ddaa3fcb|-204065769||t19223.8002132892s|0592d33550c0bb62|308|rds|local|vector|||362.98||
 rh_travel_times|function|7779829620b8cdd4|||||||||||||||
-rh_utilization|stem|1e85c8e5332d3e56|259d9a116462dbf6|47b20328f21ca434|-2138387186||t19230.6474585574s|136a65928125a5c7|600|rds|local|vector|||0.35||
+rh_utilization|function|09a73ee8f43e5b5c|||||||||||||||
 rh_waittimes|function|3ff67e6a180023d3|||||||||||||||
-ridership|stem|7c5b32f5e1275876|cc19796f94b57a53|c565fa5f76432ce1|165593927||t19226.8965691851s|64b4ef739ce53b18|563|rds|local|vector|||0.17||
+ridehail_utilization|stem|02fee4b577afd0f8|eb1a5b9c7253c399|8b4613d249ab375a|1260416939||t19235.6644572299s|8ea15fe19e9b2e93|571|rds|local|vector|||0.34||
+ridership|stem|23740ff91a242bf4|cc19796f94b57a53|024ff07970bcfcb7|165593927||t19234.0032039363s|7c0ee4201d2f7db8|496|rds|local|vector|||0.19||
 scenario_list|stem|458a3b716f9efc58|727f63487ea1b991|1b53bd0a2fc03ca0|-641555310||t19223.7466351659s|f61d5eec182b6cd2|255|rds|local|vector|||0||
 short_cols|stem|f33711443f27a37c|8b356fd12efde2de|a3dad144c40657ed|-826290639||t19231.1303585672s|53c93953a72b96c1|178|rds|local|vector|||0.64||
 short_list|stem|099ed0806cfeffe7|a9334276c37c7ca3|e8f4a582196d04c4|1845165986||t19231.130364301s|83dfaca672102c9e|139|rds|local|vector|||0.02||
-switch_to_walk|function|c78701c0c91bdd0f|||||||||||||||
+switch_to_walk|function|ec2cd837bed0cffd|||||||||||||||
 total_fleet_hours|function|cedb7ef95805a370|||||||||||||||
-transfers|stem|d6112a9ed9e17781|3d802dfbb69403e3|c28907a27bc9ac68|685282604||t19226.6368303238s|c300aeef4648a6fd|342|rds|local|vector|||0.16||
+transfers|stem|d6112a9ed9e17781|3d802dfbb69403e3|688458a641d21aa9|685282604||t19226.6368303238s||2.22505688254088e-308|rds|local|vector|||0||could not find function format_transfers_table
 transfersgraph|stem|17ec927c5f074782|5d9c61d335686ddd|196dd53e80e9f215|-254665950||t19230.655839321s|d2944186dfba2d41|46124|rds|local|vector|||0.09||
 travel_times|stem|1016a2dcbbf2e916|7684f3bf5cd75269|3ba7fe6b69514870|-570801696||t19230.6296591946s|5b1027f2a4ed5890|597|rds|local|vector|||138.08||
 trip_arrivals|function|44d49a232f21c911|||||||||||||||
@@ -117,13 +124,13 @@ utah_hbo|stem|4a3334c5fd49acc5|f1504dd715d3d31f|f40aeeb6314592bd|-1796426361||t1
 utah_hbs|stem|4a3334c5fd49acc5|ef63a5a5df34a2f4|081c23b9f011c0d3|487245253||t19221.704714799s|76e9cd5162d27791|263|rds|local|vector|||1.24||
 utah_hbw|stem|ce807ba2527c9211|fe9411e39b3c90d5|e31d3016d626aef1|1698846259||t19221.7039901123s|76d5158c9904ac60|264|rds|local|vector|||1.58||
 utah_table|function|41e615b8c78389ec|||||||||||||||
-visual_targets|object|0a101784394bbf85|||||||||||||||
+visual_targets|object|2041695a503a3755|||||||||||||||
 wait_times|stem|be9d626665e7eb69|21b7718ce5414661|1491a7dc9dc426eb|227864465||t19230.2183313148s|e22386c33b72276b|22598|rds|local|vector|||58.87||
-waits|stem|2d60b104562ad03e|9129b29fe2319891|06a73479c8bdb00e|632055933||t19231.9200040125s|c10d881ad43965e6|196335|rds|local|vector|||0.33||
+waits|stem|3762597770586e97|9129b29fe2319891|e0a66602cc90dc1e|632055933||t19234.0032096503s|a097556b6958e7b6|197350|rds|local|vector|||0.25||
 waittimes|object|f9ced772f67ec8ef|||||||||||||||
 walk_analylsis|function|bc12316eeb1e7001|||||||||||||||
 walk_analysis|function|bc12316eeb1e7001|||||||||||||||
-walk_switchers|stem|66e8b3d723e2aba9|41707cc8ce5f5c08|076a748c83aac21e|-1416229958||t19232.1524323793s|215e14023cf2752d|2590441|rds|local|vector|||0.07|n too large, allowed maximum for palette Set3 is 12Returning the palette you asked for with that many colors|
+walk_switchers|stem|000537a0d3b6fac8|41707cc8ce5f5c08|e8b72d2208a61b4b|-1416229958||t19234.0027785154s|0245c80a6abafb27|2563735|rds|local|vector|||0.06||
 wfrc_hbo|stem|edc2462d6c77fdc2|2ea57012fc16a23a|271d450b0eed2a34|-1204131522||t19221.7046838487s|4fa881245fd93336|320|rds|local|vector|||0.96||
 wfrc_hbs|stem|0936789e384d8099|6463d8014ca6b6b5|aa2094e062bf26c6|-2094072024||t19221.7047292589s|c8c79f11dd07570f|276|rds|local|vector|||1.07||
 wfrc_hbw|stem|5f36115fee718009|fd493011c3791d4d|9260ea8dd0f7fdfb|-966621806||t19221.7040023102s|bf58d8be2db7cd4c|323|rds|local|vector|||1.01||

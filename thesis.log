@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.26)  29 AUG 2022 08:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.26)  31 AUG 2022 14:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -792,18 +792,62 @@ Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2022/06/29 v1.29 mathematical typesetting tools
+(c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count367
+\calc@Bcount=\count368
+\calc@Adimen=\dimen264
+\calc@Bdimen=\dimen265
+\calc@Askip=\skip109
+\calc@Bskip=\skip110
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count369
+\calc@Cskip=\skip111
+) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+)
+\g_MT_multlinerow_int=\count370
+\l_MT_multwidth_dim=\dimen266
+\origjot=\skip112
+\l_MT_shortvdotswithinadjustabove_dim=\dimen267
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen268
+\l_MT_above_intertext_sep=\dimen269
+\l_MT_below_intertext_sep=\dimen270
+\l_MT_above_shortintertext_sep=\dimen271
+\l_MT_below_shortintertext_sep=\dimen272
+\xmathstrut@box=\box119
+\xmathstrut@dim=\dimen273
+) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/eqparbox/eqparbox.sty
+Package: eqparbox 2017/09/03 v4.1 Create equal-widthed boxes
+\eqp@tempdima=\skip113
+\eqp@tempdimb=\skip114
+\eqp@tabular@box=\box120
+\eqp@list@box=\box121
+\eqp@list@indent=\skip115
+(c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+(c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen274
+\c@nlinenum=\count371
+\TeXr@lab=\toks44
 ) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip109
-\multirow@cntb=\count367
-\multirow@dima=\skip110
-\bigstrutjot=\dimen264
+\multirow@colwidth=\skip116
+\multirow@cntb=\count372
+\multirow@dima=\skip117
+\bigstrutjot=\dimen275
 ) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen265
-\WF@size=\dimen266
-\c@WF@wrappedlines=\count368
-\WF@box=\box119
-\WF@everypar=\toks44
+\wrapoverhang=\dimen276
+\WF@size=\dimen277
+\c@WF@wrappedlines=\count373
+\WF@box=\box122
+\WF@everypar=\toks45
 Package: wrapfig 2003/01/31  v 3.6
 ) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
@@ -814,56 +858,46 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 149.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-\everycr=\toks45
-\minrowclearance=\skip111
-\rownum=\count369
+\everycr=\toks46
+\minrowclearance=\skip118
+\rownum=\count374
 ) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tabu/tabu.sty
 Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box120
-\sift@deathcycles=\count370
-\@vwid@loff=\dimen267
-\@vwid@roff=\dimen268
+\@vwid@box=\box123
+\sift@deathcycles=\count375
+\@vwid@loff=\dimen278
+\@vwid@roff=\dimen279
 )
-\c@taburow=\count371
-\tabu@nbcols=\count372
-\tabu@cnt=\count373
-\tabu@Xcol=\count374
-\tabu@alloc=\count375
-\tabu@nested=\count376
-\tabu@target=\dimen269
-\tabu@spreadtarget=\dimen270
-\tabu@naturalX=\dimen271
-\tabucolX=\dimen272
-\tabu@Xsum=\dimen273
-\extrarowdepth=\dimen274
-\abovetabulinesep=\dimen275
-\belowtabulinesep=\dimen276
-\tabustrutrule=\dimen277
-\tabu@thebody=\toks46
-\tabu@footnotes=\toks47
-\tabu@box=\box121
-\tabu@arstrutbox=\box122
-\tabu@hleads=\box123
-\tabu@vleads=\box124
-\tabu@cellskip=\skip112
+\c@taburow=\count376
+\tabu@nbcols=\count377
+\tabu@cnt=\count378
+\tabu@Xcol=\count379
+\tabu@alloc=\count380
+\tabu@nested=\count381
+\tabu@target=\dimen280
+\tabu@spreadtarget=\dimen281
+\tabu@naturalX=\dimen282
+\tabucolX=\dimen283
+\tabu@Xsum=\dimen284
+\extrarowdepth=\dimen285
+\abovetabulinesep=\dimen286
+\belowtabulinesep=\dimen287
+\tabustrutrule=\dimen288
+\tabu@thebody=\toks47
+\tabu@footnotes=\toks48
+\tabu@box=\box124
+\tabu@arstrutbox=\box125
+\tabu@hleads=\box126
+\tabu@vleads=\box127
+\tabu@cellskip=\skip119
 ) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttable/threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
-\@tempboxb=\box125
+\@tempboxb=\box128
 ) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttablex/threeparttablex.sty
 Package: threeparttablex 2013/07/23 v0.3 by daleif
-(c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
-Package: environ 2014/05/04 v0.3 A new way to define environments
-(c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
-Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))
-\TPTL@width=\skip113
-) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
-Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen278
-\c@nlinenum=\count377
-\TeXr@lab=\toks48
+\TPTL@width=\skip120
 ) (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
@@ -882,73 +916,60 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
 )
-\cslhangindent=\skip114
-\csllabelwidth=\skip115
-\cslentryspacingunit=\skip116
-(c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count378
-\calc@Bcount=\count379
-\calc@Adimen=\dimen279
-\calc@Bdimen=\dimen280
-\calc@Askip=\skip117
-\calc@Bskip=\skip118
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count380
-\calc@Cskip=\skip119
-)
-LaTeX Font Info:    Trying to load font information for OT1+ntxtlf on input line 105.
+\cslhangindent=\skip121
+\csllabelwidth=\skip122
+\cslentryspacingunit=\skip123
+LaTeX Font Info:    Trying to load font information for OT1+ntxtlf on input line 108.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
 File: ot1ntxtlf.fd 2021/05/24 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 105.
+(Font)              scaled to size 12.0pt on input line 108.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-08-23 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count381
-\l__pdf_internal_box=\box126
+\l__color_backend_stack_int=\count382
+\l__pdf_internal_box=\box129
 ) (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 105.
-LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 105.
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 108.
+LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 108.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 105.
-LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 105.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 108.
+LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 108.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 105.
-LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 105.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 108.
+LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 108.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 105.
-LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 105.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 108.
+LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 108.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -989,11 +1010,11 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@mv@tabular=\count382
-\c@mv@boldtabular=\count383
-LaTeX Info: Command `\dddot' is already robust on input line 105.
-LaTeX Info: Command `\ddddot' is already robust on input line 105.
-Package hyperref Info: Link coloring ON on input line 105.
+\c@mv@tabular=\count383
+\c@mv@boldtabular=\count384
+LaTeX Info: Command `\dddot' is already robust on input line 108.
+LaTeX Info: Command `\ddddot' is already robust on input line 108.
+Package hyperref Info: Link coloring ON on input line 108.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: longtable package is loaded.
@@ -1003,12 +1024,12 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 107.
+LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 110.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 107.
+(Font)              scaled to size 12.0pt on input line 110.
 [1
 
 \openout3 = `thesis.ist'.
@@ -1056,7 +1077,7 @@ File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 116.
+(Font)              scaled to size 12.0pt on input line 119.
 [1
 
 
@@ -1067,153 +1088,146 @@ Chapter 2.
 [3
 
 ] [4] [5] [6] [7] [8]
-<pics/abm-mas-compare.png, id=181, 1046.40938pt x 314.67563pt>
+<pics/abm-mas-compare.png, id=189, 1046.40938pt x 314.67563pt>
 File: pics/abm-mas-compare.png Graphic file (type png)
 <use pics/abm-mas-compare.png>
-Package pdftex.def Info: pics/abm-mas-compare.png  used on input line 163.
+Package pdftex.def Info: pics/abm-mas-compare.png  used on input line 166.
 (pdftex.def)             Requested size: 469.75502pt x 141.26181pt.
 [9 <./pics/abm-mas-compare.PNG>] [10] [11] [12]
 Chapter 3.
 [13
 
 ]
-<thesis_files/figure-latex/fig-asim-nest-1.pdf, id=212, 1003.75pt x 582.175pt>
+<thesis_files/figure-latex/fig-asim-nest-1.pdf, id=220, 1003.75pt x 582.175pt>
 File: thesis_files/figure-latex/fig-asim-nest-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/fig-asim-nest-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/fig-asim-nest-1.pdf  used on input line 198.
+Package pdftex.def Info: thesis_files/figure-latex/fig-asim-nest-1.pdf  used on input line 201.
 (pdftex.def)             Requested size: 328.82707pt x 184.24748pt.
 [14 <./thesis_files/figure-latex/fig-asim-nest-1.pdf>] [15] [16] [17] [18]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 265.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 268.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 268.
+(Font)              scaled to size 10.0pt on input line 271.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 289.
+(Font)              scaled to size 12.0pt on input line 292.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.8pt on input line 298.
+(Font)              scaled to size 8.8pt on input line 301.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.6pt on input line 298.
-LaTeX Font Info:    Trying to load font information for U+dsrom on input line 368.
+(Font)              scaled to size 6.6pt on input line 301.
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 371.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 ) [19] [20] [21
 pdfTeX warning (ext4): destination with the same identifier (name{algorithm.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.404 
+l.407 
       ] [22]
-<thesis_files/figure-latex/hbw-1.pdf, id=281, 469.755pt x 325.215pt>
+<thesis_files/figure-latex/hbw-1.pdf, id=290, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbw-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbw-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/hbw-1.pdf  used on input line 409.
+Package pdftex.def Info: thesis_files/figure-latex/hbw-1.pdf  used on input line 412.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<thesis_files/figure-latex/hbs-1.pdf, id=283, 469.755pt x 325.215pt>
+<thesis_files/figure-latex/hbs-1.pdf, id=292, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbs-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbs-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/hbs-1.pdf  used on input line 420.
+Package pdftex.def Info: thesis_files/figure-latex/hbs-1.pdf  used on input line 423.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [23] [24 <./thesis_files/figure-latex/hbw-1.pdf>] [25 <./thesis_files/figure-latex/hbs-1.pdf>]
-<thesis_files/figure-latex/hbo-1.pdf, id=309, 469.755pt x 325.215pt>
+<thesis_files/figure-latex/hbo-1.pdf, id=317, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbo-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbo-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/hbo-1.pdf  used on input line 431.
+Package pdftex.def Info: thesis_files/figure-latex/hbo-1.pdf  used on input line 434.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [26 <./thesis_files/figure-latex/hbo-1.pdf>]
-<pics/BeamCalib.png, id=323, 752.8125pt x 481.8pt>
+<pics/BeamCalib.png, id=331, 752.8125pt x 481.8pt>
 File: pics/BeamCalib.png Graphic file (type png)
 <use pics/BeamCalib.png>
-Package pdftex.def Info: pics/BeamCalib.png  used on input line 446.
+Package pdftex.def Info: pics/BeamCalib.png  used on input line 449.
 (pdftex.def)             Requested size: 469.75502pt x 300.65375pt.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 12.0pt on input line 477.
 [27 <./pics/BeamCalib.png>] [28] [29] [30]
 Chapter 4.
-
-LaTeX Warning: Reference `res-transfers' on page 31 undefined on input line 524.
-
 [31
 
-]
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 540.
-[32] [33] [34] [35] [36]
-<thesis_files/figure-latex/waits-1.pdf, id=401, 469.755pt x 325.215pt>
+] [32] [33] [34] [35] [36]
+<thesis_files/figure-latex/waits-1.pdf, id=409, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/waits-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/waits-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/waits-1.pdf  used on input line 604.
+Package pdftex.def Info: thesis_files/figure-latex/waits-1.pdf  used on input line 599.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[37 <./thesis_files/figure-latex/waits-1.pdf>] [38] [39] [40]
-<thesis_files/figure-latex/piechart-1.pdf, id=440, 469.755pt x 325.215pt>
+[37] [38 <./thesis_files/figure-latex/waits-1.pdf>] [39] [40] [41]
+<thesis_files/figure-latex/piechart-1.pdf, id=453, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/piechart-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/piechart-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/piechart-1.pdf  used on input line 649.
+Package pdftex.def Info: thesis_files/figure-latex/piechart-1.pdf  used on input line 644.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[41] [42 <./thesis_files/figure-latex/piechart-1.pdf>] [43]
-<planshifts.png, id=460, 650.43pt x 433.62pt>
+[42] [43 <./thesis_files/figure-latex/piechart-1.pdf>] [44]
+<planshifts.png, id=475, 650.43pt x 433.62pt>
 File: planshifts.png Graphic file (type png)
 <use planshifts.png>
-Package pdftex.def Info: planshifts.png  used on input line 662.
+Package pdftex.def Info: planshifts.png  used on input line 657.
 (pdftex.def)             Requested size: 650.4284pt x 433.61894pt.
-[44
-
- <./planshifts.png (PNG copy)>]
-<thesis_files/figure-latex/walkers-1.pdf, id=467, 469.755pt x 325.215pt>
-File: thesis_files/figure-latex/walkers-1.pdf Graphic file (type pdf)
-<use thesis_files/figure-latex/walkers-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/walkers-1.pdf  used on input line 672.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [45
 
-] [46 <./thesis_files/figure-latex/walkers-1.pdf>] [47] [48] [49]
-Chapter 5.
-[50
+ <./planshifts.png (PNG copy)>]
+<thesis_files/figure-latex/walkers-1.pdf, id=483, 469.755pt x 325.215pt>
+File: thesis_files/figure-latex/walkers-1.pdf Graphic file (type pdf)
+<use thesis_files/figure-latex/walkers-1.pdf>
+Package pdftex.def Info: thesis_files/figure-latex/walkers-1.pdf  used on input line 668.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[46
 
-]
-Chapter 6.
+] [47 <./thesis_files/figure-latex/walkers-1.pdf>] [48] [49] [50]
+Chapter 5.
 [51
 
-]
+] [52] [53] [54]
+Chapter 6.
+[55
+
+] [56] [57]
 Chapter 7.
-LaTeX Font Info:    Trying to load font information for OMS+ntxtlf on input line 725.
-LaTeX Font Info:    No file OMSntxtlf.fd. on input line 725.
+LaTeX Font Info:    Trying to load font information for OMS+ntxtlf on input line 766.
+LaTeX Font Info:    No file OMSntxtlf.fd. on input line 766.
 
 LaTeX Font Warning: Font shape `OMS/ntxtlf/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 725.
+(Font)              for symbol `textbraceleft' on input line 766.
 
-[52
+[58
 
 ]
-Overfull \hbox (17.40172pt too wide) in paragraph at lines 740--742
+Overfull \hbox (17.40172pt too wide) in paragraph at lines 781--783
 \OT1/ntxtlf/m/it/12 RSG\OT1/minntx/m/n/12 . [][]$https : / / rsginc . com / activitysim-[]white-[]paper / #advanced-[]activity-[]based-[]travel-[]demand-[]model$[][]. 
  []
 
-[53
+[59
 
-] [54] [55] [56] [57] [58] [59]
+] [60] [61] [62] [63] [64] [65]
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
-[60] (./thesis.aux)
+[66] (./thesis.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 25297 strings out of 479489
- 451044 string characters out of 5873325
- 770312 words of memory out of 5000000
- 43281 multiletter control sequences out of 15000+600000
+ 25920 strings out of 479489
+ 462967 string characters out of 5873325
+ 785892 words of memory out of 5000000
+ 43878 multiletter control sequences out of 15000+600000
  492819 words of font info for 80 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 106i,12n,131p,2333b,1031s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 106i,17n,131p,2874b,1033s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf-pc.enc}{c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}<c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txexs.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txsys.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmb.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmr.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on thesis.pdf (66 pages, 2021470 bytes).
+Output written on thesis.pdf (72 pages, 2033282 bytes).
 PDF statistics:
- 816 PDF objects out of 1000 (max. 8388607)
- 700 compressed objects within 7 object streams
- 246 named destinations out of 1000 (max. 500000)
- 243 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 881 PDF objects out of 1000 (max. 8388607)
+ 758 compressed objects within 8 object streams
+ 262 named destinations out of 1000 (max. 500000)
+ 275 words of extra memory for PDF output out of 10000 (max. 10000000)
 

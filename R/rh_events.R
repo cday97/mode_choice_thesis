@@ -45,6 +45,16 @@ rh_pass <- function(events){
   rhPassengers
 }
 
+rh_pass_time <- function(events){
+  passengerTime <- events %>%
+    filter(type == "PathTraversal",
+           vehicleType == "ride_hail") %>%
+    mutate(travelTime = arrivalTime - departureTime) %>%
+    filter(numPassengers > 0) %>%
+    summarize(name = "passenger", totalPassengerTime = sum(travelTime))
+    
+}
+
 # old wait time calculation function (no sampling and only summary table ability)
 rh_times <- function(events){
   times <- events %>%
@@ -140,14 +150,13 @@ total_fleet_hours <- function(fleet){
   as.numeric(fleetSummary[1,])
 }
 
-rh_utilization <- function(travel_times, num_passengers, totalFleetHours){
-  tt <- travel_times %>%
-    rename(rename_list_graph) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
-    pivot_longer(!values, names_to = "ScenarioName", values_to = "TotalTravelTime") %>%
-    filter(values == "sum") %>% select(-values) %>%
-    mutate(TotalTravelTime = TotalTravelTime / 60)
+rh_utilization <- function(rh_passenger_times, num_passengers, totalFleetHours){
+  tt <- rh_passenger_times %>%
+    rename(rename_list_graph) %>% select(1,11,6,10,9,5,4,8,7,3,2)  %>%
+    pivot_longer(!totalPassengerTime, names_to = "ScenarioName", values_to = "TotalTravelTime") %>%
+    mutate(TotalTravelTime = TotalTravelTime / 3600)
   np <- num_passengers %>%
-    rename(rename_list_graph) %>% select(1,6,11,2,7,3,8,4,9,5,10) %>%
+    rename(rename_list_graph) %>% select(1,11,6,10,9,5,4,8,7,3,2) %>%
     pivot_longer(!num_passengers, names_to = "ScenarioName", values_to = "vals") %>%
     filter(num_passengers != 0) %>%
     group_by(ScenarioName) %>%
@@ -160,7 +169,8 @@ rh_utilization <- function(travel_times, num_passengers, totalFleetHours){
     mutate(RideHailTimeUtilization = round(TotalTravelTime / TotalDriverHours * 100,3),
            RideHailPersonUtilization = round(TotalPassengers / TotalDriverHours,3))
   
-  sumTable <- sumTable[-2,]  
+  sumTable <- sumTable[-1,]  
+  sumTable
 }
 
 

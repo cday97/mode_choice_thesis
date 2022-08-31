@@ -1,4 +1,4 @@
-# Literature Review
+# Literature Review {#lit}
 
 As discussed in the introduction, forecasters model novel transport modes using activity-based models, multi-agent simulation, spatial analysis, machine learning, and more. Since our research mainly focuses on activity-based models, multi-agent simulation, and the link between them both, understanding the other model frameworks is not within the scope of this project. For this reason, the following literature review outlines the strengths and weaknesses of activity-based models and multi-agent simulation, the previous attempts to model novel transport modes with activity-based models and multi-agent simulation, and the brief literature of those who have attempted to reconcile two modeling approaches within the same study. Within the scope of this paper however, it is not practical to provide a comprehensive review of all activity-based models, multi-agent simulations, or paired modeling approaches. 
 

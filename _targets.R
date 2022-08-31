@@ -116,7 +116,8 @@ analysis_targets <- tar_plan(
   tar_target(travel_times, all_join(events_list, rh_travel_times, "summary", "values")),
   tar_target(rh_to_transit, all_join(events_list, count_rh_transit_transfers, "transferType", "transfer_type")),
   tar_target(fleet_hours, total_fleet_hours(driverfleet)),
-  tar_target(rh_utilization, rh_utilization(travel_times,num_passengers,fleet_hours)),
+  tar_target(rh_passenger_time, all_join(events_list,rh_pass_time,"name","totalPassengerTime")),
+  tar_target(ridehail_utilization, rh_utilization(rh_passenger_time,num_passengers,fleet_hours)),
   
   #Across Day Statistics
   tar_target(wRH_all_all_sum, rh_switch(wRH_all_all_p0,wRH_all_all_p12)),
@@ -141,8 +142,6 @@ visual_targets <- tar_plan(
   
   # Ride Hail Result Visuals
   tar_target(ridership, format_ridership_table(mode_choice_table)),
-  tar_target(transfers, format_transfers_table(rh_to_transit)),
-  tar_target(transfersgraph, format_transfers_graph(transfers)),
   tar_target(waits, format_waits_graph(wait_times)),
   
   #Across Day and Daily Plan Analysis
