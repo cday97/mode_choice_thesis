@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.26)  4 SEP 2022 09:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.26)  5 SEP 2022 10:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1104,48 +1104,48 @@ File: thesis_files/figure-latex/fig-asim-nest-1.pdf Graphic file (type pdf)
 Package pdftex.def Info: thesis_files/figure-latex/fig-asim-nest-1.pdf  used on input line 201.
 (pdftex.def)             Requested size: 328.82707pt x 184.24748pt.
 [14 <./thesis_files/figure-latex/fig-asim-nest-1.pdf>] [15] [16] [17] [18]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 268.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 269.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 271.
+(Font)              scaled to size 10.0pt on input line 272.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 292.
+(Font)              scaled to size 12.0pt on input line 293.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.8pt on input line 301.
+(Font)              scaled to size 8.8pt on input line 302.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.6pt on input line 301.
-LaTeX Font Info:    Trying to load font information for U+dsrom on input line 371.
+(Font)              scaled to size 6.6pt on input line 302.
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 372.
 (c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 ) [19] [20] [21
 pdfTeX warning (ext4): destination with the same identifier (name{algorithm.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.407 
+l.408 
       ] [22]
 <thesis_files/figure-latex/hbw-1.pdf, id=290, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbw-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbw-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/hbw-1.pdf  used on input line 412.
+Package pdftex.def Info: thesis_files/figure-latex/hbw-1.pdf  used on input line 413.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 <thesis_files/figure-latex/hbs-1.pdf, id=292, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbs-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbs-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/hbs-1.pdf  used on input line 423.
+Package pdftex.def Info: thesis_files/figure-latex/hbs-1.pdf  used on input line 424.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [23] [24 <./thesis_files/figure-latex/hbw-1.pdf>] [25 <./thesis_files/figure-latex/hbs-1.pdf>]
 <thesis_files/figure-latex/hbo-1.pdf, id=317, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/hbo-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/hbo-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/hbo-1.pdf  used on input line 434.
+Package pdftex.def Info: thesis_files/figure-latex/hbo-1.pdf  used on input line 435.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [26 <./thesis_files/figure-latex/hbo-1.pdf>]
 <pics/BeamCalib.png, id=331, 752.8125pt x 481.8pt>
 File: pics/BeamCalib.png Graphic file (type png)
 <use pics/BeamCalib.png>
-Package pdftex.def Info: pics/BeamCalib.png  used on input line 449.
+Package pdftex.def Info: pics/BeamCalib.png  used on input line 450.
 (pdftex.def)             Requested size: 469.75502pt x 300.65375pt.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 477.
+(Font)              scaled to size 12.0pt on input line 478.
 [27 <./pics/BeamCalib.png>] [28] [29] [30]
 Chapter 4.
 [31
@@ -1154,19 +1154,19 @@ Chapter 4.
 <thesis_files/figure-latex/waits-1.pdf, id=409, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/waits-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/waits-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/waits-1.pdf  used on input line 599.
+Package pdftex.def Info: thesis_files/figure-latex/waits-1.pdf  used on input line 600.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [37] [38 <./thesis_files/figure-latex/waits-1.pdf>] [39] [40] [41]
 <thesis_files/figure-latex/piechart-1.pdf, id=453, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/piechart-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/piechart-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/piechart-1.pdf  used on input line 644.
+Package pdftex.def Info: thesis_files/figure-latex/piechart-1.pdf  used on input line 645.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [42] [43 <./thesis_files/figure-latex/piechart-1.pdf>] [44]
 <planshifts.png, id=475, 650.43pt x 433.62pt>
 File: planshifts.png Graphic file (type png)
 <use planshifts.png>
-Package pdftex.def Info: planshifts.png  used on input line 657.
+Package pdftex.def Info: planshifts.png  used on input line 658.
 (pdftex.def)             Requested size: 650.4284pt x 433.61894pt.
 [45
 
@@ -1174,7 +1174,7 @@ Package pdftex.def Info: planshifts.png  used on input line 657.
 <thesis_files/figure-latex/walkers-1.pdf, id=483, 469.755pt x 325.215pt>
 File: thesis_files/figure-latex/walkers-1.pdf Graphic file (type pdf)
 <use thesis_files/figure-latex/walkers-1.pdf>
-Package pdftex.def Info: thesis_files/figure-latex/walkers-1.pdf  used on input line 668.
+Package pdftex.def Info: thesis_files/figure-latex/walkers-1.pdf  used on input line 669.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [46
 
@@ -1191,15 +1191,15 @@ Chapter 7.
 [58
 
 ]
-LaTeX Font Info:    Trying to load font information for OMS+ntxtlf on input line 772.
-LaTeX Font Info:    No file OMSntxtlf.fd. on input line 772.
+LaTeX Font Info:    Trying to load font information for OMS+ntxtlf on input line 773.
+LaTeX Font Info:    No file OMSntxtlf.fd. on input line 773.
 
 LaTeX Font Warning: Font shape `OMS/ntxtlf/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 772.
+(Font)              for symbol `textbraceleft' on input line 773.
 
 [59]
-Overfull \hbox (17.40172pt too wide) in paragraph at lines 787--789
+Overfull \hbox (17.40172pt too wide) in paragraph at lines 788--790
 \OT1/ntxtlf/m/it/12 RSG\OT1/minntx/m/n/12 . [][]$https : / / rsginc . com / activitysim-[]white-[]paper / #advanced-[]activity-[]based-[]travel-[]demand-[]model$[][]. 
  []
 
@@ -1219,13 +1219,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  25921 strings out of 479489
  462974 string characters out of 5873325
- 785892 words of memory out of 5000000
+ 785948 words of memory out of 5000000
  43878 multiletter control sequences out of 15000+600000
  492819 words of font info for 80 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  106i,17n,131p,2874b,1033s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf-pc.enc}{c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}<c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txexs.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/txsys.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmb.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmr.pfb><c:/Users/chris/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on thesis.pdf (73 pages, 2036052 bytes).
+Output written on thesis.pdf (73 pages, 2035587 bytes).
 PDF statistics:
  887 PDF objects out of 1000 (max. 8388607)
  763 compressed objects within 8 object streams
