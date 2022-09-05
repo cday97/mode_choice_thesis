@@ -40,4 +40,4 @@
 \contentsline {chapter}{\numberline {6}Limitations}{55}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Further Research}{56}{section.6.1}%
 \contentsline {chapter}{\numberline {7}Conclusions}{58}{chapter.7}%
-\contentsline {chapter}{References}{59}{section*.22}%
+\contentsline {chapter}{References}{60}{section*.22}%
