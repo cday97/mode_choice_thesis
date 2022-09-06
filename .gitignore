@@ -6,6 +6,12 @@
 *.aux
 *.log
 *.spl
+*.acn
+*.glo
+*.ist
+*.log
+*.lot
+*.toc
 
 _bookdown_files/
 data/
