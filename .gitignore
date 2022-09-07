@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+.Renviron
 
 *.aux
 *.log
@@ -15,4 +16,5 @@
 *.toc
 
 _bookdown_files/
+_targets/
 data/

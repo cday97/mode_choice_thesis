@@ -29,6 +29,10 @@ source("R/rh_visuals.R")
 
 
 data_targets <- tar_plan(
+  ## Data
+  tar_target(data_zip, get_data_from_box()),
+  
+  
   ## ASIM Utility Coefficient Validation
   tar_target(asim_hbw, get_asim_hbw()),
   tar_target(utah_hbw, get_utah_hbw()),
@@ -44,18 +48,18 @@ data_targets <- tar_plan(
   tar_target(nchrp_hbo, get_nchrp_hbo()),
   
   ## Ride Hail Event Handler data
-  tar_target(all_all_wrh, "data/events/12.events-15pct-wRH-all-all.csv", format = "file"),
-  tar_target(all_path_wrh, "data/events/12.events-15pct-wRH-all-path.csv", format = "file"),
-  tar_target(rh_all_wrh, "data/events/12.events-15pct-wRH-rh-all.csv", format = "file"),
-  tar_target(rh_path_wrh, "data/events/12.events-15pct-wRH-rh-path.csv", format = "file"),
-  tar_target(none_wrh, "data/events/12.events-15pct-wRH-none.csv", format = "file"),
-  tar_target(all_all_norh, "data/events/12.events-15pct-noRH-all-all.csv", format = "file"),
-  tar_target(all_path_norh, "data/events/12.events-15pct-noRH-all-path.csv", format = "file"),
-  tar_target(rh_all_norh, "data/events/12.events-15pct-noRH-rh-all.csv", format = "file"),
-  tar_target(rh_path_norh, "data/events/12.events-15pct-noRH-rh-path.csv", format = "file"),
-  tar_target(none_norh, "data/events/12.events-15pct-noRH-none.csv", format = "file"),
+  tar_target(all_all_wrh,  unzip_data("data/events/12.events-15pct-wRH-all-all.csv",   data_zip), format = "file"),
+  tar_target(all_path_wrh, unzip_data("data/events/12.events-15pct-wRH-all-path.csv",  data_zip), format = "file"),
+  tar_target(rh_all_wrh,   unzip_data("data/events/12.events-15pct-wRH-rh-all.csv",    data_zip), format = "file"),
+  tar_target(rh_path_wrh,  unzip_data("data/events/12.events-15pct-wRH-rh-path.csv",   data_zip), format = "file"),
+  tar_target(none_wrh,     unzip_data("data/events/12.events-15pct-wRH-none.csv",      data_zip), format = "file"),
+  tar_target(all_all_norh, unzip_data("data/events/12.events-15pct-noRH-all-all.csv",  data_zip), format = "file"),
+  tar_target(all_path_norh,unzip_data("data/events/12.events-15pct-noRH-all-path.csv", data_zip), format = "file"),
+  tar_target(rh_all_norh,  unzip_data("data/events/12.events-15pct-noRH-rh-all.csv",   data_zip), format = "file"),
+  tar_target(rh_path_norh, unzip_data("data/events/12.events-15pct-noRH-rh-path.csv",  data_zip), format = "file"),
+  tar_target(none_norh,    unzip_data("data/events/12.events-15pct-noRH-none.csv",     data_zip), format = "file"),
   
-  tar_target(driverfleet, "data/Driverfleet_SLC.csv"),
+  tar_target(driverfleet, unzip_data("data/Driverfleet_SLC.csv"), format = "file"),
   
   ## Scenario List
   scenario_list = list(
@@ -95,15 +99,26 @@ data_targets <- tar_plan(
   short_cols = c("person","vehicle","time","type","mode","legMode","vehicleType","arrivalTime","departureTime","departTime","length","numPassengers","actType","personalVehicleAvailable","tourIndex"),
   events1 = future_map(short_list, read_events,short_cols),
   
+  # plan files
+  tar_target(wRH_all_all_p0file,    unzip_data("data/plans/final-plans/0.plans-wRH-All-All.csv",    data_zip), format = "file"),
+  tar_target(wRH_all_all_p12file,   unzip_data("data/plans/final-plans/12.plans-wRH-All-All.csv",   data_zip), format = "file"),
+  tar_target(wRH_all_path_p0file,   unzip_data("data/plans/final-plans/0.plans-wRH-All-Path.csv",   data_zip), format = "file"),
+  tar_target(wRH_all_path_p12file,  unzip_data("data/plans/final-plans/12.plans-wRH-All-Path.csv",  data_zip), format = "file"),
+  tar_target(noRH_all_all_p0file,   unzip_data("data/plans/final-plans/0.plans-noRH-All-All.csv",   data_zip), format = "file"),
+  tar_target(noRH_all_all_p12file,  unzip_data("data/plans/final-plans/12.plans-noRH-All-All.csv",  data_zip), format = "file"),
+  tar_target(noRH_all_path_p0file,  unzip_data("data/plans/final-plans/0.plans-noRH-All-Path.csv",  data_zip), format = "file"),
+  tar_target(noRH_all_path_p12file, unzip_data("data/plans/final-plans/12.plans-noRH-All-Path.csv", data_zip), format = "file"),
+  
+  
   # Ride Hail Plan Handler
-  tar_target(wRH_all_all_p0, read_plans("data/plans/final-plans/0.plans-wRH-All-All.csv")),
-  tar_target(wRH_all_all_p12, read_plans("data/plans/final-plans/12.plans-wRH-All-All.csv")),
-  tar_target(wRH_all_path_p0, read_plans("data/plans/final-plans/0.plans-wRH-All-Path.csv")),
-  tar_target(wRH_all_path_p12, read_plans("data/plans/final-plans/12.plans-wRH-All-Path.csv")),
-  tar_target(noRH_all_all_p0, read_plans("data/plans/final-plans/0.plans-noRH-All-All.csv")),
-  tar_target(noRH_all_all_p12, read_plans("data/plans/final-plans/12.plans-noRH-All-All.csv")),
-  tar_target(noRH_all_path_p0, read_plans("data/plans/final-plans/0.plans-noRH-All-Path.csv")),
-  tar_target(noRH_all_path_p12, read_plans("data/plans/final-plans/12.plans-noRH-All-Path.csv"))
+  tar_target(wRH_all_all_p0,    read_plans(wRH_all_all_p0file)),
+  tar_target(wRH_all_all_p12,   read_plans(wRH_all_all_p12file)),
+  tar_target(wRH_all_path_p0,   read_plans(wRH_all_path_p0file)),
+  tar_target(wRH_all_path_p12,  read_plans(wRH_all_path_p12file)),
+  tar_target(noRH_all_all_p0,   read_plans(noRH_all_all_p0file)),
+  tar_target(noRH_all_all_p12,  read_plans(noRH_all_all_p12file)),
+  tar_target(noRH_all_path_p0,  read_plans(noRH_all_path_p0file)),
+  tar_target(noRH_all_path_p12, read_plans(noRH_all_path_p12file))
 )
 
 analysis_targets <- tar_plan(
