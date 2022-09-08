@@ -34,7 +34,7 @@ bind_plans <- function(plans1,plans2,plans3,plans4){
 }
 
 
-read_full_plans <- function(path){
+read_full_plans <- function(path, plansbind){
   plans <- list()
   for (i in 1:13){
     plans[[i]] <- paste0(

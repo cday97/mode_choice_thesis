@@ -140,8 +140,8 @@ analysis_targets <- tar_plan(
   tar_target(noRH_all_path_sum, rh_switch(noRH_all_path_p0,wRH_all_path_p12)),
   
   tar_target(plansbind, bind_plans(wRH_all_all_sum,wRH_all_path_sum,noRH_all_all_sum,noRH_all_path_sum)),
-  tar_target(full_plans, read_full_plans("data/plans/wRH-all-all-plans/")),
-  tar_target(mode_shifts, mode_shifts(full_plans)),
+  tar_target(full_plans, read_full_plans(unzip_data("data/plans/wRH-all-all-plans/", data_zip))),
+  tar_target(mode_shift, mode_shifts(full_plans)),
   
   #Daily Plan Statistics
   tar_target(dayhours, walk_analysis(events1[[1]]))
@@ -160,7 +160,7 @@ visual_targets <- tar_plan(
   
   #Across Day and Daily Plan Analysis
   tar_target(piechart, pie_chart(plansbind)),
-  tar_target(planshifts, make_plans_shift_chart(mode_shifts)),
+  tar_target(planshifts, make_plans_shift_chart(mode_shift)),
   tar_target(walk_switchers, switch_to_walk(dayhours))
 )
 

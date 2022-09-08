@@ -1,9 +1,9 @@
 
 #MTC ActivitySim =====================================================
 
-get_asim_hbw <- function(){
+get_asim_hbw <- function(data_zip){
   
-  asim_tour_coeffs <- read_table(unzip_data("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt"))
+  asim_tour_coeffs <- read_table(unzip_data("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt", data_zip))
   # multiply all values in table by 2 (tour values need to be compared with trip values later on, and this will allow that)
   cols <- sapply(asim_tour_coeffs, is.numeric)
   asim_tour_coeffs[, cols] <- asim_tour_coeffs[, cols] * 2
@@ -14,8 +14,8 @@ get_asim_hbw <- function(){
   asim_hbw_ratio
 }
 
-get_asim_hbs <- function(){
-  asim_tour_coeffs <- read_table(unzip_data("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt"))
+get_asim_hbs <- function(data_zip){
+  asim_tour_coeffs <- read_table(unzip_data("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt", data_zip))
   # multiply all values in table by 2 (tour values need to be compared with trip values later on, and this will allow that)
   cols <- sapply(asim_tour_coeffs, is.numeric)
   asim_tour_coeffs[, cols] <- asim_tour_coeffs[, cols] * 2
@@ -26,8 +26,8 @@ get_asim_hbs <- function(){
   asim_hbs_ratio
 }
 
-get_asim_hbo <- function(){
-  asim_tour_coeffs <- read_table(unzip_data("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt"))
+get_asim_hbo <- function(data_zip){
+  asim_tour_coeffs <- read_table(unzip_data("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt", data_zip))
   # multiply all values in table by 2 (tour values need to be compared with trip values later on, and this will allow that)
   cols <- sapply(asim_tour_coeffs, is.numeric)
   asim_tour_coeffs[, cols] <- asim_tour_coeffs[, cols] * 2
