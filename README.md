@@ -16,6 +16,15 @@ outlined below.
   3. Dowload the 'RAM' package using this command: devtools::install_url
   ("https://cran.r-project.org/src/contrib/Archive/RAM/RAM_1.2.1.tar.gz")
   4. Build the book.
+  
+As a note, some of the targets (especially `events_list`) are large and occupy
+a fair amount of memory. You will likely need to increase the amount of virtual
+memory available to R by placing the following line in your `.Renviron` file:
+```
+R_MAX_VSIZE=64000000000
+```
+It seems to be possible to set this value beyond the physical limits of your machine
+(e.g., the 64Gb memory was used successfully on a MacBook Pro with only 32Gb of installed memory.)
 
 ## Outputs
 
