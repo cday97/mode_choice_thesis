@@ -32,10 +32,7 @@ unzip_data <- function(file, data_zip){
   dir.create(dirname(file), recursive = TRUE, showWarnings = FALSE)
   
   # extract requested file (will deposit at requested place)
-  system2(pz7, args = c(
-    "x", data_zip,
-    file
-    ))
+  system2(pz7, args = c( "x", data_zip, file, "-aoa" ))
   
   # targets needs us to return the file path.
   return(file)

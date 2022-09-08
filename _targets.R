@@ -34,18 +34,18 @@ data_targets <- tar_plan(
   
   
   ## ASIM Utility Coefficient Validation
-  tar_target(asim_hbw, get_asim_hbw()),
-  tar_target(utah_hbw, get_utah_hbw()),
-  tar_target(wfrc_hbw, get_wfrc_hbw()),
+  tar_target(utah_hbw,  get_utah_hbw(data_zip)),
+  tar_target(utah_hbs,  get_utah_hbs(data_zip)),
+  tar_target(utah_hbo,  get_utah_hbo(data_zip)),
   tar_target(nchrp_hbw, get_nchrp_hbw()),
-  tar_target(asim_hbs, get_asim_hbs()),
-  tar_target(utah_hbs, get_utah_hbs()),
-  tar_target(wfrc_hbs, get_wfrc_hbs()),
   tar_target(nchrp_hbs, get_nchrp_hbs()),
-  tar_target(asim_hbo, get_asim_hbo()),
-  tar_target(utah_hbo, get_utah_hbo()),
-  tar_target(wfrc_hbo, get_wfrc_hbo()),
   tar_target(nchrp_hbo, get_nchrp_hbo()),
+  tar_target(wfrc_hbw,  get_wfrc_hbw(data_zip)),
+  tar_target(wfrc_hbo,  get_wfrc_hbo(data_zip)),
+  tar_target(wfrc_hbs,  get_wfrc_hbs(data_zip)),
+  tar_target(asim_hbs,  get_asim_hbs(data_zip)),
+  tar_target(asim_hbw,  get_asim_hbw(data_zip)),
+  tar_target(asim_hbo,  get_asim_hbo(data_zip)),
   
   ## Ride Hail Event Handler data
   tar_target(all_all_wrh,  unzip_data("data/events/12.events-15pct-wRH-all-all.csv",   data_zip), format = "file"),
@@ -59,7 +59,7 @@ data_targets <- tar_plan(
   tar_target(rh_path_norh, unzip_data("data/events/12.events-15pct-noRH-rh-path.csv",  data_zip), format = "file"),
   tar_target(none_norh,    unzip_data("data/events/12.events-15pct-noRH-none.csv",     data_zip), format = "file"),
   
-  tar_target(driverfleet, unzip_data("data/Driverfleet_SLC.csv"), format = "file"),
+  tar_target(driverfleet, unzip_data("data/Driverfleet_SLC.csv", data_zip), format = "file"),
   
   ## Scenario List
   scenario_list = list(

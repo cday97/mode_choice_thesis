@@ -2,7 +2,8 @@
 #MTC ActivitySim =====================================================
 
 get_asim_hbw <- function(){
-  asim_tour_coeffs <- read_table("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt")
+  
+  asim_tour_coeffs <- read_table(unzip_data("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt"))
   # multiply all values in table by 2 (tour values need to be compared with trip values later on, and this will allow that)
   cols <- sapply(asim_tour_coeffs, is.numeric)
   asim_tour_coeffs[, cols] <- asim_tour_coeffs[, cols] * 2
@@ -14,7 +15,7 @@ get_asim_hbw <- function(){
 }
 
 get_asim_hbs <- function(){
-  asim_tour_coeffs <- read_table("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt")
+  asim_tour_coeffs <- read_table(unzip_data("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt"))
   # multiply all values in table by 2 (tour values need to be compared with trip values later on, and this will allow that)
   cols <- sapply(asim_tour_coeffs, is.numeric)
   asim_tour_coeffs[, cols] <- asim_tour_coeffs[, cols] * 2
@@ -26,7 +27,7 @@ get_asim_hbs <- function(){
 }
 
 get_asim_hbo <- function(){
-  asim_tour_coeffs <- read_table("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt")
+  asim_tour_coeffs <- read_table(unzip_data("data/model_data/mtc/mtc_2012_tour_mode_choice_coefficients_path.txt"))
   # multiply all values in table by 2 (tour values need to be compared with trip values later on, and this will allow that)
   cols <- sapply(asim_tour_coeffs, is.numeric)
   asim_tour_coeffs[, cols] <- asim_tour_coeffs[, cols] * 2
@@ -38,7 +39,8 @@ get_asim_hbo <- function(){
 }
 
 # Utah Statewide =======================================================
-get_utah_data <- function(){
+get_utah_data <- function(data_zip){
+  utah_path <- unzip_data("data/model_data/utah/*", data_zip)
   cf_files <- list.files("data/model_data/utah_statewide/coeffs/coeffs/")
   cf_path <- "data/model_data/utah_statewide/coeffs/coeffs/"
   
@@ -56,8 +58,8 @@ get_utah_data <- function(){
   utah_coeff
  }
 
-get_utah_hbw <- function(){
-  utah_coeff <- get_utah_data()
+get_utah_hbw <- function(data_zip){
+  utah_coeff <- get_utah_data(data_zip)
   ovtt_shortwalk <-c("wait_time_under_10_min","egress_time","transfer_time","walk_short_dist")
   ovtt_longwalk <-c("wait_time_over_10_min","walk_long_dist")
   utah_hbw_ivtt <- as.numeric(utah_coeff[15,"value"])
@@ -65,8 +67,8 @@ get_utah_hbw <- function(){
   utah_hbw_ratio
 }
 
-get_utah_hbs <- function(){
-  utah_coeff <- get_utah_data()
+get_utah_hbs <- function(data_zip){
+  utah_coeff <- get_utah_data(data_zip)
   ovtt_shortwalk <-c("wait_time_under_10_min","egress_time","transfer_time","walk_short_dist")
   ovtt_longwalk <-c("wait_time_over_10_min","walk_long_dist")
   utah_hbs_ivtt <- as.numeric(utah_coeff[8,"value"])
@@ -74,8 +76,8 @@ get_utah_hbs <- function(){
   utah_hbs_ratio
 }
 
-get_utah_hbo <- function(){
-  utah_coeff <- get_utah_data()
+get_utah_hbo <- function(data_zip){
+  utah_coeff <- get_utah_data(data_zip)
   ovtt_shortwalk <-c("wait_time_under_10_min","egress_time","transfer_time","walk_short_dist")
   ovtt_longwalk <-c("wait_time_over_10_min","walk_long_dist")
   utah_hbo_ivtt <- as.numeric(utah_coeff[8,"value"])
@@ -84,7 +86,8 @@ get_utah_hbo <- function(){
 }
 
 #WFRC =====================================================================
-get_wfrc_data <- function(){
+get_wfrc_data <- function(data_zip){
+  wfrc_path <- unzip_data("data/model_data/wfrc/*", data_zip)
   coeff_files <- list.files("data/model_data/wfrc/coeffs/coeffs/")
   coeff_path <- "data/model_data/wfrc/coeffs/coeffs/"
   
@@ -102,24 +105,24 @@ get_wfrc_data <- function(){
   wfrc_coeff
 }
 
-get_wfrc_hbw <- function(){
-  wfrc_coeff <- get_wfrc_data()
+get_wfrc_hbw <- function(data_zip){
+  wfrc_coeff <- get_wfrc_data(data_zip)
   ovt_long <-c("wait_time_over_10_min","walk_long_dist")
   wfrc_hbw_ivtt <- as.numeric(wfrc_coeff[41,"value"])
   wfrc_hbw_ratio <- wfrc_table(wfrc_coeff,"HBW",ovt_long,wfrc_hbw_ivtt)
   wfrc_hbw_ratio
 }
 
-get_wfrc_hbs <- function(){
-  wfrc_coeff <- get_wfrc_data()
+get_wfrc_hbs <- function(data_zip){
+  wfrc_coeff <- get_wfrc_data(data_zip)
   ovt_long <-c("wait_time_over_10_min","walk_long_dist")
   wfrc_hbs_ivtt <- as.numeric(wfrc_coeff[1,"value"])
   wfrc_hbs_ratio <- wfrc_table(wfrc_coeff,"HBC",ovt_long,wfrc_hbs_ivtt)
   wfrc_hbs_ratio
 }
 
-get_wfrc_hbo <- function(){
-  wfrc_coeff <- get_wfrc_data()
+get_wfrc_hbo <- function(data_zip){
+  wfrc_coeff <- get_wfrc_data(data_zip)
   ovt_long <-c("wait_time_over_10_min","walk_long_dist")
   wfrc_hbo_ivtt <- as.numeric(wfrc_coeff[20,"value"])
   wfrc_hbo_ratio <- wfrc_table(wfrc_coeff,"HBO",ovt_long,wfrc_hbo_ivtt)
