@@ -1,21 +1,16 @@
 # target libraries
 library(targets)
 library(tarchetypes)
-library(tidyverse)
-library(ggrepel)
-library(data.table)
 library(future)
 library(future.apply)
 library(furrr)
-library(knitr)
-library(kableExtra)
-library(ggalluvial)
-library(RColorBrewer)
 
 # Set target-specific options such as packages.
 tar_option_set(packages = c("tidyverse", "bookdown", "readr", "dotwhisker", 
+                            "data.table",
                             "ggpubr", "scales", "future", "future.apply", "furrr",
-                            "data.table", "ggrepel"))
+                            "data.table", "ggrepel", "knitr", "kableExtra",
+                            "ggalluvial", "RColorBrewer"))
 
 #Define custom functions and other global objects.
 # This is where you write source(\"R/functions.R\")
@@ -26,6 +21,8 @@ source("R/data_helpers.R")
 source("R/rh_events.R")
 source("R/rh_plans.R")
 source("R/rh_visuals.R")
+
+message("Virtual memory size: ", Sys.getenv("R_MAX_VSIZE"))
 
 
 data_targets <- tar_plan(
@@ -62,7 +59,7 @@ data_targets <- tar_plan(
   tar_target(driverfleet, unzip_data("data/Driverfleet_SLC.csv", data_zip), format = "file"),
   
   ## Scenario List
-  scenario_list = list(
+  tar_target(scenario_list,  list(
     "All Modes - All Variables - W/ RH" = all_all_wrh,
     "All Modes - Path Variables - W/ RH" = all_path_wrh,
     "RH Modes - All Variables - W/ RH" = rh_all_wrh,
@@ -73,10 +70,10 @@ data_targets <- tar_plan(
     "RH Modes - All Variables - No RH" = rh_all_norh,
     "RH Modes - Path Variables - No RH" = rh_path_norh,
     "No Modes - No RH" = none_norh
-  ),
+  )),
   
   ## Important Columns
-  cols = c("person",
+  tar_target(cols,  c("person",
            "vehicle",
            "time",
            "type",
@@ -90,9 +87,9 @@ data_targets <- tar_plan(
            "numPassengers",
            "actType",
            "personalVehicleAvailable"
-  ),
+  )),
   
-  events_list = future_map(scenario_list, read_events, cols),
+  tar_target(events_list, read_all_events(scenario_list, cols)),
   events_waittime_list = events_list[-10],
   
   short_list = list("All Modes - All Variables - W/ RH" = all_all_wrh),

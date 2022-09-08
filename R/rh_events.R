@@ -1,8 +1,24 @@
 
 # functions ---------------------------------------------------------------------#
+#' Read all the events files
+#' 
+#' @param scenario_list A named list containing the paths 
+read_all_events <- function(scenario_list, cols){
+  
+  all_events <- lapply(scenario_list, function(scenario){
+    read_events(scenario, cols)
+  })
+  
+  all_events
+}
+
+#' Read the events list from one scenario
+#' 
+#' @param events_raw path to the events file
+#' @param cols list of columns to keep
 read_events <- function(events_raw, cols){
   events <- events_raw %>% 
-    fread(select=cols) %>% as.tibble() %>% 
+    fread(select=cols) %>% as_tibble() %>% 
     mutate(
       travelTime = arrivalTime - departureTime,
       avgSpeed = length / travelTime,
