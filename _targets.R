@@ -131,10 +131,10 @@ analysis_targets <- tar_plan(
   tar_target(ridehail_utilization, rh_utilization(rh_passenger_time,num_passengers,fleet_hours)),
   
   #Across Day Statistics
-  tar_target(wRH_all_all_sum, rh_switch(wRH_all_all_p0,wRH_all_all_p12)),
+  tar_target(wRH_all_all_sum, rh_switch(wRH_all_all_p0,wRH_all_all_p12)), 
   tar_target(wRH_all_path_sum, rh_switch(wRH_all_path_p0,wRH_all_path_p12)),
-  tar_target(noRH_all_all_sum, rh_switch(noRH_all_all_p0,wRH_all_all_p12)),
-  tar_target(noRH_all_path_sum, rh_switch(noRH_all_path_p0,wRH_all_path_p12)),
+  tar_target(noRH_all_all_sum, rh_switch(noRH_all_all_p0,noRH_all_all_p12)),
+  tar_target(noRH_all_path_sum, rh_switch(noRH_all_path_p0,noRH_all_path_p12)),
   
   tar_target(plansbind, bind_plans(wRH_all_all_sum,wRH_all_path_sum,noRH_all_all_sum,noRH_all_path_sum)),
   tar_target(full_plans, read_full_plans(unzip_data("data/plans/wRH-all-all-plans/", data_zip))),
