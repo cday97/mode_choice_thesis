@@ -1,25 +1,3 @@
 
-`r if (knitr::is_html_output()) '
 # References {-}
-'`
-
-'r
-#  {=latex} for thesis
-#  {} for  elsevier
-'
-
-```{=latex}
-\cleardoublepage
-    \bookmarksetupnext{level=part}
-    \phantomsection
-    \addcontentsline{toc}{chapter}{References}
-    \begin{centering}
-    REFERENCES\\
-    \vskip 1 \baselineskip
-    \end{centering}
-    
-```
-
-
 <div id="refs"></div>
-

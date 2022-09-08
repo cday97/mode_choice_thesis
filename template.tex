@@ -1,54 +1,66 @@
-% This is the Reed College LaTeX thesis template. Most of the work
-% for the document class was done by Sam Noble (SN), as well as this
-% template. Later comments etc. by Ben Salzberg (BTS). Additional
-% restructuring and APA support by Jess Youngberg (JY).
-% Your comments and suggestions are more than welcome; please email
-% them to cus@reed.edu
-%
-% See https://www.reed.edu/cis/help/LaTeX/index.html for help. There are a
-% great bunch of help pages there, with notes on
-% getting started, bibtex, etc. Go there and read it if you're not
-% already familiar with LaTeX.
-%
-% Any line that starts with a percent symbol is a comment.
-% They won't show up in the document, and are useful for notes
-% to yourself and explaining commands.
-% Commenting also removes a line from the document;
-% very handy for troubleshooting problems. -BTS
-
-% As far as I know, this follows the requirements laid out in
-% the 2002-2003 Senior Handbook. Ask a librarian to check the
-% document before binding. -SN
-
-%%
-%% Preamble
-%%
-% \documentclass{<something>} must begin each LaTeX document
 \documentclass[$layout$]{byuthesis}
+% Class options are simple/fancy and masters/phd.
+% Leave options blank for defaults.
+% Defaults are simple for document style, and masters for degree type.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom options and packages %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define path to figure files
+\graphicspath{{figures/}}
+
+% Define sequences of Latin text to fill space in example documents
+% (not needed for your thesis -- delete or comment out if you'd like)
+\usepackage{blindtext}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define title page elements %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thesis title for required BYU title page
 \title{$title$}
+
+% On the custom title page, use the same title, but format as you like
+\customtitle{$title$}
+
+% Your name goes here:
 \author{$author$}
-\copyyear{$year$}
-\committeeMembers{$committeeMembers$}
-\keywords{$keywords$}
+
+% This is the date of graduation
+\date{April 2021}
+
+% If your degree is not a PhD or MS, then you can overwrite the degree using
 \degree{$degree$}
-\doctype{$doctype$}
+
+% Your department
 \department{$department$}
 
+% The names of your committee members
+\committeechair{$committeechair$}
+$for(committeemembers)$
+  \committeemember{$committeemembers.name$}
+$endfor$
+
+% Include any keywords you would like for your thesis/dissertation
+\keywords{$keywords$}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---Bibliography source file--- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 $for(header-includes)$
 	$header-includes$
 $endfor$
-% End of CII addition
-%%
-%% End Preamble
-%%
-%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---Bibliography source file--- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Default is references.bib
+\bibliography{$biblography$}
 
 $if(csl-refs)$
-% Pandoc citation processing
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
@@ -86,28 +98,67 @@ $endif$
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --- Begin Document --- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-$if(abstract)$
-\begin{abstract}
-$abstract$
-\end{abstract}
-$endif$
 
-$if(acknowledgements)$
-\begin{acknowledgments}
-$acknowledgments$
-\end{acknowledgments}
-$endif$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --- Front matter (probably don't need to change)--- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\frontmatter
 
-\makefrontmatter % this stuff will be roman-numbered
-\thesisbody
+	\titlepage
+	\clearpage
+
+	\customtitlepage
+	\clearpage
+
+
+  $if(abstract)$
+  \begin{abstract}
+  $abstract$
+  \end{abstract}
+  $endif$
+	\clearpage
+
+
+  $if(acknowledgments)$
+  \begin{acknowledgments}
+  $acknowledgments$
+  \end{acknowledgments}
+  $endif$
+	\clearpage
+
+	\tableofcontents*
+	\clearpage
+
+	\listoffigures
+	\clearpage
+
+	\listoftables
+	\clearpage
+
+	\input{nomenclature}
+	\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%
+% --- Main Body --- %
+%%%%%%%%%%%%%%%%%%%%%
+	\mainmatter
 
 $body$
 
+%%%%%%%%%%%%%%%%%%%%%%%%
+% --- Bibliography --- %
+%%%%%%%%%%%%%%%%%%%%%%%%
+% printed automatically with CSL
+%
+%%%%%%%%%%%%%%%%%%%%%
+% --- Appendices --- %
+%%%%%%%%%%%%%%%%%%%%%
 
-% Index?
 
 \end{document}
 

@@ -6,31 +6,20 @@ title: |
 # Your thesis title should be inverted pyramid-shaped, with the longest
 # line on top and shorter lines below. Add a new line as tab-|-space-Words
 author: 'Christopher Day'
-year: '2022'
+# this is the date of graduation
+date: 'December 2022'
 department: 'Department of Civil and Construction Engineering'
-degree: 'Master of Science'
-doctype: 'thesis' # thesis or dissertation
-committeeMembers: |
-  Gregory S. Macfarlane, Chair 
-  
-  Grant G. Schultz
-  
-  Gustavious P. Williams
+degree: Master of Science
+committeechair: Gregory S. Macfarlane
+committeemembers:
+  - name: Grant G. Schultz
+  - name: Gustavious P. Williams
 keywords: 'activity-based model, multi-agent simulation, novel transport modes, ActivitySim, BEAM'
 
-address: 
-  - code: BYU
-    address: Brigham Young University, Civil and Construction Engineering Department, 430 EB, Provo, Utah 84602
-footnote:
-  - code: 1
-    text: "Corresponding Author"
-date: "`r Sys.Date()`"
 
 # Remove the hashtag to specify which version of output you would like.
 # Can only choose one at a time.
 site: bookdown::bookdown_site
-
-journal: "submitted to Health and Place"
 
 # Note that a tab is needed on the line after the `|`.
 abstract: |
@@ -52,6 +41,7 @@ bibliography: [book.bib]
 
 # Download your specific csl file and refer to it in the line below.
 # csl styles: https://www.zotero.org/styles
+csl: apa.csl
 
 lot: true
 lof: true
@@ -78,7 +68,6 @@ header-includes:
 # delete thesis.aux BEFORE building pdf book
 # change to thesis format in _ouput.yml and references
 # uncomment the following specification  (and comment ELSEVIER SECTION)
-
-layout: '12pt, oneside, openright' #thesis use option 'oneside' for ETD, 'twoside' for printing
+layout: 'fancy, masters'
 ---
 
