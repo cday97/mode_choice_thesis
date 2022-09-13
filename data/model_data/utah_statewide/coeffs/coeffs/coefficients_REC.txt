@@ -1,0 +1,13 @@
+;REC coefficients
+
+ivt_coef                      = -0.0350           ;IN-VEHICLE TIME
+                                       
+walk_coef_1                   = -0.0700           ;FIRST MILE OF WALK/OUT-OF-VEHICLE TIME (tot access/egress/transfer, 1 mi @ 2.5 mph = 24 min)
+walk_coef_gt_1                = -0.1050           ;OVER 1 MILE WALK/OUT-OF-VEHICLE TIME
+                                       
+bike_coef                     = -0.0700           ;BIKE TIME
+                                       
+cost_coef                     = -0.0016           ;AUTO OPERATING COST/TRANSIT FARE (USING MEDIAN INCOME)
+parkcost_coef                 = -0.0016           ;PARKING COST (USING MEDIAN INCOME)
+                                       
+zonal_urbanization            = 0.0070            ;TRANSIT BIAS - ZONAL URBANIZATION DENSITY MEASURE (ATTRACTION ZONE)

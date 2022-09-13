@@ -1,0 +1,38 @@
+;HBC coefficients
+
+
+ivt_coef_hbc                = -0.0250           ;IN-VEHICLE TIME
+                                     
+initwait_coef_hbc           = -0.0500           ;FIRST TRANSIT WAIT TIME
+xferwait_coef_hbc           = -0.0750           ;TRANSIT TRANSFER WAIT TIME
+                                     
+walk_coef_1_hbc             = -0.0500           ;FIRST MILE OF WALK/OUT-OF-VEHICLE TIME (tot access/egress/transfer, 1 mi @ 2.5 mph = 24 min)
+walk_coef_gt_1_hbc          = -0.0750           ;OVER 1 MILE WALK/OUT-OF-VEHICLE TIME
+                                     
+drive_coef_hbc              = -0.0375           ;DRIVE ACCESS TO TRANSIT TIME
+                                     
+bike_coef_hbc               = -0.0500           ;BIKE TIME
+                                     
+cost_coef_hbc               = -0.0025           ;AUTO OPERATING COST/TRANSIT FARE
+                                     
+                                     
+parkcost_coef_hbc           = -0.0025           ;PARKING COST
+                                     
+                                     
+premium_walk_access         = 0.2500            ;WALK DIRECTLY TO RAIL DUMMY
+                                     
+                                     
+drive_time_to_ivt_hbc       = 0                 ;DRIVE TO TRANSIT ACCESS TIME DIVIDED BY IVT
+drive_dist_ratio_hbc        = -0.3750           ;DRIVE TO TRANSIT DISTANCE DIVIDED BY AUTO DISTANCE
+                                     
+transfers_coef_hbc          = -0.2500           ;TRANSIT TRANSFERS
+                                     
+bus_xfer_hbc                = 0                 ;BUS TRANSFERS - DRIVE TO LRT OR CRT
+                                     
+trip_distance_walk_hbc      = 0                 ;WALK-RAIL DISTANCE COEFFICIENT TO MATCH TLF
+trip_distance_drive_hbc     = -1                ;DRIVE-RAIL DISTANCE COEFFICIENT TO MATCH TLF
+                                     
+CBD_dummy_hbc               = 0                 ;TRANSIT BIAS - CBD DUMMY
+CBD_dummy_walk_hbc          = 0                 ;WALK BIAS - CBD DUMMY
+                                                
+zonal_urbanization_hbc      = 0.0000            ;TRANSIT BIAS - ZONAL URBANIZATION DENSITY MEASURE (ATTRACTION ZONE)

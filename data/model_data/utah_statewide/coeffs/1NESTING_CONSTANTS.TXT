@@ -1,0 +1,5 @@
+;FILE: nesting_constants.block
+
+;all purposes
+nest_motor     = 0.85
+nest_nonmotor  = 0.85

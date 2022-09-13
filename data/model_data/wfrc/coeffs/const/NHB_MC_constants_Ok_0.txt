@@ -1,0 +1,35 @@
+asc_motor          =            0
+asc_nonmotor       =      -0.4533
+
+asc_auto           =            0
+asc_transit        =      -2.6984
+
+asc_alone          =            0
+asc_shared         =      -0.1341
+
+asc_hov            =       0.1000
+asc_toll           =      -0.4000
+
+asc_sr2            =            0
+asc_sr3            =       0.0784
+
+asc_local          =            0
+asc_express        =            0
+asc_lrt            =       0.6798
+asc_crt            =       0.5097
+
+asc_walkacc        =            0
+asc_driveacc       =      -1.5969
+
+asc_wlocal         =            0
+asc_wexpress       =            0
+asc_wlrt           =       0.7776
+asc_wcrt           =       1.5491
+
+asc_dlocal         =            0
+asc_dexpress       =            0
+asc_dlrt           =       0.2498
+asc_dcrt           =       0.9913
+
+asc_walk           =            0
+asc_bike           =      -3.3165

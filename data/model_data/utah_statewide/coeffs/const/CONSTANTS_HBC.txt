@@ -1,0 +1,7 @@
+;MC constants - HBC
+
+asc_motor    = 0      
+asc_nonmotor = 0.5492 
+       
+asc_walk     = 0      
+asc_bike     = -2.3216      

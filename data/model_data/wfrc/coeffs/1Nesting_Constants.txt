@@ -1,0 +1,17 @@
+;FILE: nesting_constants.block
+
+;all purposes
+nest_driveacc  = 0.5
+nest_walkacc   = 0.5 
+
+nest_shared    = 0.6
+nest_alone     = 0.6
+
+nest_shared2   = 0.5
+nest_shared3   = 0.5
+
+nest_transit   = 0.75
+nest_auto      = 0.75
+
+nest_motor     = 0.85
+nest_nonmotor  = 0.85

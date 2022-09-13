@@ -40,7 +40,7 @@ get_asim_hbo <- function(data_zip){
 
 # Utah Statewide =======================================================
 get_utah_data <- function(data_zip){
-  utah_path <- unzip_data("data/model_data/utah/*", data_zip)
+  utah_path <- unzip_data("data/model_data/utah_statewide/*", data_zip)
   cf_files <- list.files("data/model_data/utah_statewide/coeffs/coeffs/")
   cf_path <- "data/model_data/utah_statewide/coeffs/coeffs/"
   

@@ -1,0 +1,7 @@
+;MC constants - REC
+
+asc_motor    = 0.0000 
+asc_nonmotor = -0.1180
+       
+asc_walk     = 0.0000 
+asc_bike     = -2.9009      

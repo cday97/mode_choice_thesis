@@ -21,6 +21,11 @@ get_data_from_box <- function(){
 #' @param file path to the desired file
 #' @param data_zip path to the zip archive
 unzip_data <- function(file, data_zip){
+  if(file.exists(file) == TRUE){
+    return(file)
+  }
+  
+  if(file.exists(file) == FALSE){
   
   # see if 7z is installed
   pz7 <- system2("which", args = "7z", stdout = TRUE)
@@ -36,6 +41,7 @@ unzip_data <- function(file, data_zip){
   
   # targets needs us to return the file path.
   return(file)
+  }
 }
 
 #' sets column types by name

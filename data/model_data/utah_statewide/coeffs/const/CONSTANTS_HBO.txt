@@ -1,0 +1,7 @@
+;MC constants - HBO
+
+asc_motor    = 0      
+asc_nonmotor = -1.0952
+                      
+asc_walk     = 0      
+asc_bike     = -1.8082      

@@ -1,0 +1,7 @@
+;MC constants - NHB
+
+asc_motor    = 0      
+asc_nonmotor = -2.2504
+                      
+asc_walk     = 0      
+asc_bike     = -1.9366      

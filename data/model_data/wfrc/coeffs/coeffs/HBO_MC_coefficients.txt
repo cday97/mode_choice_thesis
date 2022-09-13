@@ -1,0 +1,38 @@
+;HBO coefficients
+
+
+ivt_coef_hbo                = -0.0350           ;IN-VEHICLE TIME
+                                       
+initwait_coef_hbo           = -0.0700           ;FIRST TRANSIT WAIT TIME
+xferwait_coef_hbo           = -0.1050           ;TRANSIT TRANSFER WAIT TIME
+                                       
+walk_coef_1_hbo             = -0.0700           ;FIRST MILE OF WALK/OUT-OF-VEHICLE TIME (tot access/egress/transfer, 1 mi @ 2.5 mph = 24 min)
+walk_coef_gt_1_hbo          = -0.1050           ;OVER 1 MILE WALK/OUT-OF-VEHICLE TIME
+                                       
+drive_coef_hbo              = -0.0525           ;DRIVE ACCESS TO TRANSIT TIME
+                                       
+bike_coef_hbo               = -0.0700           ;BIKE TIME
+                                       
+cost_lowinc_coef_hbo        = -0.0050           ;AUTO OPERATING COST/TRANSIT FARE (LOWEST INCOME GROUP)
+cost_highinc_coef_hbo       = -0.0019           ;AUTO OPERATING COST/TRANSIT FARE (HIGHEST 3 INCOME GROUPS)
+                                       
+parkcost_lowinc_coef_hbo    = -0.0050           ;PARKING COST (LOW INCOME - IF APPLICABLE)
+parkcost_highinc_coef_hbo   = -0.0019           ;PARKING COST (HIGH INCOME)
+                                       
+premium_walk_access         = 0.3500            ;WALK DIRECTLY TO RAIL DUMMY
+                                       
+                                       
+drive_time_to_ivt_hbo       = 0                 ;DRIVE TO TRANSIT ACCESS TIME DIVIDED BY IVT
+drive_dist_ratio_hbo        = -0.5250           ;DRIVE TO TRANSIT DISTANCE DIVIDED BY AUTO DISTANCE
+                                       
+transfers_coef_drive_hbo    = -0.3500           ;TRANSIT TRANSFERS - WALK ACCESS TRIPS
+transfers_coef_walk_hbo     = -0.3500           ;TRANSIT TRANSFERS - DRIVE ACCESS TRIPS
+bus_xfer_hbo                = 0                 ;BUS TRANSFERS - DRIVE TO LRT OR CRT
+                                       
+trip_distance_walk_hbo      = -1                ;WALK-RAIL DISTANCE COEFFICIENT TO MATCH TLF
+trip_distance_drive_hbo     = -3                ;DRIVE-RAIL DISTANCE COEFFICIENT TO MATCH TLF
+                                       
+CBD_dummy_hbo               = 0                 ;TRANSIT BIAS - CBD DUMMY
+                                   
+                                                  
+zonal_urbanization_hbo      = 0.0070            ;TRANSIT BIAS - ZONAL URBANIZATION DENSITY MEASURE (ATTRACTION ZONE)

@@ -1,0 +1,38 @@
+;NHB coefficients
+
+
+ivt_coef_nhb                = -0.0400           ;IN-VEHICLE TIME
+                                     
+initwait_coef_nhb           = -0.0800           ;FIRST TRANSIT WAIT TIME
+xferwait_coef_nhb           = -0.1200           ;TRANSIT TRANSFER WAIT TIME
+                                     
+walk_coef_1_nhb             = -0.0800           ;FIRST MILE OF WALK/OUT-OF-VEHICLE TIME (tot access/egress/transfer, 1 mi @ 2.5 mph = 24 min)
+walk_coef_gt_1_nhb          = -0.1200           ;OVER 1 MILE WALK/OUT-OF-VEHICLE TIME
+                                     
+drive_coef_nhb              = -0.0600           ;DRIVE ACCESS TO TRANSIT TIME
+                                     
+bike_coef_nhb               = -0.0800           ;BIKE TIME
+                                     
+cost_coef_nhb               = -0.0025           ;AUTO OPERATING COST/TRANSIT FARE
+                                     
+                                     
+parkcost_coef_nhb           = -0.0025           ;PARKING COST
+                                     
+                                     
+premium_walk_access         = 0.4000            ;WALK DIRECTLY TO RAIL DUMMY
+                                     
+                                     
+drive_time_to_ivt_nhb       = 0                 ;DRIVE TO TRANSIT ACCESS TIME DIVIDED BY IVT
+drive_dist_ratio_nhb        = -0.6000           ;DRIVE TO TRANSIT DISTANCE DIVIDED BY AUTO DISTANCE
+                                     
+transfers_coef_nhb          = -0.4000           ;TRANSIT TRANSFERS
+                                     
+bus_xfer_nhb                = 0                 ;BUS TRANSFERS - DRIVE TO LRT OR CRT
+                                     
+trip_distance_walk_nhb      = -1                ;WALK-RAIL DISTANCE COEFFICIENT TO MATCH TLF
+trip_distance_drive_nhb     = -3                ;DRIVE-RAIL DISTANCE COEFFICIENT TO MATCH TLF
+                                     
+CBD_dummy_nhb               = 0                 ;TRANSIT BIAS - CBD DUMMY
+CBD_dummy_walk_nhb          = 0                 ;WALK BIAS - CBD DUMMY
+                                                
+zonal_urbanization_nhb      = 0.0080            ;TRANSIT BIAS - ZONAL URBANIZATION DENSITY MEASURE (ATTRACTION ZONE)

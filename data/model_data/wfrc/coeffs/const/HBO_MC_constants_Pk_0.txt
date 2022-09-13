@@ -1,0 +1,138 @@
+asc_motor_0veh     =            0
+asc_motor_1veh     =            0
+asc_motor_2veh     =            0
+asc_motor_all      =            0
+
+asc_nonmotor_0veh  =       2.6805
+asc_nonmotor_1veh  =      -0.2217
+asc_nonmotor_2veh  =      -0.0887
+asc_nonmotor_all   =            0
+
+
+asc_auto_0veh      =            0
+asc_auto_1veh      =            0
+asc_auto_2veh      =            0
+asc_auto_all       =            0
+
+asc_transit_0veh   =       1.3712
+asc_transit_1veh   =      -2.7914
+asc_transit_2veh   =      -3.5504
+asc_transit_all    =            0
+
+
+asc_alone_0veh     =            0
+asc_alone_1veh     =            0
+asc_alone_2veh     =            0
+asc_alone_all      =            0
+
+asc_shared_0veh    =            0
+asc_shared_1veh    =      -0.1719
+asc_shared_2veh    =       0.1425
+asc_shared_all     =            0
+
+
+asc_sr2_0veh       =            0
+asc_sr2_1veh       =            0
+asc_sr2_2veh       =            0
+asc_sr2_all        =            0
+
+asc_sr3_0veh       =            0
+asc_sr3_1veh       =            0
+asc_sr3_2veh       =            0
+asc_sr3_all        =       0.1491
+
+
+asc_hov_0veh       =            0
+asc_hov_1veh       =            0
+asc_hov_2veh       =            0
+asc_hov_all        =       0.0875
+
+asc_toll_0veh      =            0
+asc_toll_1veh      =            0
+asc_toll_2veh      =            0
+asc_toll_all       =      -0.3500
+
+
+asc_local_0veh     =            0
+asc_local_1veh     =            0
+asc_local_2veh     =            0
+asc_local_all      =            0
+
+asc_express_0veh   =            0
+asc_express_1veh   =            0
+asc_express_2veh   =            0
+asc_express_all    =       0.9262
+
+asc_lrt_0veh       =            0
+asc_lrt_1veh       =            0
+asc_lrt_2veh       =            0
+asc_lrt_all        =       1.0938
+
+asc_crt_0veh       =            0
+asc_crt_1veh       =            0
+asc_crt_2veh       =            0
+asc_crt_all        =       1.5608
+
+
+asc_walkacc_0veh   =            0
+asc_walkacc_1veh   =            0
+asc_walkacc_2veh   =            0
+asc_walkacc_all    =            0
+
+asc_driveacc_0veh  =           0
+asc_driveacc_1veh  =     -1.2752
+asc_driveacc_2veh  =     -0.9421
+asc_driveacc_all   =           0
+
+
+asc_wlocal_0veh    =            0
+asc_wlocal_1veh    =            0
+asc_wlocal_2veh    =            0
+asc_wlocal_all     =            0
+
+asc_wexpress_0veh  =            0
+asc_wexpress_1veh  =            0
+asc_wexpress_2veh  =            0
+asc_wexpress_all   =       1.8245
+
+asc_wlrt_0veh      =            0
+asc_wlrt_1veh      =            0
+asc_wlrt_2veh      =            0
+asc_wlrt_all       =       1.4406
+
+asc_wcrt_0veh      =            0
+asc_wcrt_1veh      =            0
+asc_wcrt_2veh      =            0
+asc_wcrt_all       =       1.9935
+
+
+asc_dlocal_0veh    =            0
+asc_dlocal_1veh    =            0
+asc_dlocal_2veh    =            0
+asc_dlocal_all     =            0
+
+asc_dexpress_0veh  =            0
+asc_dexpress_1veh  =            0
+asc_dexpress_2veh  =            0
+asc_dexpress_all   =      -0.0591
+
+asc_dlrt_0veh      =            0
+asc_dlrt_1veh      =            0
+asc_dlrt_2veh      =            0
+asc_dlrt_all       =       0.6485
+
+asc_dcrt_0veh      =            0
+asc_dcrt_1veh      =            0
+asc_dcrt_2veh      =            0
+asc_dcrt_all       =       0.6951
+
+
+asc_walk_0veh      =            0
+asc_walk_1veh      =            0
+asc_walk_2veh      =            0
+asc_walk_all       =            0
+
+asc_bike_0veh      =            0
+asc_bike_1veh      =            0
+asc_bike_2veh      =            0
+asc_bike_all       =      -2.9486

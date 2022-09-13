@@ -18,4 +18,6 @@
 
 _bookdown_files/
 _targets/
-data/
+data/events/
+data/plans/
+data/other_data/

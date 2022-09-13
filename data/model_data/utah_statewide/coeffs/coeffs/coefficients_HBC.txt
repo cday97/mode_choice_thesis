@@ -1,0 +1,13 @@
+;HBC coefficients
+
+ivt_coef                      = -0.0250           ;IN-VEHICLE TIME
+                                       
+walk_coef_1                   = -0.0500           ;FIRST MILE OF WALK/OUT-OF-VEHICLE TIME (tot access/egress/transfer, 1 mi @ 2.5 mph = 24 min)
+walk_coef_gt_1                = -0.0750           ;OVER 1 MILE WALK/OUT-OF-VEHICLE TIME
+                                       
+bike_coef                     = -0.0500           ;BIKE TIME
+                                       
+cost_coef                     = -0.0025           ;AUTO OPERATING COST/TRANSIT FARE (USING MEDIAN INCOME)
+parkcost_coef                 = -0.0025           ;PARKING COST (USING MEDIAN INCOME)
+                                       
+zonal_urbanization            = 0.0000            ;TRANSIT BIAS - ZONAL URBANIZATION DENSITY MEASURE (ATTRACTION ZONE)
