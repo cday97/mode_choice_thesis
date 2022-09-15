@@ -93,7 +93,6 @@
 % -------- math ----------
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
-\RequirePackage{amssymb}
 % ------------------------------
 
 % -------- algorithms ----------

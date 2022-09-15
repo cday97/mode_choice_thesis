@@ -20,6 +20,9 @@ if(knitr::is_latex_output()) {
 } 
 ```
 
+
+We developed a series of 10 different linked activity-based model and multi-agent simulation combinations and compared the ride-hailing ridership, level of service, and utilization between each one. 
+
 # Methods
 We developed a series of experiments to understand the relative importance of activity-based and multi-agent simulation in forecasting the uptake of novel modes. These experiments were performed using ActivitySim as the activity-based model and BEAM as the multi-agent simulation. We used the Salt Lake City, Utah region as a case study for our experiments. Since ride hailing vehicles were an emerging technology in the region at the time of our study, we deemed it the appropriate novel transport mode to model in our experiments. The following section outlines the methodology for which we were able to model a novel transport mode with differing activity-based model and multi-agent simulation mode choice combinations.
 
