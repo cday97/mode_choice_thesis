@@ -39,7 +39,7 @@ mode_choice <- function(events){
     summarize(n = n()) %>%
     mutate(share = n / sum(n)) %>%
     mutate(share = round(share*100,3)) %>%
-    select(-n)
+    select(-share)
 }
 # trip arrivals
 trip_arrivals <- function(events){

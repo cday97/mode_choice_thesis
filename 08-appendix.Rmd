@@ -1,0 +1,150 @@
+# Appendix A 
+
+## Additions to the BEAM Mode Choice Model {#apexA}
+In order to use BEAM in conjunction with ActivitySim its mode choice model was updated to be more consistent with ActivitySim’s mode choice model. More specifically, three changes were made to the choice structure:
+
+  1. Adding a Tour Purpose Attribute
+  2. Adding Person, Path, and Location Attributes to the Utility Equation
+  3. Adding New Modal Alternatives
+  
+First, we added a tour purpose attribute at the trip level, to be used when making trip-based modal decisions. ActivitySim's default utility parameters are segmented by tour purpose, auto ownership, and mode; therefore, it was essential to add a tour purpose level attribute to calculate the mode choice utility similar to ActivitySim. 
+
+Second, we added multiple person, path, and location related attributes to use in the mode choice utility equations. More specifically, we changed the BEAM utility equation to use Equation \@ref(eq:all) to calculate modal utility instead of Equation \@ref(eq:beam). This was done by gathering path and location variables from the BEAM router and person level variables from the input files. ASCs were copied directly from the MTC ActivitySim example, and then calibrated later on. Overall, we created one input file which housed all path, person, and location type parameters on a tour purpose, auto ownership, and modal level. 
+
+Adding new modal alternatives was the last major adjustment we made to the BEAM software. The most important difference between the ActivitySim modal options and the BEAM modal options is the inclusion of carpooling vehicles (HOV2 and HOV3). HOV2 means High Occupancy Vehicle with 1 passenger (2 people in the vehicle) and HOV3 means High Occupancy Vehicle with 2 or more passengers (at least 3 people in the vehicle). We adjusted the BEAM software to include HOV2 and HOV3 type modes, including a distinction between drivers and passengers of those vehicles. Within the code, HOV2 and HOV3 modes were provided as modal options by transforming an existing car option into an HOV option. This allowed car travel statistics to be transferred over to the carpooling modes, which were essential to calculating the utility.
+
+To understand the complexity of the new mode choice model in BEAM, two pseudocode algorithms are provided. Algorithm 1 describes the process behind determining the mode choice alternatives for each agent. This process occurs for every agent for every trip. Two procedures are presented within the first algorithm. The first procedure is called DetermineHOVAlternatives. In this procedure the HOV alternatives are created from already existing options created by the R5 router [@r5]. (The R5 routing engine helps BEAM accomplish multi-modal routing). Basically if the R5 routing engine finds an existing car option, then both HOV2 and HOV3 options are provided for choice options as well. However, if the router doesn't generate any car pathways, then passenger HOV options are provided. Passenger HOV modes, called HOV_TELEPORT, are completed by teleporting agents from origin to destination. The second procedure within Algorithm 1 describes the process behind determining the final modal alternatives. It states that if the current mode is already chosen, then no additional mode choice selection is needed. However, if no mode is currently chosen for the trip, the router, ride-hailing, and HOV alternatives are combined and presented as the final alternatives to choose from. 
+
+\begin{algorithm} [tph]
+\caption{Algorithm for Determining Mode Choice Alternatives in BEAM}
+\begin{algorithmic}[1]
+\Require
+\State $i : origin$
+\State $j : destination$
+\State $n: agent$
+\State $N: population$
+\State $t : trip $
+\State $P : plan$
+\State $\vec{R}(i,j) : Router\: alternatives$
+\State $\vec{RH}(i,j) : Ridehail\:alternatives$
+\State $\vec{H}(i,j) : HOV\:alternatives$
+\State $\vec{M}(i,j) : Final\:modal\:alternatives$
+\State $C : Current\:Mode$
+\State $I : Trip\:Index$
+\vspace{4pt}\hrule\vspace{5pt}
+
+\State $\vec{R} \equiv \vec{R}(i,j)$
+\State $\vec{RH} \equiv \vec{RH}(i,j)$
+\State $\vec{H} \equiv \vec{H}(i,j)$
+\State $\vec{M} \equiv \vec{M}(i,j)$
+\For {$n \in N$}
+\For {$t \in P$}
+
+\Procedure {DetermineHOVAlternatives}{$\vec{R}$, $C$}
+\If {$C=None$}
+  \If {$\vec{R} \ni CAR$}
+    \State $\vec{H} \gets (HOV2,HOV3)$
+  \ElsIf {$\vec{R} \ni HOV2$}
+    \State $\vec{H} \gets (HOV3)$
+  \ElsIf {$\vec{R} \ni HOV3$}
+    \State $\vec{H} \gets (HOV2)$
+  \ElsIf {$\vec{R} \ni WALK$}
+    \State $\vec{H} \gets (HOV2\_TELEPORT, HOV3\_TELEPORT)$
+  \EndIf
+\Else
+  \State $\vec{H} \gets None$
+\EndIf
+\EndProcedure
+\Statex
+\algstore{myalg}
+\end{algorithmic}
+\end{algorithm}
+
+\addtocounter{algorithm}{-1}
+\begin{algorithm}
+\caption{continued}
+\begin{algorithmic} [1]
+\algrestore{myalg}
+\Procedure {DetermineModalAlternatives}{$\vec{R}$, $\vec{RH}$, $\vec{H}$, $C$, $I$}
+\If {$C = DRIVE\_TRANSIT \lor BIKE\_TRANSIT$}
+  \If {$I = 0$}
+    \If {$C = DRIVE\_TRANSIT$}
+      \State $\vec{M} \gets (DRIVE\_TRANSIT)$
+    \Else
+      \State $\vec{M} \gets (BIKE\_TRANSIT)$
+    \EndIf  
+  \Else
+    \State $\vec{M} \gets (WALK\_TRANSIT, RIDEHAIL\_TRANSIT)$
+  \EndIf
+\ElsIf {$C = WALK\_TRANSIT \lor RIDEHAIL\_TRANSIT$}  
+  \If {$C = WALK\_TRANSIT$}
+    \State $\vec{M} \gets (WALK\_TRANSIT)$
+  \Else
+    \State $\vec{M} \gets (RIDEHAIL\_TRANSIT)$
+  \EndIf
+\ElsIf {$C = HOV2\_TELEPORT \lor HOV3\_TELEPORT$}  
+  \If {$C = HOV2\_TELEPORT$}
+    \State $\vec{M} \gets (HOV2\_TELEPORT)$
+  \Else
+    \State $\vec{M} \gets (HOV3\_TELEPORT)$
+  \EndIf
+\ElsIf {$C = CAR$}
+  \State $\vec{M} \gets (CAR)$
+\Else
+  \State $\vec{M} \gets \vec{R} + \vec{RH} + \vec{H}$  
+\EndIf  
+\EndProcedure
+\EndFor
+\EndFor
+\Statex
+\end{algorithmic}
+\end{algorithm}
+
+Algorithm 2 describes the mathematical process within BEAM for how one modal alternative is selected among all the mode choice options. By calculating the probability of choosing each modal alternative, and sampling those probabilities, a final mode choice is selected and used.
+
+\begin{algorithm}
+\caption{Algorithm for Selecting Modal Alternative in BEAM}
+\begin{algorithmic}[1]
+\Require
+\State $i : origin$
+\State $j : destination$
+\State $n: agent$
+\State $N: population$
+\State $t : trip $
+\State $P : plan$
+\State $\vec{A}: attributes\:of\:agent$
+\State $a: attribute\:value$
+\State $\vec{M}(i,j) : Modal\:alternatives$
+\State $m : alternative \in M(i,j)$
+\State $\vec{U}(\vec{M}(i,j),\vec{A}):Utilities\:for\:alternatives$
+\State $u: utility \in \vec{U}(\vec{M}(i,j),\vec{A})$
+\State $\vec{c}: attribute\:coefficients$
+\State $\mathds{P}: probability$
+\State $Mode: chosen\:mode\:for\:agent\:(n)\:on\:trip\:(t)$
+\State $f(\vec{X}):$
+This function takes a vector of modes and  their probabilities of being chosen. With those probabilities it builds them into a cumulative distribution function, generates a random number and then drops the mode with the closest probability. This process continues until only one mode is left.
+\vspace{4pt}\hrule\vspace{5pt}
+
+\State $\vec{M} \equiv \vec{M}(i,j)$
+\State $\vec{U} \equiv \vec{U}(\vec{M},\vec{A})$
+\For {$n \in N$}
+\For {$t \in P$}\Procedure {DetermineModalAlternative}{$\vec{M}$, $\vec{A}$, $\vec{c}$}
+\For {$m \in \vec{M}$}
+  \State $u \gets \sum_{a\in \vec{A}} a \times c_a$
+  \State $\vec{U} += [m,u]$
+\EndFor
+\State $S \gets \sum_{u\in \vec{U}}e^u$
+\For {$u \in \vec{U}$}
+    \State $\mathds{P}(u)\gets e^u / S$
+    \State $\vec{B} +=[m, \mathds{P}(u)]$
+\EndFor 
+
+\State $Mode \gets f(\vec{B})$
+
+\EndProcedure
+
+\EndFor
+\EndFor
+\Statex
+\end{algorithmic}
+\end{algorithm}

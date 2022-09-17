@@ -10,7 +10,8 @@ get_asim_hbw <- function(data_zip){
   asim_hbw <- asim_table(asim_tour_coeffs,Work)
   asim_hbw_ivtt <- as.numeric(asim_hbw[4,"estimate"])
   asim_hbw_ratio <- asim_hbw %>% mutate(estimate = estimate/asim_hbw_ivtt,std.error = 0)
-  asim_hbw_ratio
+  asim_hbw_ratio%>%
+    mutate(type = "Work")
 }
 
 get_asim_hbs <- function(data_zip){
@@ -21,7 +22,8 @@ get_asim_hbs <- function(data_zip){
   asim_hbs <- asim_table(asim_tour_coeffs,School)
   asim_hbs_ivtt <- as.numeric(asim_hbs[4,"estimate"])
   asim_hbs_ratio <- asim_hbs %>% mutate(estimate = estimate/asim_hbs_ivtt,std.error = 0)
-  asim_hbs_ratio
+  asim_hbs_ratio%>%
+    mutate(type = "School")
 }
 
 get_asim_hbo <- function(data_zip){
@@ -32,7 +34,8 @@ get_asim_hbo <- function(data_zip){
   asim_hbo <- asim_table(asim_tour_coeffs,Shop)
   asim_hbo_ivtt <- as.numeric(asim_hbo[4,"estimate"])
   asim_hbo_ratio <- asim_hbo %>% mutate(estimate = estimate/asim_hbo_ivtt,std.error = 0)
-  asim_hbo_ratio
+  asim_hbo_ratio%>%
+    mutate(type = "Other")
 }
 
 # Utah Statewide =======================================================
@@ -60,7 +63,8 @@ get_utah_hbw <- function(){
   ovtt_longwalk <-c("wait_time_over_10_min","walk_long_dist")
   utah_hbw_ivtt <- as.numeric(utah_coeff[15,"value"])
   utah_hbw_ratio <- utah_table(utah_coeff,"HBW",ovtt_shortwalk,ovtt_longwalk,utah_hbw_ivtt)
-  utah_hbw_ratio
+  utah_hbw_ratio%>%
+    mutate(type = "Work")
 }
 
 get_utah_hbs <- function(){
@@ -69,7 +73,8 @@ get_utah_hbs <- function(){
   ovtt_longwalk <-c("wait_time_over_10_min","walk_long_dist")
   utah_hbs_ivtt <- as.numeric(utah_coeff[8,"value"])
   utah_hbs_ratio <- utah_table(utah_coeff,"HBO",ovtt_shortwalk,ovtt_longwalk,utah_hbs_ivtt)
-  utah_hbs_ratio
+  utah_hbs_ratio%>%
+    mutate(type = "School")
 }
 
 get_utah_hbo <- function(){
@@ -78,7 +83,8 @@ get_utah_hbo <- function(){
   ovtt_longwalk <-c("wait_time_over_10_min","walk_long_dist")
   utah_hbo_ivtt <- as.numeric(utah_coeff[8,"value"])
   utah_hbo_ratio <- utah_table(utah_coeff,"HBO",ovtt_shortwalk,ovtt_longwalk,utah_hbo_ivtt)
-  utah_hbo_ratio
+  utah_hbo_ratio%>%
+    mutate(type = "Other")
 }
 
 #WFRC =====================================================================
@@ -105,7 +111,8 @@ get_wfrc_hbw <- function(){
   ovt_long <-c("wait_time_over_10_min","walk_long_dist")
   wfrc_hbw_ivtt <- as.numeric(wfrc_coeff[41,"value"])
   wfrc_hbw_ratio <- wfrc_table(wfrc_coeff,"HBW",ovt_long,wfrc_hbw_ivtt)
-  wfrc_hbw_ratio
+  wfrc_hbw_ratio %>%
+    mutate(type = "Work")
 }
 
 get_wfrc_hbs <- function(){
@@ -113,7 +120,8 @@ get_wfrc_hbs <- function(){
   ovt_long <-c("wait_time_over_10_min","walk_long_dist")
   wfrc_hbs_ivtt <- as.numeric(wfrc_coeff[1,"value"])
   wfrc_hbs_ratio <- wfrc_table(wfrc_coeff,"HBC",ovt_long,wfrc_hbs_ivtt)
-  wfrc_hbs_ratio
+  wfrc_hbs_ratio%>%
+    mutate(type = "School")
 }
 
 get_wfrc_hbo <- function(){
@@ -121,7 +129,8 @@ get_wfrc_hbo <- function(){
   ovt_long <-c("wait_time_over_10_min","walk_long_dist")
   wfrc_hbo_ivtt <- as.numeric(wfrc_coeff[20,"value"])
   wfrc_hbo_ratio <- wfrc_table(wfrc_coeff,"HBO",ovt_long,wfrc_hbo_ivtt)
-  wfrc_hbo_ratio
+  wfrc_hbo_ratio%>%
+    mutate(type = "Other")
 }
 
 #NCHRP ============================================================================
@@ -153,7 +162,8 @@ get_nchrp_hbw <- function(){
   nchrp_ovt_long <-c("wait_time_over_10_min","egress_time")
   nchrp_hbw_ivtt <- as.numeric(nchrp_coeff[1,"value"])
   nchrp_hbw_ratio <- nchrp_table(nchrp_coeff,"HBW",nchrp_ovt_long,nchrp_hbw_ivtt)
-  nchrp_hbw_ratio
+  nchrp_hbw_ratio%>%
+    mutate(type = "Work")
 }
 
 get_nchrp_hbs <- function(){
@@ -161,7 +171,8 @@ get_nchrp_hbs <- function(){
   nchrp_ovt_long <-c("wait_time_over_10_min","egress_time")
   nchrp_hbs_ivtt <- as.numeric(nchrp_coeff[7,"value"])
   nchrp_hbs_ratio <- nchrp_table(nchrp_coeff,"HBO",nchrp_ovt_long,nchrp_hbs_ivtt)
-  nchrp_hbs_ratio
+  nchrp_hbs_ratio%>%
+    mutate(type = "School")
 }
 
 get_nchrp_hbo <- function(){
@@ -169,5 +180,6 @@ get_nchrp_hbo <- function(){
   nchrp_ovt_long <-c("wait_time_over_10_min","egress_time")
   nchrp_hbo_ivtt <- as.numeric(nchrp_coeff[7,"value"])
   nchrp_hbo_ratio <- nchrp_table(nchrp_coeff,"HBO",nchrp_ovt_long,nchrp_hbo_ivtt)
-  nchrp_hbo_ratio
+  nchrp_hbo_ratio%>%
+    mutate(type = "Other")
 }  

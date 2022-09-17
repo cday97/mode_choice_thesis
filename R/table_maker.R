@@ -104,7 +104,8 @@ asim_table <- function(asim_tour_coeffs,purpose){
       estimate := case_when(term == "ivtt" ~ ave,TRUE ~ estimate)
     ) %>% 
     distinct() %>% 
-    select(-ave)
+    select(-ave) %>%
+    mutate(model = "ActivitySim")
 }
 
 utah_table <- function(utah_coeff,purp,ovtt_shortwalk,ovtt_longwalk,divider){
@@ -119,7 +120,8 @@ utah_table <- function(utah_coeff,purp,ovtt_shortwalk,ovtt_longwalk,divider){
     ) %>%
     unnest(term) %>%
     filter(term != list("none")) %>%
-    select(term,estimate)
+    select(term,estimate) %>%
+    mutate(model = "Utah Statewide")
 }
 
 wfrc_table <- function(wfrc_coeff,purp,ovt_long,divider){
@@ -142,7 +144,8 @@ wfrc_table <- function(wfrc_coeff,purp,ovt_long,divider){
     filter(term != list("none")) %>%
     group_by(term) %>%
     summarize(std.error = sd(estimate),estimate = mean(estimate)) %>%
-    select(term,estimate,std.error)
+    select(term,estimate,std.error) %>%
+    mutate(model = "WFRC")
 }
 
 nchrp_table <- function(nchrp_coeff,purp,nchrp_ovt_long,divider){
@@ -161,7 +164,8 @@ nchrp_table <- function(nchrp_coeff,purp,nchrp_ovt_long,divider){
     filter(term != list("none")) %>%
     group_by(term) %>%
     summarize(std.error = sd(estimate),estimate = mean(estimate)) %>%
-    select(term,estimate,std.error)
+    select(term,estimate,std.error) %>%
+    mutate(model = "NCHRP")
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
@@ -234,4 +238,43 @@ cost_creator <-  function(asim){ asim %>%
   summarise(time_coef = mean(ave)) %>%
   mutate(cost_coef = time_coef*5)
 }
+
+
+
+supergrapher <- function(utah_hbw,utah_hbs,utah_hbo,nchrp_hbw,nchrp_hbs,nchrp_hbo,
+                       wfrc_hbw,wfrc_hbs,wfrc_hbo,asim_hbw,asim_hbs,asim_hbo){
+  alldata <- bind_rows(utah_hbw,utah_hbs,utah_hbo,nchrp_hbw,nchrp_hbs,nchrp_hbo,
+                       wfrc_hbw,wfrc_hbs,wfrc_hbo,asim_hbw,asim_hbs,asim_hbo) %>%
+    complete(model,type,term) %>%
+    mutate(term = case_when(
+      term == "bike_long_dist" ~ "Long Bike Distance",
+      term ==  "bike_short_dist" ~ "Short Bike Distnace",
+      term == "cost" ~ "Cost",
+      term == "egress_time" ~ "Egress Time",
+      term == "ivtt" ~ "Vehicle Travel Time",
+      term == "transfer_number_drive_transit" ~ "Drive to Transit Transfers",
+      term == "transfer_number_walk_transit" ~ "Walk to Transit Transfers",
+      term == "transfer_time" ~ "Transfer Time",
+      term == "wait_time_over_10_min" ~ "Long Wait Time",
+      term == "wait_time_under_10_min" ~ "Short Wait Time",
+      term == "walk_long_dist" ~ "Long Walk Distance",
+      term == "walk_short_dist" ~ "Short Walk Distance",
+      TRUE ~ term
+    ))
+  
+  alldata %>%
+    dwplot(dot_args = list(size=2)) + 
+    facet_wrap(~type) +
+    #ggtitle(paste0(purp," Utility Parameter Values")) +
+    xlab("(Coeff Value) / (Vehicle Travel Time)") + ylab("Path Utility Parameter Coefficients") +
+    scale_x_continuous(trans = "log10", labels = function(x) format(x, scientific = FALSE)) +
+    labs(color = "Coefficient Source") +
+    theme_bw()  +
+    theme(axis.text.x=element_text(angle=90,hjust=1))
+}
+
+
+
+
+
 

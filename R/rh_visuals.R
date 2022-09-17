@@ -1,6 +1,6 @@
 
 # create tables/graphs used in results section--------------------------------------------------#
-format_ridership_table <- function(mode_choice_table){
+format_ridership_table <- function(mode_choice_table, asim_plans){
   ridership <- mode_choice_table %>%
     #instead of renaming, just fix the names in targets and rerun (will take like 1hr)
     rename(rename_list) %>% select(1,11,6,10,9,5,4,8,7,3,2) %>%
@@ -9,10 +9,26 @@ format_ridership_table <- function(mode_choice_table){
     pivot_wider("Scenario Name", names_from=mode,values_from=ridership) %>%
     mutate_all(~replace(., is.na(.), 0.000)) %>%
     #mutate(across(!"Scenario Name", ~paste0(.,"%")))
+    filter(ride_hail > 0) %>%
     mutate("Total" = ride_hail + ride_hail_pooled+ride_hail_transit) %>%
     rename("Ride Hail" = "ride_hail",
            "Pooled Ride Hail" = "ride_hail_pooled",
            "Ride Hail to Transit" = "ride_hail_transit") 
+  asim_rh <- asim_plans %>%
+    filter(legMode %in% c("ride_hail","ride_hail_pooled","ride_hail_transit")) %>%
+    group_by(legMode) %>%
+    summarize(n = round(n() * .15)) %>% mutate(bob = "bob") %>%
+    pivot_wider(!bob, names_from = legMode, values_from = n) %>%
+    mutate("Scenario Name" = "ActivitySim", ride_hail_transit = 0) %>%
+    mutate(Total = sum(ride_hail) + sum(ride_hail_pooled)) %>%
+    rename("Ride Hail" = "ride_hail",
+           "Pooled Ride Hail" = "ride_hail_pooled",
+           "Ride Hail to Transit" = "ride_hail_transit") %>%
+    select(3,1,2,4,5)
+    
+  
+  bind_rows(asim_rh,ridership)
+  
 }
 
 format_waits_graph <- function(wait_times){

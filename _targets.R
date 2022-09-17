@@ -44,6 +44,9 @@ data_targets <- tar_plan(
   tar_target(asim_hbw,  get_asim_hbw()),
   tar_target(asim_hbo,  get_asim_hbo()),
   
+  ## ASIM Statistics
+  tar_target(asim_plans, read_csv("data/asim_plans_rh.csv")),
+  
   ## Ride Hail Event Handler data
   tar_target(all_all_wrh,  unzip_data("data/events/12.events-15pct-wRH-all-all.csv",   data_zip), format = "file"),
   tar_target(all_path_wrh, unzip_data("data/events/12.events-15pct-wRH-all-path.csv",  data_zip), format = "file"),
@@ -147,12 +150,11 @@ analysis_targets <- tar_plan(
 
 visual_targets <- tar_plan(
   #ASIM Coefficient Graphs
-  tar_target(hbw_graph, ivtt_ratio_grapher("Home-Based Work", asim_hbw, utah_hbw,wfrc_hbw,nchrp_hbw)),
-  tar_target(hbs_graph, ivtt_ratio_grapher("Home-Based School",asim_hbs,utah_hbs,wfrc_hbs,nchrp_hbs)),
-  tar_target(hbo_graph, ivtt_ratio_grapher("Home-Based Other",asim_hbo,utah_hbo,wfrc_hbo,nchrp_hbo)),
-  
+  tar_target(coef_graph, supergrapher(utah_hbw,utah_hbs,utah_hbo,nchrp_hbw,nchrp_hbs,nchrp_hbo,
+                                      wfrc_hbw,wfrc_hbs,wfrc_hbo,asim_hbw,asim_hbs,asim_hbo)),
+ 
   # Ride Hail Result Visuals
-  tar_target(ridership, format_ridership_table(mode_choice_table)),
+  tar_target(ridership, format_ridership_table(mode_choice_table, asim_plans)),
   tar_target(waits, format_waits_graph(wait_times)),
   
   #Across Day and Daily Plan Analysis
