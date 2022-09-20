@@ -18,7 +18,9 @@
 
 _bookdown_files/
 _targets/
+_targets/meta/meta
 data/events/
 data/plans/
 data/other_data/
 data/asim_plans_rh.csv
+data/data.zip
