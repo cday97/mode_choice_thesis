@@ -14,7 +14,7 @@ committeechair: Gregory S. Macfarlane
 committeemembers:
   - name: Grant G. Schultz
   - name: Gustavious P. Williams
-keywords: 'activity-based model, multi-agent simulation, novel transport modes, ActivitySim, BEAM'
+keywords: 'ride-hailing, activity-based model, multi-agent simulation, ActivitySim, BEAM'
 
 
 # Remove the hashtag to specify which version of output you would like.
