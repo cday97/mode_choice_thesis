@@ -53,21 +53,16 @@ plot(choice)
 
 Equation \@ref(eq:person) shows part of the ActivitySim's mode choice utility function that focuses on person variables. Equation \@ref(eq:path) shows the part of the mode choice utility function that focuses on path variables. (T stands for time, D stands for distance, and xfer stands for number of transfers). Equation \@ref(eq:location) shows the part of the mode choice utility function that focuses on location variables. (ZDI stands for zonal density index, ZTI stands for zonal topology index, and CBD stands for central business district). As shown in Equation \@ref(eq:all), ActivitySim uses the combination of person, path, and location variables to calculate the mode choice alternative. The combination of these different variable types determines whether or not a person selects a ride-hailing mode. In addition, since activity-based models do not use variable wait time, the average wait time is selected before the model run. 
 
-\begin{equation}
-  V_{Person} = ASC_{AutoOwnership} + \beta_{Cost}(Cost) + \beta_{Age}(Age) (\#eq:person)
-\end{equation}
+\begin{align}
+  V_{Person} & = ASC_{AutoOwnership} + \beta_{Cost}(Cost) + \beta_{Age}(Age) (\#eq:person) \\
+  V_{Path} &= \beta_{TV}(T_{Vehicle}) + \beta_{TW}(T_{Wait}) + 
+      \beta_{TE}(T_{Egress}) + \beta_{TP}(TransitProx) +  
+      \beta_{xfer}(xfer) + \beta_{DW}(D_{Walk}) + \beta_{DB}(D_{Bike}) +
+      \beta_{DD}(D_{Drive}) (\#eq:path)\\
+  V_{Location} &= \beta_{ZDI}(ZDI) + \beta_{ZTI}(ZTI) + \beta_{CBD}(CBD) (\#eq:location)\\
+  V_{Mode} &= V_{Person} + V_{Path} + V_{Location} (\#eq:all)
+\end{align}
 
-\begin{equation}
- V_{Path} = \beta_{TV}(T_{Vehicle}) + \beta_{TW}(T_{Wait}) + \beta_{TE}(T_{Egress}) + \beta_{TP}(TransitProx) + \\ \beta_{xfer}(xfer) + \beta_{DW}(D_{Walk}) + \beta_{DB}(D_{Bike}) + \beta_{DD}(D_{Drive}) (\#eq:path)
-\end{equation}
-
-\begin{equation}
-  V_{Location} = \beta_{ZDI}(ZDI) + \beta_{ZTI}(ZTI) + \beta_{CBD}(CBD) (\#eq:location)
-\end{equation}
-
-\begin{equation}  
-  V_{Mode} = V_{Person} + V_{Path} + V_{Location} (\#eq:all)
-\end{equation}
 
 
 ### Configuring ActivitySim
