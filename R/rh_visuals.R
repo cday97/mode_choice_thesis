@@ -1,4 +1,23 @@
 
+#beam calibration figure
+beam_calib_graph <- function(calibration_shares, target_shares){
+  modesP <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",drive_transit = "coral3",hov2 = "skyblue",hov3 = "cadetblue1", ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk = "goldenrod2",walk_transit = "coral1")
+  modesL2 <- c('Bike', 'Bike to Transit', 'Car','Drive to Transit', 'HOV2','HOV3','Ride Hail','Pooled Ride Hail', "Ride Hail to Transit", "Walk", "Walk to Transit")
+  
+  calibration_shares %>%  
+    ggplot() +
+    geom_line(aes(x = iteration, y = tripPercents, color = mode)) +
+    geom_hline(data = target_shares, aes(yintercept = tripPercents, color = mode), lty = "dashed") +
+    facet_grid(autoWorkRatio ~ primary_purpose)+
+    scale_color_manual(values = modesP, labels = modesL2) +
+    xlab("Iteration") +ylab("Percent of Trips") +
+    labs(color = "Mode") + 
+    theme_bw()
+}
+
+
+
+
 # create tables/graphs used in results section--------------------------------------------------#
 format_ridership_table <- function(mode_choice_table, asim_plans){
   ridership <- mode_choice_table %>%

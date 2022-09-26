@@ -46,6 +46,9 @@ data_targets <- tar_plan(
   
   ## ASIM Statistics
   tar_target(asim_plans, read_csv("data/asim_plans_rh.csv")),
+  ## BEAM Calibration
+  tar_target(target_shares, read_csv("data/beamtriptargets.csv")),
+  tar_target(calibration_shares, read_csv("data/calibration_shares.csv")),
   
   ## Ride Hail Event Handler data
   tar_target(all_all_wrh,  unzip_data("data/events/12.events-15pct-wRH-all-all.csv",   data_zip), format = "file"),
@@ -153,6 +156,9 @@ visual_targets <- tar_plan(
   tar_target(coef_graph, supergrapher(utah_hbw,utah_hbs,utah_hbo,nchrp_hbw,nchrp_hbs,nchrp_hbo,
                                       wfrc_hbw,wfrc_hbs,wfrc_hbo,asim_hbw,asim_hbs,asim_hbo)),
  
+  #BEAM Calibration
+  tar_target(beam_calib, beam_calib_graph(calibration_shares, target_shares)),
+  
   # Ride Hail Result Visuals
   tar_target(ridership, format_ridership_table(mode_choice_table, asim_plans)),
   tar_target(waits, format_waits_graph(wait_times)),
