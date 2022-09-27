@@ -8,7 +8,7 @@ beam_calib_graph <- function(calibration_shares, target_shares){
     ggplot() +
     geom_line(aes(x = iteration, y = tripPercents, color = mode)) +
     geom_hline(data = target_shares, aes(yintercept = tripPercents, color = mode), lty = "dashed") +
-    facet_grid(autoWorkRatio ~ primary_purpose)+
+    facet_grid(primary_purpose~ autoWorkRatio)+
     scale_color_manual(values = modesP, labels = modesL2) +
     xlab("Iteration") +ylab("Percent of Trips") +
     labs(color = "Mode") + 

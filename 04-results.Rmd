@@ -7,7 +7,7 @@ Table \@ref(tab:ridership) shows the number of trips for the ride hail, pooled r
 ```{r ridership, echo=FALSE}
 library(kableExtra)
 ridership <- tar_read(ridership)
-landscape(kable(ridership, caption = 'Ride Hail Ridership by Number of Total Trips by Mode Choice Combination.', booktabs = TRUE) %>%
+landscape(kbl(ridership, caption = 'Ride Hail Ridership by Number of Total Trips by Mode Choice Combination.', booktabs = TRUE, , linesep = c("\\addlinespace",rep("",9)), format="latex") %>%
   row_spec(1,italic = TRUE, background = "#D9D9D9") %>%
   row_spec(2, background = "#FAEBD7") %>%
   row_spec(3:6, background = "#FFB6C1") %>%
@@ -72,16 +72,13 @@ tar_read(piechart)
 
 We offer three factors as to why so many car users switch to ride-hailing modes. The first is the array of utility parameters boosted the ride-hailing utility, making ride-hailing options attractive alternatives. Figure \@ref(fig:sankey) provides sufficient evidence for this claim. Figure \@ref(fig:sankey) shows a sankey diagram of all modal decisions at the start of each iteration for the AsimBeamAll:PPL scenario. The mode "No Mode" describes those modes that were cleared and reset at the beginning of each iteration. Notice how many of the Car, HOV2, HOV2 Passenger, HOV3, and HOV3 Passenger modes shift into the "No Mode" category each iteration. Also notice in the subsequent iteration how many of those "No Mode" choices shift to ride-hailing modes. A shift from the "No Mode" choice to ride hail represents those agents choosing their mode based on the utility value.
 
-\begin{landscape}
+\begin{sidewaysfigure}
 
-\begin{figure}[H]
-\centering
-\includegraphics{planshifts.png}
+\centerline{\includegraphics{planshifts.png}}
 \caption{The entire selection process of agents who use ride hail on the final iteration.}
 \label{fig:sankey}
-\end{figure}
 
-\end{landscape}
+\end{sidewaysfigure}
 
 The second factor for why agents switch from car to ride-hailing is BEAM's complex car tracking algorithm, which keeps track of household and agent level vehicle allocation. For example, if a household owns one vehicle, then the vehicle is *assigned* to the first agent to use it in their daily plan. This leaves the other household members to choose an alternate mode. BEAM's implementation of vehicular assignment prevents many agents from selecting a car mode, whereas ActivitySim may not prevent those same individuals from car usage.
 

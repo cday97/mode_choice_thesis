@@ -45,10 +45,13 @@ header-includes:
   - \usepackage{algpseudocode}
   - \usepackage{dsfont}
   - \usepackage{pdflscape}
+  - \usepackage{rotating}
+  - \usepackage{float}
   - \usepackage{graphicx}
   - \usepackage{mathtools}
   - \usepackage{eqparbox}
   - \usepackage{makecell}
+
 
 # ELSEVIER ----------------------------------------------------------------#
 # change to elsevier format in _ouput.yml and references

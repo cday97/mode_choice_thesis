@@ -1,0 +1,45 @@
+\documentclass{article}
+\title{mydemo}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage{makecell}
+\usepackage{xcolor}
+\begin{document}
+
+\begin{landscape}\begin{table}
+
+\caption{Ride Hail Ridership by Number of Total Trips by Mode Choice Combination.}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+Scenario Name & Ride Hail & Pooled Ride Hail & Ride Hail to Transit & Total\\
+\midrule
+\cellcolor[HTML]{D9D9D9}{\em{ActivitySim}} & \cellcolor[HTML]{D9D9D9}{\em{2412}} & \cellcolor[HTML]{D9D9D9}{\em{1837}} & \cellcolor[HTML]{D9D9D9}{\em{0}} & \cellcolor[HTML]{D9D9D9}{\em{4249}}\\
+\addlinespace
+\cellcolor[HTML]{FAEBD7}{AsimRideHail} & \cellcolor[HTML]{FAEBD7}{269} & \cellcolor[HTML]{FAEBD7}{31} & \cellcolor[HTML]{FAEBD7}{0} & \cellcolor[HTML]{FAEBD7}{300}\\
+\cellcolor[HTML]{FFB6C1}{BeamRideHail:Path} & \cellcolor[HTML]{FFB6C1}{45001} & \cellcolor[HTML]{FFB6C1}{25014} & \cellcolor[HTML]{FFB6C1}{2943} & \cellcolor[HTML]{FFB6C1}{72958}\\
+\cellcolor[HTML]{FFB6C1}{BeamRideHail:PPL} & \cellcolor[HTML]{FFB6C1}{18907} & \cellcolor[HTML]{FFB6C1}{38935} & \cellcolor[HTML]{FFB6C1}{4621} & \cellcolor[HTML]{FFB6C1}{62463}\\
+\cellcolor[HTML]{FFB6C1}{AsimBeamRideHail:Path} & \cellcolor[HTML]{FFB6C1}{21519} & \cellcolor[HTML]{FFB6C1}{40873} & \cellcolor[HTML]{FFB6C1}{5437} & \cellcolor[HTML]{FFB6C1}{67829}\\
+\cellcolor[HTML]{FFB6C1}{AsimBeamRideHail:PPL} & \cellcolor[HTML]{FFB6C1}{47422} & \cellcolor[HTML]{FFB6C1}{27327} & \cellcolor[HTML]{FFB6C1}{3848} & \cellcolor[HTML]{FFB6C1}{78597}\\
+\cellcolor[HTML]{ADD8E6}{BeamAll:Path} & \cellcolor[HTML]{ADD8E6}{4671} & \cellcolor[HTML]{ADD8E6}{1596} & \cellcolor[HTML]{ADD8E6}{38} & \cellcolor[HTML]{ADD8E6}{6305}\\
+\cellcolor[HTML]{ADD8E6}{BeamAll:PPL} & \cellcolor[HTML]{ADD8E6}{3146} & \cellcolor[HTML]{ADD8E6}{6366} & \cellcolor[HTML]{ADD8E6}{121} & \cellcolor[HTML]{ADD8E6}{9633}\\
+\cellcolor[HTML]{ADD8E6}{AsimBeamAll:Path} & \cellcolor[HTML]{ADD8E6}{3470} & \cellcolor[HTML]{ADD8E6}{4596} & \cellcolor[HTML]{ADD8E6}{90} & \cellcolor[HTML]{ADD8E6}{8156}\\
+\cellcolor[HTML]{ADD8E6}{AsimBeamAll:PPL} & \cellcolor[HTML]{ADD8E6}{3153} & \cellcolor[HTML]{ADD8E6}{6031} & \cellcolor[HTML]{ADD8E6}{156} & \cellcolor[HTML]{ADD8E6}{9340}\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{landscape}
+
+
+\end{document}

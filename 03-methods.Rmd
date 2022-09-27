@@ -57,8 +57,7 @@ Equation \@ref(eq:person) shows part of the ActivitySim's mode choice utility fu
   V_{Person} & = ASC_{AutoOwnership} + \beta_{Cost}(Cost) + \beta_{Age}(Age) (\#eq:person) \\
   V_{Path} &= \beta_{TV}(T_{Vehicle}) + \beta_{TW}(T_{Wait}) + 
       \beta_{TE}(T_{Egress}) + \beta_{TP}(TransitProx) +  
-      \beta_{xfer}(xfer) + \beta_{DW}(D_{Walk}) + \beta_{DB}(D_{Bike}) +
-      \beta_{DD}(D_{Drive}) (\#eq:path)\\
+      \beta_{xfer}(xfer) + \beta_{D}(D_{Mode}) (\#eq:path)\\
   V_{Location} &= \beta_{ZDI}(ZDI) + \beta_{ZTI}(ZTI) + \beta_{CBD}(CBD) (\#eq:location)\\
   V_{Mode} &= V_{Person} + V_{Path} + V_{Location} (\#eq:all)
 \end{align}
@@ -106,16 +105,12 @@ Lastly, after completing the utility parameter validation we calibrated the mode
   NewASC = OldASC + ln(\frac{Trips_{ASIM}}{Trips_{BEAM}}) (\#eq:eqcalib)
 \end{equation} 
 
-\begin{landscape}
 
-\begin{figure}[H]
-\centering
-\includegraphics{pics/BeamCalib.png}
-\caption{BEAM mode choice ASC calibration.}
-\label{fig-beam-calib}
-\end{figure}
+```{r fig-beam-calib, fig.dim = c(7,9), fig.cap="Beam calib"}
+beam_calib <- tar_read(beam_calib)
+beam_calib
+```
 
-\end{landscape}
 
 ## Case Study Scenarios {#meth-scenarios}
 After completing the BEAM validation and BEAM calibration for the case study region, we ran a series of different BEAM experiments. We ran each experiment for a total of 12 iterations using a 15% population size. More specifically, we ran nine different experiments, each with a unique ActivitySim-to-BEAM mode choice combination. Table \@ref(tab:tbexperiments) provides a short name description of the nine different scenarios. 
