@@ -51,17 +51,20 @@ SetNodeStyle(choice, style = "filled,rounded", shape = "box", fontname = "helvet
 plot(choice)
 ```
 
-Equation \@ref(eq:person) shows part of the ActivitySim's mode choice utility function that focuses on person variables. Equation \@ref(eq:path) shows the part of the mode choice utility function that focuses on path variables. (T stands for time, D stands for distance, and xfer stands for number of transfers). Equation \@ref(eq:location) shows the part of the mode choice utility function that focuses on location variables. (ZDI stands for zonal density index, ZTI stands for zonal topology index, and CBD stands for central business district). As shown in Equation \@ref(eq:all), ActivitySim uses the combination of person, path, and location variables to calculate the mode choice alternative. The combination of these different variable types determines whether or not a person selects a ride-hailing mode. In addition, since activity-based models do not use variable wait time, the average wait time is selected before the model run. 
+In ActivitySim, the utility $V$ for person $n \in {1:N}$ choosing alternative mode $k \in K$ between origin zone $i \in I$ and destination zone $j \in J$ is:
 
 \begin{align}
-  V_{Person} & = ASC_{AutoOwnership} + \beta_{Cost}(Cost) + \beta_{Age}(Age) (\#eq:person) \\
-  V_{Path} &= \beta_{TV}(T_{Vehicle}) + \beta_{TW}(T_{Wait}) + 
-      \beta_{TE}(T_{Egress}) + \beta_{TP}(TransitProx) +  
-      \beta_{xfer}(xfer) + \beta_{D}(D_{Mode}) (\#eq:path)\\
-  V_{Location} &= \beta_{ZDI}(ZDI) + \beta_{ZTI}(ZTI) + \beta_{CBD}(CBD) (\#eq:location)\\
-  V_{Mode} &= V_{Person} + V_{Path} + V_{Location} (\#eq:all)
+  V_{nk}^{Person} & = \alpha_{kn} + cost_{ij} (\beta_{P}^1) + age_{n} 
+  (\beta_{P}^2) + hhsize_{n} (\beta_{P}^3) (\#eq:person) \\
+  V_{nk}^{Path} &= dist_{ij} (\beta_{P}^4) + tv_{k,ij} (\beta_{P}^5) + 
+      te_{k} (\beta_{P}^6) + tw_{k} (\beta_{P}^7) + 
+      prox_{k} (\beta_{P}^8) + xfer_{k} (\beta_{P}^9)  (\#eq:path) \\
+  V_{nk}^{Location} &= ZDI_{i} (\beta_{P}^{10}) + ZDI_{j} (\beta_{P}^{11}) + 
+      ZTI_{j} (\beta_{P}^{12}) + CBD_{j} (\beta_{P}^{13}) (\#eq:location)\\
+  V_{nk} &= V_{nk}^{Person} + V_{nk}^{Path} + V_{nk}^{Location} (\#eq:all)
 \end{align}
 
+where, $\alpha$ is the alternative specific constant that varies by auto sufficiency, $hhsize$ is household size, $dist$ is distance, $tv$ is vehicle travel time, $te$ is egress time, $tw$ is wait time, $prox$ is proximity to transit, $xfer$ is number of transfers, $ZDI$ is zonal density index, $ZTI$ is zonal topography index, $CBD$ is central business district, and $\beta_{P}^1:\beta_{P}^{13}$ are estimated coefficients that vary by tour purpose. Equation \@ref(eq:person) shows part of the ActivitySim's mode choice utility function that focuses on person variables. Equation \@ref(eq:path) shows the part of the mode choice utility function that focuses on path variables. Equation \@ref(eq:location) shows the part of the mode choice utility function that focuses on location variables. As shown in Equation \@ref(eq:all), ActivitySim uses the combination of person, path, and location variables to calculate the mode choice alternative. The combination of these different variable types determines whether or not a person selects a ride-hailing mode. In addition, since activity-based models do not use variable wait time, the average wait time is selected before the model run. 
 
 
 ### Configuring ActivitySim
