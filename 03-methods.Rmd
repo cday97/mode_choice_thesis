@@ -20,7 +20,7 @@ if(knitr::is_latex_output()) {
 } 
 ```
 
-# Methods
+# Methods {#meth}
 We developed a series of experiments to understand the relative importance of pairing an activity-based and multi-agent simulation in forecasting the uptake of ride-hailing. We performed these experiments using ActivitySim as the activity-based model and BEAM as the multi-agent simulation. We used the Salt Lake City, Utah region as a case study for our experiments. The following section outlines the methodology for which we were able to model ride-haling ridership and level of service with differing activity-based model and multi-agent simulation mode choice combinations.
 
 ## ActivitySim as the Activity-based Model {#meth-asim}

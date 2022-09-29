@@ -6,3 +6,5 @@ The results also suggest that whether or not ride-hailing exists in the multi-ag
 
 ## Further Research
 The results suggest the need for a feedback loop between an activity-based model and multi-agent simulation. We suggest an iterative process  where the ride-hailing travel and wait times of the multi-agent simulation are inputted back into the activity-based model and the recalculated activity-based model ridership and usage values are inputted back into the multi-agent simulation. This process would continue, working off of each other, until the desired equilibrium and optimization of the ride-hailing system is achieved. Building upon the consistent mode choice model system designed in this research, this iterative process could establish more realistic and reliable ride-hailing ridership and level of service forecasts.
+
+## Limitations

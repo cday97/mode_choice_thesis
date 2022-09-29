@@ -46,7 +46,7 @@ The last group to compare collectively is between the Path and PPL models. By co
 ### Summary
 Overall, by analyzing the ridership amd wait times among different mode choice structures we learn that ride-hailing ridership and level of service is significantly affected by which mode choice structure is used in BEAM. We also propose that initial plans, and whether or not they include ride hail, do not significantly affect the level at which BEAM estimates ridership, however it may affect service capabilities like wait time. Lastly, we hypothesize that using all path, person, and location type variables will increase total ridership. We also suggest that the lack of person attributes in the utility equation may cause pooled and transit ride hail options to look less appealing. Section \@ref(deep-look) takes a deeper look at why some patterns in the ridership and wait times results exist.
 
-## A Deeper Look at Ridership and Wait Times {#deep-look}
+## Mode Choice Structures {#deep-look}
 The results from Table \@ref(tab:tbexperiments) and the results from Figure \@ref(fig:waits) can be explained further by understanding the original setup of the experiments. The clearest distinction in ridership and wait times exist between BEAM mode choice structures. The *None*, *RideHail*, and *All* structure types each produce results at different magnitudes. These vastly different results are directly related to how each model structure is constructed.  
 
 ### None Mode Choice Model {#type1}
