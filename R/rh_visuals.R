@@ -2,7 +2,7 @@
 #beam calibration figure
 beam_calib_graph <- function(calibration_shares, target_shares){
   modesP <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",drive_transit = "coral3",hov2 = "skyblue",hov3 = "cadetblue1", ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk = "goldenrod2",walk_transit = "coral1")
-  modesL2 <- c('Bike', 'Bike to Transit', 'Car','Drive to Transit', 'HOV2','HOV3','Ride Hail','Pooled Ride Hail', "Ride Hail to Transit", "Walk", "Walk to Transit")
+  modesL2 <- c('Bike', 'Bike to Transit', 'Car','Drive to Transit', 'HOV2','HOV3','Ride-hail','Pooled Ride-hail', "Ride-hail to Transit", "Walk", "Walk to Transit")
   
   calibration_shares %>%  
     ggplot() +
@@ -26,23 +26,23 @@ format_ridership_table <- function(mode_choice_table, asim_plans){
     pivot_longer(!mode,names_to = "Scenario Name", values_to = "ridership") %>%
     filter(mode %in% c("ride_hail","ride_hail_pooled","ride_hail_transit")) %>%
     pivot_wider("Scenario Name", names_from=mode,values_from=ridership) %>%
-    mutate_all(~replace(., is.na(.), 0.000)) %>%
+    mutate_all(~replace(., is.na(.), 0.0)) %>%
     #mutate(across(!"Scenario Name", ~paste0(.,"%")))
     filter(ride_hail > 0) %>%
     mutate("Total" = ride_hail + ride_hail_pooled+ride_hail_transit) %>%
-    rename("Ride Hail" = "ride_hail",
-           "Pooled Ride Hail" = "ride_hail_pooled",
-           "Ride Hail to Transit" = "ride_hail_transit") 
+    rename("Ride-hail" = "ride_hail",
+           "Pooled Ride-hail" = "ride_hail_pooled",
+           "Ride-hail to Transit" = "ride_hail_transit") 
   asim_rh <- asim_plans %>%
     filter(legMode %in% c("ride_hail","ride_hail_pooled","ride_hail_transit")) %>%
     group_by(legMode) %>%
     summarize(n = round(n() * .15)) %>% mutate(bob = "bob") %>%
     pivot_wider(!bob, names_from = legMode, values_from = n) %>%
-    mutate("Scenario Name" = "ActivitySim", ride_hail_transit = 0) %>%
+    mutate("Scenario Name" = "ActivitySim - Inputs to BEAM", ride_hail_transit = 0) %>%
     mutate(Total = sum(ride_hail) + sum(ride_hail_pooled)) %>%
-    rename("Ride Hail" = "ride_hail",
-           "Pooled Ride Hail" = "ride_hail_pooled",
-           "Ride Hail to Transit" = "ride_hail_transit") %>%
+    rename("Ride-hail" = "ride_hail",
+           "Pooled Ride-hail" = "ride_hail_pooled",
+           "Ride-hail to Transit" = "ride_hail_transit") %>%
     select(3,1,2,4,5)
     
   
@@ -114,11 +114,16 @@ rename_list_graph = c(
 
 modesP <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
 modesP2 <-c(nomode = "darkgrey",bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
-modesL1 <- c('Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride Hail", "Pooled Ride Hail", "Ride Hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
-modesL2 <- c('No Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride Hail", "Pooled Ride Hail", "Ride Hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
+modesL1 <- c('Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
+modesL2 <- c('No Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
 
 
 pie_chart <- function(plans_sum){
+  modesP <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
+  modesP2 <-c(nomode = "darkgrey",bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
+  modesL1 <- c('Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
+  modesL2 <- c('No Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
+  
   plans_sum <- plans_sum %>% filter(!is.na(legMode)) %>%
     mutate(ScenarioName = case_when(
       ScenarioName == "wRH-AllModes-AllVars" ~ "AsimBeamAll:PPL",
@@ -161,6 +166,11 @@ make_plans_shift_chart <- function(plan_mode_shifts){
 }
 
 switch_to_walk <- function(dayhours){
+  modesP <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
+  modesP2 <-c(nomode = "darkgrey",bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
+  modesL1 <- c('Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
+  modesL2 <- c('No Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
+  
   dayhours$mode <- factor(dayhours$mode, 
                               levels=c("bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
                                        "ride_hail","ride_hail_pooled","ride_hail_transit","walk","walk_transit","drive_transit"))

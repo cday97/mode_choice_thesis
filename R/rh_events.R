@@ -182,8 +182,8 @@ rh_utilization <- function(rh_passenger_times, num_passengers, totalFleetHours){
   
   sumTable <- left_join(tt,np,by = "ScenarioName") %>%
     mutate(TotalDriverHours = totalFleetHours) %>%
-    mutate(RideHailTimeUtilization = round(TotalTravelTime / TotalDriverHours * 100,3),
-           RideHailPersonUtilization = round(TotalPassengers / TotalDriverHours,3))
+    mutate(RideHailTimeUtilization = round(TotalTravelTime / TotalDriverHours * 100,1),
+           RideHailPersonUtilization = round(TotalPassengers / TotalDriverHours,1))
   
   sumTable <- sumTable[-1,]  
   sumTable

@@ -165,7 +165,7 @@ nchrp_table <- function(nchrp_coeff,purp,nchrp_ovt_long,divider){
     group_by(term) %>%
     summarize(std.error = sd(estimate),estimate = mean(estimate)) %>%
     select(term,estimate,std.error) %>%
-    mutate(model = "NCHRP")
+    mutate(model = "NCHRP 716")
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
