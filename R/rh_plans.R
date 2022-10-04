@@ -9,6 +9,14 @@ read_plans <- function(plans_raw){
     filter(planSelected == TRUE)
 }
 
+read_wRH_events <- function(events_raw){
+  events <- events_raw %>%
+    fread(select=c("person","type","mode","tourIndex","activityIndex")) %>%
+    filter(type == "TripArrivalEvent") %>%
+    #arrange(person,tourIndex,activityIndex) %>%
+    mutate(personElement = paste0(person,"_",activityIndex))
+}
+
 
 rh_switch <- function(plans0,plans10){
   final_rh_users <- plans10 %>%
@@ -44,20 +52,58 @@ read_full_plans <- function(path, plansbind){
   plans
 }
 
-mode_shifts <- function(plans){
-  riders <- plans[[13]] %>%
-    filter(grepl("ride",legMode))
+read_full_events <- function(path){
+  beam_events <- list()
+  for (i in 1:13){
+    beam_events[[i]] <- paste0(
+      path, i-1, ".events.csv") %>%
+      read_wRH_events()
+  }
+  beam_events
+}
+
+mode_shifts <- function(plans, start, end, mode){
+  riders <- plans[[end]] %>%
+    filter(grepl("ride",{{mode}}))
   
   selected_plans <- list()
-  for(i in 1:13){
+  for(i in start:end){
     selected_plans[[i]] <- plans[[i]] %>%
       filter(personElement %in% riders$personElement) %>%
-      mutate(id = row_number()) %>%
-      select(id,legMode)
+      mutate(id = row_number(), iteration = i) %>%
+      select(id, iteration, {{mode}})
   }
   
-  plan_mode_shifts <- bind_rows(selected_plans, .id = "iteration") %>%
-    mutate(iteration = as.numeric(iteration))
+  plan_mode_shifts <- bind_rows(selected_plans, .id = "bindid") %>%
+    mutate(bindid = as.numeric(bindid))
   plan_mode_shifts
+}
+
+mode_facet_shifts <- function(plans, start, end, mode){
+  riders <-  list()
+  for(i in start:(end-1)){
+    riders[[i]] <- plans[[i + 1]] %>%
+    filter(grepl("ride",{{mode}})) %>%
+    mutate(iteration = i+0.5) %>%
+    select(personElement,iteration, {{mode}})
+  }
+  
+  selected_plans <- list()
+  for(i in start:(end-1)){
+    selected_plans[[i]] <- plans[[i]] %>%
+      filter(personElement %in% riders[[i]]$personElement) %>%
+      mutate(iteration = i) %>%
+      select(personElement, iteration, {{mode}})
+  }
+  
+  plan_mode_shifts <- bind_rows(selected_plans, .id = "bindid") %>%
+    mutate(bindid = as.numeric(bindid))
+  plan_rh_ends <- bind_rows(riders, .id = "bindid") %>%
+    mutate(bindid = as.numeric(bindid))
+  
+  shifts <- bind_rows(plan_mode_shifts,plan_rh_ends)
+  
+  
+  shifts
 }
 

@@ -1,13 +1,51 @@
 
 #beam calibration figure
 beam_calib_graph <- function(calibration_shares, target_shares){
+  target_shares2 <- target_shares %>%
+    mutate(
+      autoWorkRatio = case_when(
+        autoWorkRatio == "auto_deficient" ~ "Auto Deficient",
+        autoWorkRatio == "auto_sufficient" ~ "Auto Sufficient",
+        autoWorkRatio == "no_auto" ~ "No Auto"
+      ),
+      primary_purpose = case_when(
+        primary_purpose == "atwork" ~ "At Work",
+        primary_purpose == "eatout" ~ "Eatout",
+        primary_purpose == "escort" ~ "Escort",
+        primary_purpose == "othdiscr" ~ "Discr.",
+        primary_purpose == "othmaint" ~ "Maint.",
+        primary_purpose == "school" ~ "School",
+        primary_purpose == "univ" ~ "Univ.",
+        primary_purpose == "work" ~ "Work",
+        primary_purpose == "social" ~ "Social",
+        primary_purpose == "shopping" ~ "Shopping"
+      ))
+  
   modesP <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",drive_transit = "coral3",hov2 = "skyblue",hov3 = "cadetblue1", ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk = "goldenrod2",walk_transit = "coral1")
   modesL2 <- c('Bike', 'Bike to Transit', 'Car','Drive to Transit', 'HOV2','HOV3','Ride-hail','Pooled Ride-hail', "Ride-hail to Transit", "Walk", "Walk to Transit")
   
   calibration_shares %>%  
+    mutate(
+      autoWorkRatio = case_when(
+        autoWorkRatio == "auto_deficient" ~ "Auto Deficient",
+        autoWorkRatio == "auto_sufficient" ~ "Auto Sufficient",
+        autoWorkRatio == "no_auto" ~ "No Auto"
+      ),
+      primary_purpose = case_when(
+        primary_purpose == "atwork" ~ "At Work",
+        primary_purpose == "eatout" ~ "Eatout",
+        primary_purpose == "escort" ~ "Escort",
+        primary_purpose == "othdiscr" ~ "Discr.",
+        primary_purpose == "othmaint" ~ "Maint.",
+        primary_purpose == "school" ~ "School",
+        primary_purpose == "univ" ~ "Univ.",
+        primary_purpose == "work" ~ "Work",
+        primary_purpose == "social" ~ "Social",
+        primary_purpose == "shopping" ~ "Shopping"
+      )) %>%
     ggplot() +
     geom_line(aes(x = iteration, y = tripPercents, color = mode)) +
-    geom_hline(data = target_shares, aes(yintercept = tripPercents, color = mode), lty = "dashed") +
+    geom_hline(data = target_shares2, aes(yintercept = tripPercents, color = mode), lty = "dashed") +
     facet_grid(primary_purpose~ autoWorkRatio)+
     scale_color_manual(values = modesP, labels = modesL2) +
     xlab("Iteration") +ylab("Percent of Trips") +
@@ -112,18 +150,14 @@ rename_list_graph = c(
   "NoRideHail" = "No Modes - No RH"
 )
 
-modesP <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
-modesP2 <-c(nomode = "darkgrey",bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
-modesL1 <- c('Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
-modesL2 <- c('No Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
+#modesP <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
+#modesL1 <- c('Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
 
 
 pie_chart <- function(plans_sum){
-  modesP <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
-  modesP2 <-c(nomode = "darkgrey",bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
+  modesP1 <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
   modesL1 <- c('Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
-  modesL2 <- c('No Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
-  
+
   plans_sum <- plans_sum %>% filter(!is.na(legMode)) %>%
     mutate(ScenarioName = case_when(
       ScenarioName == "wRH-AllModes-AllVars" ~ "AsimBeamAll:PPL",
@@ -141,18 +175,42 @@ pie_chart <- function(plans_sum){
     theme_bw() + 
     guides(fill = guide_legend(title = "Mode")) +
     theme(text = element_text(size = 8)) +
-    scale_fill_manual(values = modesP, labels=modesL1) +
+    scale_fill_manual(values = modesP1, labels=modesL1) +
     xlab("Scenario Name") +
     ylab("Share") +
     theme(axis.text.x = element_text(angle=90, hjust=1))
 }
 
-make_plans_shift_chart <- function(plan_mode_shifts){
-  plan_mode_shifts <-plan_mode_shifts %>%
-    mutate(legMode = ifelse(legMode == "","nomode",legMode))
-  plan_mode_shifts$legMode <- factor(plan_mode_shifts$legMode, 
-                          levels=c("nomode","bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
+make_events_shift_chart <- function(plan_mode_shifts){
+  modesP1 <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
+  modesL1 <- c('Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
+  
+  plan_mode_shifts$mode <- factor(plan_mode_shifts$mode, 
+                          levels=c("bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
                                    "ride_hail","ride_hail_pooled","ride_hail_transit","walk","walk_transit","drive_transit"))
+  
+  
+  ggplot(plan_mode_shifts, aes(x = factor(iteration-1), stratum = mode, alluvium = id, fill = mode, label = mode)) +
+    scale_fill_manual(values = modesP1, labels = modesL1) +
+    geom_flow(color = "darkgray") +
+    geom_stratum() +
+    theme_bw() + 
+    xlab("Iteration") +
+    ylab("Number of Trips") +
+    theme(legend.position="bottom")
+}
+
+make_plans_shift_chart <- function(plan_mode_shifts){
+  modesP2 <-c(nomode = "darkgrey",bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
+  modesL2 <- c('Cleared Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
+  
+  plan_mode_shifts <-plan_mode_shifts %>%
+    mutate(legMode = ifelse(legMode == "","nomode",legMode)) %>%
+    filter(iteration > 1)
+  
+  plan_mode_shifts$legMode <- factor(plan_mode_shifts$legMode, 
+                                  levels=c("nomode","bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
+                                           "ride_hail","ride_hail_pooled","ride_hail_transit","walk","walk_transit","drive_transit"))
   
   
   ggplot(plan_mode_shifts, aes(x = factor(iteration-1), stratum = legMode, alluvium = id, fill = legMode, label = legMode)) +
@@ -165,12 +223,75 @@ make_plans_shift_chart <- function(plan_mode_shifts){
     theme(legend.position="bottom")
 }
 
+make_plans_facet_chart <- function(plan_mode_shifts){
+  modesP2 <-c(nomode = "darkgrey",bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
+  modesL2 <- c('Cleared Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
+  
+  plan_mode_shifts <-plan_mode_shifts %>%
+    mutate(legMode = ifelse(legMode == "","nomode",legMode)) %>%
+    group_by(bindid,iteration) %>%
+    arrange(personElement) %>%
+    mutate(id = row_number()) %>%
+    mutate(iteration = iteration -1) %>%
+    filter(iteration >= 1) %>%
+    mutate(iteration = ifelse(grepl(".5",as.character(iteration)), paste0(iteration - 0.5," end"), paste0(iteration, " start")))
+  
+  plan_mode_shifts$legMode <- factor(plan_mode_shifts$legMode, 
+                                     levels=c("nomode","bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
+                                              "ride_hail","ride_hail_pooled","ride_hail_transit","walk","walk_transit","drive_transit"))
+  plan_mode_shifts$iteration <- factor(plan_mode_shifts$iteration,
+                                       levels = c("0 start", "0 end", "1 start", "1 end", "2 start", "2 end",
+                                                  "3 start", "3 end", "4 start", "4 end", "5 start", "5 end",
+                                                  "6 start", "6 end", "7 start", "7 end", "8 start", "8 end",
+                                                  "9 start", "9 end", "10 start", "10 end", "11 start", "11 end",
+                                                  "12 start", "12 end"))
+  
+  ggplot(plan_mode_shifts, aes(x = iteration, stratum = legMode, alluvium = id, fill = legMode, label = legMode)) +
+    #facet_wrap(~bindid, scales="free_x", ncol = 2)+
+    scale_fill_manual(values = modesP2, labels = modesL2) +
+    geom_flow(color = "darkgray") +
+    geom_stratum() +
+    theme_bw() + 
+    xlab("Iteration") +
+    ylab("Number of Trips") +
+    theme(legend.position="bottom") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+}
+
+make_plans_24_chart <- function(plan_mode_shifts){
+  modesP2 <-c(nomode = "darkgrey",bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
+  modesL2 <- c('Cleared Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
+  
+  plan_ids <- plan_mode_shifts %>%
+    ungroup() %>% group_by(personElement) %>%
+    summarize(n = n()) %>%
+    mutate(id = row_number())
+  
+  plan_mode_shifts <-plan_mode_shifts %>%
+    mutate(legMode = ifelse(legMode == "","nomode",legMode)) %>%
+    left_join(plan_ids, by = "personElement") %>%
+    select(-n)
+  
+  plan_mode_shifts$legMode <- factor(plan_mode_shifts$legMode, 
+                                     levels=c("nomode","bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
+                                              "ride_hail","ride_hail_pooled","ride_hail_transit","walk","walk_transit","drive_transit"))
+  
+  
+  ggplot(plan_mode_shifts, aes(x = factor(iteration-1), stratum = legMode, alluvium = id, fill = legMode, label = legMode)) +
+    #facet_wrap(~bindid, scales="free_x")+
+    scale_fill_manual(values = modesP2, labels = modesL2) +
+    geom_flow(color = "darkgray") +
+    geom_stratum() +
+    theme_bw() + 
+    xlab("Iteration") +
+    ylab("Number of Trips") +
+    theme(legend.position="bottom")
+}
+
 switch_to_walk <- function(dayhours){
   modesP <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
-  modesP2 <-c(nomode = "darkgrey",bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
   modesL1 <- c('Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
-  modesL2 <- c('No Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
-  
+
   dayhours$mode <- factor(dayhours$mode, 
                               levels=c("bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
                                        "ride_hail","ride_hail_pooled","ride_hail_transit","walk","walk_transit","drive_transit"))
