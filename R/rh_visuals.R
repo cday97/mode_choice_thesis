@@ -258,36 +258,6 @@ make_plans_facet_chart <- function(plan_mode_shifts){
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 }
 
-make_plans_24_chart <- function(plan_mode_shifts){
-  modesP2 <-c(nomode = "darkgrey",bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
-  modesL2 <- c('Cleared Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
-  
-  plan_ids <- plan_mode_shifts %>%
-    ungroup() %>% group_by(personElement) %>%
-    summarize(n = n()) %>%
-    mutate(id = row_number())
-  
-  plan_mode_shifts <-plan_mode_shifts %>%
-    mutate(legMode = ifelse(legMode == "","nomode",legMode)) %>%
-    left_join(plan_ids, by = "personElement") %>%
-    select(-n)
-  
-  plan_mode_shifts$legMode <- factor(plan_mode_shifts$legMode, 
-                                     levels=c("nomode","bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
-                                              "ride_hail","ride_hail_pooled","ride_hail_transit","walk","walk_transit","drive_transit"))
-  
-  
-  ggplot(plan_mode_shifts, aes(x = factor(iteration-1), stratum = legMode, alluvium = id, fill = legMode, label = legMode)) +
-    #facet_wrap(~bindid, scales="free_x")+
-    scale_fill_manual(values = modesP2, labels = modesL2) +
-    geom_flow(color = "darkgray") +
-    geom_stratum() +
-    theme_bw() + 
-    xlab("Iteration") +
-    ylab("Number of Trips") +
-    theme(legend.position="bottom")
-}
-
 switch_to_walk <- function(dayhours){
   modesP <- c(bike = "springgreen2", bike_transit = "springgreen4", car = "dodgerblue",hov2 = "skyblue",hov2_teleportation = "skyblue3",hov3 = "cadetblue1",hov3_teleportation = 'cadetblue3', ride_hail = "orchid",ride_hail_pooled = "plum1", ride_hail_transit = "violet",walk_transit = "coral1", drive_transit = "coral3", walk = "goldenrod2")
   modesL1 <- c('Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
