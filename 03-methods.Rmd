@@ -26,7 +26,7 @@ We developed a series of experiments to understand the relative importance of pa
 ## Ride-hailing in ActivitySim
 We chose ActivitySim as the activity-based model in this research because it is an open-source software with ride-hailing modal alternatives built into its framework [@rsg21]. Specifically, the ride-hail mode and the pooled ride-hail mode fall under one of the four nested tiers of ActivitySim's nested logit mode choice model. This means that ride-hail is a unique modal option not characterized by being an auto, non-motorized, or transit type mode. Figure \@ref(fig:fig-asim-nest) displays the four tiers of the nested logit mode choice model along with the modal alternatives of each tier [@mtc12]. These modal alternatives represent the alternatives available in both ActivitySim's tour based and trip based mode choice model. When determining the mode to use on a trip, ActivitySim first calculates the tour mode and subsequently calculates the trip mode based on the tour mode selection (See Figure \@ref(fig:fig-mode-compare)). Person attributes, path attributes, location attributes, tour purpose value (the main activity purpose of the tour), and more all play a role in calculating the mode choice decision. 
 
-```{r fig-asim-nest, fig.cap = "The nested logit model used in ActivitySim.", fig.asp=1, fig.align='center', out.extra = 'trim = {3cm 6.5cm 4.5cm 6cm}', out.width="1.8\\linewidth", wrapfigure = list("R", .5),  echo=FALSE}
+```{r fig-asim-nest, fig.cap = "Nested logit model used in ActivitySim.", fig.asp=1, fig.align='center', out.extra = 'trim = {3cm 6.5cm 4.5cm 6cm}', out.width="1.8\\linewidth", wrapfigure = list("R", .5),  echo=FALSE}
 #
 choice <- Node$new("Choice")
   auto <- choice$AddChild("Auto")
@@ -96,7 +96,7 @@ BEAM was configured to the case study region by gathering the inputs, validating
 
 Figure \@ref(fig:coef) shows the comparison of the path utility parameter values between all four models for home-based work, home-based school, and home-based other trips. To view all parameters on the same scale, each value is divided by the vehicle travel time coefficient. For the egress time, vehicle travel time, the number of transfers, transfer time, and the wait times, MTC's ActivitySim seems to use a very similar coefficient value as the other three models. The largest discrepancy exists with short and long walking distances. ActivitySim seems to use a value almost ten fold that of the other models. This occurs because the WFRC and Utah Statewide models cap walking distance whereas ActivitySim instead gives a high penalty for long walking distances. With this clarification, it is clear to see that ActivitySim's path coefficient values do not require calibration and were left as is because the parameters fall within a close range of the other models.
 
-```{r coef, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Mode choice path coefficients model comparison by tour purpose.", fig.align='center'}
+```{r coef, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Mode choice path coefficients model comparison by tour purpose.", fig.scap="Path coefficients model comparison.", out.extra='', fig.align='center'}
 tar_read(coef_graph)
 ```
 
@@ -118,7 +118,7 @@ beam_calib
 After completing the BEAM validation and BEAM calibration for the case study region, we designed a series of different BEAM experiments. We ran each experiment for a total of 12 iterations using a 15% population size. More specifically, we conducted nine different experiments, each with a unique ActivitySim-to-BEAM mode choice combination. Table \@ref(tab:tbexperiments) provides a short name description of the nine different scenarios. 
 
 \begin{table}
-\caption{ActivitySim-to-BEAM Mode Choice Combination Scenario Names}
+\caption[ActivitySim-to-BEAM Mode Choice Combination Names]{ActivitySim-to-BEAM Mode Choice Combination Scenario Names}
 \renewcommand{\arraystretch}{2}
 \[
   \begin{array}{cc|ccc}

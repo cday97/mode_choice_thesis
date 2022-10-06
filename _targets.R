@@ -146,9 +146,9 @@ analysis_targets <- tar_plan(
   tar_target(full_plans, read_full_plans(unzip_data("data/plans/wRH-all-all-plans/", data_zip))),
   tar_target(full_events, read_full_events("data/events/wRH-all-all-events/")),
   tar_target(mode_shift_plans, mode_shifts(full_plans,1,13, legMode)),
-  tar_target(mode_shift_events, mode_shifts(full_events, 1, 13, mode)),
-  tar_target(mode_shift_beg, mode_shifts(full_plans, 2, 3,legMode)),
-  tar_target(mode_shift_end, mode_shifts(full_plans, 12, 13, legMode)),
+  #tar_target(mode_shift_events, mode_shifts(full_events, 1, 13, mode)),
+  #tar_target(mode_shift_beg, mode_shifts(full_plans, 2, 3,legMode)),
+  #tar_target(mode_shift_end, mode_shifts(full_plans, 12, 13, legMode)),
   tar_target(mode_facets, mode_facet_shifts(full_plans, 1,13,legMode)),
   
   #Daily Plan Statistics
@@ -171,11 +171,11 @@ visual_targets <- tar_plan(
   #Across Day and Daily Plan Analysis
   tar_target(piechart, pie_chart(plansbind)),
   tar_target(planshifts, make_plans_shift_chart(mode_shift_plans)),
-  tar_target(eventshifts, make_events_shift_chart(mode_shift_events)),
-  tar_target(planshifts_beg, make_plans_shift_chart(mode_shift_beg)),
-  tar_target(planshifts_end, make_plans_shift_chart(mode_shift_end)),
+  #tar_target(eventshifts, make_events_shift_chart(mode_shift_events)),
+  #tar_target(planshifts_beg, make_plans_shift_chart(mode_shift_beg)),
+  #tar_target(planshifts_end, make_plans_shift_chart(mode_shift_end)),
   tar_target(planshifts_facet, make_plans_facet_chart(mode_facets)),
-  tar_target(planshifts_facet_connect, make_plans_24_chart(mode_facets)),
+  #tar_target(planshifts_facet_connect, make_plans_24_chart(mode_facets)),
   tar_target(walk_switchers, switch_to_walk(dayhours))
 )
 

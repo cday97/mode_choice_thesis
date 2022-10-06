@@ -7,7 +7,7 @@ Table \@ref(tab:ridership) shows the number of trips for the ride-hail, pooled r
 ```{r ridership, echo=FALSE}
 library(kableExtra)
 ridership <- tar_read(ridership)
-kbl(ridership, caption = 'Ride-hail Ridership by Number of Total Trips by Mode Choice Combination Scenario.', booktabs = TRUE, linesep = c("\\addlinespace",rep("",9)), format="latex") %>%
+kbl(ridership, caption = 'Ride-hail Ridership by Number of Total Trips by Mode Choice Combination Scenario.', caption.short = "Ride-hail Ridership by Number of Total Trips", booktabs = TRUE, linesep = c("\\addlinespace",rep("",9)), format="latex") %>%
   row_spec(1,italic = TRUE, background = "#D9D9D9") %>%
   row_spec(2, background = "#FAEBD7") %>%
   row_spec(3:6, background = "#FFB6C1") %>%
@@ -26,7 +26,7 @@ Finally, we analyze the effect the BEAM utility variables have on ride-hail ride
 ## Wait Times {#res-waits}
 Figure \@ref(fig:waits) shows a detailed distribution of wait times for ride-hailing vehicles for the scenarios. As with ridership, we compare the scenarios with the *Asim* prefix against the scenarios without, and see only a slight difference in maximum wait times. Scenarios AsimBeamRideHail:PPL, AsimBeamAll:Path, and AsimBeamAll:PPL have almost identical mean wait times when compared to their counterparts in BeamRideHail:PPL, BeamAll:Path, BeamAll:PPL. We suppose that the existence of ride-hail in the initial plans will not affect *most* ride-hail wait times. 
 
-```{r waits, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Distribution of ride-hail wait times by mode choice combination scenario.", fig.align='center'}
+```{r waits, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Distribution of ride-hail wait times by mode choice combination scenario.", fig.scap = "Distribution of ride-hail wait times.", out.extra='', fig.align='center'}
 tar_read(waits)
 ```
 
@@ -51,10 +51,10 @@ kable(nonetab, caption = 'Loss of Ride-hailing Trips in the None Mode Choice Mod
 ```
 
 ### All Mode Choice Model {#type3}
-The *All* BEAM mode choice model uses the same mode choice utility function as ActivitySim and has all modal alternatives available. This adjusted model structure helps us understand why we obtained much higher ridership than with the *None* Model. Figure \@ref(fig:piechart) shows from which modes agents who switched to ride-hailing came from. Interestingly enough, the majority of agents who select ride-hail switched from car type modes (Car, HOV2, HOV3).
+The *All* BEAM mode choice model uses the same mode choice utility function as ActivitySim and has all modal alternatives available. This adjusted model structure helps us understand why we obtained much higher ridership than with the *None* Model. Figure \@ref(fig:piechart) shows from which modes agents who switched to ride-hailing came from; in other words, its a comparison of the the trips with ride-hailing after the final iteration and their original modes in the input plans. Interestingly enough, the majority of agents who select ride-hail switched from car type modes (Car, HOV2, HOV3).
 
-```{r piechart, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Original mode choices of agents who switch to a ride-hail type mode.", fig.align='center'}
-#tar_read(piechart)
+```{r piechart, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Original mode choices of agents who switch to a ride-hail type mode.", fig.scap="Original mode choices of agents who switch to ride-hail.", out.extra='', fig.align='center'}
+tar_read(piechart)
 #planshifts <- tar_read(planshifts)
 #planshifts
 #ggsave("planshifts.png", width = 12, height = 6)
@@ -64,24 +64,24 @@ The *All* BEAM mode choice model uses the same mode choice utility function as A
 # below is for wRH-All-All scenario
 ```
 
-We offer some factors as to why so many car users switch to ride-hailing modes. The first is the array of utility parameters boosted the ride-hailing utility, making ride-hailing options attractive alternatives. Figure \@ref(fig:sankey) provides sufficient evidence for this claim. Figure \@ref(fig:sankey) shows a Sankey diagram of all modal decisions at the start of each iteration for those agents in the AsimBeamAll:PPL scenario who select the ride-hail mode by the end of the final iteration. The mode "No Mode" describes those modes that were cleared and reset at the beginning of each iteration. Notice how many of the Car, HOV2, HOV2 Passenger, HOV3, and HOV3 Passenger modes shift into the "No Mode" category each iteration. Also notice in the subsequent iteration how many of those "No Mode" choices shift to ride-hailing modes. A shift from the "No Mode" choice to ride-hail represents those agents choosing their mode based on the utility value. 
+We offer some factors as to why so many car users switch to ride-hailing modes. The first is the array of utility parameters boosted the ride-hailing utility, making ride-hailing options attractive alternatives. Figure \@ref(fig:sankey) provides sufficient evidence for this claim. Figure \@ref(fig:sankey) shows a Sankey diagram of all modal decisions at the start of each iteration for those agents in the AsimBeamAll:PPL scenario who select the ride-hail mode by the end of the final iteration. The mode "Cleared Mode" describes those modes that were cleared and reset at the beginning of each iteration. Notice how many of the Car, HOV2, HOV2 Passenger, HOV3, and HOV3 Passenger modes shift into the "Cleared Mode" category each iteration. Also notice in the subsequent iteration how many of those "Cleared Mode" choices shift to ride-hailing modes. A shift from the "Cleared Mode" choice to ride-hail represents those agents choosing their mode based on the utility value. 
 
 \begin{sidewaysfigure}
 
 \centering
 \includegraphics[width = 1.05\paperwidth]{planshifts.png}
-\caption{The entire selection process by iteration of agents who use ride-hail on the final iteration (AsimBeamAll:PPL Scenario).}
+\caption[Selection process of agents who switch to ride-hail.]{Entire selection process by iteration of agents who use ride-hail on the final iteration (AsimBeamAll:PPL Scenario).}
 \label{fig:sankey}
 
 \end{sidewaysfigure}
 
-Figure \@ref(fig:sankey2) further proves that many agents elect to use ride-hailing modes because the utility parameters represent them as attractive alternatives. Figure \@ref(fig:sankey2) displays the total number of ride-hailing trips at the end of each iteration as well as which modes were used on those same trips at the beginning of the iteration for the AsimBeamAll:PPL scenario. Notice how for the majority of iterations, a substantial share of agents move from the "No Mode" category to a ride-hailing choice instead. Interestingly though, before the beginning of the next iteration, most of those ride-hailing modes are lost, and new agents convert to a ride-hailing mode. This process continues, and explains why a substantial jump in ride-hailing trips occur between iteration 11 and iteration 12 in Figure \@ref(fig:sankey). In other words, only a small share of ride-hailing trips are retained across each iteration, and instead the mojority of ride-hailing trips are produced from individuals with their modes cleared or from the car and walk modes. 
+Figure \@ref(fig:sankey2) further proves that many agents elect to use ride-hailing modes because the utility parameters represent them as attractive alternatives. Figure \@ref(fig:sankey2) displays the total number of ride-hailing trips at the end of each iteration as well as which modes were used on those same trips at the beginning of the iteration for the AsimBeamAll:PPL scenario. Notice how for the majority of iterations, a substantial share of agents move from the "Cleared Mode" category to a ride-hailing choice instead. Interestingly though, before the beginning of the next iteration, most of those ride-hailing modes are lost, and new agents convert to a ride-hailing mode. This process continues, and explains why a substantial jump in ride-hailing trips occur between iteration 11 and iteration 12 in Figure \@ref(fig:sankey). In other words, only a small share of ride-hailing trips are retained across each iteration, and instead the majority of ride-hailing trips are produced from individuals with their modes cleared or from the car and walk modes. 
 
 \begin{sidewaysfigure}
 
 \centering
 \includegraphics[width = 1.05\paperwidth]{planshifts_facet.png}
-\caption{The starting choice of agents who switch to ride-hail by each iteration's end (AsimBeamAll:PPL Scenario).}
+\caption[Trips that switch to ride-hail by iteration.]{Starting choice of agents who switch to ride-hail by each iteration's end (AsimBeamAll:PPL Scenario).}
 \label{fig:sankey2}
 
 \end{sidewaysfigure}
@@ -91,7 +91,7 @@ Another factor for why agents switch from car to ride-hailing is BEAM's complex 
 
 In addition to BEAM's vehicle assignment algorithm, BEAM's trip based mode choice structure forces some car users to switch modes. Sometimes, agents will *lose* their vehicle within the day when a pathway cannot be built. If an agent *loses* their car, car is no longer a valid modal alternative for future trips. Figure \@ref(fig:walkers) provides evidence for this statement. Figure \@ref(fig:walkers) displays a graph of those agents who start their day using a mode other than walk, but end up switching to the walk mode by the end of the day. Notice how in each hour, walk increases as car decreases or remains constant. Hundreds of car type mode users are switching to walk modes instead of remaining with their vehicle. Figure \@ref(fig:sankey) shows that many walk users shift to ride-hailing each iteration. Therefore, car users who shift to walk on one trip, may shift to ride-hailing on the next trip. This is true between corresponding iterations as well. Overall, the increase in ridership in the *All* model can be partially explained for these three reasons.
 
-```{r walkers, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Agents who switch to walk by time of day (AsimBeamAll:PPL Scenario).", fig.align='center'}
+```{r walkers, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Agents who switch to walk by time of day (AsimBeamAll:PPL Scenario).", fig.scap = "Agents who switch to walk by time of day.", out.extra='', fig.align='center'}
 #graph of those agents who start their day not walking, and switch to walking before the end of the day
 #for wRH-All-All Scenario
 tar_read(walk_switchers)
@@ -104,7 +104,7 @@ Table \@ref(tab:timeutil) provides evidence in ride-hail being an attractive mod
 
 ```{r timeutil, echo=FALSE}
 time_utilization <- tar_read(ridehail_utilization) %>% select(2,6) %>% rename("Ride-hail Time Utilization" = RideHailTimeUtilization, "Scenario Name" = ScenarioName)
-kable(time_utilization, caption = 'Percent Ride-hail Time Utilization by Mode Choice Combination Scenario', booktabs = TRUE)
+kable(time_utilization, caption = 'Percent Ride-hail Time Utilization by Mode Choice Combination Scenario', caption.short = "Percent Ride-hail Time Utilization", booktabs = TRUE)
   #kable_styling(latex_options="scale_down")
 ```
 

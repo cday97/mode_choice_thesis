@@ -52,6 +52,7 @@ header-includes:
   - \usepackage{eqparbox}
   - \usepackage{makecell}
 
+nocite: '@*' # include all references in .bib file
 
 # ELSEVIER ----------------------------------------------------------------#
 # change to elsevier format in _ouput.yml and references
