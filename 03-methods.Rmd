@@ -62,8 +62,7 @@ In ActivitySim, the utility $V$ for person $n \in {1:N}$ choosing alternative mo
       & \ \beta_{kP}^{13}(CBD_{k,j}) (\#eq:location)\\
   V_{nk} =& \ V_{nk}^{Person} + V_{nk}^{Path} + V_{nk}^{Location} (\#eq:all)
 \end{align}
-
-where, $\alpha$ is the alternative specific constant that varies by auto sufficiency, $hhsize$ is household size, $dist$ is distance, $tv$ is vehicle travel time, $te$ is egress time, $tw$ is wait time, $prox$ is proximity to transit, $xfer$ is number of transfers, $ZDI$ is zonal density index, $ZTI$ is zonal topography index, $CBD$ is central business district, and $\beta_{P}^1:\beta_{P}^{13}$ are estimated coefficients that vary by tour purpose. Equation \@ref(eq:person) shows part of the ActivitySim's mode choice utility function that focuses on person variables. Equation \@ref(eq:path) shows the part of the mode choice utility function that focuses on path variables. Equation \@ref(eq:location) shows the part of the mode choice utility function that focuses on location variables. As shown in Equation \@ref(eq:all), ActivitySim uses the combination of person, path, and location variables to calculate the mode choice alternative. The combination of these different variable types determines whether or not a person selects a ride-hailing mode. In addition, since activity-based models do not use variable wait time, the average wait time is selected before the model run. 
+where, $\alpha$ is the alternative specific constant that varies by auto sufficiency,  $hhsize$ is household size, $dist$ is distance, $tv$ is vehicle travel time, $te$ is egress time, $tw$ is wait time, $prox$ is proximity to transit, $xfer$ is number of transfers, $ZDI$ is zonal density index, $ZTI$ is zonal topography index, $CBD$ is central business district, and $\beta_{P}^1:\beta_{P}^{13}$ are estimated coefficients that vary by tour purpose $P$. Equation \@ref(eq:person) shows part of the ActivitySim's mode choice utility function that focuses on person variables. Equation \@ref(eq:path) shows the part of the mode choice utility function that focuses on path variables. Equation \@ref(eq:location) shows the part of the mode choice utility function that focuses on location variables. As shown in Equation \@ref(eq:all), ActivitySim uses the combination of person, path, and location variables to calculate the mode choice alternative. The combination of these different variable types determines whether or not a person selects a ride-hailing mode. In addition, since activity-based models do not use variable wait time, the average wait time is selected before the model run. 
 
 
 ## Configuring ActivitySim
@@ -83,7 +82,6 @@ The Behavior, Energy, Autonomy, and Mobility (BEAM) model, developed by Lawrence
 \begin{equation}
   V_{nk} = \alpha_{k} + \beta_k^1(cost_{k,ij}) + \beta_k^2(tv_{k,ij}) + \beta_k^3(xfer_{k}) (\#eq:beam)
 \end{equation}
-
 where, $\alpha$ is the alternative specific constant that varies mode, $tv$ is vehicle travel time, $xfer$ is number of transfers and $\beta_{P}^1:\beta_{P}^{3}$ are estimated coefficients that vary mode.
 
 However, we improved the BEAM's default mode choice model in order to better estimate the ride-hailing choices of individuals. Specifically, we changed the BEAM mode choice model to use a tour purpose attribute, the same utility equations as ActivitySim (See Equation \@ref(eq:all)), and additional modal alternatives consistent with those present in ActivitySim.  Appendix A provides a deeper explanation of these changes.
@@ -105,10 +103,10 @@ Lastly, after completing the utility parameter validation we calibrated the mode
 \begin{equation}
   \alpha_{nk}' = \alpha_{nk} + ln(\frac{T_{nk}^{ASIM}}{T_{nk}^{BEAM}}) (\#eq:eqcalib)
 \end{equation} 
-
 where $n$ is auto sufficiency and $k$ is modal alternative. We completed the BEAM calibration through an iterative process of updating ASC values using Equation \@ref(eq:eqcalib). After completing 15 iterations of compounding Equation \@ref(eq:eqcalib) on the ASC values, the BEAM trip values were within a reasonable range to the ActivitySim target shares. Figure \@ref(fig:fig-beam-calib) shows the progress of the calibration targets with the final shares after each iteration. 
 
 ```{r fig-beam-calib, fig.dim = c(7,9), fig.cap="BEAM mode choice calibration process."}
+#, dev='tikz'
 beam_calib <- tar_read(beam_calib)
 beam_calib
 ```

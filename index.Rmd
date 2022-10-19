@@ -51,6 +51,7 @@ header-includes:
   - \usepackage{mathtools}
   - \usepackage{eqparbox}
   - \usepackage{makecell}
+  - \usepackage{pgf}
 
 nocite: '@*' # include all references in .bib file
 

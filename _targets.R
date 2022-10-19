@@ -10,7 +10,7 @@ tar_option_set(packages = c("tidyverse", "bookdown", "readr", "dotwhisker",
                             "data.table",
                             "ggpubr", "scales", "future", "future.apply", "furrr",
                             "data.table", "ggrepel", "knitr", "kableExtra",
-                            "ggalluvial", "RColorBrewer"))
+                            "ggalluvial", "RColorBrewer", "tikzDevice"))
 
 #Define custom functions and other global objects.
 # This is where you write source(\"R/functions.R\")
