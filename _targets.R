@@ -166,6 +166,7 @@ visual_targets <- tar_plan(
   
   # Ride Hail Result Visuals
   tar_target(ridership, format_ridership_table(mode_choice_table, asim_plans)),
+  tar_target(finalRidership, add_p_to_ridership(ridership,mode_choice_table,asim_plans)),
   tar_target(waits, format_waits_graph(wait_times)),
   
   #Across Day and Daily Plan Analysis

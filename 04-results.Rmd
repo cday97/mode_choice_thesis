@@ -6,8 +6,8 @@ Table \@ref(tab:ridership) shows the number of trips for the ride-hail, pooled r
 
 ```{r ridership, echo=FALSE}
 library(kableExtra)
-ridership <- tar_read(ridership)
-kbl(ridership, caption = 'Ride-hail Ridership by Number of Total Trips by Mode Choice Combination Scenario.', caption.short = "Ride-hail Ridership by Number of Total Trips", booktabs = TRUE, linesep = c("\\addlinespace",rep("",9)), format="latex") %>%
+finalRidership <- tar_read(finalRidership)
+kbl(finalRidership, caption = 'Ride-hail Ridership by Number of Total Trips by Mode Choice Combination Scenario.', caption.short = "Ride-hail Ridership by Number of Total Trips", booktabs = TRUE, linesep = c("\\addlinespace",rep("",9)), format="latex") %>%
   row_spec(1,italic = TRUE, background = "#D9D9D9") %>%
   row_spec(2, background = "#FAEBD7") %>%
   row_spec(3:6, background = "#FFB6C1") %>%

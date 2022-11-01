@@ -236,7 +236,7 @@ We developed a series of experiments to understand the relative importance of pa
 \hypertarget{ride-hailing-in-activitysim}{%
 \section{Ride-hailing in ActivitySim}\label{ride-hailing-in-activitysim}}
 
-We chose ActivitySim as the activity-based model in this research because it is an open-source software with ride-hailing modal alternatives built into its framework ({``ActivitySim,''} 2021b). Specifically, the ride-hail mode and the pooled ride-hail mode fall under one of the four nested tiers of ActivitySim's nested logit mode choice model. This means that ride-hail is a unique modal option not characterized by being an auto, non-motorized, or transit type mode. Figure \ref{fig:fig-asim-nest} displays the four tiers of the nested logit mode choice model along with the modal alternatives of each tier (MTC, 2012). These modal alternatives represent the alternatives available in both ActivitySim's tour based and trip based mode choice model. When determining the mode to use on a trip, ActivitySim first calculates the tour mode and subsequently calculates the trip mode based on the tour mode selection (See Figure \ref{fig:fig-mode-compare}). Person attributes, path attributes, location attributes, tour purpose value (the main activity purpose of the tour), and more all play a role in calculating the mode choice decision.
+We chose ActivitySim as the activity-based model in this research because it is an open-source software with ride-hailing modal alternatives built into its framework ({``ActivitySim,''} 2021). Specifically, the ride-hail mode and the pooled ride-hail mode fall under one of the four nested tiers of ActivitySim's nested logit mode choice model. This means that ride-hail is a unique modal option not characterized by being an auto, non-motorized, or transit type mode. Figure \ref{fig:fig-asim-nest} displays the four tiers of the nested logit mode choice model along with the modal alternatives of each tier (MTC, 2012). These modal alternatives represent the alternatives available in both ActivitySim's tour based and trip based mode choice model. When determining the mode to use on a trip, ActivitySim first calculates the tour mode and subsequently calculates the trip mode based on the tour mode selection (See Figure \ref{fig:fig-mode-compare}). Person attributes, path attributes, location attributes, tour purpose value (the main activity purpose of the tour), and more all play a role in calculating the mode choice decision.
 
 \begin{figure}
 
@@ -368,21 +368,21 @@ Table \ref{tab:ridership} shows the number of trips for the ride-hail, pooled ri
 
 \caption[Ride-hail Ridership by Number of Total Trips]{\label{tab:ridership}Ride-hail Ridership by Number of Total Trips by Mode Choice Combination Scenario.}
 \centering
-\begin{tabular}[t]{lrrrr}
+\begin{tabular}[t]{lrrrrr}
 \toprule
-Scenario Name & Ride-hail & Pooled Ride-hail & Ride-hail to Transit & Total\\
+Scenario Name & Ride-hail & Pooled Ride-hail & Ride-hail to Transit & Total & Total (\%)\\
 \midrule
-\cellcolor[HTML]{D9D9D9}{\em{ActivitySim - Inputs to BEAM}} & \cellcolor[HTML]{D9D9D9}{\em{2412}} & \cellcolor[HTML]{D9D9D9}{\em{1837}} & \cellcolor[HTML]{D9D9D9}{\em{0}} & \cellcolor[HTML]{D9D9D9}{\em{4249}}\\
+\cellcolor[HTML]{D9D9D9}{\em{ActivitySim - Inputs to BEAM}} & \cellcolor[HTML]{D9D9D9}{\em{2412}} & \cellcolor[HTML]{D9D9D9}{\em{1837}} & \cellcolor[HTML]{D9D9D9}{\em{0}} & \cellcolor[HTML]{D9D9D9}{\em{4249}} & \cellcolor[HTML]{D9D9D9}{\em{0.38}}\\
 \addlinespace
-\cellcolor[HTML]{FAEBD7}{AsimRideHail} & \cellcolor[HTML]{FAEBD7}{269} & \cellcolor[HTML]{FAEBD7}{31} & \cellcolor[HTML]{FAEBD7}{0} & \cellcolor[HTML]{FAEBD7}{300}\\
-\cellcolor[HTML]{FFB6C1}{BeamRideHail:Path} & \cellcolor[HTML]{FFB6C1}{45001} & \cellcolor[HTML]{FFB6C1}{25014} & \cellcolor[HTML]{FFB6C1}{2943} & \cellcolor[HTML]{FFB6C1}{72958}\\
-\cellcolor[HTML]{FFB6C1}{BeamRideHail:PPL} & \cellcolor[HTML]{FFB6C1}{18907} & \cellcolor[HTML]{FFB6C1}{38935} & \cellcolor[HTML]{FFB6C1}{4621} & \cellcolor[HTML]{FFB6C1}{62463}\\
-\cellcolor[HTML]{FFB6C1}{AsimBeamRideHail:Path} & \cellcolor[HTML]{FFB6C1}{21519} & \cellcolor[HTML]{FFB6C1}{40873} & \cellcolor[HTML]{FFB6C1}{5437} & \cellcolor[HTML]{FFB6C1}{67829}\\
-\cellcolor[HTML]{FFB6C1}{AsimBeamRideHail:PPL} & \cellcolor[HTML]{FFB6C1}{47422} & \cellcolor[HTML]{FFB6C1}{27327} & \cellcolor[HTML]{FFB6C1}{3848} & \cellcolor[HTML]{FFB6C1}{78597}\\
-\cellcolor[HTML]{ADD8E6}{BeamAll:Path} & \cellcolor[HTML]{ADD8E6}{4671} & \cellcolor[HTML]{ADD8E6}{1596} & \cellcolor[HTML]{ADD8E6}{38} & \cellcolor[HTML]{ADD8E6}{6305}\\
-\cellcolor[HTML]{ADD8E6}{BeamAll:PPL} & \cellcolor[HTML]{ADD8E6}{3146} & \cellcolor[HTML]{ADD8E6}{6366} & \cellcolor[HTML]{ADD8E6}{121} & \cellcolor[HTML]{ADD8E6}{9633}\\
-\cellcolor[HTML]{ADD8E6}{AsimBeamAll:Path} & \cellcolor[HTML]{ADD8E6}{3470} & \cellcolor[HTML]{ADD8E6}{4596} & \cellcolor[HTML]{ADD8E6}{90} & \cellcolor[HTML]{ADD8E6}{8156}\\
-\cellcolor[HTML]{ADD8E6}{AsimBeamAll:PPL} & \cellcolor[HTML]{ADD8E6}{3153} & \cellcolor[HTML]{ADD8E6}{6031} & \cellcolor[HTML]{ADD8E6}{156} & \cellcolor[HTML]{ADD8E6}{9340}\\
+\cellcolor[HTML]{FAEBD7}{AsimRideHail} & \cellcolor[HTML]{FAEBD7}{269} & \cellcolor[HTML]{FAEBD7}{31} & \cellcolor[HTML]{FAEBD7}{0} & \cellcolor[HTML]{FAEBD7}{300} & \cellcolor[HTML]{FAEBD7}{0.03}\\
+\cellcolor[HTML]{FFB6C1}{BeamRideHail:Path} & \cellcolor[HTML]{FFB6C1}{45001} & \cellcolor[HTML]{FFB6C1}{25014} & \cellcolor[HTML]{FFB6C1}{2943} & \cellcolor[HTML]{FFB6C1}{72958} & \cellcolor[HTML]{FFB6C1}{6.18}\\
+\cellcolor[HTML]{FFB6C1}{BeamRideHail:PPL} & \cellcolor[HTML]{FFB6C1}{18907} & \cellcolor[HTML]{FFB6C1}{38935} & \cellcolor[HTML]{FFB6C1}{4621} & \cellcolor[HTML]{FFB6C1}{62463} & \cellcolor[HTML]{FFB6C1}{5.34}\\
+\cellcolor[HTML]{FFB6C1}{AsimBeamRideHail:Path} & \cellcolor[HTML]{FFB6C1}{21519} & \cellcolor[HTML]{FFB6C1}{40873} & \cellcolor[HTML]{FFB6C1}{5437} & \cellcolor[HTML]{FFB6C1}{67829} & \cellcolor[HTML]{FFB6C1}{5.75}\\
+\cellcolor[HTML]{FFB6C1}{AsimBeamRideHail:PPL} & \cellcolor[HTML]{FFB6C1}{47422} & \cellcolor[HTML]{FFB6C1}{27327} & \cellcolor[HTML]{FFB6C1}{3848} & \cellcolor[HTML]{FFB6C1}{78597} & \cellcolor[HTML]{FFB6C1}{6.60}\\
+\cellcolor[HTML]{ADD8E6}{BeamAll:Path} & \cellcolor[HTML]{ADD8E6}{4671} & \cellcolor[HTML]{ADD8E6}{1596} & \cellcolor[HTML]{ADD8E6}{38} & \cellcolor[HTML]{ADD8E6}{6305} & \cellcolor[HTML]{ADD8E6}{0.57}\\
+\cellcolor[HTML]{ADD8E6}{BeamAll:PPL} & \cellcolor[HTML]{ADD8E6}{3146} & \cellcolor[HTML]{ADD8E6}{6366} & \cellcolor[HTML]{ADD8E6}{121} & \cellcolor[HTML]{ADD8E6}{9633} & \cellcolor[HTML]{ADD8E6}{0.86}\\
+\cellcolor[HTML]{ADD8E6}{AsimBeamAll:Path} & \cellcolor[HTML]{ADD8E6}{3470} & \cellcolor[HTML]{ADD8E6}{4596} & \cellcolor[HTML]{ADD8E6}{90} & \cellcolor[HTML]{ADD8E6}{8156} & \cellcolor[HTML]{ADD8E6}{0.73}\\
+\cellcolor[HTML]{ADD8E6}{AsimBeamAll:PPL} & \cellcolor[HTML]{ADD8E6}{3153} & \cellcolor[HTML]{ADD8E6}{6031} & \cellcolor[HTML]{ADD8E6}{156} & \cellcolor[HTML]{ADD8E6}{9340} & \cellcolor[HTML]{ADD8E6}{0.83}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -558,17 +558,11 @@ Overall, accurately predicting the behavior and service capabilities of on-deman
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-asim}{}}%
-ActivitySim. (2021a). \emph{ActivitySim: An open platform for activity-based travel modeling} (Version 0.9.9.1) {[}Computer software{]}. \url{https://github.com/ActivitySim/activitysim.}
-
 \leavevmode\vadjust pre{\hypertarget{ref-rsg21}{}}%
-ActivitySim: An advanced activity-based travel demand model built by and for users. (2021b). In \emph{RSG}. \url{https://rsginc.com/activitysim-white-paper/\#advanced-activity-based-travel-demand-model}
+ActivitySim: An advanced activity-based travel demand model built by and for users. (2021). In \emph{RSG}. \url{https://rsginc.com/activitysim-white-paper/\#advanced-activity-based-travel-demand-model}
 
 \leavevmode\vadjust pre{\hypertarget{ref-agrc}{}}%
 AGRC. (2021). \emph{Automated geographic reference center}. \url{https://gis.utah.gov/}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-rmarkdown}{}}%
-Allaire, J., Xie, Y., McPherson, J., Luraschi, J., Ushey, K., Atkins, A., Wickham, H., Cheng, J., Chang, W., \& Iannone, R. (2022). \emph{Rmarkdown: Dynamic documents for r}. \url{https://CRAN.R-project.org/package=rmarkdown}
 
 \leavevmode\vadjust pre{\hypertarget{ref-amblard15}{}}%
 Amblard, F., Daudé, E., Gaudou, B., Grignard, A., Hutzler, G., Lang, C., Marilleau, N., Nicod, J.-M., Sheeren, D., \& Taillandier, P. (2015). Introduction to NetLogo. In \emph{Agent-based spatial simulation with netlogo} (pp. 75--123). Elsevier.
@@ -582,17 +576,11 @@ BEAM. (2022). \emph{Behavior, energy, autonomy, and mobility}. Lawrence Berkeley
 \leavevmode\vadjust pre{\hypertarget{ref-becker20}{}}%
 Becker, H., Balac, M., Ciari, F., \& Axhausen, K. W. (2020). Assessing the welfare impacts of shared mobility and mobility as a service (MaaS). \emph{Transportation Research Part A: Policy and Practice}, \emph{131}, 228--243.
 
-\leavevmode\vadjust pre{\hypertarget{ref-RJ-2021-048}{}}%
-Bengtsson, H. (2021). A unifying framework for parallel and distributed processing in r using futures. \emph{The R Journal}, \emph{13}(2), 208--227. \url{https://doi.org/10.32614/RJ-2021-048}
-
 \leavevmode\vadjust pre{\hypertarget{ref-biehl19}{}}%
 Biehl, A., Ermagun, A., \& Stathopoulos, A. (2019). Utilizing multi-stage behavior change theory to model the process of bike share adoption. \emph{Transport Policy}, \emph{77}, 30--45.
 
 \leavevmode\vadjust pre{\hypertarget{ref-bowman98}{}}%
 Bowman, J. L. (1998). \emph{The day activity schedule approach to travel demand analysis} {[}PhD thesis{]}. Massachusetts Institute of Technology.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ggalluvial}{}}%
-Brunson, J. C., \& Read, Q. D. (2020). \emph{Ggalluvial: Layered grammar for alluvial plots.} \url{http://corybrunson.github.io/ggalluvial/}
 
 \leavevmode\vadjust pre{\hypertarget{ref-nchrp}{}}%
 Cambridge Systematics, Inc., Vanasse Hangen Brustlin, Inc., Corporation, G., Bhat, C. R., Shapiro Transportation Consulting, L., \& Martin/Alexiou/Bryson, P. (2012). Travel demand forecasting: Parameters and techniques. In \emph{NCHRP report 716} (pp. 55--60). Transportation Research Board.
@@ -621,17 +609,11 @@ Dong, X. (2020). Trade uber for the bus? \emph{Journal of the American Planning 
 \leavevmode\vadjust pre{\hypertarget{ref-dong18}{}}%
 Dong, Y., Wang, S., Li, L., \& Zhang, Z. (2018). An empirical study on travel patterns of internet based ride-sharing. \emph{Transportation Research Part C: Emerging Technologies}, \emph{86}, 1--22.
 
-\leavevmode\vadjust pre{\hypertarget{ref-data.table}{}}%
-Dowle, M., \& Srinivasan, A. (2021). \emph{Data.table: Extension of `data.frame`}. \url{https://CRAN.R-project.org/package=data.table}
-
 \leavevmode\vadjust pre{\hypertarget{ref-gomes21}{}}%
 Gomes, V. A., CALDAS, M., \& Pitombo, C. S. (2021). An investigation of trip-chaining behaviour based on activity participation, socioeconomic variables and aggregated characteristics of modal alternatives. \emph{Revista Transportes}, \emph{29}(1), 21--41.
 
 \leavevmode\vadjust pre{\hypertarget{ref-hasnine21}{}}%
 Hasnine, M. S., \& Nurul Habib, K. (2021). Tour-based mode choice modelling as the core of an activity-based travel demand modelling framework: A review of state-of-the-art. \emph{Transport Reviews}, \emph{41}(1), 5--26.
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-purrr}{}}%
-Henry, L., \& Wickham, H. (2020). \emph{Purrr: Functional programming tools}. \url{https://CRAN.R-project.org/package=purrr}
 
 \leavevmode\vadjust pre{\hypertarget{ref-horl19}{}}%
 Hörl, S., Balać, M., \& Axhausen, K. W. (2019a). Pairing discrete mode choice models and agent-based transport simulation with MATSim. \emph{2019 TRB Annual Meeting Online}, 19--02409.
@@ -645,26 +627,14 @@ Hosseinzadeh, A., Algomaiah, M., Kluger, R., \& Li, Z. (2021). Spatial analysis 
 \leavevmode\vadjust pre{\hypertarget{ref-hyland18}{}}%
 Hyland, M., Hong, Z., Farias Pinto, H. K. R. de, \& Chen, Y. (2018). Hybrid cluster-regression approach to model bikeshare station usage. \emph{Transportation Research Part A: Policy and Practice}, \emph{115}, 71--89.
 
-\leavevmode\vadjust pre{\hypertarget{ref-R-DiagrammeR}{}}%
-Iannone, R. (2022). \emph{DiagrammeR: Graph/network visualization}. \url{https://github.com/rich-iannone/DiagrammeR}
-
 \leavevmode\vadjust pre{\hypertarget{ref-kamel19}{}}%
 Kamel, J., Vosooghi, R., Puchinger, J., Ksontini, F., \& Sirin, G. (2019). Exploring the impact of user preferences on shared autonomous vehicle modal split: A multi-agent simulation approach. \emph{Transportation Research Procedia}, \emph{37}, 115--122.
 
 \leavevmode\vadjust pre{\hypertarget{ref-kang21}{}}%
 Kang, S., Mondal, A., Bhat, A. C., \& Bhat, C. R. (2021). Pooled versus private ride-hailing: A joint revealed and stated preference analysis recognizing psycho-social factors. \emph{Transportation Research Part C: Emerging Technologies}, \emph{124}, 102906.
 
-\leavevmode\vadjust pre{\hypertarget{ref-R-ggpubr}{}}%
-Kassambara, A. (2020). \emph{Ggpubr: ggplot2 based publication ready plots}. \url{https://rpkgs.datanovia.com/ggpubr/}
-
 \leavevmode\vadjust pre{\hypertarget{ref-knapen21}{}}%
 Knapen, L., Adnan, M., Kochan, B., Bellemans, T., Tuin, M. van der, Zhou, H., \& Snelder, M. (2021). An activity based integrated approach to model impacts of parking, hubs and new mobility concepts. \emph{Procedia Computer Science}, \emph{184}, 428--437.
-
-\leavevmode\vadjust pre{\hypertarget{ref-tarchetypes}{}}%
-Landau, W. M. (2021a). \emph{Tarchetypes: Archetypes for targets}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-targets}{}}%
-Landau, W. M. (2021b). The targets r package: A dynamic make-like function-oriented pipeline toolkit for reproducibility and high-performance computing. \emph{Journal of Open Source Software}, \emph{6}(57), 2959. \url{https://doi.org/10.21105/joss.02959}
 
 \leavevmode\vadjust pre{\hypertarget{ref-nate}{}}%
 Lant, N. J. (2021). \emph{Estimation and simulation of daily activity patterns for individuals using wheelchairs} {[}PhD thesis{]}. Brigham Young University.
@@ -702,32 +672,17 @@ MTC. (2012). In \emph{Travel Model Development: Calibration and Validation Techn
 \leavevmode\vadjust pre{\hypertarget{ref-muhammad19}{}}%
 Muhammad, H., Iqbal, A., Adnan, M., Kochan, B., Bellemans, T., \& Janssens, D. (2019). \emph{Incorporating MaaS concept into an operational activity-based modelling platform}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-R-tibble}{}}%
-Müller, K., \& Wickham, H. (2021). \emph{Tibble: Simple data frames}. \url{https://CRAN.R-project.org/package=tibble}
-
 \leavevmode\vadjust pre{\hypertarget{ref-nayak22}{}}%
 Nayak, S., \& Pandit, D. (2022). Activity-based model: Requisite for a new travel demand forecasting approach for india. \emph{Proceedings of the Fifth International Conference of Transportation Research Group of India}, 109--121.
 
-\leavevmode\vadjust pre{\hypertarget{ref-RColorBrewer}{}}%
-Neuwirth, E. (2022). \emph{RColorBrewer: ColorBrewer palettes}. \url{https://CRAN.R-project.org/package=RColorBrewer}
-
 \leavevmode\vadjust pre{\hypertarget{ref-nguyen22}{}}%
 Nguyen, T. K., Hoang, N. H., \& Vu, H. L. (2022). A unified activity-based framework for one-way car-sharing services in multi-modal transportation networks. \emph{Transportation Research Part E: Logistics and Transportation Review}, \emph{157}, 102551.
-
-\leavevmode\vadjust pre{\hypertarget{ref-sf2018}{}}%
-Pebesma, E. (2018). {Simple Features for R: Standardized Support for Spatial Vector Data}. \emph{{The R Journal}}, \emph{10}(1), 439--446. \url{https://doi.org/10.32614/RJ-2018-009}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-sf}{}}%
-Pebesma, E. (2022). \emph{Sf: Simple features for r}. \url{https://CRAN.R-project.org/package=sf}
 
 \leavevmode\vadjust pre{\hypertarget{ref-philip13}{}}%
 Philip, M., Sreelatha, T., \& George, S. (2013). Activity based travel behavioural study and mode choice modelling. \emph{Int J Innov Res Sci Eng Technol}, \emph{2}(1), 181--190.
 
 \leavevmode\vadjust pre{\hypertarget{ref-popsim}{}}%
 PopulationSim. (2021). \emph{An open platform for population synthesis} (Version 0.5) {[}Computer software{]}. \url{https://activitysim.github.io/populationsim/}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-base}{}}%
-R Core Team. (2021). \emph{R: A language and environment for statistical computing}. R Foundation for Statistical Computing. \url{https://www.R-project.org/}
 
 \leavevmode\vadjust pre{\hypertarget{ref-rafiq22}{}}%
 Rafiq, R., \& McNally, M. G. (2022). An exploratory analysis of alternative travel behaviors of ride-hailing users. \emph{Transportation}, 1--35.
@@ -744,12 +699,6 @@ Shimizu, S., Akai, K., \& Nishino, N. (2013). Modeling and multi-agent simulatio
 \leavevmode\vadjust pre{\hypertarget{ref-siebers08}{}}%
 Siebers, P.-O., \& Aickelin, U. (2008). Introduction to multi-agent simulation. In \emph{Encyclopedia of decision making and decision support technologies} (pp. 554--564). IGI Global.
 
-\leavevmode\vadjust pre{\hypertarget{ref-ggrepel}{}}%
-Slowikowski, K. (2021). \emph{Ggrepel: Automatically position non-overlapping text labels with 'ggplot2'}. \url{https://CRAN.R-project.org/package=ggrepel}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-dotwhisker}{}}%
-Solt, F., \& Hu, Y. (2021). \emph{Dotwhisker: Dot-and-whisker plots of regression results}. \url{https://CRAN.R-project.org/package=dotwhisker}
-
 \leavevmode\vadjust pre{\hypertarget{ref-song19}{}}%
 Song, M., Zhang, Y., Shen, Z. M., Li, M., \& Dong, Z. (2019). Mode shift from car to bike shared: A travel-mode choice model. In \emph{CICTP 2019} (pp. 2398--2410).
 
@@ -765,9 +714,6 @@ UDOT. (2021). \emph{Utah state travel demand model}. Utah Department of Transpor
 \leavevmode\vadjust pre{\hypertarget{ref-gtfs}{}}%
 UTA. (2021). \emph{OpenMobilityData - GTFS}. Utah Transit Authority. \url{https://transitfeeds.com/p/utah-transportation-authority/59}
 
-\leavevmode\vadjust pre{\hypertarget{ref-furrr}{}}%
-Vaughan, D., \& Dancho, M. (2022). \emph{Furrr: Apply mapping functions in parallel using futures}. \url{https://CRAN.R-project.org/package=furrr}
-
 \leavevmode\vadjust pre{\hypertarget{ref-horni16}{}}%
 W Axhausen, K., Horni, A., \& Nagel, K. (2016). \emph{The multi-agent transport simulation MATSim}. Ubiquity Press.
 
@@ -776,60 +722,6 @@ Welch, T. F., Gehrke, S. R., \& Widita, A. (2020). Shared-use mobility competiti
 
 \leavevmode\vadjust pre{\hypertarget{ref-wfrc}{}}%
 WFRC. (2019). \emph{Wasatch front travel demand model} (Version v8.3.1) {[}Computer software{]}. Wasatch Front Regional Council. \url{https://wfrc.org/programs/models-forecasting/}
-
-\leavevmode\vadjust pre{\hypertarget{ref-ggplot22016}{}}%
-Wickham, H. (2016). \emph{ggplot2: Elegant graphics for data analysis}. Springer-Verlag New York. \url{https://ggplot2.tidyverse.org}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-stringr}{}}%
-Wickham, H. (2019). \emph{Stringr: Simple, consistent wrappers for common string operations}. \url{https://CRAN.R-project.org/package=stringr}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-tidyverse}{}}%
-Wickham, H. (2021). \emph{Tidyverse: Easily install and load the tidyverse}. \url{https://CRAN.R-project.org/package=tidyverse}
-
-\leavevmode\vadjust pre{\hypertarget{ref-tidyverse2019}{}}%
-Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., \ldots{} Yutani, H. (2019). Welcome to the {tidyverse}. \emph{Journal of Open Source Software}, \emph{4}(43), 1686.
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-ggplot2}{}}%
-Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Woo, K., Yutani, H., \& Dunnington, D. (2021). \emph{ggplot2: Create elegant data visualisations using the grammar of graphics}. \url{https://CRAN.R-project.org/package=ggplot2}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-dplyr}{}}%
-Wickham, H., François, R., Henry, L., \& Müller, K. (2022). \emph{Dplyr: A grammar of data manipulation}. \url{https://CRAN.R-project.org/package=dplyr}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-tidyr}{}}%
-Wickham, H., \& Girlich, M. (2022). \emph{Tidyr: Tidy messy data}. \url{https://CRAN.R-project.org/package=tidyr}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-readr}{}}%
-Wickham, H., Hester, J., \& Bryan, J. (2022). \emph{Readr: Read rectangular text data}. \url{https://CRAN.R-project.org/package=readr}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-scales}{}}%
-Wickham, H., \& Seidel, D. (2022). \emph{Scales: Scale functions for visualization}. \url{https://CRAN.R-project.org/package=scales}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-cowplot}{}}%
-Wilke, C. O. (2020). \emph{Cowplot: Streamlined plot theme and plot annotations for ggplot2}. \url{https://wilkelab.org/cowplot/}
-
-\leavevmode\vadjust pre{\hypertarget{ref-knitr2014}{}}%
-Xie, Y. (2014). Knitr: A comprehensive tool for reproducible research in {R}. In V. Stodden, F. Leisch, \& R. D. Peng (Eds.), \emph{Implementing reproducible computational research}. Chapman; Hall/CRC. \url{http://www.crcpress.com/product/isbn/9781466561595}
-
-\leavevmode\vadjust pre{\hypertarget{ref-knitr2015}{}}%
-Xie, Y. (2015). \emph{Dynamic documents with {R} and knitr} (2nd ed.). Chapman; Hall/CRC. \url{https://yihui.org/knitr/}
-
-\leavevmode\vadjust pre{\hypertarget{ref-bookdown2016}{}}%
-Xie, Y. (2016). \emph{Bookdown: Authoring books and technical documents with {R} markdown}. Chapman; Hall/CRC. \url{https://bookdown.org/yihui/bookdown}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-bookdown}{}}%
-Xie, Y. (2021a). \emph{Bookdown: Authoring books and technical documents with r markdown}. \url{https://CRAN.R-project.org/package=bookdown}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-knitr}{}}%
-Xie, Y. (2021b). \emph{Knitr: A general-purpose package for dynamic report generation in r}. \url{https://yihui.org/knitr/}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-tufte}{}}%
-Xie, Y., \& Allaire, J. (2022). \emph{Tufte: Tufte's styles for r markdown documents}. \url{https://github.com/rstudio/tufte}
-
-\leavevmode\vadjust pre{\hypertarget{ref-rmarkdown2018}{}}%
-Xie, Y., Allaire, J. J., \& Grolemund, G. (2018). \emph{R markdown: The definitive guide}. Chapman; Hall/CRC. \url{https://bookdown.org/yihui/rmarkdown}
-
-\leavevmode\vadjust pre{\hypertarget{ref-rmarkdown2020}{}}%
-Xie, Y., Dervieux, C., \& Riederer, E. (2020). \emph{R markdown cookbook}. Chapman; Hall/CRC. \url{https://bookdown.org/yihui/rmarkdown-cookbook}
 
 \leavevmode\vadjust pre{\hypertarget{ref-xu19}{}}%
 Xu, X., Mahmassani, H. S., \& Chen, Y. (2019). Privately owned autonomous vehicle optimization model development and integration with activity-based modeling and dynamic traffic assignment framework. \emph{Transportation Research Record}, \emph{2673}(10), 683--695.
@@ -842,9 +734,6 @@ Zhang, W., Buehler, R., Broaddus, A., \& Sweeney, T. (2021). What type of infras
 
 \leavevmode\vadjust pre{\hypertarget{ref-zhou19}{}}%
 Zhou, X., Wang, M., \& Li, D. (2019). Bike-sharing or taxi? Modeling the choices of travel mode in chicago using machine learning. \emph{Journal of Transport Geography}, \emph{79}, 102479.
-
-\leavevmode\vadjust pre{\hypertarget{ref-kabelExtra}{}}%
-Zhu, H. (2021). \emph{kableExtra: Construct complex table with 'kable' and pipe syntax}. \url{https://CRAN.R-project.org/package=kableExtra}
 
 \leavevmode\vadjust pre{\hypertarget{ref-zuniga22}{}}%
 Zuniga-Garcia, N., Tec, M., Scott, J. G., \& Machemehl, R. B. (2022). Evaluation of e-scooters as transit last-mile solution. \emph{Transportation Research Part C: Emerging Technologies}, \emph{139}, 103660.

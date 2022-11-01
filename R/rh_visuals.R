@@ -85,7 +85,29 @@ format_ridership_table <- function(mode_choice_table, asim_plans){
     
   
   bind_rows(asim_rh,ridership)
+}
+
+add_p_to_ridership <- function(ridershipTable, mode_choice_table,asim_plans){
+  ridershipT <- mode_choice_table %>%
+    #instead of renaming, just fix the names in targets and rerun (will take like 1hr)
+    rename(rename_list) %>% select(1,11,6,10,9,5,4,8,7,3,2) %>%
+    mutate_all(~replace(., is.na(.), 0.0)) %>%
+    pivot_longer(!mode,names_to = "scenario", values_to = "ridership") %>%
+    group_by(scenario) %>%
+    summarize(Totals = sum(ridership))
+  asimT <- asim_plans %>%
+    filter(!is.na(legMode)) %>%
+    group_by(legMode) %>%
+    summarize(n = round(n() * .15)) %>%
+    mutate(Totals = sum(n), scenario = "ActivitySim - Inputs to BEAM") %>%
+    select(scenario,Totals)
+  totals <- bind_rows(ridershipT, asimT[1,]) %>%
+    filter(scenario != "NoRideHail")
   
+  ridershipP <- left_join(ridershipTable,totals, by = c("Scenario Name" = "scenario")) %>%
+    mutate(TotalP = round((Total / Totals)*100,2)) %>%
+    select(-Totals) %>%
+    rename("Total (%)" = "TotalP")
 }
 
 format_waits_graph <- function(wait_times){
@@ -206,7 +228,7 @@ make_plans_shift_chart <- function(plan_mode_shifts){
   
   plan_mode_shifts <-plan_mode_shifts %>%
     mutate(legMode = ifelse(legMode == "","nomode",legMode)) %>%
-    filter(iteration > 1)
+    filter(iteration > 1, iteration < 13)
   
   plan_mode_shifts$legMode <- factor(plan_mode_shifts$legMode, 
                                   levels=c("nomode","bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
@@ -229,25 +251,20 @@ make_plans_facet_chart <- function(plan_mode_shifts){
   
   plan_mode_shifts <-plan_mode_shifts %>%
     mutate(legMode = ifelse(legMode == "","nomode",legMode)) %>%
+    mutate(bindid = bindid - 1) %>%
     group_by(bindid,iteration) %>%
     arrange(personElement) %>%
     mutate(id = row_number()) %>%
     mutate(iteration = iteration -1) %>%
     filter(iteration >= 1) %>%
-    mutate(iteration = ifelse(grepl(".5",as.character(iteration)), paste0(iteration - 0.5," end"), paste0(iteration, " start")))
+    mutate(iteration = ifelse(grepl(".5",as.character(iteration)), "end", "begin"))
   
   plan_mode_shifts$legMode <- factor(plan_mode_shifts$legMode, 
                                      levels=c("nomode","bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
                                               "ride_hail","ride_hail_pooled","ride_hail_transit","walk","walk_transit","drive_transit"))
-  plan_mode_shifts$iteration <- factor(plan_mode_shifts$iteration,
-                                       levels = c("0 start", "0 end", "1 start", "1 end", "2 start", "2 end",
-                                                  "3 start", "3 end", "4 start", "4 end", "5 start", "5 end",
-                                                  "6 start", "6 end", "7 start", "7 end", "8 start", "8 end",
-                                                  "9 start", "9 end", "10 start", "10 end", "11 start", "11 end",
-                                                  "12 start", "12 end"))
-  
+
   ggplot(plan_mode_shifts, aes(x = iteration, stratum = legMode, alluvium = id, fill = legMode, label = legMode)) +
-    #facet_wrap(~bindid, scales="free_x", ncol = 2)+
+    facet_wrap(~bindid, scales="free_x", ncol = 11)+
     scale_fill_manual(values = modesP2, labels = modesL2) +
     geom_flow(color = "darkgray") +
     geom_stratum() +

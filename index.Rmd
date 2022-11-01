@@ -53,7 +53,7 @@ header-includes:
   - \usepackage{makecell}
   - \usepackage{pgf}
 
-nocite: '@*' # include all references in .bib file
+#nocite: '@*' # include all references in .bib file
 
 # ELSEVIER ----------------------------------------------------------------#
 # change to elsevier format in _ouput.yml and references
