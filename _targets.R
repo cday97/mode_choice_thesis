@@ -7,7 +7,7 @@ library(furrr)
 
 # Set target-specific options such as packages.
 tar_option_set(packages = c("tidyverse", "bookdown", "readr", "dotwhisker", 
-                            "data.table",
+                            "data.table", "data.tree",
                             "ggpubr", "scales", "future", "future.apply", "furrr",
                             "data.table", "ggrepel", "knitr", "kableExtra",
                             "ggalluvial", "RColorBrewer", "tikzDevice", "WRS"))
