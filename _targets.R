@@ -10,7 +10,7 @@ tar_option_set(packages = c("tidyverse", "bookdown", "readr", "dotwhisker",
                             "data.table",
                             "ggpubr", "scales", "future", "future.apply", "furrr",
                             "data.table", "ggrepel", "knitr", "kableExtra",
-                            "ggalluvial", "RColorBrewer", "tikzDevice"))
+                            "ggalluvial", "RColorBrewer", "tikzDevice", "WRS"))
 
 #Define custom functions and other global objects.
 # This is where you write source(\"R/functions.R\")
@@ -129,6 +129,8 @@ analysis_targets <- tar_plan(
   tar_target(mode_choice_table, all_join(events_list, mode_choice, "mode", "mode")),
   tar_target(num_passengers, all_join(events_list, rh_pass, "numPassengers", "num_passengers")),
   tar_target(wait_times, rbind_join(events_waittime_list, rh_waittimes)),
+  tar_target(quantile_waittimes, quantile_groups(wait_times)),
+  tar_target(quantile_tests, quantile_times(wait_times)),
   tar_target(old_wait_times, all_join(events_list, rh_times, "summary", "values")),
   tar_target(travel_times, all_join(events_list, rh_travel_times, "summary", "values")),
   tar_target(rh_to_transit, all_join(events_list, count_rh_transit_transfers, "transferType", "transfer_type")),

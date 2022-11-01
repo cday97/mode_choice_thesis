@@ -13,10 +13,12 @@ outlined below.
   1. Download the data and put it into the data folder. Data is found at This
   link: (put link here).
   2. Run tar_make() to build the figures and tables used in the document.
-  3. Dowload the 'RAM' package using this command: devtools::install_url
-  ("https://cran.r-project.org/src/contrib/Archive/RAM/RAM_1.2.1.tar.gz")
+  3. Download the WRS package running the following commands (https://www.r-bloggers.com/2013/04/installation-of-wrs-package-wilcox-robust-statistics/)
+      * install.packages(c("MASS", "akima", "robustbase"))
+      * install.packages(c("cobs", "robust", "mgcv", "scatterplot3d", "quantreg", "rrcov", "lars", "pwr", "trimcluster", "parallel", "mc2d", "psych", "Rfit"))
+      *  install.packages("WRS", repos="http://R-Forge.R-project.org", type="source")
   4. Build the book.
-  
+
 As a note, some of the targets (especially `events_list`) are large and occupy
 a fair amount of memory. You will likely need to increase the amount of virtual
 memory available to R by placing the following line in your `.Renviron` file:

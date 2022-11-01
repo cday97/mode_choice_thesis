@@ -110,6 +110,51 @@ add_p_to_ridership <- function(ridershipTable, mode_choice_table,asim_plans){
     rename("Total (%)" = "TotalP")
 }
 
+quantile_groups <- function(wait_times){
+  wait_times_groups <- wait_times %>%
+    mutate(mcModel = ifelse(grepl("All M", ScenarioName), "All", ifelse(grepl("RH M", ScenarioName), "RH", "None"))) %>%
+    group_by(mcModel) %>%
+    summarize("20" = quantile(rhReserveTime, .2),
+              "50" = quantile(rhReserveTime, .5),
+              "80" = quantile(rhReserveTime, .8)
+    ) %>%
+    pivot_longer(!mcModel, names_to = "Quantile", values_to = "Value") %>%
+    pivot_wider(names_from = mcModel, values_from = Value)
+}
+
+quantile_times <- function(wait_times){
+  wait_times_groups <- wait_times %>%
+    mutate(mcModel = ifelse(grepl("All M", ScenarioName), "All", ifelse(grepl("RH M", ScenarioName), "RH", "None")))
+
+  Z1dt <- wait_times_groups %>%
+    filter(mcModel == "All")
+  All <- Z1dt$rhReserveTime
+  Z2dt <- wait_times_groups %>%
+    filter(mcModel == "RH")
+  RH <- Z2dt$rhReserveTime
+  Z3dt <- wait_times_groups %>%
+    filter(mcModel == "None")
+  None <- Z3dt$rhReserveTime
+
+  Q_All_RH <- qcomhd(All,RH,q=c(.2,.5,.8)) %>%
+    mutate(Comparison = "All-RideHail")
+  Q_All_NN <- qcomhd(All,None,q=c(.2,.5,.8)) %>%
+    mutate(Comparison = "All-None")
+  Q_RH_NN <- qcomhd(RH,None, q=c(.2,.5,.8)) %>%
+    mutate(Comparison = "RideHail-None")
+  
+  QuantileTests <- bind_rows(Q_All_RH,Q_All_NN,Q_RH_NN)
+  QuantileTests
+  
+  #' (https://freakonometrics.hypotheses.org/4199)
+  #' Those tests are based on the procedure proposed in Wilcox, Erceg-Hurn,  Clark and Carlson (2013), 
+  #' online on http://tandfonline.com/…. They rely on the use of bootstrap samples. The idea is quite 
+  #' simple actually (even if, in the paper, they use Harrell–Davis estimator to estimate quantiles, 
+  #' i.e. a weighted sum of ordered statistics – as described in http://freakonometrics.hypotheses.org/1755 – 
+  #' but the idea can be understood with any estimator): we generate several bootstrap samples, and 
+  #' compute the median for all of them (since our interest was initially on the median)
+}
+
 format_waits_graph <- function(wait_times){
   waittimes <- wait_times %>%
     group_by(ScenarioName) %>%
