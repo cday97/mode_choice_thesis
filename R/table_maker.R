@@ -268,9 +268,11 @@ supergrapher <- function(utah_hbw,utah_hbs,utah_hbo,nchrp_hbw,nchrp_hbs,nchrp_hb
     #ggtitle(paste0(purp," Utility Parameter Values")) +
     xlab("(Coeff Value) / (Vehicle Travel Time)") + ylab("Path Utility Parameter Coefficients") +
     scale_x_continuous(trans = "log10", labels = function(x) format(x, scientific = FALSE)) +
+    #scale_x_continuous(expand = c(0, 0), limits = c(0,3)) + 
     labs(color = "Coefficient Source") +
     theme_bw()  +
     theme(axis.text.x=element_text(angle=90,hjust=1))
+
 }
 
 
