@@ -185,8 +185,8 @@
 
 % Table of contents formatting (and LoF and LoT)
 \renewcommand{\contentsname}{Table of Contents}
-\renewcommand{\listfigurename}{List of Figures\;\;}	% hack to get spacing in ToC between name and number right
-\renewcommand{\listtablename}{List of Tables\;\;}	% hack to get spacing in ToC between name and number right
+\renewcommand{\listfigurename}{List of Figures}	% hack to get spacing in ToC between name and number right
+\renewcommand{\listtablename}{List of Tables}	% hack to get spacing in ToC between name and number right
 
 %% change title style for toc, lof, lot
 % Bold face, size LARGE titles
