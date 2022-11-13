@@ -131,6 +131,7 @@ analysis_targets <- tar_plan(
   tar_target(wait_times, rbind_join(events_waittime_list, rh_waittimes)),
   tar_target(quantile_waittimes, quantile_groups(wait_times)),
   tar_target(quantile_tests, quantile_times(wait_times)),
+  tar_target(quantile_tests_rh, quantile_times_rh(wait_times)),
   tar_target(old_wait_times, all_join(events_list, rh_times, "summary", "values")),
   tar_target(travel_times, all_join(events_list, rh_travel_times, "summary", "values")),
   tar_target(rh_to_transit, all_join(events_list, count_rh_transit_transfers, "transferType", "transfer_type")),

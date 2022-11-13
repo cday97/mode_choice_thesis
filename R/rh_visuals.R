@@ -125,7 +125,7 @@ quantile_groups <- function(wait_times){
 quantile_times <- function(wait_times){
   wait_times_groups <- wait_times %>%
     mutate(mcModel = ifelse(grepl("All M", ScenarioName), "All", ifelse(grepl("RH M", ScenarioName), "RH", "None")))
-
+  
   Z1dt <- wait_times_groups %>%
     filter(mcModel == "All")
   All <- Z1dt$rhReserveTime
@@ -135,7 +135,7 @@ quantile_times <- function(wait_times){
   Z3dt <- wait_times_groups %>%
     filter(mcModel == "None")
   None <- Z3dt$rhReserveTime
-
+  
   Q_All_RH <- qcomhd(All,RH,q=c(.2,.5,.8)) %>%
     mutate(Comparison = "All-RideHail")
   Q_All_NN <- qcomhd(All,None,q=c(.2,.5,.8)) %>%
@@ -144,6 +144,63 @@ quantile_times <- function(wait_times){
     mutate(Comparison = "RideHail-None")
   
   QuantileTests <- bind_rows(Q_All_RH,Q_All_NN,Q_RH_NN)
+  QuantileTests
+  
+  #' (https://freakonometrics.hypotheses.org/4199)
+  #' Those tests are based on the procedure proposed in Wilcox, Erceg-Hurn,  Clark and Carlson (2013), 
+  #' online on http://tandfonline.com/…. They rely on the use of bootstrap samples. The idea is quite 
+  #' simple actually (even if, in the paper, they use Harrell–Davis estimator to estimate quantiles, 
+  #' i.e. a weighted sum of ordered statistics – as described in http://freakonometrics.hypotheses.org/1755 – 
+  #' but the idea can be understood with any estimator): we generate several bootstrap samples, and 
+  #' compute the median for all of them (since our interest was initially on the median)
+}
+
+quantile_times_rh <- function(wait_times){
+  wtg <- wait_times %>%
+    group_by(ScenarioName) %>%
+    summarize(n = n())
+  
+  
+  Z1dt <- wait_times %>%
+    filter(ScenarioName == "All Modes - All Variables - W/ RH")
+  Z1 <- Z1dt$rhReserveTime
+  Z2dt <- wait_times %>%
+    filter(ScenarioName == "All Modes - All Variables - No RH")
+  Z2 <- Z2dt$rhReserveTime
+  
+  Z3dt <- wait_times %>%
+    filter(ScenarioName == "All Modes - Path Variables - W/ RH")
+  Z3 <- Z3dt$rhReserveTime
+  Z4dt <- wait_times %>%
+    filter(ScenarioName == "All Modes - Path Variables - No RH")
+  Z4 <- Z4dt$rhReserveTime
+  
+  Z5dt <- wait_times %>%
+    filter(ScenarioName == "RH Modes - All Variables - W/ RH")
+  Z5 <- Z5dt$rhReserveTime
+  Z6dt <- wait_times %>%
+    filter(ScenarioName == "RH Modes - All Variables - No RH")
+  Z6 <- Z6dt$rhReserveTime
+  
+  Z7dt <- wait_times %>%
+    filter(ScenarioName == "RH Modes - Path Variables - W/ RH")
+  Z7 <- Z7dt$rhReserveTime
+  Z8dt <- wait_times %>%
+    filter(ScenarioName == "RH Modes - Path Variables - No RH")
+  Z8 <- Z8dt$rhReserveTime
+  
+  
+  All_PPL <- qcomhd(Z1,Z2,q=c(.2,.5,.8)) %>%
+    mutate(Comparison = "All-PPL")
+  All_Path <- qcomhd(Z3,Z4,q=c(.2,.5,.8)) %>%
+    mutate(Comparison = "All-Path")
+  RH_PPL <- qcomhd(Z5,Z6, q=c(.2,.5,.8)) %>%
+    mutate(Comparison = "RH-PPL")
+  RH_Path <- qcomhd(Z7,Z8, q=c(.2,.5,.8)) %>%
+    mutate(Comparison = "RH-Path")
+  
+  
+  QuantileTests <- bind_rows(All_PPL, All_Path, RH_PPL, RH_Path)
   QuantileTests
   
   #' (https://freakonometrics.hypotheses.org/4199)

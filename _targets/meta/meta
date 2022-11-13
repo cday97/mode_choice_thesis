@@ -6,7 +6,7 @@ all_all_wrh|stem|ac1e410a3734b501|91715aac0e1f7f0c|1849d1171ff120d2|2074516988|d
 all_join|function|6ca7d4584d60bc1e|||||||||||||||
 all_path_norh|stem|ed73f7e175cd72f2|dc2b22666ea31959|1849d1171ff120d2|-354722341|data/events/12.events-15pct-noRH-all-path.csv|t19223.7289017004s|2de103f6a37d3382|4634675865|file|local|vector|||0||
 all_path_wrh|stem|269be4a5f5d0e9ff|b5983e1460846579|1849d1171ff120d2|-1748263918|data/events/12.events-15pct-wRH-all-path.csv|t19210.8046117591s|ae63cdddf41a1b43|4835392081|file|local|vector|||0||
-analysis_targets|object|497ad780d86a4514|||||||||||||||
+analysis_targets|object|b8597435466da986|||||||||||||||
 asim_hbo|stem|a58b6b2f40499ebd|1e8c7930b45144d1|7aa17c8c92bc9b21|205244841||t19251.1412173994s|8585b45427938c14|481|rds|local|vector|||0.15||
 asim_hbs|stem|fe36ae39cc6b6d56|c642b149d9a6f9ab|98030bb048672f4b|1120581330||t19251.1411816155s|2cabad3ee722f40e|486|rds|local|vector|||3.33||
 asim_hbw|stem|5c56ccdd997baee2|ebfeba6a27d33cec|7bd6b2e51538c554|2038309948||t19251.1412197312s|7b6560034ded6068|487|rds|local|vector|||0.18||
@@ -105,10 +105,12 @@ planshifts|stem|7f62fc1689432f47|b2d86c69dc1c3a92|c47c0356ecb9f8e0|510860786||t1
 planshifts_beg|stem|c6a3d5f7adceeec4|c9e7e9f42b83dfbb|2367e158d96881c8|-430299538||t19269.1446803426s|9b942e1a2083c4ed|133278|rds|local|vector|||0.15||
 planshifts_end|stem|c60ed0b068d02254|47bbf75ebd30941a|9164c15f1d0ed461|1494628580||t19269.1446912087s|937d1f4b1bffd3ed|167152|rds|local|vector|||0.08||
 planshifts_facet|stem|033cdfb4f33ab5e0|1c1f5fb782ff9dc4|73cc75b1bb7b995e|621110324||t19297.0119698073s|612755a2266e6ef7|1516757|rds|local|vector|||1.76||
-planshifts_facet_connect|stem|bab1513c0d10d908|5630955dda3dba9d|567324b49ff47bf4|1684778583||t19269.1446132017s||2.22507385850518e-308|rds|local|vector|||0||could not find function make_plans_24_chart
+planshifts_facet_connect|stem|bab1513c0d10d908|5630955dda3dba9d|567324b49ff47bf4|1684778583||t19269.1446132017s||2.2250738585067e-308|rds|local|vector|||0||could not find function make_plans_24_chart
 quantile_groups|function|baa27c98cd8f1210|||||||||||||||
 quantile_tests|stem|18bf3a6a27a15364|c2ebf1f1e20e1985|4dabebb8235e1c6a|-1064589850||t19297.1011958706s|77d1a07603269e91|664|rds|local|vector|||242.28||
+quantile_tests_rh|stem|948a3d0f1742ec96|4e2f858002b6c615|2741325483f9df10|1439622383||t19309.6894864832s|6cbd7e0c8bb8c13b|932|rds|local|vector|||140.63||
 quantile_times|function|39b69dec14bbb8b1|||||||||||||||
+quantile_times_rh|function|b9d9218e28da1f23|||||||||||||||
 quantile_waittimes|stem|e4e1212306ef63b7|98f351c918f54dc4|707539bc1bb38d4d|-1293553835||t19297.1027231686s|c1515feae78f5d8c|232|rds|local|vector|||0.06||
 rbind_join|function|75c0f932bdf07051|||||||||||||||
 read_all_events|function|1b8d036f97f0ad1a|||||||||||||||
