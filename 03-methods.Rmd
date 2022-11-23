@@ -26,7 +26,8 @@ We developed a series of experiments to understand the relative importance of pa
 ## Ride-hailing in ActivitySim
 We chose ActivitySim as the activity-based model in this research because it is an open-source software with ride-hailing modal alternatives built into its framework [@rsg21]. Specifically, the ride-hail mode and the pooled ride-hail mode fall under one of the four nested tiers of ActivitySim's nested logit mode choice model. This means that ride-hail is a unique modal option not characterized by being an auto, non-motorized, or transit type mode. Figure \@ref(fig:fig-asim-nest) displays the four tiers of the nested logit mode choice model along with the modal alternatives of each tier [@mtc12]. These modal alternatives represent the alternatives available in both ActivitySim's tour based and trip based mode choice model. When determining the mode to use on a trip, ActivitySim first calculates the tour mode and subsequently calculates the trip mode based on the tour mode selection (See Figure \@ref(fig:fig-mode-compare)). Person attributes, path attributes, location attributes, tour purpose value (the main activity purpose of the tour), and more all play a role in calculating the mode choice decision. 
 
-```{r fig-asim-nest, fig.cap = "Nested logit model used in ActivitySim.", fig.asp=1, fig.align='center', out.extra = 'trim = {1cm 9.5cm 4.5cm 6cm}', fig.dim = c(6.5,9), out.width="1.6\\linewidth", wrapfigure = list("R", .5), echo=FALSE}
+```{r, include = FALSE}
+#```{r fig-asim-nest, fig.cap = "Nested logit model used in ActivitySim.", #fig.asp=1, #fig.align='center', out.extra = 'trim = {1cm 9.5cm 4.5cm 6cm}', #fig.dim = c(6.5,9), #out.width="1.6\\linewidth", wrapfigure = list("R", .5), #echo=FALSE}
 choice <- Node$new("Choice")
   auto <- choice$AddChild("Auto")
     drivealone <- auto$AddChild("Drive-Alone")
@@ -43,10 +44,19 @@ choice <- Node$new("Choice")
     tnc_single <- ridehail$AddChild("Ride-Hail Single")
     tnc_shared <- ridehail$AddChild("Ride-Hail Shared") 
 #print(choice)
-
-SetNodeStyle(choice, style = "filled,rounded", shape = "box", fontname = "helvetica", tooltip = GetDefaultTooltip)
+#windowsFonts(A = windowsFont("Times New Roman"))
+    
+SetNodeStyle(choice, style = "filled,rounded", shape = "box", fontname = "A", tooltip = GetDefaultTooltip)
 plot(choice)
+
+
 ```
+
+\begin{figure}
+\includegraphics[width = .75\paperwidth]{nestedLogit.png}
+\caption{Nested logit model used in ActivitySim.}
+\label{fig:fig-asim-nest}
+\end{figure}
 
 In ActivitySim, the utility $V$ for person $n \in {1:N}$ choosing alternative mode $k \in K$ between origin zone $i \in I$ and destination zone $j \in J$ is:
 
