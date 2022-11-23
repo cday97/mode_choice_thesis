@@ -142,7 +142,7 @@
     \begin{acknowledgments}
   I would first like to acknowledge my advisor and friend, Dr.~Gregory Macfarlane, for teaching me everything I know. Without you, this thesis and my future career would be boring and stupid. I found a work to love and enjoy while researching under your supervision, and for that I will forever be grateful. I express gratitude as well to Dr.~Schultz and Dr.~Williams for being on my advisory committe and helping me finish my thesis. I would also like to acknowledge the United States Department of Transportation (USDOT) for funding my research. Thank you to the members of the T-SCORE center, especially Dr.~Gregory Erhardt, Jawad Hoque, and Vedant Goyal for their friendship and assistance with tackling BEAM. A special shoutout to Nate Lant and Hayden Atchley for working on ActivitySim and BEAM even when we had no idea what we were doing. Together, we got this thing done. I am enormously grateful as well to Zachary Needell at Lawrence Berkeley National Laboratory for working with the T-SCORE team and me in our efforts to tame BEAM. Without you, none of this would have been possible. An additional thanks to Wasatch Front Regional Council, especially Chad Worthen, for sharing data and working with our group. Also, a standing ovation to the creators of the ggalluvial R package.
 
-  I express sincere gratitude for my family members and their patience and support as I conducted this research. Especially, thank you to my wife Megan, because without her I would probably be dead. She convinced me to apply for this research position, held down the fort at home, let me work every Saturday for 3 years, and was patient with me everytime I went insane staring at my computer screeen. I appretiate you all. Finally, thank you to the BYU tennis courts and Kevin Lunt, because tennis is the key to happiness.
+  I express sincere gratitude for my family members and their patience and support as I conducted this research. Especially, thank you to my wife Megan, because without her I would probably be dead. She convinced me to apply for this research position, held down the fort at home, let me work every Saturday for 3 years, and was patient with me everytime I went insane staring at my computer screeen. I appreciate you all. Finally, thank you to the BYU tennis courts and Kevin Lunt, because tennis is the key to happiness.
   \end{acknowledgments}
   	\clearpage
 
@@ -258,12 +258,9 @@ We developed a series of experiments to understand the relative importance of pa
 We chose ActivitySim as the activity-based model in this research because it is an open-source software with ride-hailing modal alternatives built into its framework (ActivitySim, 2021). Specifically, the ride-hail mode and the pooled ride-hail mode fall under one of the four nested tiers of ActivitySim's nested logit mode choice model. This means that ride-hail is a unique modal option not characterized by being an auto, non-motorized, or transit type mode. Figure \ref{fig:fig-asim-nest} displays the four tiers of the nested logit mode choice model along with the modal alternatives of each tier (MTC, 2012). These modal alternatives represent the alternatives available in both ActivitySim's tour based and trip based mode choice model. When determining the mode to use on a trip, ActivitySim first calculates the tour mode and subsequently calculates the trip mode based on the tour mode selection (See Figure \ref{fig:fig-mode-compare}). Person attributes, path attributes, location attributes, tour purpose value (the main activity purpose of the tour), and more all play a role in calculating the mode choice decision.
 
 \begin{figure}
-
-{\centering \includegraphics[width=1.6\linewidth,trim = {1cm 9.5cm 4.5cm 6cm}]{thesis_files/figure-latex/fig-asim-nest-1} 
-
-}
-
-\caption{Nested logit model used in ActivitySim.}\label{fig:fig-asim-nest}
+\includegraphics[width = .75\paperwidth]{nestedLogit.png}
+\caption{Nested logit model used in ActivitySim.}
+\label{fig:fig-asim-nest}
 \end{figure}
 
 In ActivitySim, the utility \(V\) for person \(n \in {1:N}\) choosing alternative mode \(k \in K\) between origin zone \(i \in I\) and destination zone \(j \in J\) is:
