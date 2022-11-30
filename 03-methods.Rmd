@@ -107,6 +107,7 @@ Figure \@ref(fig:coef) shows the comparison of the path utility parameter values
 tar_read(coef_graph)
 ```
 
+\newpage
 Lastly, after completing the utility parameter validation we calibrated the mode choice utility function's alternative specific constants. The new ASC value $\alpha'$ was calculated as:
 
 \begin{equation}
@@ -114,7 +115,7 @@ Lastly, after completing the utility parameter validation we calibrated the mode
 \end{equation} 
 where $n$ is auto sufficiency, $k$ is modal alternative, $\alpha$ is the previous iteration's ASC value, $T^{ASIM}$ is ActivitySim trip shares, and $T^{BEAM}$ is BEAM trip shares. We completed the BEAM calibration through an iterative process of updating ASC values using Equation \@ref(eq:eqcalib). After completing 15 iterations of compounding Equation \@ref(eq:eqcalib) on the ASC values, the BEAM trip values were within a reasonable range to the ActivitySim target shares. Figure \@ref(fig:fig-beam-calib) shows the progress of the calibration targets with the final shares after each iteration. 
 
-```{r fig-beam-calib, fig.dim = c(6.5,9), fig.cap="BEAM mode choice calibration process. Note that the y axis grouping titles are activity types where 'Discr.' represents 'Discretionary' and 'Escort' represents dropping someone off.", fig.scap="BEAM mode choice calibration process."}
+```{r fig-beam-calib, fig.dim = c(6.5,8), fig.cap="BEAM mode choice calibration process. Note that the y axis grouping titles are activity types where 'Discr.' represents 'Discretionary' and 'Escort' represents dropping someone off.", fig.scap="BEAM mode choice calibration process."}
 #, dev='tikz'
 beam_calib <- tar_read(beam_calib)
 beam_calib

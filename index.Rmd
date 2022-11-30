@@ -1,7 +1,7 @@
 ---
 always_allow_html: yes
 title: |
-  | Forecasting Ride-hailing Across  
+  | Forecasting Ride-Hailing Across  
   |  Multiple Model Frameworks
 # Your thesis title should be inverted pyramid-shaped, with the longest
 # line on top and shorter lines below. Add a new line as tab-|-space-Words
@@ -15,7 +15,6 @@ committeemembers:
   - name: Grant G. Schultz
   - name: Gustavious P. Williams
 keywords: 'ride-hailing, activity-based model, multi-agent simulation, ActivitySim, BEAM, tour mode, tour purpose'
-
 
 # Remove the hashtag to specify which version of output you would like.
 # Can only choose one at a time.
