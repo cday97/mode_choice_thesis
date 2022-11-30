@@ -6,25 +6,25 @@ all_all_wrh|stem|ac1e410a3734b501|91715aac0e1f7f0c|1849d1171ff120d2|2074516988|d
 all_join|function|6ca7d4584d60bc1e|||||||||||||||
 all_path_norh|stem|ed73f7e175cd72f2|dc2b22666ea31959|1849d1171ff120d2|-354722341|data/events/12.events-15pct-noRH-all-path.csv|t19223.7289017004s|2de103f6a37d3382|4634675865|file|local|vector|||0||
 all_path_wrh|stem|269be4a5f5d0e9ff|b5983e1460846579|1849d1171ff120d2|-1748263918|data/events/12.events-15pct-wRH-all-path.csv|t19210.8046117591s|ae63cdddf41a1b43|4835392081|file|local|vector|||0||
-analysis_targets|object|b8597435466da986|||||||||||||||
+analysis_targets|object|8daa88f9b66c16c1|||||||||||||||
 asim_hbo|stem|a58b6b2f40499ebd|1e8c7930b45144d1|7aa17c8c92bc9b21|205244841||t19251.1412173994s|8585b45427938c14|481|rds|local|vector|||0.15||
 asim_hbs|stem|fe36ae39cc6b6d56|c642b149d9a6f9ab|98030bb048672f4b|1120581330||t19251.1411816155s|2cabad3ee722f40e|486|rds|local|vector|||3.33||
 asim_hbw|stem|5c56ccdd997baee2|ebfeba6a27d33cec|7bd6b2e51538c554|2038309948||t19251.1412197312s|7b6560034ded6068|487|rds|local|vector|||0.18||
 asim_plans|stem|570aa0e6c3b8b305|78c6caaeaa18c25a|7199b9143a2e7ccc|2093350785||t19251.9915662029s|0a70af6bd3263980|155772468|rds|local|vector|||22.48||
 asim_table|function|98bd5c9f0b82f8bc|||||||||||||||
-beam_calib|stem|699d91a864888065|c6e70507b660a2dd|90683dff4f766ca2|-1795346400||t19304.1356192883s|8a2de2dfd15f1087|214612|rds|local|vector|||0.11||
-beam_calib_graph|function|d5e268d5703fd8a5|||||||||||||||
+beam_calib|stem|b7ff51c8d8fea439|c6e70507b660a2dd|db75b1c92b7b8c59|-1795346400||t19326.2097788679s|a7d489294f1dd238|214738|rds|local|vector|||0.13||
+beam_calib_graph|function|8187c2f883d6596c|||||||||||||||
 bind_plans|function|d65d88745e359c2a|||||||||||||||
 build_nchrp_hbo|function|30f57784ee8320d3|||||||||||||||
 build_nchrp_hbw|function|9bc3830dd0f14b46|||||||||||||||
 build_nchrp_nhb|function|0aa00555c93fa559|||||||||||||||
 calibration_shares|stem|36d1dfe0488bdd3e|43e48430d4040e90|7199b9143a2e7ccc|-1998107993||t19255.9969658787s|9a8512a5357b8fbe|44455|rds|local|vector|||4.07||
-coef_graph|stem|f78806c5b040c7be|b12a2603dc6170c7|bb3b60c570ad8581|-279893619||t19265.0809589376s|0bfeef8316259f1c|113826|rds|local|vector|||0.53||
+coef_graph|stem|688ef53c366bcc80|b12a2603dc6170c7|c384e4bdfe84fef6|-279893619||t19326.2097749961s|d105f6748b971106|113921|rds|local|vector|||0.47||
 coef_graph2|stem|66ca5a90e5a49077|b12a2603dc6170c7|fecbb266232d8627|1312836547||t19299.0098655252s|8f19145563e08cbb|781|rds|local|vector|||0.35||
 cols|stem|151095bc335e6276|6e9753804188638a|a3dad144c40657ed|-1668097849||t19248.0826311579s|274be9fab5df2fde|169|rds|local|vector|||0.01||
 cost_creator|function|39f3b51774085d6a|||||||||||||||
 count_rh_transit_transfers|function|69f0cce88ecc0054|||||||||||||||
-data_targets|object|465d9d06df18d475|||||||||||||||
+data_targets|object|dc449257fbb5fead|||||||||||||||
 data_zip|stem|2fb509143979f945|57bb74188f6597a4|829dac94b25f0b74|-999399841||t19248.0826303554s|93a4d4dc4116d568|64|rds|local|vector|||2.78||
 dayhours|stem|7be0f119cbe8029c|592e4a89db244f1c|08cfc537f439397a|-1125013624||t19248.1539017031s|98eef8e5e78fcfba|1264190|rds|local|vector|||100.75||
 driverfleet|stem|a0697b0191eef0eb|4c6f47b70320e6d7|1849d1171ff120d2|1248881868|data/Driverfleet_SLC.csv|t19179.759771014s|b4ba3f006647afff|74068|file|local|vector|||0||
@@ -36,7 +36,7 @@ eventsshifts|stem|f3d7ff1ae469895d|c7d553cde00b934e|f462fc044426ab16|455556644||
 finalRidership|stem|858b6bb37f1a04c5|4ebb43d2c301d6a1|5acdeec05428eecd|-827383133||t19297.0468645103s|df97ea100f51fa1c|517|rds|local|vector|||1.39||
 fleet_hours|stem|36a82856c8a20556|a92bb51d14f1b7ec|07f3ec197a1b398c|-1837025178||t19248.1228759274s|7e02ad38317bcde4|55|rds|local|vector|||0.22||
 format_ridership_table|function|568a72488f3e82ed|||||||||||||||
-format_waits_graph|function|405d2cb7cd0b00ba|||||||||||||||
+format_waits_graph|function|39c2dea758800171|||||||||||||||
 full_events|stem|a99ec755abadb55a|4534e4d8ce94244a|3742fbc662284480|-528782332||t19266.206735465s|4f96e2c34606b7a0|145622194|rds|local|vector|||1207.91||
 full_plans|stem|4020e4abff1e54c3|e9d8d811a590d7d3|34eea4904a562aaa|-675686623||t19248.1214441582s|955c204af280ef8f|160437172|rds|local|vector|||214.83|as.tibble was deprecated in tibble 2.0.0.Please use as_tibble instead.The signature and semantics have changed, see as_tibble.90mThis warning is displayed once every 8 hours.39m90mCall lifecyclelast_lifecycle_warnings to see where this warning was generated.39m|
 get_asim_hbo|function|5fa2fe4ddf25fe9c|||||||||||||||
@@ -63,8 +63,8 @@ ivtt_ratio_grapher|function|c07377e0605e7c1f|||||||||||||||
 loggrapher|function|6d3fb7667675d3fa|||||||||||||||
 make_events_shift_chart|function|955cc66a7c91746d|||||||||||||||
 make_plans_24_chart|function|e1d86b5c87f96c1e|||||||||||||||
-make_plans_facet_chart|function|39719595b2411e9b|||||||||||||||
-make_plans_shift_chart|function|9da6a116ea68e587|||||||||||||||
+make_plans_facet_chart|function|9a61a31cb4df0e1b|||||||||||||||
+make_plans_shift_chart|function|1b5a5319ee904af6|||||||||||||||
 mode_choice|function|be86914a1e5d57f1|||||||||||||||
 mode_choice_table|stem|80281ea439951e2c|d9632dd8174f0a6f|526146ebcf23d099|1698574471||t19251.9536284794s|a2becad744b46983|745|rds|local|vector|||81.69||
 mode_facet_shifts|function|59a7e7a517163980|||||||||||||||
@@ -98,14 +98,14 @@ noRH_all_path_p12file|stem|e73155b5c3a76991|5f454b0d67b83395|1849d1171ff120d2|-8
 noRH_all_path_sum|stem|9c0a7bfe1a172631|ead4c4cc9cfae196|0794fa77e896b9a5|-801320173||t19248.1526537315s|2619409bad75bd73|324|rds|local|vector|||5.72||
 num_passengers|stem|bcf3007f0b11ad57|4dda1b51c163ed14|c2a381c7562409c2|146658985||t19248.2512460778s|30ed5b6f0c29cb62|367|rds|local|vector|||264.54||
 old_wait_times|stem|b95cbeab171e418a|2f136ce2f7a608b2|292935c5d566242c|-1909382508||t19248.2397926953s|4764b896dcd0d132|527|rds|local|vector|||6025.18|no nonmissing arguments to max returning Inf. no nonmissing arguments to min returning Inf|
-pie_chart|function|b97131c48a8ca54d|||||||||||||||
-piechart|stem|58f6e73c0b922d0c|b74e98b420932e5a|aca20a23cc2d4d9a|-1820712068||t19265.9540973316s|47454e297fd3b404|54515|rds|local|vector|||0.09||
+pie_chart|function|697b7a2cbc9f1bf7|||||||||||||||
+piechart|stem|c39c634e23117473|b74e98b420932e5a|6cee9381fb35a216|-1820712068||t19326.2098408412s|6a962ce33240bfb2|54637|rds|local|vector|||0.17||
 plansbind|stem|8db5cfd61b2246c1|477165c2a0394cda|347d311f8fce7609|-2140885647||t19248.2536707512s|1968f0930b01f4af|731|rds|local|vector|||0.01||
-planshifts|stem|7f62fc1689432f47|b2d86c69dc1c3a92|c47c0356ecb9f8e0|510860786||t19297.0189902608s|5b4980c1bef87e09|246719|rds|local|vector|||0.14||
+planshifts|stem|7090d9169b63d53f|b2d86c69dc1c3a92|685d94f4d3afe08d|510860786||t19326.2139328975s|a1d6852fbd25a501|358757|rds|local|vector|||0.47||
 planshifts_beg|stem|c6a3d5f7adceeec4|c9e7e9f42b83dfbb|2367e158d96881c8|-430299538||t19269.1446803426s|9b942e1a2083c4ed|133278|rds|local|vector|||0.15||
 planshifts_end|stem|c60ed0b068d02254|47bbf75ebd30941a|9164c15f1d0ed461|1494628580||t19269.1446912087s|937d1f4b1bffd3ed|167152|rds|local|vector|||0.08||
-planshifts_facet|stem|033cdfb4f33ab5e0|1c1f5fb782ff9dc4|73cc75b1bb7b995e|621110324||t19297.0119698073s|612755a2266e6ef7|1516757|rds|local|vector|||1.76||
-planshifts_facet_connect|stem|bab1513c0d10d908|5630955dda3dba9d|567324b49ff47bf4|1684778583||t19269.1446132017s||2.22507385850708e-308|rds|local|vector|||0||could not find function make_plans_24_chart
+planshifts_facet|stem|1edb7d213400f856|1c1f5fb782ff9dc4|b351cf40bcec752f|621110324||t19326.2152449811s|31a9a9fffef14b0c|1637307|rds|local|vector|||3.05||
+planshifts_facet_connect|stem|bab1513c0d10d908|5630955dda3dba9d|567324b49ff47bf4|1684778583||t19269.1446132017s||2.2250738585072e-308|rds|local|vector|||0||could not find function make_plans_24_chart
 quantile_groups|function|baa27c98cd8f1210|||||||||||||||
 quantile_tests|stem|18bf3a6a27a15364|c2ebf1f1e20e1985|4dabebb8235e1c6a|-1064589850||t19297.1011958706s|77d1a07603269e91|664|rds|local|vector|||242.28||
 quantile_tests_rh|stem|948a3d0f1742ec96|4e2f858002b6c615|2741325483f9df10|1439622383||t19309.6894864832s|6cbd7e0c8bb8c13b|932|rds|local|vector|||140.63||
@@ -144,7 +144,7 @@ ridership|stem|ff30fde6d2eb7455|b7ecfd0b1f9ad1f8|f926c4a0d0fcb2dc|165593927||t19
 scenario_list|stem|458a3b716f9efc58|727f63487ea1b991|1b53bd0a2fc03ca0|-641555310||t19248.1228764685s|f61d5eec182b6cd2|255|rds|local|vector|||0||
 short_cols|stem|f33711443f27a37c|8b356fd12efde2de|a3dad144c40657ed|-826290639||t19248.0826318274s|53c93953a72b96c1|178|rds|local|vector|||0||
 short_list|stem|099ed0806cfeffe7|a9334276c37c7ca3|e8f4a582196d04c4|1845165986||t19248.1228729766s|83dfaca672102c9e|139|rds|local|vector|||0||
-supergrapher|function|d1c29ec4457905c6|||||||||||||||
+supergrapher|function|a118fbef56c12397|||||||||||||||
 switch_to_walk|function|6e694f85eaa28322|||||||||||||||
 target_shares|stem|384ed17832ac592e|27ead25c2d16e6ca|7199b9143a2e7ccc|-1973493361||t19255.9983119143s|3994bad4cb3b6bcc|3402|rds|local|vector|||3.44||
 total_fleet_hours|function|cedb7ef95805a370|||||||||||||||
@@ -155,9 +155,9 @@ utah_hbo|stem|33fc4e9bcd659464|f1504dd715d3d31f|c463dacbaaea27fb|-1796426361||t1
 utah_hbs|stem|fdc596605f860da8|ef63a5a5df34a2f4|489a581e3348e201|487245253||t19251.1411970834s|8587ccc456de1c8b|300|rds|local|vector|||1.08||
 utah_hbw|stem|4accc5ef2e88d259|fe9411e39b3c90d5|2d450d4a84bb7ab9|1698846259||t19251.1412425636s|8587ccc456de1c8b|300|rds|local|vector|||0.86||
 utah_table|function|9bd8890520e2f180|||||||||||||||
-visual_targets|object|a9de0f3e0222d0de|||||||||||||||
+visual_targets|object|5e9aace582f0015c|||||||||||||||
 wait_times|stem|be9d626665e7eb69|21b7718ce5414661|1491a7dc9dc426eb|227864465||t19248.2545598965s|e22386c33b72276b|22598|rds|local|vector|||75.45||
-waits|stem|3762597770586e97|9129b29fe2319891|e0a66602cc90dc1e|632055933||t19248.2546063874s|a097556b6958e7b6|197350|rds|local|vector|||0.83||
+waits|stem|a9660b009558cf3d|9129b29fe2319891|34e3cafda2081c89|632055933||t19326.2098470171s|05e819abe0b99ac6|197453|rds|local|vector|||0.26||
 walk_analysis|function|bc12316eeb1e7001|||||||||||||||
 walk_switchers|stem|262f2582c5241444|41707cc8ce5f5c08|908c1a22b2e194b2|-1416229958||t19265.9540944346s|0fc953c4c967c0b3|2563937|rds|local|vector|||0.05||
 wfrc_hbo|stem|39170b378229d16f|2ea57012fc16a23a|22608991e6494c53|-1204131522||t19251.1412153678s|a716db876c9596cc|353|rds|local|vector|||0.75||

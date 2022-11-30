@@ -50,7 +50,9 @@ beam_calib_graph <- function(calibration_shares, target_shares){
     scale_color_manual(values = modesP, labels = modesL2) +
     xlab("Iteration") +ylab("Percent of Trips") +
     labs(color = "Mode") + 
-    theme_bw()
+    theme_bw() +
+    theme(text=element_text(family = "serif"))
+
 }
 
 
@@ -245,7 +247,8 @@ format_waits_graph <- function(wait_times){
     labs(fill="Beam Mode Choice") +
     theme(axis.text.x = element_text(angle=90, hjust=1)) +
     geom_text(aes(label = round(max,1),  y = max + 1), size = 1.8) +
-    geom_text(aes(label = round(min,1),  y = min - 1), size = 1.8)
+    geom_text(aes(label = round(min,1),  y = min - 1), size = 1.8) +
+    theme(text=element_text(family = "serif"))
 }
 
 rename_list = c(
@@ -302,7 +305,8 @@ pie_chart <- function(plans_sum){
     scale_fill_manual(values = modesP1, labels=modesL1) +
     xlab("Scenario Name") +
     ylab("Share") +
-    theme(axis.text.x = element_text(angle=90, hjust=1))
+    theme(axis.text.x = element_text(angle=90, hjust=1)) +
+    theme(text=element_text(family = "serif"))
 }
 
 make_events_shift_chart <- function(plan_mode_shifts){
@@ -329,22 +333,23 @@ make_plans_shift_chart <- function(plan_mode_shifts){
   modesL2 <- c('Cleared Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
   
   plan_mode_shifts <-plan_mode_shifts %>%
-    mutate(legMode = ifelse(legMode == "","nomode",legMode)) %>%
+    mutate(Mode = ifelse(legMode == "","nomode",legMode)) %>%
     filter(iteration > 1, iteration < 13)
   
-  plan_mode_shifts$legMode <- factor(plan_mode_shifts$legMode, 
+  plan_mode_shifts$Mode <- factor(plan_mode_shifts$Mode, 
                                   levels=c("nomode","bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
                                            "ride_hail","ride_hail_pooled","ride_hail_transit","walk","walk_transit","drive_transit"))
   
   
-  ggplot(plan_mode_shifts, aes(x = factor(iteration-1), stratum = legMode, alluvium = id, fill = legMode, label = legMode)) +
+  ggplot(plan_mode_shifts, aes(x = factor(iteration-1), stratum = Mode, alluvium = id, fill = Mode, label = Mode)) +
     scale_fill_manual(values = modesP2, labels = modesL2) +
     geom_flow(color = "darkgray") +
     geom_stratum() +
     theme_bw() + 
     xlab("Iteration") +
     ylab("Number of Trips") +
-    theme(legend.position="bottom")
+    theme(legend.position="bottom") +
+    theme(text=element_text(family = "serif"))
 }
 
 make_plans_facet_chart <- function(plan_mode_shifts){
@@ -352,7 +357,7 @@ make_plans_facet_chart <- function(plan_mode_shifts){
   modesL2 <- c('Cleared Mode','Bike', 'Bike to Transit', 'Car', 'HOV2','HOV2 Passenger', 'HOV3', 'HOV3 Passenger', "Ride-hail", "Pooled Ride-hail", "Ride-hail to Transit", "Walk to Transit", 'Drive to Transit', "Walk")
   
   plan_mode_shifts <-plan_mode_shifts %>%
-    mutate(legMode = ifelse(legMode == "","nomode",legMode)) %>%
+    mutate(Mode = ifelse(legMode == "","nomode",legMode)) %>%
     mutate(bindid = bindid - 1) %>%
     group_by(bindid,iteration) %>%
     arrange(personElement) %>%
@@ -361,11 +366,11 @@ make_plans_facet_chart <- function(plan_mode_shifts){
     filter(iteration >= 1) %>%
     mutate(iteration = ifelse(grepl(".5",as.character(iteration)), "end", "begin"))
   
-  plan_mode_shifts$legMode <- factor(plan_mode_shifts$legMode, 
+  plan_mode_shifts$Mode <- factor(plan_mode_shifts$Mode, 
                                      levels=c("nomode","bike","bike_transit","car","hov2","hov2_teleportation","hov3","hov3_teleportation",
                                               "ride_hail","ride_hail_pooled","ride_hail_transit","walk","walk_transit","drive_transit"))
 
-  ggplot(plan_mode_shifts, aes(x = iteration, stratum = legMode, alluvium = id, fill = legMode, label = legMode)) +
+  ggplot(plan_mode_shifts, aes(x = iteration, stratum = Mode, alluvium = id, fill = Mode, label = Mode)) +
     facet_wrap(~bindid, scales="free_x", ncol = 11)+
     scale_fill_manual(values = modesP2, labels = modesL2) +
     geom_flow(color = "darkgray") +
@@ -374,7 +379,8 @@ make_plans_facet_chart <- function(plan_mode_shifts){
     xlab("Iteration") +
     ylab("Number of Trips") +
     theme(legend.position="bottom") +
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+    theme(text=element_text(family = "serif"))
 }
 
 switch_to_walk <- function(dayhours){

@@ -4,13 +4,15 @@ library(tarchetypes)
 library(future)
 library(future.apply)
 library(furrr)
+library(extrafont)
+loadfonts(device = "win")
 
 # Set target-specific options such as packages.
 tar_option_set(packages = c("tidyverse", "bookdown", "readr", "dotwhisker", 
                             "data.table", "data.tree",
                             "ggpubr", "scales", "future", "future.apply", "furrr",
                             "data.table", "ggrepel", "knitr", "kableExtra",
-                            "ggalluvial", "RColorBrewer", "tikzDevice", "WRS"))
+                            "ggalluvial", "RColorBrewer", "tikzDevice", "WRS", "extrafont"))
 
 #Define custom functions and other global objects.
 # This is where you write source(\"R/functions.R\")

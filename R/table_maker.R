@@ -271,7 +271,8 @@ supergrapher <- function(utah_hbw,utah_hbs,utah_hbo,nchrp_hbw,nchrp_hbs,nchrp_hb
     #scale_x_continuous(expand = c(0, 0), limits = c(0,3)) + 
     labs(color = "Coefficient Source") +
     theme_bw()  +
-    theme(axis.text.x=element_text(angle=90,hjust=1))
+    theme(axis.text.x=element_text(angle=90,hjust=1)) +
+    theme(text=element_text(family = "serif"))
 
 }
 
