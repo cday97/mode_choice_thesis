@@ -1,6 +1,6 @@
 # (APPENDIX) Appendix {-}
 
-## Additions to the BEAM Mode Choice Model {#apexA}
+# Additions to the BEAM Mode Choice Model {#apexA}
 
 In order to use BEAM in conjunction with ActivitySim its mode choice model was updated to be more consistent with ActivitySim’s mode choice model. More specifically, three changes were made to the choice structure:
 
