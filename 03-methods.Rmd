@@ -107,7 +107,6 @@ Figure \@ref(fig:coef) shows the comparison of the path utility parameter values
 tar_read(coef_graph)
 ```
 
-\newpage
 Lastly, after completing the utility parameter validation we calibrated the mode choice utility function's alternative specific constants. The new ASC value $\alpha'$ was calculated as:
 
 \begin{equation}

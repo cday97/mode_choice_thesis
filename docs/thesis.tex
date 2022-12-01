@@ -13,6 +13,8 @@
 % Define sequences of Latin text to fill space in example documents
 % (not needed for your thesis -- delete or comment out if you'd like)
 \usepackage{blindtext}
+\widowpenalty10000
+\clubpenalty10000
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -146,7 +148,7 @@
   \end{acknowledgments}
   	\clearpage
 
-	\tableofcontents*
+	\tableofcontents
 	\clearpage
 
 	\listoffigures
@@ -328,8 +330,6 @@ Figure \ref{fig:coef} shows the comparison of the path utility parameter values 
 \caption[Path coefficients model comparison.]{Mode choice path coefficients model comparison by tour purpose.}\label{fig:coef}
 \end{figure}
 
-\newpage
-
 Lastly, after completing the utility parameter validation we calibrated the mode choice utility function's alternative specific constants. The new ASC value \(\alpha'\) was calculated as:
 
 \begin{equation}
@@ -479,7 +479,7 @@ The \emph{All} BEAM mode choice model uses the same mode choice utility function
 \caption[Original mode choices of agents who were assigned to ride-hail.]{Original mode choices of agents who were assigned to a ride-hail type mode.}\label{fig:piechart}
 \end{figure}
 
-We offer some factors as to why the \emph{All} model assigns so many car users to ride-hailing modes. The first is the array of utility parameters boosted the ride-hailing utility, making ride-hailing options attractive alternatives. Figure \ref{fig:sankey} provides sufficient evidence for this claim. Figure \ref{fig:sankey} shows a Sankey diagram of all modal decisions at the start of each iteration for those agents in the AsimBeamAll:PPL scenario who the model assigned the ride-hail mode by the end of the 12th iteration (Brunson \& Read, 2020). In other words, it shows from what modes the final ride-hail modes came from. For example, of the approximate 6,000 trips with a ride-hail mode assigned after iteration 12, on those same trips in iteration 1 more than 2,000 of them began as car trips, in iteration 5 about 2,000 of them began as car trips, and in iteration 11 less than 1,000 of them began as car trips. Similar logic can be applied to other iterations and to other modes. In the figure's key, the mode ``Cleared Mode'' describes those modes that were cleared and reset at the beginning of each iteration. Notice how many of the Car, HOV2, HOV2 Passenger, HOV3, and HOV3 Passenger modes shift into the ``Cleared Mode'' category each iteration. Also notice in the subsequent iteration how many of those ``Cleared Mode'' choices shift to ride-hailing modes.\newpage \noindent A shift from the ``Cleared Mode'' choice to ride-hail represents those agents from whom the model assigned a mode based on the utility value.
+We offer some factors as to why the \emph{All} model assigns so many car users to ride-hailing modes. The first is the array of utility parameters boosted the ride-hailing utility, making ride-hailing options attractive alternatives. Figure \ref{fig:sankey} provides sufficient evidence for this claim. Figure \ref{fig:sankey} shows a Sankey diagram of all modal decisions at the start of each iteration for those agents in the AsimBeamAll:PPL scenario who the model assigned the ride-hail mode by the end of the 12th iteration (Brunson \& Read, 2020). In other words, it shows from what modes the final ride-hail modes came from. For example, of the approximate 6,000 trips with a ride-hail mode assigned after iteration 12, on those same trips in iteration 1 more than 2,000 of them began as car trips, in iteration 5 about 2,000 of them began as car trips, and in iteration 11 less than 1,000 of them began as car trips. Similar logic can be applied to other iterations and to other modes. In the figure's key, the mode ``Cleared Mode'' describes those modes that were cleared and reset at the beginning of each iteration. Notice how many of the Car, HOV2, HOV2 Passenger, HOV3, and HOV3 Passenger modes shift into the ``Cleared Mode'' category each iteration. Also notice in the subsequent iteration how many of those ``Cleared Mode'' choices shift to ride-hailing modes. A shift from the ``Cleared Mode'' choice to ride-hail represents those agents from whom the model assigned a mode based on the utility value.
 
 \begin{sidewaysfigure}
 
@@ -762,7 +762,7 @@ Zwick, F., Kuehnel, N., Moeckel, R., \& Axhausen, K. W. (2021). Agent-based simu
 
 
 \hypertarget{apexA}{%
-\chapter{Additions to the BEAM Mode Choice Model}\label{apexA}}
+\section{Additions to the BEAM Mode Choice Model}\label{apexA}}
 
 In order to use BEAM in conjunction with ActivitySim its mode choice model was updated to be more consistent with ActivitySim's mode choice model. More specifically, three changes were made to the choice structure:
 
