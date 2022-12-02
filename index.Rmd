@@ -68,6 +68,6 @@ header-includes:
 # delete thesis.aux BEFORE building pdf book
 # change to thesis format in _ouput.yml and references
 # uncomment the following specification  (and comment ELSEVIER SECTION)
-layout: 'fancy, masters'
+layout: 'simple, masters, twoside'
 ---
 
