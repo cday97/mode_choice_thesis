@@ -22,7 +22,7 @@
 % -------- set main options to class -------------
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
-\LoadClass[letterpaper,11pt,oneside,openright]{memoir}  % based off of memoir class
+\LoadClass[letterpaper,11pt,twoside,openright]{memoir}  % based off of memoir class
 \RequirePackage{memhfixc}  % fix for hyperref w/ memoir
 % ----------------------------------------------
 
@@ -389,7 +389,7 @@
 			All Rights Reserved
 			\par
 			\enlargethispage{\titlebottomadjust}
-			\clearpage
+			\cleardoublepage
 		\end{center}
 	\end{Spacing}
 	% for fancy style, reset the page layout back for margin notes
@@ -433,7 +433,7 @@
 
 % ------------ abstract ------------------
 \renewenvironment{abstract}{%
-	\clearpage
+	\cleardoublepage
 	\pdfbookmark[0]{Abstract}{abstract}
 	\setlength{\parskip}{\baselineskip}
 	\vspace*{35pt}	% spacing set to match chapter header spacing
@@ -458,7 +458,7 @@
 
 % ---------- acknowledgments ------------
 \newenvironment{acknowledgments}{%
-	\clearpage
+	\cleardoublepage
 	\pdfbookmark[0]{Acknowledgments}{acknowledgments}
 	\setlength{\parskip}{\baselineskip}
 	\vspace*{35pt}	% spacing set to match chapter header spacing
