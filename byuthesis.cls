@@ -283,8 +283,8 @@
 %    {\normalfont\small\slshape\rightmark}{}{}
 %\makeoddfoot{byu}%
 %    {}{}{\normalfont\small\slshape\thepage}
-%\makeevenfoot{byu}%
-%    {\normalfont\small\slshape\thepage}{}{}
+\makeevenhead{byu}%
+    {\normalfont\small\slshape\thepage}{}{}
 
 \pagestyle{byu}
 \appto\mainmatter{\pagestyle{byu}}
@@ -563,6 +563,7 @@
 % command in the document causes the chapter headings to be set properly for the
 % bibliography.
 \defbibheading{bibheadname}{\bibsection} % \bibsection is bibliography heading name from memoir
+
 \DeclareFieldFormat{labelnumberwidth}{\color{primary}#1}%
 \setlength{\biblabelsep}{10pt}%
 \renewbibmacro{in:}{}
