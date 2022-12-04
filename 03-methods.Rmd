@@ -53,6 +53,7 @@ plot(choice)
 ```
 
 \begin{figure}
+\hspace*{-1.6in}
 \includegraphics[width = .75\paperwidth]{nestedLogit.png}
 \caption{Nested logit model used in ActivitySim.}
 \label{fig:fig-asim-nest}

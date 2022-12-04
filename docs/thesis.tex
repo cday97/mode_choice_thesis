@@ -148,7 +148,7 @@
   \end{acknowledgments}
   	\cleardoublepage
 
-	\tableofcontents
+	\tableofcontents*
 	\cleardoublepage
 
 	\listoffigures
@@ -260,6 +260,7 @@ We developed a series of experiments to understand the relative importance of pa
 We chose ActivitySim as the activity-based model in this research because it is an open-source software with ride-hailing modal alternatives built into its framework (ActivitySim, 2021). Specifically, the ride-hail mode and the pooled ride-hail mode fall under one of the four nested tiers of ActivitySim's nested logit mode choice model. This means that ride-hail is a unique modal option not characterized by being an auto, non-motorized, or transit type mode. Figure \ref{fig:fig-asim-nest} displays the four tiers of the nested logit mode choice model along with the modal alternatives of each tier (MTC, 2012). These modal alternatives represent the alternatives available in both ActivitySim's tour based and trip based mode choice model. When determining the mode to use on a trip, ActivitySim first calculates the tour mode and subsequently calculates the trip mode based on the tour mode selection (See Figure \ref{fig:fig-mode-compare}). Person attributes, path attributes, location attributes, tour purpose value (the main activity purpose of the tour), and more all play a role in calculating the mode choice decision.
 
 \begin{figure}
+\hspace*{-1.6in}
 \includegraphics[width = .75\paperwidth]{nestedLogit.png}
 \caption{Nested logit model used in ActivitySim.}
 \label{fig:fig-asim-nest}
@@ -471,12 +472,10 @@ Iteration & Ride-hail & Pooled Ride-hail & Ride-hail Transit & Total\\
 The \emph{All} BEAM mode choice model uses the same mode choice utility function as ActivitySim and has all modal alternatives available. This adjusted model structure helps us understand why we obtained much higher ridership than with the \emph{None} Model. Figure \ref{fig:piechart} shows from which modes the model assigned agents who switched to ride-hailing came from; in other words, its a comparison of the the trips with ride-hailing after the final iteration and their original modes in the input plans. Interestingly enough, the \emph{All} model assigns the majority of agents who select ride-hail to a car type mode. We define car type modes as either a car, a high occupancy vehicle with two passengers (HOV2), or a high occupancy vehicle with three or more passengers (HOV3).
 
 \begin{figure}
-
-{\centering \includegraphics{thesis_files/figure-latex/piechart-1} 
-
-}
-
-\caption[Original mode choices of agents who were assigned to ride-hail.]{Original mode choices of agents who were assigned to a ride-hail type mode.}\label{fig:piechart}
+\hspace*{-1.6in}
+\includegraphics[width = .75\paperwidth]{piechart.png}
+\caption[Original mode choices of agents who were assigned to ride-hail.]{Original mode choices of agents who were assigned to a ride-hail type mode.}
+\label{fig:piechart}
 \end{figure}
 
 We offer some factors as to why the \emph{All} model assigns so many car users to ride-hailing modes. The first is the array of utility parameters boosted the ride-hailing utility, making ride-hailing options attractive alternatives. Figure \ref{fig:sankey} provides sufficient evidence for this claim. Figure \ref{fig:sankey} shows a Sankey diagram of all modal decisions at the start of each iteration for those agents in the AsimBeamAll:PPL scenario who the model assigned the ride-hail mode by the end of the 12th iteration (Brunson \& Read, 2020). In other words, it shows from what modes the final ride-hail modes came from. For example, of the approximate 6,000 trips with a ride-hail mode assigned after iteration 12, on those same trips in iteration 1 more than 2,000 of them began as car trips, in iteration 5 about 2,000 of them began as car trips, and in iteration 11 less than 1,000 of them began as car trips. Similar logic can be applied to other iterations and to other modes. In the figure's key, the mode ``Cleared Mode'' describes those modes that were cleared and reset at the beginning of each iteration. Notice how many of the Car, HOV2, HOV2 Passenger, HOV3, and HOV3 Passenger modes shift into the ``Cleared Mode'' category each iteration. Also notice in the subsequent iteration how many of those ``Cleared Mode'' choices shift to ride-hailing modes. A shift from the ``Cleared Mode'' choice to ride-hail represents those agents from whom the model assigned a mode based on the utility value.

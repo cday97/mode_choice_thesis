@@ -305,7 +305,8 @@ pie_chart <- function(plans_sum){
     scale_fill_manual(values = modesP1, labels=modesL1) +
     xlab("Scenario Name") +
     ylab("Share") +
-    theme(axis.text.x = element_text(angle=90, hjust=1)) +
+    theme(axis.text.x = element_text(angle=90, hjust=1),
+          legend.position='left') +
     theme(text=element_text(family = "serif"))
 }
 
