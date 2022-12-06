@@ -100,6 +100,13 @@ $endif$
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
+
+\makepagestyle{myrefs}
+\makeevenhead{myrefs}%
+    {\normalfont\small\slshape\thepage}{}{\normalfont\small\slshape References}
+\makeoddhead{myrefs}%
+    {\normalfont\small\slshape References}{}{\normalfont\small\slshape\thepage}
+    
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % --- Begin Document --- %
 %%%%%%%%%%%%%%%%%%%%%%%%%%

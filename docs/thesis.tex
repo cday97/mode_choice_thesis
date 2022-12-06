@@ -117,6 +117,13 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+
+\makepagestyle{myrefs}
+\makeevenhead{myrefs}%
+    {\normalfont\small\slshape\thepage}{}{\normalfont\small\slshape References}
+\makeoddhead{myrefs}%
+    {\normalfont\small\slshape References}{}{\normalfont\small\slshape\thepage}
+    
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % --- Begin Document --- %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -567,6 +574,8 @@ Overall, accurately predicting the behavior and service capabilities of on-deman
 \chapter*{References}\label{references}}
 \addcontentsline{toc}{chapter}{References}
 
+\pagestyle{myrefs}
+
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
 \leavevmode\vadjust pre{\hypertarget{ref-rsg21}{}}%
@@ -756,6 +765,9 @@ Zuniga-Garcia, N., Tec, M., Scott, J. G., \& Machemehl, R. B. (2022). Evaluation
 Zwick, F., Kuehnel, N., Moeckel, R., \& Axhausen, K. W. (2021). Agent-based simulation of city-wide autonomous ride-pooling and the impact on traffic noise. \emph{Transportation Research Part D: Transport and Environment}, \emph{90}, 102673.
 
 \end{CSLReferences}
+
+\cleardoublepage
+\pagestyle{byu}
 
 \hypertarget{appendix-appendix}{%
 \appendix}
