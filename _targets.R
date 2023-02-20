@@ -32,20 +32,6 @@ data_targets <- tar_plan(
   tar_target(data_zip, get_data_from_box()),
   
   
-  ## ASIM Utility Coefficient Validation
-  tar_target(utah_hbw,  get_utah_hbw()),
-  tar_target(utah_hbs,  get_utah_hbs()),
-  tar_target(utah_hbo,  get_utah_hbo()),
-  tar_target(nchrp_hbw, get_nchrp_hbw()),
-  tar_target(nchrp_hbs, get_nchrp_hbs()),
-  tar_target(nchrp_hbo, get_nchrp_hbo()),
-  tar_target(wfrc_hbw,  get_wfrc_hbw()),
-  tar_target(wfrc_hbo,  get_wfrc_hbo()),
-  tar_target(wfrc_hbs,  get_wfrc_hbs()),
-  tar_target(asim_hbs,  get_asim_hbs()),
-  tar_target(asim_hbw,  get_asim_hbw()),
-  tar_target(asim_hbo,  get_asim_hbo()),
-  
   ## ASIM Statistics
   tar_target(asim_plans, read_csv("data/asim_plans_rh.csv")),
   ## BEAM Calibration
@@ -149,11 +135,7 @@ analysis_targets <- tar_plan(
   
   tar_target(plansbind, bind_plans(wRH_all_all_sum,wRH_all_path_sum,noRH_all_all_sum,noRH_all_path_sum)),
   tar_target(full_plans, read_full_plans(unzip_data("data/plans/wRH-all-all-plans/", data_zip))),
-  tar_target(full_events, read_full_events("data/events/wRH-all-all-events/")),
   tar_target(mode_shift_plans, mode_shifts(full_plans,1,13, legMode)),
-  #tar_target(mode_shift_events, mode_shifts(full_events, 1, 13, mode)),
-  #tar_target(mode_shift_beg, mode_shifts(full_plans, 2, 3,legMode)),
-  #tar_target(mode_shift_end, mode_shifts(full_plans, 12, 13, legMode)),
   tar_target(mode_facets, mode_facet_shifts(full_plans, 1,13,legMode)),
   
   #Daily Plan Statistics
@@ -163,8 +145,6 @@ analysis_targets <- tar_plan(
 
 visual_targets <- tar_plan(
   #ASIM Coefficient Graphs
-  tar_target(coef_graph, supergrapher(utah_hbw,utah_hbs,utah_hbo,nchrp_hbw,nchrp_hbs,nchrp_hbo,
-                                      wfrc_hbw,wfrc_hbs,wfrc_hbo,asim_hbw,asim_hbs,asim_hbo)),
  
   #BEAM Calibration
   tar_target(beam_calib, beam_calib_graph(calibration_shares, target_shares)),
