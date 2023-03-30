@@ -62,7 +62,7 @@ beam_calib_graph <- function(calibration_shares, target_shares){
 format_ridership_table <- function(mode_choice_table, asim_plans){
   ridership <- mode_choice_table %>%
     #instead of renaming, just fix the names in targets and rerun (will take like 1hr)
-    rename(rename_list) %>% select(1,11,6,10,9,5,4,8,7,3,2) %>%
+    rename(rename_list) %>% dplyr::select(1,11,6,10,9,5,4,8,7,3,2) %>%
     pivot_longer(!mode,names_to = "Scenario Name", values_to = "ridership") %>%
     filter(mode %in% c("ride_hail","ride_hail_pooled","ride_hail_transit")) %>%
     pivot_wider("Scenario Name", names_from=mode,values_from=ridership) %>%
@@ -83,7 +83,7 @@ format_ridership_table <- function(mode_choice_table, asim_plans){
     rename("Ride-hail" = "ride_hail",
            "Pooled Ride-hail" = "ride_hail_pooled",
            "Ride-hail to Transit" = "ride_hail_transit") %>%
-    select(3,1,2,4,5)
+    dplyr::select(3,1,2,4,5)
     
   
   bind_rows(asim_rh,ridership)
@@ -92,7 +92,7 @@ format_ridership_table <- function(mode_choice_table, asim_plans){
 add_p_to_ridership <- function(ridershipTable, mode_choice_table,asim_plans){
   ridershipT <- mode_choice_table %>%
     #instead of renaming, just fix the names in targets and rerun (will take like 1hr)
-    rename(rename_list) %>% select(1,11,6,10,9,5,4,8,7,3,2) %>%
+    rename(rename_list) %>% dplyr::select(1,11,6,10,9,5,4,8,7,3,2) %>%
     mutate_all(~replace(., is.na(.), 0.0)) %>%
     pivot_longer(!mode,names_to = "scenario", values_to = "ridership") %>%
     group_by(scenario) %>%
@@ -102,13 +102,13 @@ add_p_to_ridership <- function(ridershipTable, mode_choice_table,asim_plans){
     group_by(legMode) %>%
     summarize(n = round(n() * .15)) %>%
     mutate(Totals = sum(n), scenario = "ActivitySim - Inputs to BEAM") %>%
-    select(scenario,Totals)
+    dplyr::select(scenario,Totals)
   totals <- bind_rows(ridershipT, asimT[1,]) %>%
     filter(scenario != "NoRideHail")
   
   ridershipP <- left_join(ridershipTable,totals, by = c("Scenario Name" = "scenario")) %>%
     mutate(TotalP = round((Total / Totals)*100,2)) %>%
-    select(-Totals) %>%
+    dplyr::select(-Totals) %>%
     rename("Total (%)" = "TotalP")
 }
 

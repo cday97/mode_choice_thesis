@@ -71,7 +71,7 @@ mode_shifts <- function(plans, start, end, mode){
     selected_plans[[i]] <- plans[[i]] %>%
       filter(personElement %in% riders$personElement) %>%
       mutate(id = row_number(), iteration = i) %>%
-      select(id, iteration, {{mode}})
+      dplyr::select(id, iteration, {{mode}})
   }
   
   plan_mode_shifts <- bind_rows(selected_plans, .id = "bindid") %>%
@@ -85,7 +85,7 @@ mode_facet_shifts <- function(plans, start, end, mode){
     riders[[i]] <- plans[[i + 1]] %>%
     filter(grepl("ride",{{mode}})) %>%
     mutate(iteration = i+0.5) %>%
-    select(personElement,iteration, {{mode}})
+    dplyr::select(personElement,iteration, {{mode}})
   }
   
   selected_plans <- list()
@@ -93,7 +93,7 @@ mode_facet_shifts <- function(plans, start, end, mode){
     selected_plans[[i]] <- plans[[i]] %>%
       filter(personElement %in% riders[[i]]$personElement) %>%
       mutate(iteration = i) %>%
-      select(personElement, iteration, {{mode}})
+      dplyr::select(personElement, iteration, {{mode}})
   }
   
   plan_mode_shifts <- bind_rows(selected_plans, .id = "bindid") %>%

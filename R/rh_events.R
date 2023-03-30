@@ -39,7 +39,7 @@ mode_choice <- function(events){
     summarize(n = n()) %>%
     mutate(share = n / sum(n)) %>%
     mutate(share = round(share*100,3)) %>%
-    select(-share)
+    dplyr::select(-share)
 }
 # trip arrivals
 trip_arrivals <- function(events){
@@ -54,7 +54,7 @@ rh_pass <- function(events){
   rhPassengers <- events %>%
     filter(type == "PathTraversal",
            vehicleType == "ride_hail") %>%
-    select(numPassengers) %>%
+    dplyr::select(numPassengers) %>%
     table() %>% as_tibble() %>%
     `colnames<-`(c("numPassengers", "n"))
   
@@ -98,7 +98,7 @@ rh_times <- function(events){
               max = max(rhReserveTime),
               min = min(rhReserveTime)) %>%
     pivot_longer(!rhReserveOutcome, names_to = "summary", values_to = "values") %>%
-    select(-rhReserveOutcome)
+    dplyr::select(-rhReserveOutcome)
 }
 
 
@@ -107,7 +107,7 @@ rh_waittimes <- function(events){
   s_pop <- events %>%
     filter(type == "ReserveRideHail") %>%
     filter(duplicated(person) == FALSE) %>% 
-    select(person) %>%
+    dplyr::select(person) %>%
     sample_frac(.25)
   
   times <- events %>%
@@ -129,7 +129,7 @@ rh_waittimes <- function(events){
     group_by(rhReserveOutcome) %>%
     filter(rhReserveOutcome == "PersonEntersVehicle") %>%
     mutate(rhReserveTime = rhReserveTime / 60) %>%
-    select(rhReserveOutcome,rhReserveTime) %>%
+    dplyr::select(rhReserveOutcome,rhReserveTime) %>%
     #ungroup() %>% unlist() %>% unname() %>%
     as.data.frame()
 }
@@ -152,7 +152,7 @@ rh_travel_times <- function(events){
               q50 = quantile(travelTime,c(.5)),
               q75 = quantile(travelTime,c(.75))) %>%
     pivot_longer(!variable, names_to = "summary", values_to = "values") %>%
-    select(-variable)
+    dplyr::select(-variable)
 }
 
 total_fleet_hours <- function(fleet){
@@ -168,17 +168,17 @@ total_fleet_hours <- function(fleet){
 
 rh_utilization <- function(rh_passenger_times, num_passengers, totalFleetHours){
   tt <- rh_passenger_times %>%
-    rename(rename_list_graph) %>% select(1,11,6,10,9,5,4,8,7,3,2)  %>%
+    rename(rename_list_graph) %>% dplyr::select(1,11,6,10,9,5,4,8,7,3,2)  %>%
     pivot_longer(!totalPassengerTime, names_to = "ScenarioName", values_to = "TotalTravelTime") %>%
     mutate(TotalTravelTime = TotalTravelTime / 3600)
   np <- num_passengers %>%
-    rename(rename_list_graph) %>% select(1,11,6,10,9,5,4,8,7,3,2) %>%
+    rename(rename_list_graph) %>% dplyr::select(1,11,6,10,9,5,4,8,7,3,2) %>%
     pivot_longer(!num_passengers, names_to = "ScenarioName", values_to = "vals") %>%
     filter(num_passengers != 0) %>%
     group_by(ScenarioName) %>%
     mutate_all(~replace(., is.na(.), 0)) %>%
     mutate(TotalPassengers = sum(vals)) %>%
-    filter(num_passengers == 1) %>% select(-num_passengers,-vals)
+    filter(num_passengers == 1) %>% dplyr::select(-num_passengers,-vals)
   
   sumTable <- left_join(tt,np,by = "ScenarioName") %>%
     mutate(TotalDriverHours = totalFleetHours) %>%
@@ -199,7 +199,7 @@ count_rh_transit_transfers <- function(events){
       str_detect(vehicle, "rideHail") | str_detect(vehicle, "gtfs")
     ) %>% 
     arrange(person, time) %>% 
-    select(person:type) %>% 
+    dplyr::select(person:type) %>% 
     filter(type == "PersonLeavesVehicle" & lead(type) == "PersonEntersVehicle",
            str_detect(vehicle, "rideHail") & str_detect(lead(vehicle), "gtfs"),
            person == lead(person)) %>%
@@ -212,7 +212,7 @@ count_rh_transit_transfers <- function(events){
       str_detect(vehicle, "rideHail") | str_detect(vehicle, "gtfs")
     ) %>% 
     arrange(person, time) %>% 
-    select(person:type) %>% 
+    dplyr::select(person:type) %>% 
     filter(lag(type) == "PersonLeavesVehicle" & type == "PersonEntersVehicle",
            str_detect(lag(vehicle), "gtfs") & str_detect(vehicle, "rideHail"),
            person == lag(person)) %>%

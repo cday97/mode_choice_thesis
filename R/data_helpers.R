@@ -76,6 +76,6 @@ rbind_join <- function(events_list, func){
   }
   
   bind_rows(full, .id = "id") %>%
-    select(-id)
+    dplyr::select(-id)
 }
 
