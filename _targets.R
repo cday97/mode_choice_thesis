@@ -4,8 +4,6 @@ library(tarchetypes)
 library(future)
 library(future.apply)
 library(furrr)
-library(extrafont)
-loadfonts(device = "win")
 
 # Set target-specific options such as packages.
 tar_option_set(packages = c("tidyverse", "bookdown", "readr", "dotwhisker", 
